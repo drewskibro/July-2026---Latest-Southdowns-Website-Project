@@ -241,9 +241,9 @@ $th_service_icons = [
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $th_hero_image ); ?>');"></div>
   <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <?php echo esc_html( $th_hero_badge ); ?>
+    <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+      <div class="badge-rule w-8 h-px bg-white/30"></div>
+      <span class="badge-text text-white/80 text-xs font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_hero_badge ); ?></span>
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo esc_html( $th_hero_headline ); ?></h1>
     <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo wp_kses_post( $th_hero_body ); ?></p>
@@ -260,9 +260,9 @@ $th_service_icons = [
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <?php echo esc_html( $th_hero_badge ); ?>
+      <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+        <div class="badge-rule w-10 h-px bg-white/30"></div>
+        <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_hero_badge ); ?></span>
       </div>
       <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo esc_html( $th_hero_headline ); ?></h1>
       <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo wp_kses_post( $th_hero_body ); ?></p>
@@ -332,9 +332,9 @@ $th_service_icons = [
   <div class="absolute top-0 right-0 w-96 h-96 bg-blue-50/50 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold"><?php echo esc_html( $th_why_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_why_eyebrow ); ?></span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo esc_html( $th_why_headline ); ?></h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo wp_kses_post( $th_why_subhead ); ?></p>
@@ -377,9 +377,9 @@ $th_service_icons = [
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">Popular Travel Destinations</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Popular Travel Destinations</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Where Are You Headed?</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">From tropical Asia to safari Africa, we have the vaccinations and expert advice to keep you safe wherever your adventure takes you.</p>
@@ -495,9 +495,9 @@ $th_service_icons = [
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-50/40 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold"><?php echo esc_html( $th_services_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_services_eyebrow ); ?></span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo esc_html( $th_services_headline ); ?></h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo wp_kses_post( $th_services_subhead ); ?></p>
@@ -560,9 +560,9 @@ $th_service_icons = [
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold"><?php echo esc_html( $th_vaccines_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_vaccines_eyebrow ); ?></span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost"><?php echo esc_html( $th_vaccines_headline ); ?></h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo wp_kses_post( $th_vaccines_subhead ); ?></p>
@@ -612,9 +612,9 @@ $th_service_icons = [
   <div class="absolute top-0 left-0 w-80 h-80 bg-blue-50/60 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold"><?php echo esc_html( $th_how_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $th_how_eyebrow ); ?></span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo esc_html( $th_how_headline ); ?></h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo $th_how_subhead; ?></p>
@@ -679,9 +679,9 @@ $th_service_icons = [
 
       <!-- Left: copy -->
       <div class="tv-reveal" data-delay="1">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-          <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-          <span class="uppercase tracking-wider text-xs font-semibold"><?php echo $th_trust_eyebrow; ?></span>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-6">
+          <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo $th_trust_eyebrow; ?></span>
         </div>
         <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo $th_trust_headline; ?></h2>
         <p class="text-lg text-gray-600 leading-relaxed mb-6 font-jost"><?php echo $th_trust_intro; ?></p>
@@ -759,9 +759,9 @@ $th_service_icons = [
   <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-50/60 rounded-full -translate-x-1/3 translate-y-1/3 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold">Frequently Asked Questions</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Frequently Asked Questions</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Travel Health FAQs</h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Everything you need to know about travel vaccinations and health advice at Southdowns Pharmacy.</p>
@@ -845,9 +845,10 @@ $th_service_icons = [
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">4 Hampshire Locations</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <span class="badge-numeral text-4xl font-bold text-slate-800 font-jost leading-none">4</span>
+        <div class="badge-divider w-px h-8 bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Hampshire Locations</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Visit Your Nearest Travel Clinic</h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">All four Southdowns Pharmacy locations offer the full range of travel health services. Same-day appointments usually available &mdash; call ahead to confirm.</p>
@@ -916,9 +917,9 @@ $th_service_icons = [
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full translate-x-1/4 translate-y-1/4"></div>
   </div>
   <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="inline-flex items-center gap-2 bg-white/15 text-white text-sm font-medium px-5 py-2.5 rounded-full mb-8 border border-white/20">
-      <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span></span>
-      Same-Day Appointments Available
+    <div class="premium-badge flex items-center justify-center gap-4 mb-8">
+      <div class="badge-rule w-10 h-px bg-white/15"></div>
+      <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Same-Day Appointments Available</span>
     </div>
     <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-jost" style="line-height:1.1;">Travel with Confidence.<br/>Start Here.</h2>
     <p class="text-xl text-blue-100 leading-relaxed mb-10 max-w-2xl mx-auto font-jost">Don&rsquo;t leave your health to chance. Book a travel health consultation with Hampshire&rsquo;s most trusted pharmacy group &mdash; expert advice, all vaccines in stock, same-day appointments across 4 locations.</p>

@@ -78,9 +78,9 @@ $phone       = sp_phone();
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80&auto=format&fit=crop');"></div>
   <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start">
-      <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span></span>
-      NaTHNaC Registered Centre
+    <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+      <div class="badge-rule w-8 h-px bg-white/30"></div>
+      <span class="badge-text text-white/80 text-xs font-light tracking-[0.15em] uppercase font-jost">NaTHNaC Registered Centre</span>
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;">Yellow Fever Vaccine Hampshire</h1>
     <p class="text-white text-base leading-relaxed mb-5 font-jost">Registered Yellow Fever Vaccination Centre. Lifetime protection with official ICVP certificate included. Available at all 4 Hampshire locations.</p>
@@ -97,9 +97,9 @@ $phone       = sp_phone();
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-400"></span></span>
-        NaTHNaC Registered &middot; Yellow Fever Centre
+      <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+        <div class="badge-rule w-10 h-px bg-white/30"></div>
+        <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost">NaTHNaC Registered &middot; Yellow Fever Centre</span>
       </div>
       <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;">Yellow Fever Vaccine Hampshire</h1>
       <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Registered Yellow Fever Vaccination Centre serving Hampshire. Lifetime protection with official International Certificate included. Available at all 4 locations.</p>
@@ -144,9 +144,9 @@ $phone       = sp_phone();
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-10 md:mb-14">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold">At a Glance</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">At a Glance</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Key Facts About the Yellow Fever Vaccine</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Everything you need to know before booking your vaccination at Southdowns Pharmacy.</p>
@@ -181,7 +181,10 @@ $phone       = sp_phone();
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center yf-reveal">
       <div>
-        <span class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-50 to-blue-50 text-amber-700 text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-amber-200/60 uppercase tracking-wider">What You Need to Know</span>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-6">
+          <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">What You Need to Know</span>
+        </div>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost">What Is Yellow Fever?</h2>
         <p class="text-gray-600 text-lg leading-relaxed mb-6 font-jost">Yellow Fever is a serious viral disease transmitted by infected mosquitoes across sub-Saharan Africa, South America and parts of Central America. In severe cases, the disease carries a fatality rate of up to 50%. There is no specific antiviral treatment &mdash; vaccination is the only effective prevention.</p>
         <p class="text-gray-600 text-lg leading-relaxed mb-8 font-jost">Many countries legally require proof of yellow fever vaccination for entry, even if you are simply transiting through an airport in an affected region. Without an official ICVP, you may be denied boarding, quarantined on arrival, or refused entry entirely.</p>
@@ -212,8 +215,9 @@ $phone       = sp_phone();
   <div class="absolute top-0 left-0 w-64 h-64 bg-blue-100/20 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="uppercase tracking-wider text-xs font-semibold">Why It Matters</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Why It Matters</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Why You Need the Yellow Fever Vaccine</h2>
       <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost">Three essential reasons vaccination is critical for travel to affected regions.</p>
@@ -249,9 +253,9 @@ $phone       = sp_phone();
 <section class="py-16 md:py-20 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);" id="risk-areas">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Risk Areas
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Risk Areas</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-jost">Yellow Fever Risk Areas</h2>
       <p class="text-lg text-blue-100 max-w-3xl mx-auto font-jost">Yellow fever is endemic across large areas of sub-Saharan Africa and South America. If your itinerary passes through these regions, you almost certainly need vaccination.</p>
@@ -329,8 +333,9 @@ $phone       = sp_phone();
   <div class="absolute bottom-0 right-0 w-72 h-72 bg-amber-100/20 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-amber-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100/60">
-        <span class="uppercase tracking-wider text-xs font-semibold">Your Appointment</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Your Appointment</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">What to Expect</h2>
       <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost">A streamlined, professional vaccination experience. From consultation to certified ICVP in under 30 minutes.</p>
@@ -389,9 +394,9 @@ $phone       = sp_phone();
   <div class="absolute bottom-0 right-0 w-72 h-72 bg-amber-200/20 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100 shadow-sm">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">Safety Information</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Safety Information</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Side Effects &amp; Safety</h2>
       <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost">Excellent safety record with over 600 million doses administered worldwide. Serious reactions are extremely rare.</p>
@@ -456,9 +461,9 @@ $phone       = sp_phone();
   <div class="absolute inset-0 opacity-[0.02]" style="background-image: radial-gradient(#1e3a8a 1px, transparent 1px); background-size: 32px 32px;"></div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <div class="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-amber-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100/60">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold">Transparent Pricing</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Transparent Pricing</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Yellow Fever Vaccine Pricing</h2>
       <p class="text-lg text-gray-500 max-w-2xl mx-auto font-jost">All-inclusive price. No hidden fees. No consultation charges.</p>
@@ -529,9 +534,9 @@ $phone       = sp_phone();
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-10 md:mb-16">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">Why Us</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Why Us</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Why Choose Southdowns Pharmacy</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Officially designated NaTHNaC Yellow Fever Vaccination Centre &mdash; the only type of centre authorised to issue valid ICVP certificates.</p>
@@ -603,9 +608,9 @@ $phone       = sp_phone();
 
       <!-- Sticky sidebar -->
       <div class="lg:col-span-4 lg:sticky lg:top-28 lg:self-start yf-reveal">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-          <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-          <span class="uppercase tracking-wider text-xs font-semibold">FAQs</span>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-6">
+          <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">FAQs</span>
         </div>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost">Yellow Fever Vaccine FAQs</h2>
         <p class="text-lg text-gray-500 leading-relaxed mb-8 font-jost">Everything you need to know about yellow fever vaccination at Southdowns Pharmacy.</p>
@@ -678,9 +683,10 @@ $phone       = sp_phone();
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="text-center mb-10 md:mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">4 Locations Across Hampshire</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <span class="badge-numeral text-4xl font-bold text-slate-800 font-jost leading-none">4</span>
+        <div class="badge-divider w-px h-8 bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Locations Across Hampshire</span>
       </div>
       <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Visit Our Vaccination Centres</h2>
       <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Free parking &amp; same-day yellow fever appointments at all locations.</p>

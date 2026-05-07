@@ -281,6 +281,14 @@ add_action( 'wp_enqueue_scripts', function() {
         $ver
     );
 
+    // Serif accent for headline emphasis (Playfair Display italic)
+    wp_enqueue_style(
+        'southdowns-serif',
+        'https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap',
+        [],
+        null
+    );
+
     // Page-specific scripts
     $template = get_page_template_slug();
 
@@ -325,6 +333,7 @@ require_once get_template_directory() . '/inc/acf-location-fields.php';
 require_once get_template_directory() . '/inc/acf-weight-loss-fields.php';
 require_once get_template_directory() . '/inc/acf-covid-vaccine-fields.php';
 require_once get_template_directory() . '/inc/acf-travel-health-fields.php';
+require_once get_template_directory() . '/inc/acf-ear-wax-fields.php';
 
 
 // ============================================================
@@ -344,6 +353,8 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         // COVID-19 vaccine pages — acf_after_title requires classic editor
         'page-templates/page-covid-vaccine.php',
         'page-templates/page-covid-vaccine-private.php',
+        // Ear wax removal — acf_after_title requires classic editor
+        'page-templates/page-ear-wax.php',
     ];
     $template = get_page_template_slug( $post->ID );
     if ( in_array( $template, $custom_templates, true ) ) {

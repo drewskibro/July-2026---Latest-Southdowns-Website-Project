@@ -193,9 +193,9 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
   <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-    <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <?php echo $hero_badge; ?>
+    <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+      <div class="badge-rule w-8 h-px bg-white/30"></div>
+      <span class="badge-text text-white/80 text-xs font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo $hero_headline; ?></h1>
     <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo $hero_body; ?></p>
@@ -217,9 +217,9 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <?php echo $hero_badge; ?>
+      <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+        <div class="badge-rule w-10 h-px bg-white/30"></div>
+        <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
       </div>
       <h1 class="text-white text-4xl lg:text-[46px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo $hero_headline; ?></h1>
       <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo $hero_body; ?></p>
@@ -348,7 +348,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Header — brand pill eyebrow -->
     <div class="yf-reveal text-center mb-14 md:mb-20">
-      <span class="inline-block bg-white/15 backdrop-blur-sm text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide border border-white/20 mb-5 font-jost"><?php echo esc_html( $science_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-5">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $science_eyebrow ); ?></span>
+      </div>
       <h2 class="sci-headline text-4xl sm:text-5xl md:text-[56px] lg:text-[62px] mb-6 max-w-3xl mx-auto"><?php echo $science_headline; ?></h2>
       <p class="sci-subhead text-base md:text-lg max-w-xl mx-auto leading-relaxed"><?php echo $science_subhead; ?></p>
     </div>
@@ -442,7 +445,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4"><?php echo esc_html( $treatments_eyebrow ); ?></span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $treatments_eyebrow ); ?></span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost"><?php echo esc_html( $treatments_headline ); ?></h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost"><?php echo $treatments_subhead; ?></p>
     </div>
@@ -543,7 +549,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4">Real Results</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Real Results</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">What you can expect from your programme</h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Beyond the number on the scales, patients report wide-ranging improvements to their health and quality of life.</p>
     </div>
@@ -642,7 +651,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4">Your Journey</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Your Journey</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">How our programme works</h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">From your first free consultation to reaching your goal weight, we're with you at every step.</p>
     </div>
@@ -729,10 +741,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-flex items-center gap-2 bg-white/15 text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4 border border-white/20">
-        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        <?php echo esc_html( $testimonials_eyebrow ); ?>
-      </span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $testimonials_eyebrow ); ?></span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo esc_html( $testimonials_headline ); ?></h2>
       <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost"><?php echo $testimonials_subhead; ?></p>
     </div>
@@ -793,7 +805,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4">Our Pharmacies</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Our Pharmacies</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">Visit us at your nearest Hampshire location</h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Walk in or book online &mdash; same-day weight loss consultations available at all four Southdowns branches.</p>
     </div>
@@ -858,10 +873,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Heading -->
     <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <span class="inline-flex items-center gap-2 bg-white/15 text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4 border border-white/20">
-        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Why Choose Us
-      </span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Why Choose Us</span>
+      </div>
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Why Hampshire chooses Southdowns</h2>
       <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost">We combine clinical expertise with genuine face-to-face care &mdash; the things online weight loss services simply can't replicate.</p>
     </div>
@@ -932,7 +947,10 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
       <!-- Sticky sidebar -->
       <div class="lg:sticky lg:top-28 yf-reveal">
-        <span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wide mb-4"><?php echo esc_html( $faq_eyebrow ); ?></span>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-4">
+          <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $faq_eyebrow ); ?></span>
+        </div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost"><?php echo esc_html( $faq_headline ); ?></h2>
         <p class="text-gray-600 mb-8 font-jost"><?php echo $faq_intro; ?></p>
 

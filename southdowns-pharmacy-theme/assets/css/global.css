@@ -62,3 +62,260 @@ img { transition: transform 0.5s ease; }
     padding-right: 2rem;
   }
 }
+
+/* ============================================================
+   PRIMARY NAVIGATION — desktop mega-dropdowns + mobile accordion
+   ============================================================ */
+
+/* Desktop Main Menu spacing */
+@media (min-width: 768px) {
+  nav[aria-label="Main Menu"] {
+    font-size: 17px;
+    line-height: 25.5px;
+  }
+  nav[aria-label="Main Menu"] > ul > li {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  nav[aria-label="Main Menu"] > ul > li:first-child { margin-left: 0; }
+  nav[aria-label="Main Menu"] > ul > li:last-child  { margin-right: 0; }
+}
+
+/* Premium mega dropdown */
+.dd-parent { position: relative; }
+.dd-parent .mega-dd {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 9999;
+  border: 1px solid #e5e7eb;
+  overflow: visible;
+  min-width: 740px;
+}
+.dd-parent:hover .mega-dd,
+.dd-parent:focus-within .mega-dd {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.mega-dd-content { display: flex; font-family: 'Jost', sans-serif; }
+.mega-dd-section { padding: 20px 24px; min-width: 240px; background: #f8fafc; }
+.mega-dd-section + .mega-dd-section { border-left: 1px solid #e2e8f0; }
+.mega-dd-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+  padding: 0 12px;
+}
+.mega-dd-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+  border-left: 3px solid transparent;
+}
+.mega-dd-link:hover { background: #eef2f7; border-left-color: transparent; }
+.mega-dd-link:hover .mega-dd-link-name { color: #1d4ed8; }
+.mega-dd-link:hover .mega-dd-link-desc { color: #64748b; }
+.mega-dd-link-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+  border: 1px solid #e2e8f0;
+}
+.mega-dd-link:hover .mega-dd-link-icon {
+  background: #dbeafe;
+  border-color: #bfdbfe;
+  transform: translateY(-1px);
+}
+.mega-dd-link-icon svg { width: 20px; height: 20px; stroke: #1e3a8a; fill: none; transition: stroke .15s; }
+.mega-dd-link:hover .mega-dd-link-icon svg { stroke: #1d4ed8; }
+.mega-dd-link-content { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mega-dd-link-name { font-size: 14px; font-weight: 600; color: #1e293b; white-space: nowrap; transition: color .2s; }
+.mega-dd-link-desc { font-size: 13px; font-weight: 400; color: #64748b; white-space: nowrap; transition: color .2s; }
+
+/* Featured card inside mega dropdown */
+.mega-dd-featured {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  padding: 24px;
+  min-width: 260px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 16px 16px 0;
+  border-left: 1px solid #e0e7ff;
+}
+.mega-dd-featured-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  border: none;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(29,78,216,.3);
+}
+.mega-dd-featured h5 { font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+.mega-dd-featured p { font-size: 13px; color: #64748b; line-height: 1.5; margin-bottom: 14px; }
+.mega-dd-featured-trust { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.mega-dd-featured-trust span { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #334155; }
+.mega-dd-featured-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8, #3b82f6);
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  width: fit-content;
+}
+.mega-dd-featured-btn:hover { background: #1e3a8a; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(30,58,138,.3); }
+
+.dd-chevron { display: inline-block; width: 12px; height: 8px; margin-left: 4px; vertical-align: middle; transition: transform .25s; }
+.dd-parent:hover .dd-chevron { transform: rotate(180deg); }
+
+/* Locations dropdown variant */
+.mega-dd.mega-dd-locations {
+  min-width: 0;
+  background: #fff;
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #1e3a8a, #3b82f6) 1;
+}
+.mega-dd-locations .mega-dd-link:hover { background: #eff6ff; }
+.mega-dd-locations .mega-dd-link:hover .mega-dd-link-name { color: #1d4ed8; }
+.mega-dd-locations .mega-dd-link:hover .mega-dd-link-desc { color: #3b82f6; }
+.mega-dd-locations .mega-dd-link-icon { background: #eff6ff; border: 1px solid #bfdbfe; }
+.mega-dd-locations .mega-dd-link-icon svg { stroke: #2563eb; }
+.mega-dd-locations .mega-dd-link:hover .mega-dd-link-icon { background: #dbeafe; border-color: #93c5fd; }
+.mega-dd-locations .mega-dd-link:hover .mega-dd-link-icon svg { stroke: #1d4ed8; }
+
+/* Mobile accordion */
+.mob-dd-toggle { cursor: pointer; }
+.mob-dd-sub {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease;
+  background: #f3f4f6;
+}
+.mob-dd-sub.open { max-height: 500px; }
+.mob-dd-sub a {
+  display: block;
+  padding: 10px 22.5px 10px 40px;
+  font-size: 14px;
+  color: #27272a;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+  font-family: 'Jost', sans-serif;
+}
+.mob-dd-sub a:hover { color: #1d4ed8; background: #eff6ff; }
+.mob-dd-arrow { transition: transform .3s; width: 16px; height: 16px; }
+.mob-dd-toggle.active .mob-dd-arrow { transform: rotate(180deg); }
+
+/* Mobile drawer panel */
+.mob-drawer {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
+  transition: max-height .3s ease, opacity .25s ease;
+}
+.mob-drawer.open {
+  max-height: 90vh;
+  opacity: 1;
+  pointer-events: auto;
+  overflow-y: auto;
+}
+
+/* ============================================================
+   PREMIUM SECTION BADGES (hairline rule + tracked text)
+   ============================================================ */
+@keyframes badgeRuleDraw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+@keyframes badgeTextUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.premium-badge .badge-rule {
+  transform: scaleX(0);
+  transform-origin: center;
+}
+.premium-badge .badge-text {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.premium-badge .badge-numeral {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.premium-badge .badge-divider {
+  transform: scaleY(0);
+  transform-origin: center;
+}
+
+.premium-badge.premium-badge-visible .badge-rule {
+  animation: badgeRuleDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.premium-badge.premium-badge-visible .badge-text {
+  animation: badgeTextUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+.premium-badge.premium-badge-visible .badge-numeral {
+  animation: badgeTextUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.premium-badge.premium-badge-visible .badge-divider {
+  animation: badgeRuleDraw 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .premium-badge .badge-rule,
+  .premium-badge .badge-text,
+  .premium-badge .badge-numeral,
+  .premium-badge .badge-divider {
+    transform: none;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* ============================================================
+   HEADLINE SERIF ACCENT (Playfair Display italic)
+   ============================================================ */
+.serif-accent {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}

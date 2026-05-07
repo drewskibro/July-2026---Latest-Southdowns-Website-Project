@@ -22,7 +22,11 @@ $stars = str_repeat( $star_svg, 5 );
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png');"></div>
       <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
       <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-        <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;">Same Day Vaccine &amp; Blood Test Appointments</h1>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+          <div class="badge-rule w-8 h-px bg-white/30"></div>
+          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day</span>
+        </div>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><span class="serif-accent">Same-day</span> vaccine &amp; blood test appointments</h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.</p>
         <div class="mb-4">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -34,7 +38,11 @@ $stars = str_repeat( $star_svg, 5 );
       </div>
       <div class="hidden md:flex">
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;">Same Day Vaccine &amp; Blood Test Appointments</h1>
+          <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+            <div class="badge-rule w-10 h-px bg-white/30"></div>
+            <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day Appointments</span>
+          </div>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><span class="serif-accent">Same-day</span> vaccine &amp; blood test appointments</h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.</p>
           <div class="mb-6">
             <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -42,7 +50,11 @@ $stars = str_repeat( $star_svg, 5 );
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <p class="text-white text-base lg:text-lg font-medium leading-relaxed font-jost">Same day appointments are typically available but please book in early to avoid disappointment.</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> All Vaccines in Stock</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Same-Day Available</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Expert Pharmacists</span>
+          </div>
         </div>
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png');"></div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
@@ -62,7 +74,11 @@ $stars = str_repeat( $star_svg, 5 );
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227843-0.png');"></div>
       <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
       <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-        <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;">Medical Weight Loss Programme</h1>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+          <div class="badge-rule w-8 h-px bg-white/30"></div>
+          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
+        </div>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;">Medical <span class="serif-accent">weight loss</span> programme</h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.</p>
         <div class="mb-4">
           <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -74,7 +90,11 @@ $stars = str_repeat( $star_svg, 5 );
       </div>
       <div class="hidden md:flex">
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;">Medical Weight Loss Programme</h1>
+          <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+            <div class="badge-rule w-10 h-px bg-white/30"></div>
+            <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
+          </div>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;">Medical <span class="serif-accent">weight loss</span> programme</h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.</p>
           <div class="mb-6">
             <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -82,7 +102,11 @@ $stars = str_repeat( $star_svg, 5 );
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <p class="text-white text-base lg:text-lg font-medium leading-relaxed font-jost">Average 15-20kg weight loss with monthly check-ins included.</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> GLP-1 Treatments</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Monthly Check-ins</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
+          </div>
         </div>
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227843-0.png');background-position:85% center;"></div>
       </div>
@@ -93,7 +117,11 @@ $stars = str_repeat( $star_svg, 5 );
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227870-1.png');"></div>
       <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
       <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
-        <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;">Comprehensive Blood Testing</h1>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
+          <div class="badge-rule w-8 h-px bg-white/30"></div>
+          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours</span>
+        </div>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><span class="serif-accent">Comprehensive</span> blood testing</h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.</p>
         <div class="mb-4">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -105,7 +133,11 @@ $stars = str_repeat( $star_svg, 5 );
       </div>
       <div class="hidden md:flex">
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;">Comprehensive Blood Testing</h1>
+          <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
+            <div class="badge-rule w-10 h-px bg-white/30"></div>
+            <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours &middot; 4 Locations</span>
+          </div>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><span class="serif-accent">Comprehensive</span> blood testing</h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.</p>
           <div class="mb-6">
             <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
@@ -113,7 +145,11 @@ $stars = str_repeat( $star_svg, 5 );
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <p class="text-white text-base lg:text-lg font-medium leading-relaxed font-jost">Results typically available within 24-48 hours.</p>
+          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Same-Day Available</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 24&ndash;48hr Results</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> B12 &amp; Full Screening</span>
+          </div>
         </div>
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227870-1.png');background-position:85% center;"></div>
       </div>
@@ -160,6 +196,48 @@ $stars = str_repeat( $star_svg, 5 );
 </script>
 
 <!-- ============================================================
+     MOST POPULAR TREATMENTS
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-10 md:mb-14">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Trusted by thousands across Hampshire</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Our Most Popular Treatments</h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Comprehensive healthcare solutions tailored to your needs, delivered with care at our Hampshire locations.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+      <?php
+      $treatments = [
+        ['Weight Loss',       home_url('/weight-loss/'),    'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944273995-0.jpeg', 'Weight loss treatment at Southdowns Pharmacy'],
+        ['Travel Health',     home_url('/travel-health/'),  'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274005-1.jpeg', 'Travel health vaccinations at Southdowns Pharmacy'],
+        ['Ear Wax Removal',   home_url('/ear-wax/'),        'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944517596-0.jpeg', 'Ear wax removal service at Southdowns Pharmacy'],
+        ['Hair Loss',         home_url('/hair-loss/'),      'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274011-2.jpeg', 'Hair loss treatment at Southdowns Pharmacy'],
+        ['Smoking Cessation', home_url('/smoking-cessation/'), 'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944583782-0.jpeg', 'Smoking cessation support at Southdowns Pharmacy'],
+      ];
+      foreach ( $treatments as $t ) : ?>
+      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4]">
+          <img alt="<?php echo esc_attr( $t[3] ); ?>" src="<?php echo esc_url( $t[2] ); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+          <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/40 transition-colors duration-300 flex items-center justify-center">
+            <span class="text-white text-sm font-medium px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/30">View Details</span>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+            <h3 class="text-white text-lg md:text-xl font-semibold font-jost mb-1"><?php echo esc_html( $t[0] ); ?></h3>
+            <div class="w-8 h-0.5 bg-blue-400 group-hover:w-12 transition-all duration-300"></div>
+          </div>
+        </div>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      SEARCH VACCINES BY DESTINATION
      ============================================================ -->
 <section class="relative py-16 md:py-24 overflow-hidden" style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 50%,#3b82f6 100%);">
@@ -169,9 +247,10 @@ $stars = str_repeat( $star_svg, 5 );
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="text-center mb-10 md:mb-14">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <span>4 Locations Across Hampshire</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <span class="badge-numeral text-4xl font-bold text-white font-jost leading-none">4</span>
+        <div class="badge-divider w-px h-8 bg-white/15"></div>
+        <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost">Locations Across Hampshire</span>
       </div>
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-6 font-jost">Search Vaccines by<br class="hidden md:block" /> Destination</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">At <?php echo esc_html( sp_pharmacy_name() ); ?>, we provide expert travel health services across Hampshire. Find the vaccines you need for your next adventure.</p>
@@ -224,48 +303,6 @@ $stars = str_repeat( $star_svg, 5 );
 </section>
 
 <!-- ============================================================
-     MOST POPULAR TREATMENTS
-     ============================================================ -->
-<section class="relative py-16 md:py-24 overflow-hidden bg-white">
-  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-    <div class="text-center mb-10 md:mb-14">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold">Trusted by thousands across Hampshire</span>
-      </div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Our Most Popular Treatments</h2>
-      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Comprehensive healthcare solutions tailored to your needs, delivered with care at our Hampshire locations.</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-      <?php
-      $treatments = [
-        ['Weight Loss',       home_url('/weight-loss/'),    'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944273995-0.jpeg', 'Weight loss treatment at Southdowns Pharmacy'],
-        ['Travel Health',     home_url('/travel-health/'),  'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274005-1.jpeg', 'Travel health vaccinations at Southdowns Pharmacy'],
-        ['Ear Wax Removal',   home_url('/ear-wax/'),        'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944517596-0.jpeg', 'Ear wax removal service at Southdowns Pharmacy'],
-        ['Hair Loss',         home_url('/hair-loss/'),      'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274011-2.jpeg', 'Hair loss treatment at Southdowns Pharmacy'],
-        ['Smoking Cessation', home_url('/smoking-cessation/'), 'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944583782-0.jpeg', 'Smoking cessation support at Southdowns Pharmacy'],
-      ];
-      foreach ( $treatments as $t ) : ?>
-      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block">
-        <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4]">
-          <img alt="<?php echo esc_attr( $t[3] ); ?>" src="<?php echo esc_url( $t[2] ); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
-          <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/40 transition-colors duration-300 flex items-center justify-center">
-            <span class="text-white text-sm font-medium px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/30">View Details</span>
-          </div>
-          <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-            <h3 class="text-white text-lg md:text-xl font-semibold font-jost mb-1"><?php echo esc_html( $t[0] ); ?></h3>
-            <div class="w-8 h-0.5 bg-blue-400 group-hover:w-12 transition-all duration-300"></div>
-          </div>
-        </div>
-      </a>
-      <?php endforeach; ?>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      TESTIMONIALS
      ============================================================ -->
 <section class="relative py-16 md:py-24 overflow-hidden" style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 50%,#3b82f6 100%);">
@@ -275,9 +312,9 @@ $stars = str_repeat( $star_svg, 5 );
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="text-center mb-10 md:mb-16">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        <span class="uppercase tracking-wider text-xs font-semibold">Trusted by Thousands</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Trusted by Thousands</span>
       </div>
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost">What Our Patients Say</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Real experiences from real patients across our Hampshire locations.</p>
@@ -331,13 +368,13 @@ $stars = str_repeat( $star_svg, 5 );
 <!-- ============================================================
      HEALTH HUB
      ============================================================ -->
-<section class="relative py-16 md:py-24 overflow-hidden bg-white">
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">
   <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 md:mb-14 gap-6">
       <div class="flex-1">
-        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-blue-100">
-          <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span></span>
-          <span class="uppercase tracking-wider text-xs font-semibold">Expert Advice</span>
+        <div class="premium-badge flex items-center justify-start gap-4 mb-6">
+          <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Expert Advice</span>
         </div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 font-jost">
           Latest from the <span class="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Health Hub</span>
@@ -381,13 +418,32 @@ $stars = str_repeat( $star_svg, 5 );
       <div>
         <h2 class="text-4xl md:text-5xl font-semibold text-white mb-4 font-jost">Popular Vaccines</h2>
         <p class="text-blue-100 text-lg mb-8 font-jost">Find out everything about these popular vaccines we can provide at <?php echo esc_html( sp_pharmacy_name() ); ?>.</p>
-        <ul class="grid grid-cols-2 gap-3 mb-8">
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <?php
-          $vaccines = ['Chickenpox','Chikungunya Vaccine','Cholera','Dengue Fever (Qdenga)','DTP (Diphtheria, Tetanus & Polio)','Hepatitis A','Hepatitis B','HPV (Gardasil 9)','Japanese Encephalitis','Malaria','Meningitis B','Meningococcal Meningitis','MMR (Measles, Mumps & Rubella)','Private Covid Vaccine','Rabies','Shingles','Tick Borne Encephalitis','Typhoid','Whooping Cough (Pertussis)','Yellow Fever'];
+          $vaccines = [
+            ['name' => 'Yellow Fever',                       'url' => home_url( '/yellow-fever/' )],
+            ['name' => 'Hepatitis A',                        'url' => home_url( '/travel-health/' )],
+            ['name' => 'Typhoid',                            'url' => home_url( '/travel-health/' )],
+            ['name' => 'Hepatitis B',                        'url' => home_url( '/travel-health/' )],
+            ['name' => 'Rabies',                             'url' => home_url( '/travel-health/' )],
+            ['name' => 'Cholera',                            'url' => home_url( '/travel-health/' )],
+            ['name' => 'Japanese Encephalitis',              'url' => home_url( '/travel-health/' )],
+            ['name' => 'Meningitis (ACWY)',                  'url' => home_url( '/travel-health/' )],
+            ['name' => 'Tick Borne Encephalitis',            'url' => home_url( '/travel-health/' )],
+            ['name' => 'Malaria Tablets',                    'url' => home_url( '/travel-health/' )],
+            ['name' => 'MMR (Measles, Mumps & Rubella)',     'url' => home_url( '/travel-health/' )],
+            ['name' => 'Dengue Fever (Qdenga)',              'url' => home_url( '/travel-health/' )],
+          ];
           foreach ( $vaccines as $v ) : ?>
-          <li><a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="block px-4 py-3 border-2 border-white/30 rounded-xl text-white font-medium font-jost text-sm hover:border-white/70 hover:bg-white/10 transition-all duration-200 text-center"><?php echo esc_html( $v ); ?></a></li>
+          <li><a href="<?php echo esc_url( $v['url'] ); ?>" class="group relative flex items-center justify-center min-h-[88px] px-6 pr-12 bg-blue-50 rounded-xl text-blue-900 font-bold text-xl text-center font-jost transition-all duration-300 ease-in-out hover:bg-white hover:-translate-y-0.5 hover:shadow-lg"><span><?php echo esc_html( $v['name'] ); ?></span><svg class="absolute right-5 w-5 h-5 text-blue-400 group-hover:text-blue-700 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></li>
           <?php endforeach; ?>
         </ul>
+        <div class="mb-6">
+          <a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="inline-flex items-center gap-2 text-white font-semibold text-lg font-jost border-b-2 border-white/40 hover:border-white pb-1 transition-colors">
+            View all vaccines
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
         <p class="text-white/80 text-sm font-jost"><strong class="text-white">Vaccine not listed?</strong> We can provide any travel vaccine. <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="text-white underline hover:text-blue-200">Contact us</a> for more information.</p>
       </div>
       <div class="hidden md:block">
@@ -412,9 +468,9 @@ $stars = str_repeat( $star_svg, 5 );
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="text-center mb-12 md:mb-16">
-      <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/30">
-        <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span></span>
-        <span class="uppercase tracking-wider text-xs font-semibold">Premium Collection</span>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/15"></div>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Premium Collection</span>
       </div>
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost">Our Premium Products</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-jost">Discover our exclusive range of premium healthcare products, crafted with excellence.</p>
