@@ -118,6 +118,9 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
       <img src="<?php echo esc_url( $hero_roundel_2 ); ?>" alt="<?php echo esc_attr( $hero_roundel_2_alt ); ?>" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
     </div>
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
+      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="GPhC Registered" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+    </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
       <img src="<?php echo esc_url( $hero_roundel_3 ); ?>" alt="<?php echo esc_attr( $hero_roundel_3_alt ); ?>" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
     </div>
