@@ -80,7 +80,7 @@ $destinations = [
                 <div class="mega-dd-content">
                   <div class="mega-dd-section">
                     <div class="mega-dd-title">Travel Health</div>
-                    <a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="mega-dd-link">
+                    <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.125A59.769 59.769 0 0121.485 12 59.768 59.768 0 013.27 20.875L5.999 12zm0 0h7.5"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Travel Vaccinations</span><span class="mega-dd-link-desc">Destination-specific vaccine plans</span></div>
                     </a>
@@ -236,7 +236,7 @@ $destinations = [
           <svg class="mob-dd-arrow" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
         </div>
         <div class="mob-dd-sub">
-          <a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>">Travel Vaccinations</a>
+          <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>">Travel Vaccinations</a>
           <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) ); ?>">Yellow Fever</a>
           <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>

@@ -179,7 +179,7 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
      ============================================================ -->
 <?php
 $stats_headline = get_field( 'ew_stats_headline' ) ?: 'Professional Microsuction Treatment';
-$stats_subhead  = get_field( 'ew_stats_subhead' )  ?: 'The safest and most effective method of ear wax removal, available across our Hampshire locations.';
+$stats_subhead  = get_field( 'ew_stats_subhead' )  ?: 'The safest and most effective method of ear wax removal, available at our Emsworth branch.';
 $stats_acf      = get_field( 'ew_stats' );
 $stats_defaults = [
     [ 'value' => '20',    'label' => 'Minute Appointments' ],
@@ -822,50 +822,69 @@ $faqs = ( ! empty( $faqs_acf ) ) ? $faqs_acf : $faqs_defaults;
 
 
 <!-- ============================================================
-     S12: LOCATIONS — All 4 branches via sp_branch() ACF helper
+     S12: LOCATION — Emsworth spotlight (single branch)
      ============================================================ -->
+<?php
+$emsworth = sp_branch( 1 );
+$emsworth_directions_url = 'https://maps.google.com/?q=' . urlencode( $emsworth['address_line1'] . ', ' . $emsworth['city'] . ', ' . $emsworth['postcode'] );
+?>
 <section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="locations">
   <div class="absolute bottom-0 left-1/2 w-[600px] h-[400px] bg-blue-200/15 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl"></div>
-  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-14">
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Our Locations</span>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Our Location</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Visit Our Ear Care Centres</h2>
-      <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Ear wax removal available across all 4 Hampshire locations. Same-day appointments where available.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Available at Emsworth Pharmacy</h2>
+      <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Our TympaHealth-certified ear wax removal service is offered exclusively at our Emsworth branch.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
-        $branch = sp_branch( $i );
-        $delay  = $i;
-      ?>
-      <div class="ew-reveal ew-card-lift bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm group" data-delay="<?php echo $delay; ?>">
-        <div class="relative overflow-hidden aspect-[4/3]">
-          <img src="<?php echo esc_url( $branch['card_image'] ); ?>" alt="<?php echo esc_attr( $branch['name'] ); ?> ear wax removal pharmacy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-          <div class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md font-jost">Open Now</div>
-          <div class="absolute bottom-3 left-3">
-            <h3 class="text-white text-xl font-bold font-jost"><?php echo esc_html( $branch['name'] ); ?></h3>
+    <!-- Single feature card -->
+    <div class="ew-reveal bg-white rounded-3xl overflow-hidden border border-gray-200/80 shadow-xl grid grid-cols-1 md:grid-cols-5">
+      <!-- Photo -->
+      <div class="relative md:col-span-2 aspect-[4/3] md:aspect-auto md:min-h-[360px]">
+        <img src="<?php echo esc_url( $emsworth['card_image'] ); ?>" alt="<?php echo esc_attr( $emsworth['name'] ); ?> ear wax removal pharmacy" class="absolute inset-0 w-full h-full object-cover" loading="lazy"/>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent md:bg-gradient-to-r"></div>
+        <div class="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-md font-jost">Open Now</div>
+      </div>
+
+      <!-- Details -->
+      <div class="md:col-span-3 p-8 md:p-10 flex flex-col justify-center">
+        <span class="inline-flex self-start items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4 font-jost">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          TympaHealth Certified
+        </span>
+        <h3 class="text-2xl md:text-3xl font-bold text-slate-800 mb-5 font-jost"><?php echo esc_html( $emsworth['name'] ); ?> Pharmacy</h3>
+
+        <div class="space-y-3 mb-6">
+          <div class="flex items-start gap-3">
+            <svg class="flex-shrink-0 mt-1 text-blue-500 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="text-gray-700 text-base font-jost"><?php echo esc_html( $emsworth['address_line1'] . ', ' . $emsworth['city'] . ', ' . $emsworth['postcode'] ); ?></span>
           </div>
+          <div class="flex items-start gap-3">
+            <svg class="flex-shrink-0 mt-1 text-blue-500 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span class="text-gray-700 text-base font-jost"><?php echo esc_html( $emsworth['hours_weekday'] ); ?></span>
+          </div>
+          <?php if ( ! empty( $emsworth['phone'] ) ) : ?>
+          <div class="flex items-start gap-3">
+            <svg class="flex-shrink-0 mt-1 text-blue-500 w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $emsworth['phone'] ) ); ?>" class="text-gray-700 text-base font-jost hover:text-blue-600 transition-colors"><?php echo esc_html( $emsworth['phone'] ); ?></a>
+          </div>
+          <?php endif; ?>
         </div>
-        <div class="p-5">
-          <div class="flex items-start gap-2 mb-2">
-            <svg class="flex-shrink-0 mt-0.5 text-blue-500 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span class="text-gray-600 text-sm font-jost"><?php echo esc_html( $branch['address_line1'] . ', ' . $branch['city'] . ', ' . $branch['postcode'] ); ?></span>
-          </div>
-          <div class="flex items-start gap-2 mb-4">
-            <svg class="flex-shrink-0 mt-0.5 text-blue-500 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            <span class="text-gray-400 text-xs font-jost"><?php echo esc_html( $branch['hours_weekday'] ); ?></span>
-          </div>
-          <a href="<?php echo esc_url( $booking_url ); ?>" class="flex items-center justify-center gap-2 w-full text-blue-600 text-sm font-semibold bg-blue-50 hover:bg-blue-100 px-4 py-2.5 rounded-xl transition-colors font-jost">
-            Book Here
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-base font-semibold px-6 py-3 rounded-full transition-colors shadow-lg font-jost">
+            Book Appointment
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a href="<?php echo esc_url( $emsworth_directions_url ); ?>" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-base font-semibold px-6 py-3 rounded-full transition-colors font-jost">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
           </a>
         </div>
       </div>
-      <?php endfor; ?>
     </div>
 
     <!-- Info banner -->
@@ -878,7 +897,7 @@ $faqs = ( ! empty( $faqs_acf ) ) ? $faqs_acf : $faqs_defaults;
         <p class="text-blue-100 font-jost">Feel free to get in touch with our friendly team if you have any questions about the service.</p>
       </div>
       <a href="<?php echo esc_url( $booking_url ); ?>" class="flex-shrink-0 inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm font-jost">
-        Book Nearest Branch
+        Book Emsworth Appointment
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
     </div>
