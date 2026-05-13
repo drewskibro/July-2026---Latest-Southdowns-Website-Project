@@ -88,7 +88,7 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
   <!-- Desktop: 2-column split matching homepage hero -->
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
       <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
         <div class="badge-rule w-10 h-px bg-white/30"></div>
         <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $hero_badge ); ?></span>
