@@ -111,37 +111,60 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
     <!-- Right: image -->
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
 
-    <!-- Floating roundel badges — inline HTML circles, no image files required -->
+    <!-- Floating roundel badges — premium inline HTML circles -->
 
     <!-- Roundel 1: Same Day Appointments (top) -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:12%;transform:translateX(-50%);">
-      <div class="w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#fff;border:3px solid #1d4ed8;padding:10px;">
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;">
+    <div class="absolute z-30" style="left:50%;top:10%;transform:translateX(-50%);">
+      <div style="
+        width:152px;height:152px;border-radius:50%;
+        background:#ffffff;
+        box-shadow:0 0 0 3px #1e3a8a,0 0 0 7px rgba(255,255,255,0.9),0 12px 32px rgba(30,58,138,0.22);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;padding:16px;
+        -webkit-font-smoothing:antialiased;
+      ">
+        <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#1e3a8a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:6px;flex-shrink:0;">
           <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
         </svg>
-        <span style="color:#1d4ed8;font-size:8.5px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Same Day</span>
-        <span style="color:#1d4ed8;font-size:8.5px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Appointments</span>
+        <span style="display:block;color:#1e3a8a;font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1.35;text-transform:uppercase;font-family:inherit;">Same Day</span>
+        <span style="display:block;color:#1e3a8a;font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1.35;text-transform:uppercase;font-family:inherit;">Appointments</span>
       </div>
     </div>
 
-    <!-- Roundel 2: TympaHealth Certified (centre) — teal solid -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <div class="w-[140px] h-[140px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#0d9488;padding:12px;">
-        <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:5px;flex-shrink:0;">
+    <!-- Roundel 2: TympaHealth Certified (centre) — teal gradient, larger -->
+    <div class="absolute z-30" style="left:50%;top:50%;transform:translate(-50%,-50%);">
+      <div style="
+        width:164px;height:164px;border-radius:50%;
+        background:linear-gradient(145deg,#0f766e,#0d9488,#14b8a6);
+        box-shadow:0 0 0 3px #ffffff,0 0 0 7px rgba(13,148,136,0.55),0 14px 36px rgba(13,148,136,0.35);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;padding:18px;
+        -webkit-font-smoothing:antialiased;
+      ">
+        <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:7px;flex-shrink:0;">
           <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
-        <span style="color:#fff;font-size:8.5px;font-weight:900;letter-spacing:.08em;line-height:1.3;text-transform:uppercase;" class="font-jost">TympaHealth</span>
-        <span style="color:#fff;font-size:8.5px;font-weight:900;letter-spacing:.08em;line-height:1.3;text-transform:uppercase;" class="font-jost">Certified</span>
+        <span style="display:block;color:#ffffff;font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1.4;text-transform:uppercase;font-family:inherit;">TympaHealth</span>
+        <span style="display:block;color:#ffffff;font-size:11px;font-weight:700;letter-spacing:.04em;line-height:1.4;text-transform:uppercase;font-family:inherit;">Certified</span>
+        <span style="display:block;color:rgba(255,255,255,0.75);font-size:9px;font-weight:500;letter-spacing:.04em;line-height:1.4;text-transform:uppercase;font-family:inherit;">Centre</span>
       </div>
     </div>
 
-    <!-- Roundel 3: 5-Star Rated (bottom) -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:12%;transform:translateX(-50%);">
-      <div class="w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#fff;border:3px solid #1d4ed8;padding:10px;">
-        <span style="color:#1d4ed8;font-size:8px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Rated</span>
-        <span style="color:#1d4ed8;font-size:11px;font-weight:900;letter-spacing:.05em;line-height:1.2;text-transform:uppercase;" class="font-jost">5-Star</span>
-        <span style="color:#f59e0b;font-size:13px;line-height:1.3;letter-spacing:1px;">★★★★★</span>
-        <span style="color:#6b7280;font-size:7px;font-weight:600;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;" class="font-jost">Over 400 Reviews</span>
+    <!-- Roundel 3: 5-Star Rated Service (bottom) -->
+    <div class="absolute z-30" style="left:50%;bottom:10%;transform:translateX(-50%);">
+      <div style="
+        width:152px;height:152px;border-radius:50%;
+        background:#ffffff;
+        box-shadow:0 0 0 3px #1e3a8a,0 0 0 7px rgba(255,255,255,0.9),0 12px 32px rgba(30,58,138,0.22);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        text-align:center;padding:16px;
+        -webkit-font-smoothing:antialiased;
+      ">
+        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:600;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;font-family:inherit;">Rated</span>
+        <span style="display:block;color:#1e3a8a;font-size:15px;font-weight:800;letter-spacing:.02em;line-height:1.2;text-transform:uppercase;font-family:inherit;">5-Star</span>
+        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:600;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;font-family:inherit;">Service</span>
+        <span style="display:block;color:#f59e0b;font-size:14px;line-height:1.4;letter-spacing:2px;margin-top:2px;">★★★★★</span>
+        <span style="display:block;color:#6b7280;font-size:8.5px;font-weight:500;letter-spacing:.03em;line-height:1.3;font-family:inherit;">Over 400 Reviews</span>
       </div>
     </div>
   </div>
