@@ -119,7 +119,7 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
     ?>
 
     <!-- Roundel 1: Same Day Appointments (top) -->
-    <div class="absolute z-30" style="left:68%;top:11%;transform:translateX(-50%);">
+    <div class="absolute z-30" style="left:50%;top:11%;transform:translateX(-50%);">
       <div style="
         width:132px;height:132px;border-radius:50%;
         background:#ffffff;
@@ -130,13 +130,13 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
         <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#1e3a8a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:5px;flex-shrink:0;">
           <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
         </svg>
-        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $badge_text_base; ?>">Same Day</span>
-        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $badge_text_base; ?>">Appointments</span>
+        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $badge_text_base; ?>">Same Day</span>
+        <span style="display:block;color:#1e3a8a;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $badge_text_base; ?>">Appointments</span>
       </div>
     </div>
 
     <!-- Roundel 2: TympaHealth Certified (centre) — teal gradient, slightly larger -->
-    <div class="absolute z-30" style="left:68%;top:50%;transform:translate(-50%,-50%);">
+    <div class="absolute z-30" style="left:50%;top:50%;transform:translate(-50%,-50%);">
       <div style="
         width:148px;height:148px;border-radius:50%;
         background:linear-gradient(145deg,#0f766e,#0d9488,#14b8a6);
@@ -147,14 +147,14 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
         <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:5px;flex-shrink:0;">
           <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
-        <span style="display:block;color:#ffffff;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">TympaHealth</span>
-        <span style="display:block;color:#ffffff;font-size:10px;font-weight:600;letter-spacing:.03em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">Certified</span>
-        <span style="display:block;color:rgba(255,255,255,0.72);font-size:8.5px;font-weight:500;letter-spacing:.04em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">Centre</span>
+        <span style="display:block;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">TympaHealth</span>
+        <span style="display:block;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">Certified</span>
+        <span style="display:block;color:rgba(255,255,255,0.85);font-size:8.5px;font-weight:600;letter-spacing:.04em;line-height:1.4;text-transform:uppercase;<?php echo $badge_text_base; ?>">Centre</span>
       </div>
     </div>
 
     <!-- Roundel 3: 5-Star Rated Service (bottom) -->
-    <div class="absolute z-30" style="left:68%;bottom:11%;transform:translateX(-50%);">
+    <div class="absolute z-30" style="left:50%;bottom:11%;transform:translateX(-50%);">
       <div style="
         width:132px;height:132px;border-radius:50%;
         background:#ffffff;
@@ -162,11 +162,11 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
         display:flex;flex-direction:column;align-items:center;justify-content:center;
         text-align:center;padding:14px;
       ">
-        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:500;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $badge_text_base; ?>">Rated</span>
-        <span style="display:block;color:#1e3a8a;font-size:13px;font-weight:700;letter-spacing:.01em;line-height:1.2;text-transform:uppercase;<?php echo $badge_text_base; ?>">5-Star</span>
-        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:500;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $badge_text_base; ?>">Service</span>
+        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:600;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $badge_text_base; ?>">Rated</span>
+        <span style="display:block;color:#1e3a8a;font-size:13px;font-weight:800;letter-spacing:.01em;line-height:1.2;text-transform:uppercase;<?php echo $badge_text_base; ?>">5-Star</span>
+        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:600;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $badge_text_base; ?>">Service</span>
         <span style="display:block;color:#f59e0b;font-size:12px;line-height:1.4;letter-spacing:1.5px;margin-top:1px;">★★★★★</span>
-        <span style="display:block;color:#6b7280;font-size:8px;font-weight:500;letter-spacing:.02em;line-height:1.3;<?php echo $badge_text_base; ?>">Over 400 Reviews</span>
+        <span style="display:block;color:#4b5563;font-size:8px;font-weight:600;letter-spacing:.02em;line-height:1.3;<?php echo $badge_text_base; ?>">Over 400 Reviews</span>
       </div>
     </div>
   </div>
