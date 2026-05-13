@@ -60,7 +60,7 @@
       <div class="lg:col-span-1">
         <h3 class="text-gray-900 text-lg font-semibold mb-6 font-jost">Services</h3>
         <ul class="space-y-3">
-          <li><a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Travel Vaccinations</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Travel Vaccinations</a></li>
           <li><a href="<?php echo esc_url( home_url( '/blood-testing/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Blood Testing</a></li>
           <li><a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Weight Loss Programs</a></li>
           <li><a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">B12 Injections</a></li>
