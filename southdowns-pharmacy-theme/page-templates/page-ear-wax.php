@@ -111,18 +111,38 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
     <!-- Right: image -->
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
 
-    <!-- Floating roundel badges — 3 positions matching homepage hero (top / centre / bottom) -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-      <img src="<?php echo esc_url( $hero_roundel_1 ); ?>" alt="<?php echo esc_attr( $hero_roundel_1_alt ); ?>" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+    <!-- Floating roundel badges — inline HTML circles, no image files required -->
+
+    <!-- Roundel 1: Same Day Appointments (top) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:12%;transform:translateX(-50%);">
+      <div class="w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#fff;border:3px solid #1d4ed8;padding:10px;">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#1d4ed8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;">
+          <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+        </svg>
+        <span style="color:#1d4ed8;font-size:8.5px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Same Day</span>
+        <span style="color:#1d4ed8;font-size:8.5px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Appointments</span>
+      </div>
     </div>
+
+    <!-- Roundel 2: TympaHealth Certified (centre) — teal solid -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="<?php echo esc_url( $hero_roundel_2 ); ?>" alt="<?php echo esc_attr( $hero_roundel_2_alt ); ?>" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+      <div class="w-[140px] h-[140px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#0d9488;padding:12px;">
+        <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:5px;flex-shrink:0;">
+          <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+        </svg>
+        <span style="color:#fff;font-size:8.5px;font-weight:900;letter-spacing:.08em;line-height:1.3;text-transform:uppercase;" class="font-jost">TympaHealth</span>
+        <span style="color:#fff;font-size:8.5px;font-weight:900;letter-spacing:.08em;line-height:1.3;text-transform:uppercase;" class="font-jost">Certified</span>
+      </div>
     </div>
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="GPhC Registered" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
-    </div>
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-      <img src="<?php echo esc_url( $hero_roundel_3 ); ?>" alt="<?php echo esc_attr( $hero_roundel_3_alt ); ?>" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+
+    <!-- Roundel 3: 5-Star Rated (bottom) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:12%;transform:translateX(-50%);">
+      <div class="w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center drop-shadow-xl" style="background:#fff;border:3px solid #1d4ed8;padding:10px;">
+        <span style="color:#1d4ed8;font-size:8px;font-weight:800;letter-spacing:.07em;line-height:1.25;text-transform:uppercase;" class="font-jost">Rated</span>
+        <span style="color:#1d4ed8;font-size:11px;font-weight:900;letter-spacing:.05em;line-height:1.2;text-transform:uppercase;" class="font-jost">5-Star</span>
+        <span style="color:#f59e0b;font-size:13px;line-height:1.3;letter-spacing:1px;">★★★★★</span>
+        <span style="color:#6b7280;font-size:7px;font-weight:600;letter-spacing:.04em;line-height:1.3;text-transform:uppercase;" class="font-jost">Over 400 Reviews</span>
+      </div>
     </div>
   </div>
 
