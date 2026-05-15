@@ -87,7 +87,7 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
     <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo wp_kses_post( $cvp_hero_body ); ?></p>
     <div class="flex flex-wrap gap-3 mb-4">
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg font-jost">
-        Book Your Private COVID Vaccine
+        Book Your COVID Vaccine
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
     </div>
@@ -110,7 +110,7 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
       <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo wp_kses_post( $cvp_hero_body ); ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
-          Book Your Private COVID Vaccine
+          Book Your COVID Vaccine
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
         <a href="#pricing" class="inline-flex items-center gap-2 text-white/80 text-sm font-medium px-5 py-3 rounded-full hover:text-white transition-colors font-jost">
@@ -396,60 +396,67 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
 
 
 <!-- ═══════════════════════════════════════════════════════
-     S7 · WHY SOUTHDOWNS  (light)
+     S7 · WHY SOUTHDOWNS  (blue gradient, premium glassmorphism)
 ════════════════════════════════════════════════════════ -->
-<section class="py-20 md:py-28 bg-white">
-  <div class="section-container">
+<?php
+$cvp_why_cards = [
+    [
+        'title' => 'GPhC-Registered Pharmacists',
+        'desc'  => 'Every dose is administered by a fully qualified, GPhC-registered pharmacist prescriber — never a technician or trainee.',
+        'icon'  => [ 'rgba(16,185,129,0.25)', 'rgba(52,211,153,0.5)', '#6ee7b7', '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
+    ],
+    [
+        'title' => 'Same-Day Appointments',
+        'desc'  => 'Walk in or book online for a same-day slot — most patients are seen, vaccinated and out the door within 20 minutes.',
+        'icon'  => [ 'rgba(6,182,212,0.25)', 'rgba(34,211,238,0.5)', '#67e8f9', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>' ],
+    ],
+    [
+        'title' => 'Four Convenient Locations',
+        'desc'  => 'Branches in Emsworth, Havant, Davies Pharmacy and Rowlands Castle — there is always a Southdowns near you.',
+        'icon'  => [ 'rgba(244,63,94,0.25)', 'rgba(253,164,175,0.5)', '#fda4af', '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
+    ],
+    [
+        'title' => 'Genuine Pfizer Vaccine',
+        'desc'  => 'Authentic, MHRA-approved Pfizer stock only — stored and handled to manufacturer cold-chain standards.',
+        'icon'  => [ 'rgba(245,158,11,0.25)', 'rgba(252,211,77,0.5)', '#fcd34d', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
+    ],
+    [
+        'title' => 'All-Inclusive Pricing',
+        'desc'  => 'One transparent fee of ' . $cvp_price . ' covers everything — consultation, vaccine, observation and your digital record.',
+        'icon'  => [ 'rgba(139,92,246,0.25)', 'rgba(196,181,253,0.5)', '#c4b5fd', '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>' ],
+    ],
+    [
+        'title' => 'Peace of Mind, Same Day',
+        'desc'  => 'No referral, no waiting list, no paperwork chase — walk in and leave protected the same morning.',
+        'icon'  => [ 'rgba(249,115,22,0.25)', 'rgba(253,186,116,0.5)', '#fdba74', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' ],
+    ],
+];
+?>
+<section class="relative py-16 md:py-24 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white rounded-full -translate-x-1/4 translate-y-1/4"></div>
+  </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-14">
-      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold font-jost mb-6 bg-blue-50 text-blue-700 border border-blue-100">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-        Our Promise to You
-      </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost">Why Choose Southdowns Pharmacy?</h2>
-      <p class="text-slate-600 text-lg max-w-2xl mx-auto font-jost">We combine clinical expertise, convenience, and genuine care to deliver a vaccination experience you can trust.</p>
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-white/30"></div>
+        <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Our Promise to You</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Why Choose Southdowns Pharmacy?</h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Authentic Pfizer stock, GPhC-registered prescribers, and four Hampshire locations — private COVID protection without the wait.</p>
     </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <?php
-      $why_features = [
-        [
-          'icon' => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-          'title' => 'GPhC-Registered Pharmacists',
-          'desc'  => 'All vaccinations are administered by our fully qualified, GPhC-registered pharmacist prescribers.',
-        ],
-        [
-          'icon' => '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
-          'title' => 'Same-Day Appointments',
-          'desc'  => 'Walk in or book online for a same-day appointment — we work around your schedule.',
-        ],
-        [
-          'icon' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
-          'title' => 'Four Convenient Locations',
-          'desc'  => 'Branches across Emsworth, Havant, Davies Pharmacy, and Rowlands Castle — always close to you.',
-        ],
-        [
-          'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
-          'title' => 'Genuine Pfizer Vaccine',
-          'desc'  => 'We only use authentic, MHRA-approved Pfizer stock — stored and handled to manufacturer standards.',
-        ],
-        [
-          'icon' => '<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
-          'title' => 'All-Inclusive Pricing',
-          'desc'  => 'One transparent fee of ' . $cvp_price . ' covers everything — consultation, vaccine, observation, and your digital record.',
-        ],
-        [
-          'icon' => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/>',
-          'title' => 'Friendly, Personal Service',
-          'desc'  => 'Our local team takes the time to answer your questions and make you feel at ease throughout.',
-        ],
-      ];
-      foreach ( $why_features as $feat ) : ?>
-      <div class="bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:shadow-md transition-shadow duration-300 reveal-item">
-        <div class="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $feat['icon']; ?></svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <?php foreach ( $cvp_why_cards as $i => $card ) :
+        $icon  = $card['icon'];
+        $delay = ( $i % 3 ) + 1;
+      ?>
+      <div class="ew-reveal group bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105" data-delay="<?php echo $delay; ?>">
+        <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style="background:<?php echo $icon[0]; ?>;border:1px solid <?php echo $icon[1]; ?>;">
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="<?php echo $icon[2]; ?>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $icon[3]; ?></svg>
         </div>
-        <h3 class="text-base font-bold text-slate-900 mb-2 font-jost"><?php echo esc_html( $feat['title'] ); ?></h3>
-        <p class="text-slate-600 text-sm font-jost leading-relaxed"><?php echo esc_html( $feat['desc'] ); ?></p>
+        <h3 class="text-white text-lg font-bold mb-3 font-jost"><?php echo esc_html( $card['title'] ); ?></h3>
+        <p class="text-blue-100 leading-relaxed font-jost"><?php echo esc_html( $card['desc'] ); ?></p>
       </div>
       <?php endforeach; ?>
     </div>
@@ -561,28 +568,32 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
       <p class="text-slate-600 text-lg max-w-2xl mx-auto font-jost">Private COVID-19 vaccinations are available at all four Southdowns Pharmacy branches across Hampshire.</p>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <?php for ( $i = 1; $i <= 4; $i++ ) :
         $b = sp_branch( $i );
+        $addr = trim( $b['address_line1'] . ( $b['address_line2'] ? ', ' . $b['address_line2'] : '' ) );
+        if ( '' === $addr ) { $addr = $b['city']; }
       ?>
-      <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300 reveal-item flex flex-col">
-        <div class="relative overflow-hidden h-44">
-          <img src="<?php echo esc_url( $b['card_image'] ); ?>" alt="<?php echo esc_attr( $b['name'] ); ?> pharmacy" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent"></div>
-          <span class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-semibold font-jost px-2.5 py-1 rounded-full"><?php echo esc_html( $b['name'] ); ?></span>
+      <div class="group relative bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
+        <div class="relative overflow-hidden aspect-[4/3]">
+          <img src="<?php echo esc_url( $b['card_image'] ); ?>" alt="<?php echo esc_attr( $b['name'] ); ?> pharmacy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+          <div class="absolute bottom-3 left-3">
+            <h3 class="text-white text-xl font-bold font-jost"><?php echo esc_html( $b['name'] ); ?></h3>
+          </div>
         </div>
-        <div class="p-5 space-y-2.5 flex flex-col flex-1">
-          <div class="flex items-start gap-2 text-slate-600 text-sm font-jost">
+        <div class="p-5 flex flex-col flex-1">
+          <div class="flex items-start gap-2 mb-2">
             <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <?php echo esc_html( $b['address'] ); ?>
+            <span class="text-gray-600 text-sm font-jost"><?php echo esc_html( $addr ); ?></span>
           </div>
-          <div class="flex items-center gap-2 text-slate-600 text-sm font-jost">
-            <svg class="w-4 h-4 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/></svg>
-            <?php echo esc_html( $b['phone'] ); ?>
+          <div class="flex items-start gap-2 mb-4">
+            <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span class="text-gray-400 text-xs font-jost leading-relaxed"><?php echo sp_branch_hours_html( $b ); ?></span>
           </div>
-          <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="mt-auto pt-1 inline-flex items-center gap-1.5 text-blue-600 font-semibold text-sm font-jost hover:text-blue-700 transition-colors duration-200">
-            Book here
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="mt-auto flex items-center justify-center gap-2 w-full text-blue-600 text-sm font-semibold bg-blue-50 hover:bg-blue-100 px-4 py-2.5 rounded-xl transition-colors font-jost">
+            Book COVID Vaccine
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
       </div>
