@@ -99,34 +99,10 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396.234-.847 1.058-1.354 1.938-1.354H6.75z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Ear Wax Removal</span><span class="mega-dd-link-desc">Professional microsuction</span></div>
                     </a>
-                    <div class="mega-dd-link-r">
-                      <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>" class="mega-dd-link-r-main">
-                        <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
-                        <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Pressure Checks</span><span class="mega-dd-link-desc">Free 5-minute health screening</span></div>
-                      </a>
-                      <div class="mega-dd-route-pills">
-                        <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>" class="mega-dd-route-pill mega-dd-route-pill--nhs" aria-label="NHS Blood Pressure Check">NHS</a>
-                      </div>
-                    </div>
-                    <div class="mega-dd-link-r">
-                      <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>" class="mega-dd-link-r-main">
-                        <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.063 2.522-.187 3.756-.249 2.502-2.13 4.477-4.62 4.79a48.108 48.108 0 01-8.386 0c-2.49-.313-4.371-2.288-4.62-4.79A48.196 48.196 0 013 12c0-1.267.063-2.522.187-3.756.249-2.502 2.13-4.477 4.62-4.79a48.108 48.108 0 018.386 0c2.49.313 4.371 2.288 4.62 4.79.124 1.234.187 2.49.187 3.756z"/></svg></div>
-                        <div class="mega-dd-link-content"><span class="mega-dd-link-name">COVID Vaccinations</span><span class="mega-dd-link-desc">Boosters &amp; travel-ready jabs</span></div>
-                      </a>
-                      <div class="mega-dd-route-pills">
-                        <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>" class="mega-dd-route-pill mega-dd-route-pill--nhs" aria-label="NHS COVID Vaccinations">NHS</a>
-                        <a href="<?php echo esc_url( home_url( '/private-covid/' ) ); ?>" class="mega-dd-route-pill mega-dd-route-pill--private" aria-label="Private COVID Vaccinations">Private</a>
-                      </div>
-                    </div>
-                    <div class="mega-dd-link-r">
-                      <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>" class="mega-dd-link-r-main">
-                        <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6m-9 1.5h18M5.25 6h13.5M7.5 21h9a2.25 2.25 0 002.25-2.25V5.25A2.25 2.25 0 0016.5 3h-9a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21z"/></svg></div>
-                        <div class="mega-dd-link-content"><span class="mega-dd-link-name">Pharmacy First</span><span class="mega-dd-link-desc">7 common conditions, no GP needed</span></div>
-                      </a>
-                      <div class="mega-dd-route-pills">
-                        <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>" class="mega-dd-route-pill mega-dd-route-pill--nhs" aria-label="NHS Pharmacy First service">NHS</a>
-                      </div>
-                    </div>
+                    <a href="<?php echo esc_url( home_url( '/health-wellbeing/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Health &amp; Wellbeing</span><span class="mega-dd-link-desc">Blood pressure, diabetes &amp; more</span></div>
+                    </a>
                     <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Loss</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
