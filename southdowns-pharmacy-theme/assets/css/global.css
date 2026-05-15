@@ -155,47 +155,6 @@ img { transition: transform 0.5s ease; }
 .mega-dd-link-name { font-size: 14px; font-weight: 600; color: #1e293b; white-space: nowrap; transition: color .2s; }
 .mega-dd-link-desc { font-size: 13px; font-weight: 400; color: #64748b; white-space: nowrap; transition: color .2s; }
 
-/* Routed link variant — services with NHS / Private route pills */
-.mega-dd-link-r {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  transition: background .15s;
-}
-.mega-dd-link-r:hover { background: #f1f5f9; }
-.mega-dd-link-r:hover .mega-dd-link-name { color: #1d4ed8; }
-.mega-dd-link-r:hover .mega-dd-link-icon { background: #dbeafe; border-color: #bfdbfe; transform: translateY(-1px); }
-.mega-dd-link-r:hover .mega-dd-link-icon svg { stroke: #1d4ed8; }
-.mega-dd-link-r-main {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  min-width: 0;
-  text-decoration: none;
-}
-.mega-dd-route-pills { display: inline-flex; gap: 4px; flex-shrink: 0; }
-.mega-dd-route-pill {
-  display: inline-flex;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 3px 8px;
-  border-radius: 9999px;
-  border: 1px solid;
-  text-decoration: none;
-  text-transform: uppercase;
-  line-height: 1.4;
-  transition: background .15s, color .15s, border-color .15s, transform .15s;
-}
-.mega-dd-route-pill--nhs { color: #15803d; border-color: #bbf7d0; background: #f0fdf4; }
-.mega-dd-route-pill--nhs:hover { background: #15803d; color: #fff; border-color: #15803d; transform: translateY(-1px); }
-.mega-dd-route-pill--private { color: #1d4ed8; border-color: #bfdbfe; background: #eff6ff; }
-.mega-dd-route-pill--private:hover { background: #1d4ed8; color: #fff; border-color: #1d4ed8; transform: translateY(-1px); }
-
 /* Featured card inside mega dropdown */
 .mega-dd-featured {
   background: linear-gradient(135deg, #eff6ff, #dbeafe);
