@@ -362,14 +362,14 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <?php if ( $train_list ) : ?>
         <div class="flex flex-col gap-2">
           <?php foreach ( $train_list as $i => $stn ) : ?>
-            <div class="flex items-center justify-between rounded-lg px-3 py-2.5" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">
-              <div class="flex items-center gap-2">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-2 rounded-lg px-3 py-2.5" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">
+              <div class="flex items-center gap-2 flex-wrap min-w-0">
                 <?php if ( $i === 0 ) : ?>
-                  <span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:rgba(45,212,191,0.3);color:#5eead4;letter-spacing:.05em;">CLOSEST</span>
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap" style="background:rgba(45,212,191,0.3);color:#5eead4;letter-spacing:.05em;">CLOSEST</span>
                 <?php endif; ?>
                 <span class="text-white text-sm font-semibold font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
               </div>
-              <span class="text-teal-200 text-sm font-semibold font-jost ml-2 whitespace-nowrap"><?php echo esc_html( $stn['time'] ); ?></span>
+              <span class="text-teal-200 text-sm font-semibold font-jost whitespace-nowrap"><?php echo esc_html( $stn['time'] ); ?></span>
             </div>
           <?php endforeach; ?>
         </div>
