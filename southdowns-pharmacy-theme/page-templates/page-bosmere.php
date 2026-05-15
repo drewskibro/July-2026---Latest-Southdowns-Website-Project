@@ -103,7 +103,12 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       GPhC Registered &bull; Bosmere Medical Centre
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo esc_html( $hero_subtitle ); ?></h1>
-    <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
+    <p class="text-white text-base leading-relaxed mb-4 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
+    <div class="flex flex-wrap gap-1.5 mb-5">
+      <?php foreach ( $bosmere_services as $svc ) : ?>
+      <span class="inline-flex items-center text-white text-xs font-medium px-2.5 py-1 rounded-full font-jost" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);"><?php echo esc_html( $svc ); ?></span>
+      <?php endforeach; ?>
+    </div>
     <div class="flex flex-wrap gap-3 mb-4">
       <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg font-jost">
         Book Appointment
@@ -117,13 +122,29 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   <div class="hidden md:flex relative">
 
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         GPhC Registered &bull; Bosmere, Havant
       </div>
-      <h1 class="text-white text-4xl lg:text-[48px] font-semibold mb-6 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
+      <h1 class="text-white text-4xl lg:text-[48px] font-semibold mb-4 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-5 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
+
+      <!-- Services pill grid -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <?php
+        $bosmere_services = [
+            'B12 Injection','Covid Vaccination','Cholesterol Check','Flu Vaccination',
+            'Free Contraceptive Service','Full Blood Count','Hypertension Check',
+            'HPV Vaccinations','NHS Pharmacy First','RSV Vaccinations',
+            'Shingles Vaccinations','Travel Vaccinations','Thyroid Health Check',
+            'Weight Loss Injections','Weight Loss Consultation','Ear Wax Removal',
+        ];
+        foreach ( $bosmere_services as $svc ) : ?>
+        <span class="inline-flex items-center text-white text-xs font-medium px-3 py-1 rounded-full font-jost" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);"><?php echo esc_html( $svc ); ?></span>
+        <?php endforeach; ?>
+      </div>
+
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book Appointment
@@ -145,7 +166,6 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
           <?php echo esc_html( $hours_sun ); ?>
         </div>
         <?php endif; ?>
-        <!-- Open 7 days badge -->
         <div class="flex items-center gap-2">
           <span class="inline-flex items-center gap-1.5 bg-white/20 text-white text-sm font-semibold px-3 py-1 rounded-full border border-white/30 font-jost">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -159,15 +179,45 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center"
          style="background-image: url('<?php echo esc_url($hero_img); ?>');"></div>
 
-    <!-- Centre-straddling trust badges -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+    <!-- Centre-straddling HTML/CSS roundel badges -->
+    <?php
+    $bos_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
+    $bos_txt  = "font-family:{$bos_font};-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;";
+    ?>
+
+    <!-- Roundel 1: Rated 5-Star Service (top) -->
+    <div class="absolute z-30" style="left:50%;top:11%;transform:translateX(-50%);">
+      <div style="width:132px;height:132px;border-radius:50%;background:#ffffff;box-shadow:0 0 0 2.5px #1e3a8a,0 0 0 6px rgba(255,255,255,0.85),0 10px 28px rgba(30,58,138,0.20);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;">
+        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:600;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $bos_txt; ?>">Rated</span>
+        <span style="display:block;color:#1e3a8a;font-size:12px;font-weight:800;letter-spacing:.01em;line-height:1.15;text-transform:uppercase;<?php echo $bos_txt; ?>">5-Star</span>
+        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:600;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $bos_txt; ?>">Service</span>
+        <span style="display:block;color:#f59e0b;font-size:12px;line-height:1.35;letter-spacing:1.5px;margin-top:2px;">★★★★★</span>
+        <span style="display:block;color:#4b5563;font-size:7.5px;font-weight:500;letter-spacing:.02em;line-height:1.3;<?php echo $bos_txt; ?>">Over 400 Reviews</span>
+      </div>
     </div>
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="GPhC Registered" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+
+    <!-- Roundel 2: Weight Loss Injections (centre, teal gradient) -->
+    <div class="absolute z-30" style="left:50%;top:50%;transform:translate(-50%,-50%);">
+      <div style="width:148px;height:148px;border-radius:50%;background:linear-gradient(145deg,#0f766e,#0d9488,#14b8a6);box-shadow:0 0 0 2.5px #ffffff,0 0 0 6px rgba(13,148,136,0.50),0 12px 32px rgba(13,148,136,0.32);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;">
+        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="#ffffff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:5px;flex-shrink:0;">
+          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+        </svg>
+        <span style="display:block;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $bos_txt; ?>">Weight Loss</span>
+        <span style="display:block;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:.03em;line-height:1.35;text-transform:uppercase;<?php echo $bos_txt; ?>">Injections</span>
+        <span style="display:block;color:rgba(255,255,255,0.85);font-size:8.5px;font-weight:600;letter-spacing:.03em;line-height:1.4;text-transform:uppercase;<?php echo $bos_txt; ?>">Medically Supervised</span>
+      </div>
     </div>
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Rated" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+
+    <!-- Roundel 3: Open 7 Days (bottom) -->
+    <div class="absolute z-30" style="left:50%;bottom:11%;transform:translateX(-50%);">
+      <div style="width:132px;height:132px;border-radius:50%;background:#ffffff;box-shadow:0 0 0 2.5px #1e3a8a,0 0 0 6px rgba(255,255,255,0.85),0 10px 28px rgba(30,58,138,0.20);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px;">
+        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#1e3a8a" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span style="display:block;color:#1e3a8a;font-size:9px;font-weight:600;letter-spacing:.03em;line-height:1.3;text-transform:uppercase;<?php echo $bos_txt; ?>">Open</span>
+        <span style="display:block;color:#1e3a8a;font-size:13px;font-weight:800;letter-spacing:.01em;line-height:1.2;text-transform:uppercase;<?php echo $bos_txt; ?>">7 Days</span>
+        <span style="display:block;color:#4b5563;font-size:7.5px;font-weight:500;letter-spacing:.02em;line-height:1.35;<?php echo $bos_txt; ?>">Mon–Sat 8am–9pm</span>
+      </div>
     </div>
 
   </div>
