@@ -257,6 +257,15 @@ add_action( 'acf/init', function () {
                 'rows'        => 3,
                 'placeholder' => 'Get your COVID-19 vaccine without NHS eligibility. The latest Pfizer vaccine — administered same-day by our GPhC-registered pharmacists across all four Hampshire locations.',
             ],
+            [
+                'key'           => 'field_cv_priv_hero_image',
+                'label'         => 'Hero Image',
+                'name'          => 'cv_priv_hero_image',
+                'type'          => 'image',
+                'return_format' => 'url',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Shown on the right half of the hero (desktop) and as the full-bleed background on mobile. Recommended: 1200 × 800 px or larger.',
+            ],
 
             // ---- Tab 2 · Pricing (single source of truth) --------
             [ 'key' => 'field_cv_priv_tab_pricing', 'label' => 'Pricing', 'name' => '', 'type' => 'tab' ],

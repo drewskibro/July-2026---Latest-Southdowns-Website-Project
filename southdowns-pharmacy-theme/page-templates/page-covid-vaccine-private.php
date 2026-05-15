@@ -13,6 +13,7 @@ $phone       = sp_phone();
 $cvp_hero_badge     = sp_field( 'cv_priv_hero_badge',    'Private COVID-19 Vaccination · Hampshire' );
 $cvp_hero_headline  = sp_field( 'cv_priv_hero_headline', 'Private COVID-19 Vaccine in Hampshire &mdash; Available Today' );
 $cvp_hero_body      = sp_field( 'cv_priv_hero_body',     'Not eligible for the NHS COVID-19 vaccine this season? Southdowns Pharmacy offers private COVID-19 vaccination using the latest Pfizer vaccine &mdash; no eligibility criteria, no waiting list, no GP referral needed. Walk in or book online at any of our four Hampshire locations.' );
+$cvp_hero_image     = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop';
 $cvp_price          = sp_field( 'cv_priv_price',         '£89.50' );
 $cvp_price_label    = sp_field( 'cv_priv_price_label',   'per person · all-inclusive' );
 $cvp_final_headline = sp_field( 'cv_priv_final_cta_headline', 'Stay Protected.<br>Book Your Private<br>COVID-19 Vaccine Today.' );
@@ -76,7 +77,7 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
 <section class="relative w-full min-h-[500px] lg:min-h-[600px] overflow-hidden">
 
   <!-- Mobile: full-width image with overlay -->
-  <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop');"></div>
+  <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $cvp_hero_image ); ?>');"></div>
   <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
     <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start">
@@ -135,7 +136,7 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
     </div>
 
     <!-- Right: image -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop');"></div>
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image: url('<?php echo esc_url( $cvp_hero_image ); ?>');"></div>
   </div>
 
 </section>
