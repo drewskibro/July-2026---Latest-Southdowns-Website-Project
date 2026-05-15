@@ -29,15 +29,15 @@ $hours_sun     = get_field('branch_hours_sunday')        ?: '';
 $parking       = get_field('branch_parking')             ?: 'Free town centre parking';
 
 // ── Map & Directions ────────────────────────────────────────────
-$maps_src      = get_field('branch_maps_embed_src')      ?: '';
+$maps_src      = get_field('branch_maps_embed_src')      ?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2519.130535278305!2d-0.9422032117010247!3d50.847266985678466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48744547ca2077ad%3A0x99e0778f011caafa!2sEmsworth%20Pharmacy%20%E2%80%93%20Travel%20Vaccination%20Centre%20%26%20Ear%20Wax%20Removal%20Clinic!5e0!3m2!1sen!2suk!4v1778831633335!5m2!1sen!2suk';
 $maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=2-4+Central+Buildings,+Emsworth,+Hampshire+PO10+7DU';
-$by_car        = get_field('branch_by_car')              ?: 'Located on the A259 coast road with easy access from the A27 Emsworth junction. Free public car parks in North Street and Queen Street are within 3 minutes\' walk.';
+$by_car        = get_field('branch_by_car')              ?: 'Convenient access from the A259 coast road and the A27 Emsworth junction. Free public car parks in North Street and Queen Street are just minutes away.';
 $car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A259 coast road,Near A27 junction,Free town centre parking';
-$by_bus        = get_field('branch_by_bus')              ?: 'Stagecoach Coastliner services run frequently along the A259 through Emsworth town centre, connecting Portsmouth and Chichester.';
+$by_bus        = get_field('branch_by_bus')              ?: 'The Stagecoach Coastliner runs frequently through Emsworth town centre along the A259, connecting Portsmouth and Chichester. Stops are within easy walking distance of the pharmacy.';
 $bus_routes_raw= get_field('branch_bus_routes')          ?: '700,700X';
-$by_train      = get_field('branch_by_train')            ?: 'Emsworth railway station is on Southern\'s West Coastway line (Portsmouth–Brighton). The pharmacy is an 8-minute walk from the station.';
-$train_stn_raw = get_field('branch_train_stations')      ?: 'Emsworth Station|8 min walk,Havant Station|Connections available';
-$on_foot       = get_field('branch_on_foot')             ?: 'A short stroll from Emsworth High Street and the town\'s main square. Central Buildings is clearly signposted along the main road through town.';
+$by_train      = get_field('branch_by_train')            ?: 'Emsworth Station (Southern West Coastway line) is just a 5-minute walk from the pharmacy. Havant Station provides additional connections and is approximately 3.5 miles away.';
+$train_stn_raw = get_field('branch_train_stations')      ?: 'Emsworth Station|5 min walk,Havant Station|Connections available';
+$on_foot       = get_field('branch_on_foot')             ?: 'We\'re right in the heart of Emsworth town centre, an easy stroll from Emsworth Square and the High Street. Look for us in Central Buildings — clearly signposted from the main road.';
 $landmark      = get_field('branch_landmark')            ?: 'Emsworth Square';
 
 // Parse comma / pipe-separated direction fields
@@ -50,6 +50,65 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         $train_list[] = [ 'name' => trim( $parts[0] ), 'time' => trim( $parts[1] ) ];
     }
 }
+
+// ── Services ────────────────────────────────────────────────────
+$ems_services_featured = [ 'Ear Wax Removal', 'Travel Vaccinations', 'Weight Loss Injections' ];
+$ems_services = [
+    'B12 Injection',
+    'Chikungunya Vaccination',
+    'Covid Vaccination',
+    'Ear Wax Removal',
+    'Flu Vaccination',
+    'Free Contraceptive Service',
+    'Hypertension Check',
+    'HPV Vaccinations',
+    'NHS Pharmacy First',
+    'RSV Vaccinations',
+    'Shingles Vaccinations',
+    'Travel Vaccinations',
+    'Weight Loss Injections',
+];
+
+// ── Other branches ──────────────────────────────────────────────
+$other_branches = [
+    [
+        'name'      => 'Bosmere Pharmacy',
+        'addr'      => 'Broadmarsh Lane, Havant, PO9 1AW',
+        'phone'     => '023 9248 1721',
+        'phone_raw' => '02392481721',
+        'hours_wd'  => 'Mon–Fri 9am–6:30pm',
+        'hours_sat' => 'Sat 9am–5pm',
+        'services'  => 16,
+        'img'       => get_field('branch_other_bosmere_image') ?: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=600&h=400&fit=crop',
+        'url'       => home_url('/bosmere/'),
+    ],
+    [
+        'name'      => 'Davies Pharmacy',
+        'addr'      => 'Emsworth Road, Havant, PO9 2SN',
+        'phone'     => '023 9248 3744',
+        'phone_raw' => '02392483744',
+        'hours_wd'  => 'Mon–Fri 9am–6pm',
+        'hours_sat' => 'Sat 9am–1pm',
+        'services'  => 10,
+        'img'       => get_field('branch_other_davies_image') ?: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
+        'url'       => home_url('/davies-pharmacy/'),
+    ],
+    [
+        'name'      => 'Rowlands Castle',
+        'addr'      => '12 The Green, Rowlands Castle, PO9 6BN',
+        'phone'     => '023 9212 3456',
+        'phone_raw' => '02392123456',
+        'hours_wd'  => 'Mon–Fri 9am–6pm',
+        'hours_sat' => 'Sat 9am–1pm',
+        'services'  => 8,
+        'img'       => get_field('branch_other_rowlands_image') ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
+        'url'       => home_url('/rowlands-castle/'),
+    ],
+];
+
+// ── Roundel font stack ───────────────────────────────────────────
+$ems_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
+$ems_txt  = "font-family:{$ems_font};-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;";
 ?>
 
 <!-- Page-scoped styles -->
@@ -58,19 +117,6 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   .loc-reveal.loc-visible { opacity: 1; transform: translateY(0); }
   .loc-card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .loc-card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-
-  /* Branch card premium hover glow */
-  .branch-card { position: relative; transition: transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.5s cubic-bezier(0.23,1,0.32,1); isolation: isolate; }
-  .branch-card::before { content: ''; position: absolute; inset: -2px; border-radius: 18px; background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 40%, #1e3a8a 70%, #6366f1 100%); opacity: 0; z-index: -1; transition: opacity 0.4s ease; }
-  .branch-card:hover::before { opacity: 1; }
-  .branch-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(30,58,138,0.2), 0 0 40px rgba(59,130,246,0.1); }
-  .branch-card .branch-cta-arrow { transition: transform 0.35s cubic-bezier(0.23,1,0.32,1); }
-  .branch-card:hover .branch-cta-arrow { transform: translateX(5px); }
-  .branch-card .branch-cta-btn { transition: box-shadow 0.4s ease; }
-  .branch-card:hover .branch-cta-btn { box-shadow: 0 8px 24px rgba(30,58,138,0.35); }
-  .branch-stagger-1 { transition-delay: 0s; }
-  .branch-stagger-2 { transition-delay: 0.15s; }
-  .branch-stagger-3 { transition-delay: 0.3s; }
 </style>
 
 
@@ -117,7 +163,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   <div class="hidden md:flex relative">
 
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         GPhC Registered &bull; Emsworth Branch
@@ -156,20 +202,99 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center"
          style="background-image: url('<?php echo esc_url($hero_img); ?>');"></div>
 
-    <!-- Centre-straddling trust badges -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+    <!-- Centre-straddling HTML/CSS roundels -->
+
+    <!-- Roundel 1: Rated 5-Star Service (top, white/navy) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:12%;transform:translateX(-50%);">
+      <div style="
+        width:132px;height:132px;border-radius:50%;
+        background:#fff;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18),0 2px 8px rgba(30,58,138,0.15);
+        padding:0 10px;text-align:center;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20" fill="#f59e0b" style="margin-bottom:4px;flex-shrink:0;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <span style="<?php echo $ems_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Rated</span>
+        <span style="<?php echo $ems_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">5-Star</span>
+        <span style="<?php echo $ems_txt; ?>font-size:11px;font-weight:600;color:#64748b;line-height:1.3;margin-top:2px;">Service</span>
+      </div>
     </div>
+
+    <!-- Roundel 2: Ear Wax Removal / TympaHealth Certified (centre, teal gradient, 148px) -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="GPhC Registered" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+      <div style="
+        width:148px;height:148px;border-radius:50%;
+        background:linear-gradient(135deg,#0d9488 0%,#0f766e 50%,#134e4a 100%);
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        box-shadow:0 0 0 3px rgba(13,148,136,0.5),0 0 0 6px rgba(255,255,255,0.5),0 8px 32px rgba(13,148,136,0.35),0 2px 8px rgba(0,0,0,0.15);
+        padding:0 10px;text-align:center;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span style="<?php echo $ems_txt; ?>font-size:13px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">Ear Wax</span>
+        <span style="<?php echo $ems_txt; ?>font-size:13px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">Removal</span>
+        <span style="<?php echo $ems_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;margin-top:3px;">TympaHealth</span>
+        <span style="<?php echo $ems_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;">Certified</span>
+      </div>
     </div>
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Rated" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+
+    <!-- Roundel 3: Open Mon–Sat (bottom, white/navy) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:12%;transform:translateX(-50%);">
+      <div style="
+        width:132px;height:132px;border-radius:50%;
+        background:#fff;
+        display:flex;flex-direction:column;align-items:center;justify-content:center;
+        box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18),0 2px 8px rgba(30,58,138,0.15);
+        padding:0 10px;text-align:center;
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="<?php echo $ems_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Open</span>
+        <span style="<?php echo $ems_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:2px;">Mon–Fri 9am–7pm</span>
+        <span style="<?php echo $ems_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;">Sat 9am–5pm</span>
+      </div>
     </div>
 
   </div>
 
 </section>
+
+
+<!-- ============================================================
+     S1B: SERVICES AVAILABLE AT EMSWORTH
+     ============================================================ -->
+<section class="py-10 lg:py-14" style="background:#fdf9f6;">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-gray-900 text-xl lg:text-2xl font-semibold font-jost">Services Available at Emsworth</h2>
+        <p class="text-gray-500 text-sm font-jost mt-1">We offer <?php echo count($ems_services); ?> healthcare services at this branch — no GP referral needed.</p>
+      </div>
+      <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-700 transition-colors shadow-sm font-jost self-start sm:self-auto flex-shrink-0">
+        Book a Service
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap gap-2.5">
+      <?php foreach ( $ems_services as $svc ) :
+        $is_featured = in_array( $svc, $ems_services_featured, true );
+      ?>
+        <?php if ( $is_featured ) : ?>
+          <span class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full font-jost shadow-sm">
+            <svg class="w-3.5 h-3.5 text-blue-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            <?php echo esc_html( $svc ); ?>
+          </span>
+        <?php else : ?>
+          <span class="inline-flex items-center bg-white text-gray-700 text-sm font-medium px-4 py-2 rounded-full border border-gray-200 font-jost hover:border-blue-300 hover:text-blue-700 transition-colors cursor-default">
+            <?php echo esc_html( $svc ); ?>
+          </span>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ============================================================
      S2: MAP & DIRECTIONS
@@ -187,7 +312,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         Getting Here
       </div>
       <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Find Our Emsworth Branch</h2>
-      <p class="text-blue-100 text-lg font-jost max-w-2xl mx-auto">Multiple ways to reach us — by car, bus, train, or on foot.</p>
+      <p class="text-white text-lg font-jost max-w-2xl mx-auto">Multiple ways to reach us — by car, bus, train, or on foot.</p>
     </div>
 
     <!-- Map + Address row -->
@@ -195,13 +320,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
 
       <!-- Google Map -->
       <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-2xl bg-white/10" style="min-height:380px;">
-        <?php if ( $maps_src ) : ?>
-          <iframe src="<?php echo esc_url($maps_src); ?>" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <?php else : ?>
-          <div class="flex items-center justify-center h-[380px] bg-white/10">
-            <p class="text-white/60 font-jost text-sm">Map coming soon</p>
-          </div>
-        <?php endif; ?>
+        <iframe src="<?php echo esc_url($maps_src); ?>" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <!-- Address card -->
@@ -243,53 +362,61 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
     </div><!-- /Map + Address row -->
 
     <!-- 4 Direction cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 loc-reveal">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 loc-reveal">
 
       <!-- By Car -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5 0M13 16H3m10 0h2m4-6l-2-4H9l-2 4h12z"/></svg>
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 overflow-hidden loc-card-lift">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(245,158,11,0.2);">
+          <svg class="w-6 h-6" style="color:#fbbf24;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5 0M13 16H3m10 0h2m4-6l-2-4H9l-2 4h12z"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Car</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_car ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-2">By Car</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-4"><?php echo esc_html( $by_car ); ?></p>
         <?php if ( $car_tag_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $car_tag_list as $tag ) : ?>
-            <span class="bg-white/15 text-white text-xs font-medium px-3 py-1 rounded-full font-jost border border-white/20"><?php echo esc_html( $tag ); ?></span>
+            <span class="bg-white/15 text-white text-sm font-medium px-3 py-1 rounded-full font-jost border border-white/20"><?php echo esc_html( $tag ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
 
       <!-- By Bus -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m8-2v2M3 10h18M8 5V3m8 2V3"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 overflow-hidden loc-card-lift">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#0ea5e9,#38bdf8);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(14,165,233,0.2);">
+          <svg class="w-6 h-6" style="color:#38bdf8;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m8-2v2M3 10h18M8 5V3m8 2V3"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Bus</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_bus ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-2">By Bus</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-4"><?php echo esc_html( $by_bus ); ?></p>
         <?php if ( $bus_route_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $bus_route_list as $route ) : ?>
-            <span class="bg-white text-blue-700 text-xs font-bold px-3 py-1 rounded-full font-jost">Route <?php echo esc_html( $route ); ?></span>
+            <span class="bg-white text-blue-700 text-sm font-bold px-3 py-1 rounded-full font-jost">Route <?php echo esc_html( $route ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
 
       <!-- By Train -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-2 3m14-3l-2 3M5 7h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 15a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zM12 7V4"/></svg>
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 overflow-hidden loc-card-lift">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#14b8a6,#2dd4bf);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(20,184,166,0.2);">
+          <svg class="w-6 h-6" style="color:#2dd4bf;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-2 3m14-3l-2 3M5 7h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 15a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zM12 7V4"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Train</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_train ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-2">By Train</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-4"><?php echo esc_html( $by_train ); ?></p>
         <?php if ( $train_list ) : ?>
         <div class="flex flex-col gap-2">
-          <?php foreach ( $train_list as $stn ) : ?>
-            <div class="flex items-center justify-between bg-white/15 rounded-lg px-3 py-2 border border-white/20">
-              <span class="text-white text-xs font-medium font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
-              <span class="text-blue-200 text-xs font-jost"><?php echo esc_html( $stn['time'] ); ?></span>
+          <?php foreach ( $train_list as $idx => $stn ) : ?>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white/15 rounded-lg px-3 py-2 border border-white/20 gap-1">
+              <div class="flex items-center gap-2">
+                <?php if ( $idx === 0 ) : ?>
+                  <span class="bg-teal-400 text-teal-900 text-xs font-bold px-2 py-0.5 rounded-full font-jost flex-shrink-0">CLOSEST</span>
+                <?php endif; ?>
+                <span class="text-white text-sm font-medium font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
+              </div>
+              <span class="text-white text-sm font-jost flex-shrink-0"><?php echo esc_html( $stn['time'] ); ?></span>
             </div>
           <?php endforeach; ?>
         </div>
@@ -297,21 +424,41 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       </div>
 
       <!-- On Foot -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14l-4 4m4-4l4 4m-4-4v6"/></svg>
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 overflow-hidden loc-card-lift">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#22c55e,#4ade80);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(34,197,94,0.2);">
+          <svg class="w-6 h-6" style="color:#4ade80;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14l-4 4m4-4l4 4m-4-4v6"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">On Foot</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $on_foot ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-2">On Foot</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-4"><?php echo esc_html( $on_foot ); ?></p>
         <?php if ( $landmark ) : ?>
         <div class="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2 border border-white/20">
-          <svg class="w-4 h-4 text-blue-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          <span class="text-white text-xs font-medium font-jost">Near <?php echo esc_html( $landmark ); ?></span>
+          <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+          <span class="text-white text-sm font-medium font-jost">Near <?php echo esc_html( $landmark ); ?></span>
         </div>
         <?php endif; ?>
       </div>
 
     </div><!-- /Direction cards -->
+
+    <!-- Address + contact strip -->
+    <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 loc-reveal">
+      <div class="flex items-center gap-2.5">
+        <svg class="w-5 h-5 text-blue-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <span class="text-white text-sm font-jost"><?php echo esc_html("$addr1, $addr2, $postcode"); ?></span>
+      </div>
+      <div class="hidden sm:block w-px h-5 bg-white/30"></div>
+      <div class="flex items-center gap-2.5">
+        <svg class="w-5 h-5 text-blue-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <a href="tel:<?php echo esc_attr($phone_raw); ?>" class="text-white text-sm font-jost hover:text-blue-200 transition-colors"><?php echo esc_html($phone); ?></a>
+      </div>
+      <div class="hidden sm:block w-px h-5 bg-white/30"></div>
+      <a href="<?php echo esc_url($maps_dir_url); ?>" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2 rounded-xl hover:bg-blue-50 transition-colors shadow font-jost">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        Get Directions
+      </a>
+    </div>
 
   </div>
 </section>
@@ -488,43 +635,6 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
 <!-- ============================================================
      S5: OTHER BRANCHES
      ============================================================ -->
-<?php
-$other_branches = [
-  [
-    'name'     => 'Southsea',
-    'addr'     => '64 Marmion Road, Southsea, PO5 2AT',
-    'phone'    => '023 9282 2044',
-    'phone_raw'=> '02392822044',
-    'hours_wd' => 'Mon–Fri 9am–6pm',
-    'hours_sat'=> 'Sat 9am–1pm',
-    'services' => 10,
-    'img'      => 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=600&h=400&fit=crop',
-    'url'      => home_url('/southsea/'),
-  ],
-  [
-    'name'     => 'Havant',
-    'addr'     => 'Havant, Hampshire',
-    'phone'    => sp_phone(),
-    'phone_raw'=> sp_phone_raw(),
-    'hours_wd' => 'Mon–Fri 9am–6pm',
-    'hours_sat'=> 'Sat 9am–1pm',
-    'services' => 8,
-    'img'      => 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop',
-    'url'      => home_url('/havant/'),
-  ],
-  [
-    'name'     => 'Davies Pharmacy',
-    'addr'     => 'Hampshire',
-    'phone'    => sp_phone(),
-    'phone_raw'=> sp_phone_raw(),
-    'hours_wd' => 'Mon–Fri 9am–6pm',
-    'hours_sat'=> 'Sat 9am–1pm',
-    'services' => 8,
-    'img'      => 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
-    'url'      => home_url('/davies-pharmacy/'),
-  ],
-];
-?>
 <section class="py-16 lg:py-24" style="background:linear-gradient(180deg,#f8fafc 0%,#eff6ff 50%,#dbeafe 100%);">
   <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
 
@@ -538,21 +648,19 @@ $other_branches = [
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <?php foreach ( $other_branches as $i => $b ) :
-        $stagger_cls = 'branch-stagger-' . ($i + 1);
-      ?>
-      <div class="branch-card bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 <?php echo esc_attr($stagger_cls); ?> loc-reveal">
+      <?php foreach ( $other_branches as $i => $b ) : ?>
+      <div class="group relative bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col loc-reveal" style="transition-delay:<?php echo $i * 0.1; ?>s;">
 
         <div class="relative h-48 overflow-hidden">
           <img src="<?php echo esc_url($b['img']); ?>"
                alt="<?php echo esc_attr($b['name']); ?> pharmacy"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" loading="lazy">
+               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
           <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent flex items-end p-5">
             <h3 class="text-white text-xl font-semibold font-jost"><?php echo esc_html($b['name']); ?></h3>
           </div>
         </div>
 
-        <div class="p-6">
+        <div class="p-6 flex flex-col flex-1">
           <div class="flex items-start gap-2.5 mb-3">
             <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             <address class="text-gray-600 text-sm not-italic font-jost leading-snug"><?php echo esc_html($b['addr']); ?></address>
@@ -574,12 +682,14 @@ $other_branches = [
               <?php echo esc_html($b['services']); ?>+ services available
             </span>
           </div>
-          <a href="<?php echo esc_url($b['url']); ?>"
-             class="branch-cta-btn flex items-center justify-center gap-2 w-full text-white font-semibold text-sm px-5 py-3 rounded-xl font-jost"
-             style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-            View <?php echo esc_html($b['name']); ?> Branch
-            <svg class="w-4 h-4 branch-cta-arrow" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
+          <div class="mt-auto">
+            <a href="<?php echo esc_url($b['url']); ?>"
+               class="flex items-center justify-center gap-2 w-full text-white font-semibold text-sm px-5 py-3 rounded-xl font-jost transition-all hover:shadow-lg hover:-translate-y-0.5"
+               style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+              View <?php echo esc_html($b['name']); ?> Branch
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
         </div>
       </div>
       <?php endforeach; ?>
@@ -610,7 +720,7 @@ $other_branches = [
         <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mx-auto mb-4">
           <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
         </div>
-        <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">8+</div>
+        <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">13+</div>
         <div class="text-blue-100 text-sm font-medium font-jost">Healthcare Services</div>
       </div>
 
@@ -623,22 +733,13 @@ $other_branches = [
         <div class="text-blue-100 text-sm font-medium font-jost">Patients Served</div>
       </div>
 
-      <!-- 4th stat: 7 Days if Sunday hours set, else 5★ -->
+      <!-- 5★ rating (Emsworth is closed Sundays) -->
       <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 lg:p-8 text-center loc-reveal" style="transition-delay:0.3s;">
         <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mx-auto mb-4">
-          <?php if ( $hours_sun ) : ?>
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <?php else : ?>
           <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          <?php endif; ?>
         </div>
-        <?php if ( $hours_sun ) : ?>
-        <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">7 Days</div>
-        <div class="text-blue-100 text-sm font-medium font-jost">Open Every Week</div>
-        <?php else : ?>
         <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">5★</div>
         <div class="text-blue-100 text-sm font-medium font-jost">Patient Rated</div>
-        <?php endif; ?>
       </div>
 
     </div>
@@ -670,8 +771,3 @@ $other_branches = [
 </script>
 
 <?php get_footer(); ?>
-
-
-
-
-
