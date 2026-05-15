@@ -177,23 +177,6 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-5 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
       <p class="text-white text-base lg:text-lg leading-relaxed mb-6 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
 
-      <!-- Services pill grid (in-hero, before CTAs) -->
-      <div class="flex flex-wrap gap-2 mb-7">
-        <?php foreach ( $rc_services as $svc ) :
-          $is_featured = in_array( $svc, $rc_services_featured, true );
-          if ( $is_featured ) : ?>
-            <span class="inline-flex items-center gap-1.5 bg-white text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full font-jost shadow-sm">
-              <svg class="w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <?php echo esc_html( $svc ); ?>
-            </span>
-          <?php else : ?>
-            <span class="inline-flex items-center bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full border border-white/30 font-jost">
-              <?php echo esc_html( $svc ); ?>
-            </span>
-          <?php endif;
-        endforeach; ?>
-      </div>
-
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book Appointment
@@ -265,7 +248,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18),0 2px 8px rgba(30,58,138,0.15);
         padding:0 10px;text-align:center;
       ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a" stroke="none" style="margin-bottom:4px;flex-shrink:0;transform:rotate(-12deg);"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
         <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Travel</span>
         <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Vaccinations</span>
         <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:3px;">Travel Clinic</span>
