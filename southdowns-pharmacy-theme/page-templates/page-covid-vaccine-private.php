@@ -179,8 +179,11 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
 
 
 <!-- ============================================================
-     S3: WHO IS IT FOR — Light gradient, intro + eligibility list
+     S3: WHO IS IT FOR — Light gradient, icon cards + image
      ============================================================ -->
+<?php
+$cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format&fit=crop';
+?>
 <section class="py-16 md:py-24 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
   <div class="absolute top-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
   <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-100/20 rounded-full -translate-x-1/2 translate-y-1/2 blur-3xl"></div>
@@ -189,33 +192,67 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center yf-reveal">
 
       <div>
-        <span class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-blue-100 uppercase tracking-wider">Who Is This For?</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost">Stay Protected &mdash; Even if You&apos;re Not NHS Eligible</h2>
-        <p class="text-gray-600 text-lg leading-relaxed mb-5 font-jost">The NHS COVID-19 vaccination programme for Spring 2026 has narrowed its eligibility criteria, meaning many people who were vaccinated in previous seasons are no longer included. If you fall outside the current NHS cohorts but want to stay protected, our private vaccination service means you don&apos;t have to go without.</p>
-        <p class="text-gray-600 text-base leading-relaxed mb-6 font-jost">The private COVID-19 vaccine at Southdowns Pharmacy is suitable for anyone who:</p>
-        <ul class="space-y-3 mb-6">
-          <?php
-          $reasons = [
-            'Is not currently eligible for a free NHS COVID-19 vaccine',
-            'Wants protection ahead of travel to higher-risk destinations',
-            'Has underlying health conditions and wants additional peace of mind outside the NHS programme',
-            'Is a carer or lives with someone who is vulnerable and wants to reduce the risk of passing on the virus',
-            'Simply wants to stay up to date with their COVID-19 protection',
-          ];
-          foreach ( $reasons as $r ) : ?>
-          <li class="flex items-start gap-3 text-gray-700 font-jost">
-            <span class="flex-shrink-0 w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
-              <svg class="w-3.5 h-3.5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            </span>
-            <?php echo esc_html( $r ); ?>
-          </li>
+        <span class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-blue-100 uppercase tracking-wider font-jost">Who Is This For?</span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-5 font-jost">Stay Protected &mdash; Even if You&rsquo;re Not NHS Eligible</h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8 font-jost">The NHS Spring 2026 programme is restricted to those aged 75+, care home residents, and the severely immunosuppressed. If you fall outside those cohorts, our private service means you don&rsquo;t have to go without.</p>
+
+        <!-- Icon cards grid -->
+        <?php
+        $cvp_s3_cards = [
+            [
+                'title' => 'Not NHS Eligible',
+                'desc'  => 'Not in the current cohort? You can still get vaccinated privately.',
+                'icon'  => '<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
+                'colour' => 'bg-blue-50 border-blue-100 text-blue-600',
+            ],
+            [
+                'title' => 'Travelling Soon',
+                'desc'  => 'Heading somewhere higher-risk? Protect yourself before you go.',
+                'icon'  => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+                'colour' => 'bg-teal-50 border-teal-100 text-teal-600',
+            ],
+            [
+                'title' => 'Underlying Conditions',
+                'desc'  => 'Additional peace of mind beyond NHS eligibility thresholds.',
+                'icon'  => '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
+                'colour' => 'bg-rose-50 border-rose-100 text-rose-500',
+            ],
+            [
+                'title' => 'Carer or Family',
+                'desc'  => 'Protect the people around you by reducing your own risk.',
+                'icon'  => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+                'colour' => 'bg-amber-50 border-amber-100 text-amber-600',
+            ],
+            [
+                'title' => 'Simply Want Protection',
+                'desc'  => 'No reason needed — stay up to date on your own terms.',
+                'icon'  => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+                'colour' => 'bg-indigo-50 border-indigo-100 text-indigo-600',
+            ],
+        ];
+        ?>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-7">
+          <?php foreach ( $cvp_s3_cards as $card ) : ?>
+          <div class="flex items-start gap-3 bg-white border rounded-xl px-4 py-3.5 shadow-sm <?php echo $card['colour']; ?>">
+            <div class="flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center <?php echo $card['colour']; ?>">
+              <svg class="w-4.5 h-4.5 w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $card['icon']; ?></svg>
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800 text-sm font-jost leading-snug"><?php echo esc_html( $card['title'] ); ?></p>
+              <p class="text-gray-500 text-xs font-jost leading-relaxed mt-0.5"><?php echo esc_html( $card['desc'] ); ?></p>
+            </div>
+          </div>
           <?php endforeach; ?>
-        </ul>
-        <p class="text-blue-700 font-semibold text-base font-jost">No referral needed. No eligibility criteria. Just walk in or book online.</p>
+        </div>
+
+        <div class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-full font-jost shadow-md shadow-blue-500/20">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          No referral needed &mdash; walk in or book online
+        </div>
       </div>
 
       <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
-        <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&q=80&auto=format&fit=crop" alt="Pharmacist preparing vaccination" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+        <img src="<?php echo esc_url( $cvp_s3_image ); ?>" alt="Pharmacist preparing COVID-19 vaccination" class="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
         <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2.5 flex items-center gap-2 shadow-lg">
           <svg class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
