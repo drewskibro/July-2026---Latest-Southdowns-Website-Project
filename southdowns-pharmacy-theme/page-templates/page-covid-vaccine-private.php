@@ -450,7 +450,7 @@ $cvp_why_cards = [
       <?php foreach ( $cvp_why_cards as $i => $card ) :
         $icon  = $card['icon'];
       ?>
-      <div class="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 reveal-item">
+      <div class="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
         <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style="background:<?php echo $icon[0]; ?>;border:1px solid <?php echo $icon[1]; ?>;">
           <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="<?php echo $icon[2]; ?>" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $icon[3]; ?></svg>
         </div>
