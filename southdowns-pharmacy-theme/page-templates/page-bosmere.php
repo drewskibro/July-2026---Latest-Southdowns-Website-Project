@@ -41,12 +41,12 @@ $parking       = get_field('branch_parking')             ?: 'On-site patient par
 // ── Map & Directions ────────────────────────────────────────────
 $maps_src      = get_field('branch_maps_embed_src')      ?: '';
 $maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=Bosmere+Medical+Centre,+Solent+Road,+Havant,+Hampshire+PO9+1DQ';
-$by_car        = get_field('branch_by_car')              ?: 'Easily accessible from the A27 and A3(M) Havant interchange. Bosmere Medical Centre has on-site patient parking available.';
-$car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A27 / A3(M),On-site patient parking';
+$by_car        = get_field('branch_by_car')              ?: 'Easily accessible from the A27 and A3(M) Havant interchange. Large free car park directly outside the pharmacy.';
+$car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A27 / A3(M),Large free car park';
 $by_bus        = get_field('branch_by_bus')              ?: 'Stagecoach bus routes serve Havant town centre with stops close to Solent Road. The town\'s central bus interchange is nearby.';
 $bus_routes_raw= get_field('branch_bus_routes')          ?: '23,35,700';
-$by_train      = get_field('branch_by_train')            ?: 'Havant railway station is served by South Western Railway and Southern, with direct links to Portsmouth and London Waterloo.';
-$train_stn_raw = get_field('branch_train_stations')      ?: 'Havant Station|15 min walk,Bedhampton Station|10 min walk';
+$by_train      = get_field('branch_by_train')            ?: 'Bedhampton is the closest station (~555m, 7 min walk). Havant Station is approx 860m away (~11 min walk). Both are served by South Western Railway and Southern.';
+$train_stn_raw = get_field('branch_train_stations')      ?: 'Bedhampton Station|7 min walk,Havant Station|11 min walk';
 $on_foot       = get_field('branch_on_foot')             ?: 'Located within Bosmere Medical Centre on Solent Road. The centre is well signposted and easy to find from the surrounding residential area.';
 $landmark      = get_field('branch_landmark')            ?: 'Bosmere Medical Centre';
 
@@ -322,76 +322,109 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
 
     </div><!-- /Map + Address row -->
 
-    <!-- 4 Direction cards -->
+    <!-- 4 Direction cards — each with a unique accent colour top border -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 loc-reveal">
 
-      <!-- By Car -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5 0M13 16H3m10 0h2m4-6l-2-4H9l-2 4h12z"/></svg>
+      <!-- By Car — amber accent -->
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#f59e0b,#fbbf24);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.3);">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5 0M13 16H3m10 0h2m4-6l-2-4H9l-2 4h12z"/></svg>
         </div>
         <h4 class="text-white font-semibold text-base font-jost mb-2">By Car</h4>
         <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_car ); ?></p>
         <?php if ( $car_tag_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $car_tag_list as $tag ) : ?>
-            <span class="bg-white/15 text-white text-xs font-medium px-3 py-1 rounded-full font-jost border border-white/20"><?php echo esc_html( $tag ); ?></span>
+            <span class="text-xs font-medium px-3 py-1 rounded-full font-jost" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.35);color:#fcd34d;"><?php echo esc_html( $tag ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
 
-      <!-- By Bus -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m8-2v2M3 10h18M8 5V3m8 2V3"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>
+      <!-- By Bus — sky-blue accent -->
+      <!-- Bus routes 23, 35, 700 to be confirmed with client before publishing -->
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.3);">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#7dd3fc" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m8-2v2M3 10h18M8 5V3m8 2V3"/><circle cx="8" cy="15" r="1" fill="#7dd3fc"/><circle cx="16" cy="15" r="1" fill="#7dd3fc"/></svg>
         </div>
         <h4 class="text-white font-semibold text-base font-jost mb-2">By Bus</h4>
         <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_bus ); ?></p>
         <?php if ( $bus_route_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $bus_route_list as $route ) : ?>
-            <span class="bg-white text-blue-700 text-xs font-bold px-3 py-1 rounded-full font-jost">Route <?php echo esc_html( $route ); ?></span>
+            <span class="text-xs font-bold px-3 py-1 rounded-full font-jost" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.35);color:#7dd3fc;">Route <?php echo esc_html( $route ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
 
-      <!-- By Train -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-2 3m14-3l-2 3M5 7h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 15a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zM12 7V4"/></svg>
+      <!-- By Train — teal accent (Bedhampton closest, then Havant — corrected) -->
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#2dd4bf,#5eead4);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(45,212,191,0.2);border:1px solid rgba(45,212,191,0.3);">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#5eead4" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-2 3m14-3l-2 3M5 7h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 15a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zM12 7V4"/></svg>
         </div>
         <h4 class="text-white font-semibold text-base font-jost mb-2">By Train</h4>
         <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_train ); ?></p>
         <?php if ( $train_list ) : ?>
         <div class="flex flex-col gap-2">
-          <?php foreach ( $train_list as $stn ) : ?>
-            <div class="flex items-center justify-between bg-white/15 rounded-lg px-3 py-2 border border-white/20">
-              <span class="text-white text-xs font-medium font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
-              <span class="text-blue-200 text-xs font-jost"><?php echo esc_html( $stn['time'] ); ?></span>
+          <?php foreach ( $train_list as $i => $stn ) : ?>
+            <div class="flex items-center justify-between rounded-lg px-3 py-2" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">
+              <div class="flex items-center gap-2">
+                <?php if ( $i === 0 ) : ?>
+                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded" style="background:rgba(45,212,191,0.3);color:#5eead4;letter-spacing:.05em;">CLOSEST</span>
+                <?php endif; ?>
+                <span class="text-white text-xs font-medium font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
+              </div>
+              <span class="text-teal-300 text-xs font-jost ml-2 whitespace-nowrap"><?php echo esc_html( $stn['time'] ); ?></span>
             </div>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
       </div>
 
-      <!-- On Foot -->
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(255,255,255,0.15);">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14l-4 4m4-4l4 4m-4-4v6"/></svg>
+      <!-- On Foot — green accent -->
+      <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#4ade80,#86efac);"></div>
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(74,222,128,0.2);border:1px solid rgba(74,222,128,0.3);">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#86efac" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14l-4 4m4-4l4 4m-4-4v6"/></svg>
         </div>
         <h4 class="text-white font-semibold text-base font-jost mb-2">On Foot</h4>
         <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $on_foot ); ?></p>
         <?php if ( $landmark ) : ?>
-        <div class="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2 border border-white/20">
-          <svg class="w-4 h-4 text-blue-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        <div class="flex items-center gap-2 rounded-lg px-3 py-2" style="background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.25);">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#86efac" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
           <span class="text-white text-xs font-medium font-jost">Near <?php echo esc_html( $landmark ); ?></span>
         </div>
         <?php endif; ?>
       </div>
 
     </div><!-- /Direction cards -->
+
+    <!-- Address & contact strip -->
+    <div class="mt-12 loc-reveal">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 bg-white/8 backdrop-blur-sm border border-white/15 rounded-2xl px-8 py-6">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-blue-200 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <address class="not-italic text-white text-sm font-jost leading-relaxed">
+            Bosmere Medical Centre, Solent Road<br>Havant, Hampshire, PO9 1DQ
+          </address>
+        </div>
+        <div class="hidden md:block w-px h-10 bg-white/20"></div>
+        <div class="flex items-center gap-3">
+          <svg class="w-5 h-5 text-blue-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          <a href="tel:02392481721" class="text-white text-sm font-semibold font-jost hover:text-blue-200 transition-colors">02392 481721</a>
+        </div>
+        <div class="hidden md:block w-px h-10 bg-white/20"></div>
+        <a href="<?php echo esc_url( $maps_dir_url ); ?>" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          Get Directions
+        </a>
+      </div>
+    </div>
 
   </div>
 </section>
