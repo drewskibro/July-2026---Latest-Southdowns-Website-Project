@@ -773,26 +773,44 @@ $cvp_why_cards = [
     });
   });
 
-  /* Scroll reveal */
+  /* Scroll reveal: .reveal-item (JS-driven inline opacity) */
   var items = document.querySelectorAll('.reveal-item');
-  if (!items.length) return;
+  if (items.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity  = '1';
+          entry.target.style.transform = 'translateY(0)';
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity  = '1';
-        entry.target.style.transform = 'translateY(0)';
-        io.unobserve(entry.target);
-      }
+    items.forEach(function (el) {
+      el.style.opacity   = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+      io.observe(el);
     });
-  }, { threshold: 0.12 });
+  }
 
-  items.forEach(function (el) {
-    el.style.opacity   = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
-    io.observe(el);
-  });
+  /* Scroll reveal: .yf-reveal (CSS-driven via .visible class) */
+  var yfItems = document.querySelectorAll('.yf-reveal');
+  if (yfItems.length) {
+    if (!('IntersectionObserver' in window)) {
+      yfItems.forEach(function (el) { el.classList.add('visible'); });
+    } else {
+      var yfIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            yfIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      yfItems.forEach(function (el) { yfIo.observe(el); });
+    }
+  }
 }());
 </script>
 
