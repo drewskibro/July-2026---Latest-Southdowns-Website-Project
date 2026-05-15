@@ -350,6 +350,7 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-location.php',
         'page-templates/page-emsworth.php',
         'page-templates/page-bosmere.php',
+        'page-templates/page-rowlands-pharmacy.php',
         // COVID-19 vaccine pages — acf_after_title requires classic editor
         'page-templates/page-covid-vaccine.php',
         'page-templates/page-covid-vaccine-private.php',
