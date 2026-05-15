@@ -18,7 +18,7 @@ $branches = [
     [ 'data' => $branch_emsworth,        'url' => home_url( '/emsworth/' ) ],
     [ 'data' => $branch_havant,          'url' => home_url( '/bosmere/' ) ],
     [ 'data' => $branch_davies,          'url' => home_url( '/davies/' ) ],
-    [ 'data' => $branch_rowlands_castle, 'url' => home_url( '/rowlands-castle/' ) ],
+    [ 'data' => $branch_rowlands_castle, 'url' => home_url( '/rowlands-pharmacy/' ) ],
 ];
 
 $destinations = [

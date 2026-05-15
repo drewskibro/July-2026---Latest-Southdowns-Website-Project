@@ -614,7 +614,7 @@ $other_branches = [
     'hours_sat'=> 'Sat 9am–1pm',
     'services' => 8,
     'img'      => get_field('branch_other_rowlands_image') ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
-    'url'      => home_url('/rowlands-castle/'),
+    'url'      => home_url('/rowlands-pharmacy/'),
   ],
   [
     'name'     => 'Davies Pharmacy',
