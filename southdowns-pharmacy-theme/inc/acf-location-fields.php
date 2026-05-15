@@ -287,6 +287,43 @@ add_action( 'acf/init', function () {
                 ],
             ],
 
+            // ============================================================
+            // TAB 5 — OTHER BRANCHES (images shown in the S5 cards)
+            // ============================================================
+            [
+                'key'   => 'field_loc_tab_other_branches',
+                'label' => 'Other Branches',
+                'name'  => '',
+                'type'  => 'tab',
+            ],
+            [
+                'key'           => 'field_loc_other_emsworth_image',
+                'label'         => 'Emsworth Card Image',
+                'name'          => 'branch_other_emsworth_image',
+                'type'          => 'image',
+                'return_format' => 'url',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Image for the Emsworth card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
+            ],
+            [
+                'key'           => 'field_loc_other_southsea_image',
+                'label'         => 'Southsea Card Image',
+                'name'          => 'branch_other_southsea_image',
+                'type'          => 'image',
+                'return_format' => 'url',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Image for the Southsea card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
+            ],
+            [
+                'key'           => 'field_loc_other_davies_image',
+                'label'         => 'Davies Pharmacy Card Image',
+                'name'          => 'branch_other_davies_image',
+                'type'          => 'image',
+                'return_format' => 'url',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Image for the Davies Pharmacy card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
+            ],
+
         ], // end fields
     ] ); // end acf_add_local_field_group
 

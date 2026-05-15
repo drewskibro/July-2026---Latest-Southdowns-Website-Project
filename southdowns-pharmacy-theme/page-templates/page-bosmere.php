@@ -602,7 +602,7 @@ $other_branches = [
     'hours_wd' => 'Mon–Fri 9am–7pm',
     'hours_sat'=> 'Sat 9am–5pm',
     'services' => 8,
-    'img'      => 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=600&h=400&fit=crop',
+    'img'      => get_field('branch_other_emsworth_image') ?: 'https://images.unsplash.com/photo-1582560475093-ba66accbc424?w=600&h=400&fit=crop',
     'url'      => home_url('/emsworth/'),
   ],
   [
@@ -613,7 +613,7 @@ $other_branches = [
     'hours_wd' => 'Mon–Fri 9am–6pm',
     'hours_sat'=> 'Sat 9am–1pm',
     'services' => 10,
-    'img'      => 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
+    'img'      => get_field('branch_other_southsea_image') ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
     'url'      => home_url('/southsea/'),
   ],
   [
@@ -624,7 +624,7 @@ $other_branches = [
     'hours_wd' => 'Mon–Fri 9am–6pm',
     'hours_sat'=> 'Sat 9am–1pm',
     'services' => 8,
-    'img'      => 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
+    'img'      => get_field('branch_other_davies_image') ?: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
     'url'      => home_url('/davies-pharmacy/'),
   ],
 ];
