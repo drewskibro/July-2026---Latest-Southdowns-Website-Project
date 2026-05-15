@@ -221,7 +221,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-jost">Walk in or book ahead — <?php echo count( $bosmere_services ); ?> services available, no GP referral needed for most.</p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-2.5 md:gap-3 loc-reveal">
+    <div class="grid grid-cols-2 gap-2.5 [&>span]:w-full [&>span]:justify-center md:flex md:flex-wrap md:justify-center md:gap-3 md:[&>span]:w-auto loc-reveal">
       <?php foreach ( $bosmere_services as $svc ) :
         $is_featured = in_array( $svc, $bosmere_services_featured, true );
       ?>
