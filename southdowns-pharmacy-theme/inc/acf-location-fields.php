@@ -306,13 +306,13 @@ add_action( 'acf/init', function () {
                 'instructions'  => 'Image for the Emsworth card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
             ],
             [
-                'key'           => 'field_loc_other_southsea_image',
-                'label'         => 'Southsea Card Image',
-                'name'          => 'branch_other_southsea_image',
+                'key'           => 'field_loc_other_rowlands_image',
+                'label'         => 'Rowlands Castle Card Image',
+                'name'          => 'branch_other_rowlands_image',
                 'type'          => 'image',
                 'return_format' => 'url',
                 'preview_size'  => 'medium',
-                'instructions'  => 'Image for the Southsea card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
+                'instructions'  => 'Image for the Rowlands Castle card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
             ],
             [
                 'key'           => 'field_loc_other_davies_image',
