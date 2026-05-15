@@ -266,6 +266,15 @@ add_action( 'acf/init', function () {
                 'preview_size'  => 'medium',
                 'instructions'  => 'Shown on the right half of the hero (desktop) and as the full-bleed background on mobile. Recommended: 1200 × 800 px or larger.',
             ],
+            [
+                'key'           => 'field_cv_priv_s3_image',
+                'label'         => 'Who Is This For — Image',
+                'name'          => 'cv_priv_s3_image',
+                'type'          => 'image',
+                'return_format' => 'url',
+                'preview_size'  => 'medium',
+                'instructions'  => 'Image displayed on the right side of the "Who Is This For?" section. Recommended: 800 × 600 px. Ideally a pharmacist or patient consultation photo.',
+            ],
 
             // ---- Tab 2 · Pricing (single source of truth) --------
             [ 'key' => 'field_cv_priv_tab_pricing', 'label' => 'Pricing', 'name' => '', 'type' => 'tab' ],
