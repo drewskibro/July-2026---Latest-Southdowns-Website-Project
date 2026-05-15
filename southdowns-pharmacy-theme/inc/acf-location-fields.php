@@ -34,6 +34,7 @@ add_action( 'acf/init', function () {
             [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/page-emsworth.php' ] ],
             [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/page-bosmere.php' ] ],
             [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/page-rowlands-pharmacy.php' ] ],
+            [ [ 'param' => 'page_template', 'operator' => '==', 'value' => 'page-templates/page-davies-pharmacy.php' ] ],
         ],
 
         'fields' => [

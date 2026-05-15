@@ -84,9 +84,9 @@ $other_branches = [
     ],
     [
         'name'      => 'Davies Pharmacy',
-        'addr'      => 'Emsworth Road, Havant, PO9 2SN',
-        'phone'     => '023 9248 3744',
-        'phone_raw' => '02392483744',
+        'addr'      => '12 West Street, Havant, PO9 1PF',
+        'phone'     => '023 9248 3146',
+        'phone_raw' => '02392483146',
         'hours_wd'  => 'Mon–Fri 9am–6pm',
         'hours_sat' => 'Sat 9am–1pm',
         'services'  => 10,

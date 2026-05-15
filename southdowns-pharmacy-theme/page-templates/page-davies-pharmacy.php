@@ -1,11 +1,11 @@
 <?php
 /**
- * Template Name: Rowlands Castle Pharmacy Location
+ * Template Name: Davies Pharmacy Location
  *
- * Dedicated location page for the Rowlands Castle branch.
- * 12 The Green, Rowlands Castle, Hampshire, PO9 6BN
- * Tel: 023 9241 3952
- * Mon–Fri 9am–6pm | Sat 9am–1pm | Sun Closed
+ * Dedicated location page for the Davies Pharmacy branch.
+ * 12 West Street, Havant, Hampshire, PO9 1PF
+ * Tel: 023 9248 3146
+ * Mon–Fri 9am–5:30pm | Sat 9am–2pm | Sun Closed
  */
 
 get_header();
@@ -14,31 +14,31 @@ $booking_url   = sp_booking_url();
 
 // ── Hero ────────────────────────────────────────────────────────
 $hero_img      = get_field('branch_hero_image')          ?: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&h=800&fit=crop';
-$hero_subtitle = get_field('branch_hero_subtitle')       ?: 'Your Local Pharmacy in Rowlands Castle';
-$hero_desc     = get_field('branch_hero_description')    ?: 'Trusted village pharmacy on The Green — weight loss injections, travel vaccinations and NHS Pharmacy First services. No GP referral needed for most consultations.';
+$hero_subtitle = get_field('branch_hero_subtitle')       ?: 'Your Local Pharmacy in Havant';
+$hero_desc     = get_field('branch_hero_description')    ?: 'Trusted town centre pharmacy on West Street — ear wax removal, travel vaccinations and weight loss programmes. No GP referral needed for most consultations.';
 
 // ── Contact & Hours ─────────────────────────────────────────────
-$addr1         = get_field('branch_address_line1')       ?: '12 The Green';
-$addr2         = get_field('branch_address_line2')       ?: 'Rowlands Castle, Hampshire';
-$postcode      = get_field('branch_postcode')            ?: 'PO9 6BN';
-$phone         = get_field('branch_phone')               ?: '023 9241 3952';
-$phone_raw     = get_field('branch_phone_raw')           ?: '02392413952';
-$hours_wd      = get_field('branch_hours_weekday')       ?: 'Mon–Fri 9am–6pm';
-$hours_sat     = get_field('branch_hours_saturday')      ?: 'Sat 9am–1pm';
+$addr1         = get_field('branch_address_line1')       ?: '12 West Street';
+$addr2         = get_field('branch_address_line2')       ?: 'Havant, Hampshire';
+$postcode      = get_field('branch_postcode')            ?: 'PO9 1PF';
+$phone         = get_field('branch_phone')               ?: '023 9248 3146';
+$phone_raw     = get_field('branch_phone_raw')           ?: '02392483146';
+$hours_wd      = get_field('branch_hours_weekday')       ?: 'Mon–Fri 9am–5:30pm';
+$hours_sat     = get_field('branch_hours_saturday')      ?: 'Sat 9am–2pm';
 $hours_sun     = get_field('branch_hours_sunday')        ?: '';
-$parking       = get_field('branch_parking')             ?: 'Parking on The Green';
+$parking       = get_field('branch_parking')             ?: 'Paid parking nearby';
 
 // ── Map & Directions ────────────────────────────────────────────
-$maps_src      = get_field('branch_maps_embed_src')      ?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.7533281722576!2d-0.961667523760126!3d50.89127565552625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487445a4fe353377%3A0x2189f14c6daaf0fa!2sRowlands%20Castle%20Pharmacy%2C%20Flu%20%26%20Covid%20Vaccinations%20-%20Travel%20Clinic!5e0!3m2!1sen!2suk!4v1778833643777!5m2!1sen!2suk';
-$maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=12+The+Green,+Rowlands+Castle,+Hampshire+PO9+6BN';
-$by_car        = get_field('branch_by_car')              ?: 'Rowlands Castle is easily reached from junction 2 of the A3(M). Take the B2149 south into the village — the pharmacy is on The Green at the heart of the village.';
-$car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A3(M) Junction 2,B2149 into Village,Parking on The Green';
-$by_bus        = get_field('branch_by_bus')              ?: 'Bus routes 27, 37 and 8 serve Rowlands Castle. Route 27 runs from both Emsworth and Havant, stopping directly at The Green.';
-$bus_routes_raw= get_field('branch_bus_routes')          ?: '27,37,8';
-$by_train      = get_field('branch_by_train')            ?: 'Rowlands Castle station is on Bowes Hill, served by South Western Railway. The pharmacy on The Green is a 2–3 minute walk from the station exit.';
-$train_stn_raw = get_field('branch_train_stations')      ?: 'Rowlands Castle Station|2–3 min walk';
-$on_foot       = get_field('branch_on_foot')             ?: 'The pharmacy sits directly on the village green — the focal point of Rowlands Castle. Clearly visible from the station approach road.';
-$landmark      = get_field('branch_landmark')            ?: 'The Village Green';
+$maps_src      = get_field('branch_maps_embed_src')      ?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.8985553992966!2d-0.9871251116992191!3d50.85156278536962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487444d0740af4a1%3A0x5e4944ad84c23055!2sDavies%20Pharmacy%2C%20Covid%20%26%20Flu%20Vaccinations%2C%20Travel%20Vaccinations%20Clinics%20and%20Phlebotomy%20Centre!5e0!3m2!1sen!2suk!4v1778835119602!5m2!1sen!2suk';
+$maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=12+West+Street,+Havant,+Hampshire+PO9+1PF';
+$by_car        = get_field('branch_by_car')              ?: 'Accessible from the A27 via the B2149 Park Road South into Havant town centre. West Street is in the heart of the town. Paid car parks are available at Prince George Street, East Street, and Bulbeck Road — all within 5 minutes\' walk.';
+$car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A27 / B2149,Town Centre Location,Paid Parking Nearby';
+$by_bus        = get_field('branch_by_bus')              ?: 'Havant bus station is adjacent to the Meridian Shopping Centre, a short walk from the pharmacy. Stagecoach South operates frequent services to Portsmouth, Hayling Island, Waterlooville, Emsworth, and Chichester.';
+$bus_routes_raw= get_field('branch_bus_routes')          ?: '700,23,31';
+$by_train      = get_field('branch_by_train')            ?: 'Havant railway station is served by South Western Railway and Southern, with direct services to London Waterloo, Portsmouth, Brighton, and Southampton. Davies Pharmacy on West Street is a 5-minute walk from the station exit.';
+$train_stn_raw = get_field('branch_train_stations')      ?: 'Havant Station|5 min walk';
+$on_foot       = get_field('branch_on_foot')             ?: 'Davies Pharmacy is on West Street in Havant town centre, within easy walking distance of the Meridian Shopping Centre and bus station. Well signposted from the main town centre.';
+$landmark      = get_field('branch_landmark')            ?: 'Meridian Shopping Centre';
 
 // Parse comma / pipe-separated direction fields
 $car_tag_list   = array_filter( array_map( 'trim', explode( ',', $car_tags_raw ) ) );
@@ -52,26 +52,33 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
 }
 
 // ── Services ────────────────────────────────────────────────────
-$rc_services_featured = [ 'Weight Loss Injections', 'Travel Vaccinations', 'NHS Pharmacy First' ];
-$rc_services = [
+$dav_services_featured = [ 'Weight Loss Injections', 'Travel Vaccinations', 'NHS Pharmacy First' ];
+$dav_services = [
+    'B12 Injection',
     'Covid Vaccination',
+    'Cholesterol Check',
     'Flu Vaccination',
     'Free Contraceptive Service',
+    'Full Blood Count',
     'Hypertension Check',
+    'HPV Vaccinations',
     'NHS Pharmacy First',
+    'RSV Vaccinations',
+    'Shingles Vaccinations',
     'Travel Vaccinations',
+    'Thyroid Health Check',
     'Weight Loss Injections',
     'Weight Loss Consultation',
 ];
 
-// ── Full opening hours table ────────────────────────────────────
+// ── Full opening hours table ─────────────────────────────────────
 $opening_hours = [
-    [ 'day' => 'Monday',    'time' => '09:00 – 18:00', 'closed' => false ],
-    [ 'day' => 'Tuesday',   'time' => '09:00 – 18:00', 'closed' => false ],
-    [ 'day' => 'Wednesday', 'time' => '09:00 – 18:00', 'closed' => false ],
-    [ 'day' => 'Thursday',  'time' => '09:00 – 18:00', 'closed' => false ],
-    [ 'day' => 'Friday',    'time' => '09:00 – 18:00', 'closed' => false ],
-    [ 'day' => 'Saturday',  'time' => '09:00 – 13:00', 'closed' => false ],
+    [ 'day' => 'Monday',    'time' => '09:00 – 17:30', 'closed' => false ],
+    [ 'day' => 'Tuesday',   'time' => '09:00 – 17:30', 'closed' => false ],
+    [ 'day' => 'Wednesday', 'time' => '09:00 – 17:30', 'closed' => false ],
+    [ 'day' => 'Thursday',  'time' => '09:00 – 17:30', 'closed' => false ],
+    [ 'day' => 'Friday',    'time' => '09:00 – 17:30', 'closed' => false ],
+    [ 'day' => 'Saturday',  'time' => '09:00 – 14:00', 'closed' => false ],
     [ 'day' => 'Sunday',    'time' => 'Closed',        'closed' => true  ],
 ];
 
@@ -100,21 +107,21 @@ $other_branches = [
         'url'       => home_url('/bosmere/'),
     ],
     [
-        'name'      => 'Davies Pharmacy',
-        'addr'      => '12 West Street, Havant, PO9 1PF',
-        'phone'     => '023 9248 3146',
-        'phone_raw' => '02392483146',
+        'name'      => 'Rowlands Castle',
+        'addr'      => '12 The Green, Rowlands Castle, PO9 6BN',
+        'phone'     => '023 9241 3952',
+        'phone_raw' => '02392413952',
         'hours_wd'  => 'Mon–Fri 9am–6pm',
         'hours_sat' => 'Sat 9am–1pm',
-        'services'  => 10,
-        'img'       => get_field('branch_other_davies_image') ?: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
-        'url'       => home_url('/davies-pharmacy/'),
+        'services'  => 8,
+        'img'       => get_field('branch_other_rowlands_image') ?: 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=600&h=400&fit=crop',
+        'url'       => home_url('/rowlands-pharmacy/'),
     ],
 ];
 
-// ── Roundel font stack ───────────────────────────────────────────
-$rc_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
-$rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;";
+// ── Roundel font stack — copied exactly from Emsworth ───────────
+$dav_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
+$dav_txt  = "font-family:{$dav_font};-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:geometricPrecision;";
 ?>
 
 <!-- Page-scoped styles -->
@@ -135,7 +142,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
     <span class="text-gray-500">Locations</span>
     <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-    <span class="text-gray-800 font-medium">Rowlands Castle</span>
+    <span class="text-gray-800 font-medium">Davies Pharmacy</span>
   </div>
 </div>
 
@@ -143,7 +150,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 <!-- ============================================================
      S1: HERO
      ============================================================ -->
-<section class="relative w-full min-h-[500px] lg:min-h-[640px] overflow-hidden">
+<section class="relative w-full min-h-[500px] lg:min-h-[600px] overflow-hidden">
 
   <!-- Mobile: full-bleed image + gradient overlay -->
   <div class="md:hidden absolute inset-0 bg-cover bg-center"
@@ -152,7 +159,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
     <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start font-jost">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      GPhC Registered &bull; Rowlands Castle
+      GPhC Registered &bull; Davies Pharmacy
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo esc_html( $hero_subtitle ); ?></h1>
     <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
@@ -169,14 +176,13 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
   <div class="hidden md:flex relative">
 
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[640px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        GPhC Registered &bull; Rowlands Castle Branch
+        GPhC Registered &bull; Davies Pharmacy, Havant
       </div>
-      <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-5 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
-      <p class="text-white text-base lg:text-lg leading-relaxed mb-6 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
-
+      <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-6 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book Appointment
@@ -187,72 +193,75 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           Get Directions
         </a>
       </div>
-      <div class="flex flex-wrap gap-x-6 gap-y-2 text-white text-sm font-medium font-jost">
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-white text-base font-medium font-jost">
         <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg class="w-5 h-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <?php echo esc_html( $hours_wd ); ?>
         </div>
         <div class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <svg class="w-5 h-5 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <?php echo esc_html( $hours_sat ); ?>
         </div>
       </div>
     </div>
 
     <!-- Right: hero image -->
-    <div class="w-1/2 min-h-[500px] lg:min-h-[640px] bg-cover bg-center"
+    <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center"
          style="background-image: url('<?php echo esc_url($hero_img); ?>');"></div>
 
-    <!-- Centre-straddling HTML/CSS roundels -->
+    <!-- Centre-straddling HTML/CSS roundels — copied exactly from Emsworth -->
 
-    <!-- Roundel 1: Weight Loss Injections (top, white/navy) -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:11%;transform:translateX(-50%);">
+    <!-- Roundel 1: Rated 5-Star Service (top, white/navy, 132px) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:12%;transform:translateX(-50%);">
       <div style="
-        width:138px;height:138px;border-radius:50%;
+        width:132px;height:132px;border-radius:50%;
         background:#fff;
         display:flex;flex-direction:column;align-items:center;justify-content:center;
         box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18),0 2px 8px rgba(30,58,138,0.15);
         padding:0 10px;text-align:center;
       ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
-        <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Weight Loss</span>
-        <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Injections</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:3px;">Medically</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;">Supervised</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="#f59e0b" style="margin-bottom:3px;flex-shrink:0;"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+        <span style="<?php echo $dav_txt; ?>font-size:12px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Rated</span>
+        <span style="<?php echo $dav_txt; ?>font-size:12px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">5-Star Service</span>
+        <div style="display:flex;gap:1px;margin-top:3px;">
+          <?php for ( $s = 0; $s < 5; $s++ ) : ?>
+            <svg width="9" height="9" viewBox="0 0 20 20" fill="#f59e0b"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          <?php endfor; ?>
+        </div>
+        <span style="<?php echo $dav_txt; ?>font-size:9px;font-weight:600;color:#64748b;line-height:1.3;margin-top:2px;">400+ Reviews</span>
       </div>
     </div>
 
-    <!-- Roundel 2: Pharmacy First (centre, indigo gradient, 152px) -->
+    <!-- Roundel 2: Ear Wax Removal / TympaHealth Certified (centre, teal gradient, 148px) -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
       <div style="
-        width:152px;height:152px;border-radius:50%;
-        background:linear-gradient(135deg,#4f46e5 0%,#4338ca 50%,#312e81 100%);
+        width:148px;height:148px;border-radius:50%;
+        background:linear-gradient(135deg,#0d9488 0%,#0f766e 50%,#134e4a 100%);
         display:flex;flex-direction:column;align-items:center;justify-content:center;
-        box-shadow:0 0 0 3px rgba(79,70,229,0.5),0 0 0 6px rgba(255,255,255,0.5),0 8px 32px rgba(79,70,229,0.35),0 2px 8px rgba(0,0,0,0.15);
+        box-shadow:0 0 0 3px rgba(13,148,136,0.5),0 0 0 6px rgba(255,255,255,0.5),0 8px 32px rgba(13,148,136,0.35),0 2px 8px rgba(0,0,0,0.15);
         padding:0 10px;text-align:center;
       ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"/></svg>
-        <span style="<?php echo $rc_txt; ?>font-size:14px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">Pharmacy</span>
-        <span style="<?php echo $rc_txt; ?>font-size:14px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">First</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;margin-top:3px;">No GP Referral</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;">Needed</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span style="<?php echo $dav_txt; ?>font-size:13px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">Ear Wax</span>
+        <span style="<?php echo $dav_txt; ?>font-size:13px;font-weight:700;color:#fff;line-height:1.2;letter-spacing:-0.01em;">Removal</span>
+        <span style="<?php echo $dav_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;margin-top:3px;">TympaHealth</span>
+        <span style="<?php echo $dav_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;">Certified</span>
       </div>
     </div>
 
-    <!-- Roundel 3: Travel Vaccinations (bottom, white/navy) -->
-    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:11%;transform:translateX(-50%);">
+    <!-- Roundel 3: Open 7 Days (bottom, white/navy, 132px) -->
+    <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:12%;transform:translateX(-50%);">
       <div style="
-        width:138px;height:138px;border-radius:50%;
+        width:132px;height:132px;border-radius:50%;
         background:#fff;
         display:flex;flex-direction:column;align-items:center;justify-content:center;
         box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18),0 2px 8px rgba(30,58,138,0.15);
         padding:0 10px;text-align:center;
       ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#1e3a8a" stroke="none" style="margin-bottom:4px;flex-shrink:0;transform:rotate(-12deg);"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-        <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Travel</span>
-        <span style="<?php echo $rc_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Vaccinations</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:3px;">Travel Clinic</span>
-        <span style="<?php echo $rc_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;">Hampshire</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:4px;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span style="<?php echo $dav_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">Open</span>
+        <span style="<?php echo $dav_txt; ?>font-size:13px;font-weight:700;color:#1e3a8a;line-height:1.2;letter-spacing:-0.01em;">7 Days</span>
+        <span style="<?php echo $dav_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:2px;">Mon–Fri 9am–5:30pm</span>
       </div>
     </div>
 
@@ -262,7 +271,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
 
 <!-- ============================================================
-     S1B: SERVICES AVAILABLE AT ROWLANDS CASTLE
+     S1B: SERVICES AVAILABLE AT DAVIES PHARMACY
      ============================================================ -->
 <section class="relative py-16 lg:py-20 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">
   <div class="absolute top-0 right-0 w-[500px] h-[400px] bg-blue-200/15 rounded-full translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
@@ -273,13 +282,13 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
         <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">What We Offer</span>
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Services Available at Rowlands Castle</h2>
-      <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-jost">Walk in or book ahead — <?php echo count( $rc_services ); ?> services available, no GP referral needed for most.</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Services Available at Davies Pharmacy</h2>
+      <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-jost">Walk in or book ahead — <?php echo count( $dav_services ); ?> services available, no GP referral needed for most.</p>
     </div>
 
     <div class="flex flex-wrap justify-center gap-2.5 md:gap-3 loc-reveal">
-      <?php foreach ( $rc_services as $svc ) :
-        $is_featured = in_array( $svc, $rc_services_featured, true );
+      <?php foreach ( $dav_services as $svc ) :
+        $is_featured = in_array( $svc, $dav_services_featured, true );
       ?>
         <?php if ( $is_featured ) : ?>
           <span class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-sm md:text-[15px] font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:bg-blue-700 transition-colors font-jost">
@@ -314,7 +323,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         Getting Here
       </div>
-      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Find Our Rowlands Castle Branch</h2>
+      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Find Davies Pharmacy in Havant</h2>
       <p class="text-white text-lg font-jost max-w-2xl mx-auto">Multiple ways to reach us — by car, bus, train, or on foot.</p>
     </div>
 
@@ -323,7 +332,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
       <!-- Google Map -->
       <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-2xl bg-white/10" style="min-height:420px;">
-        <iframe src="<?php echo esc_url($maps_src); ?>" title="Map showing Rowlands Castle Pharmacy at 12 The Green, Rowlands Castle, PO9 6BN" width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="<?php echo esc_url($maps_src); ?>" title="Map showing Davies Pharmacy at 12 West Street, Havant, PO9 1PF" width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <!-- Opening Hours table card -->
@@ -417,6 +426,10 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
+        <!-- Additional train info chips -->
+        <div class="flex flex-wrap gap-2 mt-3">
+          <span class="bg-white/15 text-white text-sm font-medium px-3 py-1 rounded-full font-jost border border-white/20">Direct to London Waterloo</span>
+        </div>
       </div>
 
       <!-- On Foot -->
@@ -428,9 +441,9 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <h4 class="text-white font-bold text-lg font-jost mb-2">On Foot</h4>
         <p class="text-white text-base font-jost leading-relaxed mb-4"><?php echo esc_html( $on_foot ); ?></p>
         <?php if ( $landmark ) : ?>
-        <div class="flex items-center gap-2 bg-white/15 rounded-lg px-3 py-2 border border-white/20">
-          <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          <span class="text-white text-sm font-medium font-jost">Near <?php echo esc_html( $landmark ); ?></span>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-white/15 text-white text-sm font-medium px-3 py-1 rounded-full font-jost border border-white/20">Havant Town Centre</span>
+          <span class="bg-white/15 text-white text-sm font-medium px-3 py-1 rounded-full font-jost border border-white/20">Near <?php echo esc_html( $landmark ); ?></span>
         </div>
         <?php endif; ?>
       </div>
@@ -471,8 +484,8 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
         Patient Reviews
       </div>
-      <h2 class="text-gray-900 text-3xl lg:text-4xl font-semibold font-jost mb-4">What Our Rowlands Castle Patients Say</h2>
-      <p class="text-gray-500 text-lg font-jost max-w-2xl mx-auto">Real experiences from villagers and visitors at our Rowlands Castle branch.</p>
+      <h2 class="text-gray-900 text-3xl lg:text-4xl font-semibold font-jost mb-4">What Our Davies Pharmacy Patients Say</h2>
+      <p class="text-gray-500 text-lg font-jost max-w-2xl mx-auto">Real experiences from patients at our Havant branch.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -482,14 +495,14 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="flex gap-1 mb-4">
           <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
         </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Such a welcoming village pharmacy. I started my weight loss injection programme here and the team have been brilliant — supportive, knowledgeable, and never rushed. Highly recommend."</p>
+        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Brilliant ear wax removal — quick, pain-free and the team were so reassuring. I'd been struggling for months and was seen the same day I rang. Could not recommend this pharmacy more highly."</p>
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">SP</span>
+            <span class="text-white text-sm font-bold font-jost">PK</span>
           </div>
           <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Sarah P.</div>
-            <div class="text-gray-400 text-xs font-jost">Weight Loss Injections &middot; January 2025</div>
+            <div class="text-gray-900 font-semibold text-sm font-jost">Patricia K.</div>
+            <div class="text-gray-400 text-xs font-jost">Ear Wax Removal &middot; January 2025</div>
           </div>
         </div>
       </div>
@@ -499,13 +512,13 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="flex gap-1 mb-4">
           <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
         </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Travelling to South America and needed yellow fever, hep A and typhoid. Got everything sorted in one visit at the travel clinic. Easier and quicker than going through my GP — properly excellent service."</p>
+        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Used the travel vaccination clinic here before a trip to Southeast Asia. Everything was sorted in one appointment — the pharmacist was incredibly knowledgeable and I left feeling fully prepared."</p>
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">JM</span>
+            <span class="text-white text-sm font-bold font-jost">DL</span>
           </div>
           <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">James M.</div>
+            <div class="text-gray-900 font-semibold text-sm font-jost">Daniel L.</div>
             <div class="text-gray-400 text-xs font-jost">Travel Vaccinations &middot; February 2025</div>
           </div>
         </div>
@@ -516,13 +529,13 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="flex gap-1 mb-4">
           <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
         </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Used the NHS Pharmacy First service for a sinus infection — was seen, assessed and given antibiotics on the same day. No GP appointment needed. The pharmacist was thorough and reassuring throughout."</p>
+        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Convenient town centre location and a really friendly team. Used NHS Pharmacy First for a minor infection — seen quickly, no GP appointment needed. Great service and genuinely helpful staff."</p>
         <div class="flex items-center gap-3">
           <div class="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">EB</span>
+            <span class="text-white text-sm font-bold font-jost">AH</span>
           </div>
           <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Emma B.</div>
+            <div class="text-gray-900 font-semibold text-sm font-jost">Andrew H.</div>
             <div class="text-gray-400 text-xs font-jost">NHS Pharmacy First &middot; March 2025</div>
           </div>
         </div>
@@ -539,7 +552,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <span class="text-gray-700 font-semibold text-sm font-jost">4.9/5 Average Rating</span>
       </div>
       <div class="w-px h-6 bg-gray-300 hidden md:block"></div>
-      <div class="text-gray-700 font-semibold text-sm font-jost">Travel Clinic Hampshire</div>
+      <div class="text-gray-700 font-semibold text-sm font-jost">400+ Google Reviews</div>
       <div class="w-px h-6 bg-gray-300 hidden md:block"></div>
       <div class="text-gray-700 font-semibold text-sm font-jost">GPhC Registered Pharmacy</div>
       <div class="w-px h-6 bg-gray-300 hidden md:block"></div>
@@ -561,18 +574,17 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
     <div class="text-center mb-12 loc-reveal">
       <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Ready to Get Started?</h2>
-      <p class="text-blue-200 text-lg font-jost max-w-2xl mx-auto">Book an appointment at our Rowlands Castle branch or speak to our AI health assistant instantly.</p>
+      <p class="text-blue-200 text-lg font-jost max-w-2xl mx-auto">Book an appointment at Davies Pharmacy in Havant or speak to our AI health assistant instantly.</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto loc-reveal">
 
-      <!-- Book Appointment card -->
       <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl">
         <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
         <h3 class="text-gray-900 text-2xl font-semibold font-jost mb-3">Book an Appointment</h3>
-        <p class="text-gray-500 font-jost mb-6 leading-relaxed">Same-day and next-day appointments available at our Rowlands Castle branch. No GP referral needed for most services.</p>
+        <p class="text-gray-500 font-jost mb-6 leading-relaxed">Same-day and next-day appointments at Davies Pharmacy in Havant. No GP referral needed for most services.</p>
         <ul class="space-y-2 mb-8">
           <?php foreach (['No GP referral needed', 'Same-day appointments available', 'All consultations strictly private', 'GPhC-registered pharmacists'] as $pt): ?>
           <li class="flex items-center gap-3 text-gray-700 text-sm font-jost">
@@ -590,7 +602,6 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <p class="text-center text-gray-400 text-xs font-jost mt-3">No card required &bull; Cancel anytime</p>
       </div>
 
-      <!-- AI Agent card -->
       <div class="rounded-3xl p-8 lg:p-10 shadow-2xl relative overflow-hidden" style="background:linear-gradient(135deg,#2e1065 0%,#4c1d95 40%,#6d28d9 100%);">
         <div class="absolute top-6 right-6">
           <div class="relative">
@@ -606,7 +617,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
         <h3 class="text-white text-2xl font-semibold font-jost mb-3">Speak to Our AI Agent</h3>
-        <p class="text-purple-200 font-jost mb-6 leading-relaxed">Get instant answers about services, pricing, and availability at Rowlands Castle — available 24/7, no waiting.</p>
+        <p class="text-purple-200 font-jost mb-6 leading-relaxed">Get instant answers about services, pricing, and availability — available 24/7, no waiting.</p>
         <ul class="space-y-2 mb-8">
           <?php foreach (['Available 24 hours a day, 7 days a week', 'Instant answers about all services', 'Check availability before booking', 'Completely free to use'] as $pt): ?>
           <li class="flex items-center gap-3 text-purple-100 text-sm font-jost">
@@ -714,7 +725,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center mx-auto mb-4">
           <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
         </div>
-        <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">8+</div>
+        <div class="text-4xl lg:text-5xl font-bold text-white font-jost mb-2">15+</div>
         <div class="text-blue-100 text-sm font-medium font-jost">Healthcare Services</div>
       </div>
 
@@ -740,7 +751,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
 
 <!-- ============================================================
-     S6: JAVASCRIPT — Scroll reveal
+     JAVASCRIPT — Scroll reveal
      ============================================================ -->
 <script>
 (function () {
