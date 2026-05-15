@@ -108,6 +108,22 @@ $destinations = [
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Loss</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
                     </a>
                   </div>
+                  <div class="mega-dd-section">
+                    <div class="mega-dd-title">NHS &amp; Community</div>
+                    <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Pressure Checks</span><span class="mega-dd-link-desc">Free NHS screening, walk in</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.063 2.522-.187 3.756-.249 2.502-2.13 4.477-4.62 4.79a48.108 48.108 0 01-8.386 0c-2.49-.313-4.371-2.288-4.62-4.79A48.196 48.196 0 013 12c0-1.267.063-2.522.187-3.756.249-2.502 2.13-4.477 4.62-4.79a48.108 48.108 0 018.386 0c2.49.313 4.371 2.288 4.62 4.79.124 1.234.187 2.49.187 3.756z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">COVID Vaccinations</span><span class="mega-dd-link-desc">NHS &amp; private, all ages</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-3-3v6M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Pharmacy First</span><span class="mega-dd-link-desc">7 conditions, no GP needed</span></div>
+                    </a>
+                  </div>
+                  </div>
                   <div class="mega-dd-featured">
                     <div class="mega-dd-featured-badge">Most Popular</div>
                     <h5>Medical Weight Loss</h5>
