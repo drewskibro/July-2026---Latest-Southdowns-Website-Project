@@ -39,7 +39,7 @@ $hours_sun     = get_field('branch_hours_sunday')        ?: 'Sun 10am–2pm';
 $parking       = get_field('branch_parking')             ?: 'On-site patient parking';
 
 // ── Map & Directions ────────────────────────────────────────────
-$maps_src      = get_field('branch_maps_embed_src')      ?: '';
+$maps_src      = get_field('branch_maps_embed_src')      ?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.970574133293!2d-0.9930838234190923!3d50.85022917167127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487445626c78f6ef%3A0x88068c388ee95ca1!2sBosmere%20Pharmacy-%20Travel%20Vaccinations%20%26%20Yellow%20Fever%20Centre%2C%20Weight%20Loss%20Injections.!5e0!3m2!1sen!2suk!4v1778830823352!5m2!1sen!2suk';
 $maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=Bosmere+Medical+Centre,+Solent+Road,+Havant,+Hampshire+PO9+1DQ';
 $by_car        = get_field('branch_by_car')              ?: 'Easily accessible from the A27 and A3(M) Havant interchange. Large free car park directly outside the pharmacy.';
 $car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A27 / A3(M),Large free car park';
@@ -268,7 +268,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       <!-- Google Map -->
       <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-2xl bg-white/10" style="min-height:380px;">
         <?php if ( $maps_src ) : ?>
-          <iframe src="<?php echo esc_url($maps_src); ?>" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="<?php echo esc_url($maps_src); ?>" title="Map showing Bosmere Pharmacy at Bosmere Medical Centre, Solent Road, Havant" width="100%" height="380" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         <?php else : ?>
           <div class="flex items-center justify-center h-[380px] bg-white/10">
             <p class="text-white/60 font-jost text-sm">Map coming soon</p>
