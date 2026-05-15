@@ -275,45 +275,66 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
 
 
 <!-- ═══════════════════════════════════════════════════════
-     S5 · THE VACCINE  (light)
+     S5 · THE VACCINE  (dark blue — proof-led redesign)
 ════════════════════════════════════════════════════════ -->
-<section class="py-20 md:py-28 bg-slate-50">
-  <div class="section-container">
+<section class="py-20 md:py-28 relative overflow-hidden" style="background: linear-gradient(160deg,#0f172a 0%,#1e3a8a 55%,#1d4ed8 100%);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none"></div>
+  <div class="absolute top-1/4 left-0 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(96,165,250,0.15) 0%,transparent 70%);"></div>
+  <div class="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(59,130,246,0.12) 0%,transparent 70%);"></div>
+
+  <div class="section-container relative z-10">
     <div class="text-center mb-14">
-      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold font-jost mb-6 bg-blue-50 text-blue-700 border border-blue-100">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold font-jost mb-6 bg-white/15 backdrop-blur-sm text-white border border-white/20">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
         About the Vaccine
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost">The Pfizer-BioNTech COVID-19 Vaccine</h2>
-      <p class="text-slate-600 text-lg max-w-2xl mx-auto font-jost">An updated mRNA vaccine formulated against current circulating strains, with a proven track record of safety and effectiveness.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">The Pfizer-BioNTech COVID-19 Vaccine</h2>
+      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost">An updated mRNA vaccine formulated against current circulating strains, with a proven track record of safety and effectiveness.</p>
     </div>
 
+    <!-- Proof stats -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+      <?php
+      $vaccine_stats = [
+        [ 'value' => 'Billions', 'label' => 'of doses administered worldwide' ],
+        [ 'value' => 'MHRA',     'label' => 'approved & continuously monitored' ],
+        [ 'value' => 'Same',     'label' => 'Pfizer vaccine used by the NHS' ],
+      ];
+      foreach ( $vaccine_stats as $s ) : ?>
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-5 text-center">
+        <p class="text-3xl md:text-4xl font-extrabold text-white font-jost leading-none mb-2"><?php echo esc_html( $s['value'] ); ?></p>
+        <p class="text-blue-200 text-sm font-jost"><?php echo esc_html( $s['label'] ); ?></p>
+      </div>
+      <?php endforeach; ?>
+    </div>
+
+    <!-- Detail cards -->
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       <!-- Card 1 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(96,165,250,0.2);border:1px solid rgba(96,165,250,0.4);">
+          <svg class="w-6 h-6 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3 font-jost">Why Pfizer?</h3>
-        <ul class="space-y-2.5 text-slate-600 font-jost text-sm">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Widely studied mRNA platform with extensive real-world safety data</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Updated to target dominant Omicron sub-variants</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>MHRA-approved and recommended by leading health authorities</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Same vaccine used in the NHS Spring 2026 programme</li>
+        <h3 class="text-xl font-bold text-white mb-3 font-jost">Why Pfizer?</h3>
+        <ul class="space-y-2.5 text-white font-jost text-sm leading-relaxed">
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Widely studied mRNA platform with extensive real-world safety data</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Updated to target dominant Omicron sub-variants</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>MHRA-approved and recommended by leading health authorities</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-blue-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Same vaccine used in the NHS Spring 2026 programme</li>
         </ul>
       </div>
 
       <!-- Card 2 -->
-      <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(52,211,153,0.2);border:1px solid rgba(52,211,153,0.4);">
+          <svg class="w-6 h-6 text-emerald-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-900 mb-3 font-jost">Is It Safe?</h3>
-        <p class="text-slate-600 font-jost text-sm mb-4">COVID-19 vaccines are among the most closely monitored medicines in history. The Pfizer vaccine has been given to billions of people worldwide.</p>
-        <ul class="space-y-2.5 text-slate-600 font-jost text-sm">
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Does not contain live virus and cannot give you COVID-19</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>mRNA does not alter your DNA</li>
-          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Our pharmacists review your health history before administering</li>
+        <h3 class="text-xl font-bold text-white mb-3 font-jost">Is It Safe?</h3>
+        <p class="text-white font-jost text-sm mb-4 leading-relaxed">COVID-19 vaccines are among the most closely monitored medicines in history. The Pfizer vaccine has been given to billions of people worldwide.</p>
+        <ul class="space-y-2.5 text-white font-jost text-sm leading-relaxed">
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Does not contain live virus and cannot give you COVID-19</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>mRNA does not alter your DNA</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-emerald-300 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Our pharmacists review your health history before administering</li>
         </ul>
       </div>
     </div>
@@ -353,21 +374,21 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
             'Feeling or being sick (nausea)',
           ];
           foreach ( $common_se as $se ) : ?>
-          <li class="flex items-start gap-3 text-blue-100 font-jost text-sm">
-            <span class="flex-shrink-0 w-5 h-5 bg-blue-500/20 rounded-full flex items-center justify-center mt-0.5">
-              <svg class="w-3 h-3 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <li class="flex items-start gap-3 text-white font-jost text-sm leading-relaxed">
+            <span class="flex-shrink-0 w-5 h-5 bg-blue-500/30 rounded-full flex items-center justify-center mt-0.5">
+              <svg class="w-3 h-3 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
             </span>
             <?php echo esc_html( $se ); ?>
           </li>
           <?php endforeach; ?>
         </ul>
-        <p class="text-blue-300/70 text-xs mt-5 font-jost">These typically resolve within 1–2 days. Rest and paracetamol can help.</p>
+        <p class="text-blue-200 text-xs mt-5 font-jost">These typically resolve within 1–2 days. Rest and paracetamol can help.</p>
       </div>
 
       <!-- When to seek advice -->
       <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
         <h3 class="text-xl font-bold text-white mb-5 font-jost">When to Seek Advice</h3>
-        <p class="text-blue-200 font-jost text-sm mb-5">Serious reactions are very rare. Contact 111 or seek urgent care if you experience:</p>
+        <p class="text-white font-jost text-sm mb-5">Serious reactions are very rare. Contact 111 or seek urgent care if you experience:</p>
         <ul class="space-y-3">
           <?php
           $urgent_se = [
@@ -378,16 +399,16 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
             'Symptoms that do not improve after 2–3 days',
           ];
           foreach ( $urgent_se as $se ) : ?>
-          <li class="flex items-start gap-3 text-blue-100 font-jost text-sm">
-            <span class="flex-shrink-0 w-5 h-5 bg-amber-500/20 rounded-full flex items-center justify-center mt-0.5">
-              <svg class="w-3 h-3 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          <li class="flex items-start gap-3 text-white font-jost text-sm leading-relaxed">
+            <span class="flex-shrink-0 w-5 h-5 bg-amber-500/30 rounded-full flex items-center justify-center mt-0.5">
+              <svg class="w-3 h-3 text-amber-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
             </span>
             <?php echo esc_html( $se ); ?>
           </li>
           <?php endforeach; ?>
         </ul>
-        <div class="mt-5 bg-amber-400/10 border border-amber-400/20 rounded-xl px-4 py-3">
-          <p class="text-amber-300 text-xs font-jost">In an emergency always call <strong>999</strong>. For urgent but non-emergency concerns call <strong>111</strong>.</p>
+        <div class="mt-5 bg-amber-400/15 border border-amber-400/30 rounded-xl px-4 py-3">
+          <p class="text-amber-100 text-xs font-jost">In an emergency always call <strong class="text-white">999</strong>. For urgent but non-emergency concerns call <strong class="text-white">111</strong>.</p>
         </div>
       </div>
     </div>
@@ -422,7 +443,7 @@ $cvp_why_cards = [
     ],
     [
         'title' => 'All-Inclusive Pricing',
-        'desc'  => 'One transparent fee of ' . $cvp_price . ' covers everything — consultation, vaccine, observation and your digital record.',
+        'desc'  => 'One transparent fee covers everything — consultation, vaccine, observation and your digital record. No hidden extras, no surprises.',
         'icon'  => [ 'rgba(139,92,246,0.25)', 'rgba(196,181,253,0.5)', '#c4b5fd', '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>' ],
     ],
     [
@@ -480,36 +501,42 @@ $cvp_why_cards = [
       <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost">Three easy ways to secure your appointment — choose whatever works best for you.</p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-10">
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
       <?php
       $book_steps = [
         [
-          'num'   => '01',
-          'title' => 'Book Online',
-          'desc'  => 'Use our online booking system to choose your branch, date, and time slot — available 24/7.',
-          'icon'  => '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
+          'num'      => '01',
+          'title'    => 'Book Online',
+          'tagline'  => 'Done in under 60 seconds',
+          'desc'     => 'Choose your branch, pick a slot, confirm — our booking system is open 24/7 and you will receive instant confirmation.',
+          'icon'     => '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
         ],
         [
-          'num'   => '02',
-          'title' => 'Call Us Direct',
-          'desc'  => 'Prefer to speak to someone? Call your local branch and our team will find you a convenient slot.',
-          'icon'  => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/>',
+          'num'      => '02',
+          'title'    => 'Call Your Branch',
+          'tagline'  => 'Speak to a pharmacist',
+          'desc'     => 'Prefer a conversation? Our team will answer your questions and find you a slot that fits around your day.',
+          'icon'     => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/>',
         ],
         [
-          'num'   => '03',
-          'title' => 'Walk In',
-          'desc'  => 'No appointment? No problem. Walk into any of our four branches and we will do our best to fit you in.',
-          'icon'  => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+          'num'      => '03',
+          'title'    => 'Walk In',
+          'tagline'  => 'Often seen the same day',
+          'desc'     => 'No appointment? Pop into any of our four Hampshire branches — subject to availability, we will do our best to fit you in.',
+          'icon'     => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
         ],
       ];
       foreach ( $book_steps as $step ) : ?>
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7 text-center reveal-item">
-        <div class="w-14 h-14 bg-blue-600/30 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7 text-blue-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><?php echo $step['icon']; ?></svg>
+      <div class="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 overflow-hidden hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 reveal-item">
+        <span aria-hidden="true" class="absolute -top-4 -right-2 text-[7rem] leading-none font-extrabold text-white/5 font-jost select-none pointer-events-none group-hover:text-white/10 transition-colors"><?php echo esc_html( $step['num'] ); ?></span>
+        <div class="relative z-10">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $step['icon']; ?></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-1.5 font-jost"><?php echo esc_html( $step['title'] ); ?></h3>
+          <p class="text-blue-300 text-xs font-semibold uppercase tracking-wider font-jost mb-3"><?php echo esc_html( $step['tagline'] ); ?></p>
+          <p class="text-white/90 text-sm leading-relaxed font-jost"><?php echo esc_html( $step['desc'] ); ?></p>
         </div>
-        <span class="text-blue-400/60 text-xs font-bold tracking-widest font-jost uppercase"><?php echo esc_html( $step['num'] ); ?></span>
-        <h3 class="text-lg font-bold text-white mt-1 mb-2 font-jost"><?php echo esc_html( $step['title'] ); ?></h3>
-        <p class="text-blue-200 text-sm font-jost"><?php echo esc_html( $step['desc'] ); ?></p>
       </div>
       <?php endforeach; ?>
     </div>
@@ -688,7 +715,7 @@ $cvp_why_cards = [
         'MHRA Approved',
         'GPhC-Registered Pharmacists',
         'Same-Day Availability',
-        $cvp_price . ' All-Inclusive',
+        'All-Inclusive Pricing',
       ];
       foreach ( $badges as $badge ) : ?>
       <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold font-jost bg-white/15 backdrop-blur-sm text-white border border-white/20">
@@ -716,10 +743,10 @@ $cvp_why_cards = [
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-white/10 pt-10">
       <?php
       $trust_stats = [
-        [ 'value' => '4',       'label' => 'Hampshire Locations' ],
-        [ 'value' => $cvp_price, 'label' => 'All-Inclusive Price' ],
-        [ 'value' => 'GPhC',    'label' => 'Registered Pharmacists' ],
-        [ 'value' => 'Pfizer',  'label' => 'mRNA Vaccine' ],
+        [ 'value' => '4',         'label' => 'Hampshire Locations' ],
+        [ 'value' => 'Same Day',  'label' => 'Appointments Available' ],
+        [ 'value' => 'GPhC',      'label' => 'Registered Pharmacists' ],
+        [ 'value' => 'Pfizer',    'label' => 'mRNA Vaccine' ],
       ];
       foreach ( $trust_stats as $stat ) : ?>
       <div class="text-center">
