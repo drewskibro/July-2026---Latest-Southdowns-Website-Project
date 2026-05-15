@@ -17,6 +17,16 @@ $hero_img      = get_field('branch_hero_image')          ?: 'https://images.unsp
 $hero_subtitle = get_field('branch_hero_subtitle')       ?: 'Your Pharmacy at Bosmere Medical Centre';
 $hero_desc     = get_field('branch_hero_description')    ?: 'Expert healthcare services in Havant. Open 7 days a week with extended evening hours — no GP referral needed for most services.';
 
+// ── Services offered at this branch ─────────────────────────────
+$bosmere_services_featured = [ 'Weight Loss Injections', 'Travel Vaccinations', 'Ear Wax Removal' ];
+$bosmere_services = [
+    'B12 Injection','Covid Vaccination','Cholesterol Check','Flu Vaccination',
+    'Free Contraceptive Service','Full Blood Count','Hypertension Check',
+    'HPV Vaccinations','NHS Pharmacy First','RSV Vaccinations',
+    'Shingles Vaccinations','Travel Vaccinations','Thyroid Health Check',
+    'Weight Loss Injections','Weight Loss Consultation','Ear Wax Removal',
+];
+
 // ── Contact & Hours ─────────────────────────────────────────────
 $addr1         = get_field('branch_address_line1')       ?: 'Bosmere Medical Centre, Solent Road';
 $addr2         = get_field('branch_address_line2')       ?: 'Havant, Hampshire';
@@ -103,12 +113,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       GPhC Registered &bull; Bosmere Medical Centre
     </div>
     <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo esc_html( $hero_subtitle ); ?></h1>
-    <p class="text-white text-base leading-relaxed mb-4 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
-    <div class="flex flex-wrap gap-1.5 mb-5">
-      <?php foreach ( $bosmere_services as $svc ) : ?>
-      <span class="inline-flex items-center text-white text-xs font-medium px-2.5 py-1 rounded-full font-jost" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);"><?php echo esc_html( $svc ); ?></span>
-      <?php endforeach; ?>
-    </div>
+    <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
     <div class="flex flex-wrap gap-3 mb-4">
       <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg font-jost">
         Book Appointment
@@ -127,24 +132,8 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         GPhC Registered &bull; Bosmere, Havant
       </div>
-      <h1 class="text-white text-4xl lg:text-[48px] font-semibold mb-4 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-5 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
-
-      <!-- Services pill grid -->
-      <div class="flex flex-wrap gap-2 mb-6">
-        <?php
-        $bosmere_services = [
-            'B12 Injection','Covid Vaccination','Cholesterol Check','Flu Vaccination',
-            'Free Contraceptive Service','Full Blood Count','Hypertension Check',
-            'HPV Vaccinations','NHS Pharmacy First','RSV Vaccinations',
-            'Shingles Vaccinations','Travel Vaccinations','Thyroid Health Check',
-            'Weight Loss Injections','Weight Loss Consultation','Ear Wax Removal',
-        ];
-        foreach ( $bosmere_services as $svc ) : ?>
-        <span class="inline-flex items-center text-white text-xs font-medium px-3 py-1 rounded-full font-jost" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);"><?php echo esc_html( $svc ); ?></span>
-        <?php endforeach; ?>
-      </div>
-
+      <h1 class="text-white text-4xl lg:text-[48px] font-semibold mb-6 font-jost" style="line-height:1.1;"><?php echo esc_html( $hero_subtitle ); ?></h1>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo esc_html( $hero_desc ); ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url($booking_url); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book Appointment
@@ -223,6 +212,45 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   </div>
 
 </section>
+
+
+<!-- ============================================================
+     S1B: SERVICES AVAILABLE AT BOSMERE
+     ============================================================ -->
+<section class="relative py-16 lg:py-20 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">
+  <div class="absolute top-0 right-0 w-[500px] h-[400px] bg-blue-200/15 rounded-full translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10 loc-reveal">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-5">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">What We Offer</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Services Available at Bosmere</h2>
+      <p class="text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-jost">Walk in or book ahead — <?php echo count( $bosmere_services ); ?> services available, no GP referral needed for most.</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-2.5 md:gap-3 loc-reveal">
+      <?php foreach ( $bosmere_services as $svc ) :
+        $is_featured = in_array( $svc, $bosmere_services_featured, true );
+      ?>
+        <?php if ( $is_featured ) : ?>
+          <span class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-sm md:text-[15px] font-semibold px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-md hover:bg-blue-700 transition-colors font-jost">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49L18.21 22 12 17.27 5.79 22l2.39-8.15L2 9.36h7.61z"/></svg>
+            <?php echo esc_html( $svc ); ?>
+          </span>
+        <?php else : ?>
+          <span class="inline-flex items-center gap-1.5 bg-white text-slate-700 text-sm md:text-[15px] font-medium px-4 md:px-5 py-2 md:py-2.5 rounded-full border border-slate-200 hover:border-blue-400 hover:text-blue-700 hover:shadow-sm transition-all font-jost">
+            <svg class="w-3.5 h-3.5 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <?php echo esc_html( $svc ); ?>
+          </span>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ============================================================
      S2: MAP & DIRECTIONS
