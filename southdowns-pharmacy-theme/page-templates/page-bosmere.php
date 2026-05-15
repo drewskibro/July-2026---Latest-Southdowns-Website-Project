@@ -322,12 +322,12 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.3);">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#fbbf24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2.5 0M13 16H3m10 0h2m4-6l-2-4H9l-2 4h12z"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Car</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_car ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-3">By Car</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-5"><?php echo esc_html( $by_car ); ?></p>
         <?php if ( $car_tag_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $car_tag_list as $tag ) : ?>
-            <span class="text-xs font-medium px-3 py-1 rounded-full font-jost" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.35);color:#fcd34d;"><?php echo esc_html( $tag ); ?></span>
+            <span class="text-sm font-semibold px-4 py-1.5 rounded-full font-jost" style="background:rgba(245,158,11,0.2);border:1px solid rgba(245,158,11,0.35);color:#fcd34d;"><?php echo esc_html( $tag ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
@@ -340,12 +340,12 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.3);">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#7dd3fc" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M8 19v2m8-2v2M3 10h18M8 5V3m8 2V3"/><circle cx="8" cy="15" r="1" fill="#7dd3fc"/><circle cx="16" cy="15" r="1" fill="#7dd3fc"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Bus</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_bus ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-3">By Bus</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-5"><?php echo esc_html( $by_bus ); ?></p>
         <?php if ( $bus_route_list ) : ?>
         <div class="flex flex-wrap gap-2">
           <?php foreach ( $bus_route_list as $route ) : ?>
-            <span class="text-xs font-bold px-3 py-1 rounded-full font-jost" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.35);color:#7dd3fc;">Route <?php echo esc_html( $route ); ?></span>
+            <span class="text-sm font-bold px-4 py-1.5 rounded-full font-jost" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.35);color:#7dd3fc;">Route <?php echo esc_html( $route ); ?></span>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>
@@ -357,19 +357,19 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(45,212,191,0.2);border:1px solid rgba(45,212,191,0.3);">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#5eead4" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-2 3m14-3l-2 3M5 7h14a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 15a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2zM12 7V4"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">By Train</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $by_train ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-3">By Train</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-5"><?php echo esc_html( $by_train ); ?></p>
         <?php if ( $train_list ) : ?>
         <div class="flex flex-col gap-2">
           <?php foreach ( $train_list as $i => $stn ) : ?>
-            <div class="flex items-center justify-between rounded-lg px-3 py-2" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">
+            <div class="flex items-center justify-between rounded-lg px-3 py-2.5" style="background:rgba(45,212,191,0.12);border:1px solid rgba(45,212,191,0.25);">
               <div class="flex items-center gap-2">
                 <?php if ( $i === 0 ) : ?>
-                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded" style="background:rgba(45,212,191,0.3);color:#5eead4;letter-spacing:.05em;">CLOSEST</span>
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded" style="background:rgba(45,212,191,0.3);color:#5eead4;letter-spacing:.05em;">CLOSEST</span>
                 <?php endif; ?>
-                <span class="text-white text-xs font-medium font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
+                <span class="text-white text-sm font-semibold font-jost"><?php echo esc_html( $stn['name'] ); ?></span>
               </div>
-              <span class="text-teal-300 text-xs font-jost ml-2 whitespace-nowrap"><?php echo esc_html( $stn['time'] ); ?></span>
+              <span class="text-teal-200 text-sm font-semibold font-jost ml-2 whitespace-nowrap"><?php echo esc_html( $stn['time'] ); ?></span>
             </div>
           <?php endforeach; ?>
         </div>
@@ -382,12 +382,12 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(74,222,128,0.2);border:1px solid rgba(74,222,128,0.3);">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="#86efac" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14l-4 4m4-4l4 4m-4-4v6"/></svg>
         </div>
-        <h4 class="text-white font-semibold text-base font-jost mb-2">On Foot</h4>
-        <p class="text-blue-100 text-sm font-jost leading-relaxed mb-4"><?php echo esc_html( $on_foot ); ?></p>
+        <h4 class="text-white font-bold text-lg font-jost mb-3">On Foot</h4>
+        <p class="text-white text-base font-jost leading-relaxed mb-5"><?php echo esc_html( $on_foot ); ?></p>
         <?php if ( $landmark ) : ?>
-        <div class="flex items-center gap-2 rounded-lg px-3 py-2" style="background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.25);">
+        <div class="flex items-center gap-2.5 rounded-lg px-3 py-2.5" style="background:rgba(74,222,128,0.12);border:1px solid rgba(74,222,128,0.25);">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="#86efac" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-          <span class="text-white text-xs font-medium font-jost">Near <?php echo esc_html( $landmark ); ?></span>
+          <span class="text-white text-sm font-semibold font-jost">Near <?php echo esc_html( $landmark ); ?></span>
         </div>
         <?php endif; ?>
       </div>
