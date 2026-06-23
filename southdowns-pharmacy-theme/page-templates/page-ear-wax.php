@@ -498,7 +498,7 @@ $nhs_locs_headline   = get_field( 'ew_nhs_locations_headline' ) ?: 'Available at
 $nhs_locations_raw   = get_field( 'ew_nhs_locations' );
 $nhs_locations       = $nhs_locations_raw
     ? array_filter( array_map( 'trim', explode( "\n", $nhs_locations_raw ) ) )
-    : [ 'Southdowns Pharmacy, [INSERT BRANCH LOCATION]' ];
+    : [ 'Southdowns Pharmacy, Emsworth' ];
 ?>
 <section class="relative py-16 md:py-24 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
   <div class="absolute inset-0 opacity-10">
@@ -636,7 +636,7 @@ $why_defaults  = [
     [ 'title' => 'Real-Time HD Imaging',    'body' => 'Using advanced imaging equipment, we can see exactly what&rsquo;s in your ear canal before and during treatment.' ],
     [ 'title' => 'Same-Day Appointments',   'body' => 'No NHS waiting. Same-day microsuction appointments available subject to availability.' ],
     [ 'title' => 'Painless Procedure',      'body' => 'No water, no mess &mdash; just gentle suction for a comfortable experience with immediate hearing improvement.' ],
-    [ 'title' => 'Convenient Location',     'body' => 'Available at Southdowns Pharmacy, [INSERT BRANCH LOCATION]. Easy access with same-day appointments available.' ],
+    [ 'title' => 'Convenient Location',     'body' => 'Available at Southdowns Pharmacy, Emsworth. Easy access with same-day appointments available.' ],
     [ 'title' => 'Professional Service',   'body' => 'Professional ear wax removal for clear, healthy ears. Carried out by trained, TympaHealth certified clinicians.' ],
 ];
 $why_cards = ( ! empty( $why_cards_acf ) ) ? $why_cards_acf : $why_defaults;
@@ -757,7 +757,7 @@ $faqs_defaults = [
     [ 'question' => 'Is there an age restriction?',                 'answer' => '<strong>Yes, this service is strictly for ages 18 and over only.</strong> If you make a booking for someone under 18, there is a strict no-refund policy as clinical time has been allocated. Please do not book for any persons under the age of 18.' ],
     [ 'question' => 'How often will I need treatment?',             'answer' => 'This varies from person to person. Some people only need treatment once. Others who produce excess wax may benefit from appointments <strong>every 3 to 6 months</strong>. Your clinician will advise a personalised schedule at the end of your appointment.' ],
     [ 'question' => 'What if you find something other than wax?',   'answer' => 'During the examination, high-definition images and videos are taken. This can identify infections, perforations, or other conditions. If we find anything that requires further investigation, we&rsquo;ll advise you to visit your GP or refer you to a specialist ENT doctor.' ],
-    [ 'question' => 'Where is the service available?',              'answer' => 'TympaHealth ear wax removal is available at <strong>Southdowns Pharmacy, [INSERT BRANCH LOCATION]</strong>. Contact us to book or to find out more about the service.' ],
+    [ 'question' => 'Where is the service available?',              'answer' => 'TympaHealth ear wax removal is available at <strong>Southdowns Pharmacy, Emsworth</strong>. Contact us to book or to find out more about the service.' ],
 ];
 $faqs = ( ! empty( $faqs_acf ) ) ? $faqs_acf : $faqs_defaults;
 ?>
@@ -834,10 +834,10 @@ $emsworth_directions_url = 'https://maps.google.com/?q=' . urlencode( $emsworth[
     <div class="text-center mb-12">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Our Location</span>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo get_field( 'ew_loc_eyebrow' ) ?: 'Our Location'; ?></span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost">Available at Emsworth Pharmacy</h2>
-      <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Our TympaHealth-certified ear wax removal service is offered exclusively at our Emsworth branch.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo get_field( 'ew_loc_headline' ) ?: 'Available at Emsworth Pharmacy'; ?></h2>
+      <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo get_field( 'ew_loc_subhead' ) ?: 'Our TympaHealth-certified ear wax removal service is offered exclusively at our Emsworth branch.'; ?></p>
     </div>
 
     <!-- Single feature card -->
@@ -947,7 +947,7 @@ $cta_stat_patients= get_field( 'ew_cta_stat_patients') ?: '10,000+';
       <span>&#10003; <?php echo esc_html( $pill ); ?></span>
       <?php endforeach; ?>
     </div>
-    <p class="text-blue-200/70 text-sm font-jost">Available at Southdowns Pharmacy, [INSERT BRANCH LOCATION]</p>
+    <p class="text-blue-200/70 text-sm font-jost">Available at Southdowns Pharmacy, Emsworth</p>
     <!-- Trust indicators -->
     <div class="mt-10 flex flex-wrap justify-center items-center gap-8 md:gap-12">
       <div class="text-center">
@@ -1012,5 +1012,22 @@ $cta_stat_patients= get_field( 'ew_cta_stat_patients') ?: '10,000+';
   els.forEach(function(el) { io.observe(el); });
 })();
 </script>
+
+<!-- ============================================================
+     BOOKING — Ear Wax Removal (Emsworth only · Amelia location 1)
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="book">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-8 md:mb-10">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo get_field( 'ew_book_eyebrow' ) ?: 'Book Online &middot; Emsworth'; ?></span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost"><?php echo get_field( 'ew_book_headline' ) ?: 'Book Your Ear Wax Removal'; ?></h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo get_field( 'ew_book_subhead' ) ?: 'Our TympaHealth ear wax removal service is available at our Emsworth branch. Choose your time below.'; ?></p>
+    </div>
+    <?php echo do_shortcode( '[ameliastepbooking layout=2 location=1 category=17 show=category,service,employee,datetime,info]' ); ?>
+  </div>
+</section>
 
 <?php get_footer(); ?>

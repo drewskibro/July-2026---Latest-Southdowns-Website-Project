@@ -14,18 +14,19 @@ $branch_havant          = sp_branch( 2 );
 $branch_davies          = sp_branch( 3 );
 $branch_rowlands_castle = sp_branch( 4 );
 
+// Branches in alphabetical order: Bosmere (Havant), Davies, Emsworth, Rowlands Castle.
 $branches = [
-    [ 'data' => $branch_emsworth,        'url' => home_url( '/emsworth/' ) ],
     [ 'data' => $branch_havant,          'url' => home_url( '/bosmere/' ) ],
     [ 'data' => $branch_davies,          'url' => home_url( '/davies/' ) ],
+    [ 'data' => $branch_emsworth,        'url' => home_url( '/emsworth/' ) ],
     [ 'data' => $branch_rowlands_castle, 'url' => home_url( '/rowlands-pharmacy/' ) ],
 ];
 
 $destinations = [
-    [ 'name' => 'Thailand',    'flag' => 'th', 'desc' => 'Hep A, Typhoid, Rabies & more', 'url' => home_url( '/destinations/thailand/' ) ],
-    [ 'name' => 'India',       'flag' => 'in', 'desc' => 'Hep A, Typhoid, Japanese Enc.',  'url' => home_url( '/destinations/india/' ) ],
-    [ 'name' => 'Cape Verde',  'flag' => 'cv', 'desc' => 'Yellow Fever, Hep A, Typhoid',   'url' => home_url( '/destinations/cape-verde/' ) ],
-    [ 'name' => 'Kenya',       'flag' => 'ke', 'desc' => 'Yellow Fever, Hep A, Malaria',   'url' => home_url( '/destinations/kenya/' ) ],
+    [ 'name' => 'Thailand',    'flag' => 'th', 'desc' => 'Hep A, Typhoid, Rabies & more', 'url' => home_url( '/thailand-travel-vaccinations/' ) ],
+    [ 'name' => 'India',       'flag' => 'in', 'desc' => 'Hep A, Typhoid, Japanese Enc.',  'url' => home_url( '/india-travel-vaccinations/' ) ],
+    [ 'name' => 'Cape Verde',  'flag' => 'cv', 'desc' => 'Yellow Fever, Hep A, Typhoid',   'url' => home_url( '/cape-verde-travel-vaccinations/' ) ],
+    [ 'name' => 'Kenya',       'flag' => 'ke', 'desc' => 'Yellow Fever, Hep A, Malaria',   'url' => home_url( '/kenya-travel-vaccinations/' ) ],
 ];
 ?>
 
@@ -41,7 +42,7 @@ $destinations = [
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center py-3 pr-8">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( sp_pharmacy_name() ); ?>">
-          <img src="<?php echo esc_url( sp_logo_url() ); ?>" alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" class="h-12 lg:h-14 w-auto" />
+          <img src="<?php echo esc_url( sp_logo_url() ); ?>" alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" class="h-16 lg:h-20 w-auto" />
         </a>
       </div>
 
@@ -51,11 +52,12 @@ $destinations = [
         <!-- Top Menu -->
         <nav aria-label="Top Menu" class="text-[15px] font-light text-zinc-700">
           <ul class="flex items-center justify-end gap-6 py-2">
-            <li><a href="<?php echo esc_url( home_url( '/faqs/' ) ); ?>" class="hover:text-blue-600 transition-colors">FAQs</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="hover:text-blue-600 transition-colors">FAQs</a></li>
             <li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="hover:text-blue-600 transition-colors">Blog</a></li>
-            <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="hover:text-blue-600 transition-colors">Contact Us</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="hover:text-blue-600 transition-colors">About Us</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="hover:text-blue-600 transition-colors">Contact Us</a></li>
             <li>
-              <button type="button" aria-label="Speak to our AI agent" class="inline-flex items-center gap-2 bg-purple-600 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+              <button type="button" data-vf-open aria-label="Speak to our AI agent" class="inline-flex items-center gap-2 bg-purple-600 text-white text-[15px] font-medium px-5 py-2.5 rounded-full hover:bg-purple-700 transition-colors">
                 <span class="relative flex items-center justify-center w-4 h-4 flex-shrink-0">
                   <span class="absolute inset-0 rounded-full bg-white/40 animate-ping"></span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="relative w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
@@ -69,6 +71,9 @@ $destinations = [
         <!-- Main Menu -->
         <nav aria-label="Main Menu" class="text-zinc-800 -mt-1">
           <ul class="flex items-center justify-end">
+
+            <!-- HOME (flat) -->
+            <li class="py-3"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Home</a></li>
 
             <!-- SERVICES dropdown -->
             <li class="dd-parent py-3">
@@ -99,9 +104,9 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396.234-.847 1.058-1.354 1.938-1.354H6.75z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Ear Wax Removal</span><span class="mega-dd-link-desc">Professional microsuction</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/health-wellbeing/' ) ); ?>" class="mega-dd-link">
+                    <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Health &amp; Wellbeing</span><span class="mega-dd-link-desc">Blood pressure, diabetes &amp; more</span></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">B12 Injections</span><span class="mega-dd-link-desc">Energy-boosting vitamin B12 jabs</span></div>
                     </a>
                     <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
@@ -161,7 +166,7 @@ $destinations = [
 
             <!-- DESTINATIONS dropdown -->
             <li class="dd-parent py-3">
-              <a href="<?php echo esc_url( home_url( '/destinations/' ) ); ?>" class="px-2 py-2 inline-flex items-center hover:text-blue-700 transition-colors">
+              <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="px-2 py-2 inline-flex items-center hover:text-blue-700 transition-colors">
                 <span>Destinations</span>
                 <svg class="dd-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </a>
@@ -186,11 +191,11 @@ $destinations = [
             </li>
 
             <!-- PRICING (flat) -->
-            <li class="py-3"><a href="<?php echo esc_url( home_url( '/pricing/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Pricing</a></li>
+            <li class="py-3"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Pricing</a></li>
 
             <!-- BOOK APPOINTMENT CTA -->
             <li class="py-3 ml-2">
-              <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white text-sm font-medium px-7 py-3 rounded-full transition-colors">
+              <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white text-[15px] font-medium px-8 py-3.5 rounded-full transition-colors">
                 Book Appointment
               </a>
             </li>
@@ -214,7 +219,7 @@ $destinations = [
       <!-- Logo (centre) -->
       <div class="w-6/12 flex items-center justify-center">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( sp_pharmacy_name() ); ?>">
-          <img alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" src="<?php echo esc_url( sp_logo_url() ); ?>" class="w-[70px] h-auto" />
+          <img alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" src="<?php echo esc_url( sp_logo_url() ); ?>" class="w-[105px] h-auto" />
         </a>
       </div>
 
@@ -229,6 +234,9 @@ $destinations = [
   <div id="mob-drawer" class="mob-drawer md:hidden bg-gray-50 border-b border-stone-300">
     <ul class="font-jost">
 
+      <!-- Home -->
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Home</a></li>
+
       <!-- Services accordion -->
       <li class="border-b border-stone-200">
         <div class="mob-dd-toggle flex justify-between items-center py-4 px-[22.5px] text-zinc-800 font-medium">
@@ -240,7 +248,7 @@ $destinations = [
           <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) ); ?>">Yellow Fever</a>
           <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>
-          <a href="<?php echo esc_url( home_url( '/health-wellbeing/' ) ); ?>">Health &amp; Wellbeing</a>
+          <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>">B12 Injections</a>
           <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>">Weight Loss</a>
         </div>
       </li>
@@ -275,14 +283,15 @@ $destinations = [
       </li>
 
       <!-- Flat links -->
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/pricing/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Pricing</a></li>
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/faqs/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">FAQs</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Pricing</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">FAQs</a></li>
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Blog</a></li>
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Contact Us</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">About Us</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Contact Us</a></li>
 
       <!-- CTAs -->
       <li class="px-[22.5px] py-4 flex flex-col gap-3">
-        <button type="button" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-3 rounded-full transition-colors">
+        <button type="button" data-vf-open aria-label="Speak to our AI agent" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-[15px] font-medium px-5 py-3.5 rounded-full transition-colors">
           <span class="relative flex items-center justify-center w-4 h-4 flex-shrink-0">
             <span class="absolute inset-0 rounded-full bg-white/40 animate-ping"></span>
             <svg xmlns="http://www.w3.org/2000/svg" class="relative w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>

@@ -191,8 +191,8 @@ add_action( 'acf/init', function () {
                 'name'         => 'cv_nhs_promo_body',
                 'type'         => 'textarea',
                 'rows'         => 4,
-                'instructions' => 'Body text in the "Not Eligible?" section. May reference the private price (currently £89.50). Basic HTML allowed.',
-                'placeholder'  => 'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>£89.50 per dose</strong> — ideal for those who want to stay protected but fall outside the current NHS cohorts.',
+                'instructions' => 'Body text in the "Not Eligible?" section. May reference the private price (currently £92.50). Basic HTML allowed.',
+                'placeholder'  => 'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>£92.50 per dose</strong> — ideal for those who want to stay protected but fall outside the current NHS cohorts.',
             ],
             [
                 'key'         => 'field_cv_nhs_final_cta_headline',
@@ -208,6 +208,44 @@ add_action( 'acf/init', function () {
                 'type'        => 'textarea',
                 'rows'        => 2,
                 'placeholder' => 'All four Southdowns Pharmacy locations offer NHS COVID-19 vaccination for eligible patients. Walk in during opening hours or book online now.',
+            ],
+
+            // ---- Tab · Booking / Safety / FAQ (previously hardcoded) ----
+            [ 'key' => 'field_cv_nhs_tab_extra', 'label' => 'Booking / Safety / FAQ', 'name' => '', 'type' => 'tab' ],
+            [ 'key' => 'field_cv_nhs_programme_headline', 'label' => 'Programme — Headline', 'name' => 'cv_nhs_programme_headline', 'type' => 'text', 'placeholder' => 'Protecting Those Most at Risk' ],
+            [ 'key' => 'field_cv_nhs_book_headline', 'label' => 'How to Book — Headline', 'name' => 'cv_nhs_book_headline', 'type' => 'text', 'placeholder' => 'Three Ways to Book Your NHS COVID Vaccine' ],
+            [ 'key' => 'field_cv_nhs_book_subhead', 'label' => 'How to Book — Sub-headline', 'name' => 'cv_nhs_book_subhead', 'type' => 'text', 'placeholder' => 'Booking is simple. Choose whichever method works best for you.' ],
+            [
+                'key' => 'field_cv_nhs_book_methods', 'label' => 'How to Book — Method Cards', 'name' => 'cv_nhs_book_methods', 'type' => 'repeater',
+                'min' => 0, 'max' => 6, 'layout' => 'block', 'button_label' => 'Add Method',
+                'instructions' => 'Numbers added automatically by position. Leave empty to use the three built-in defaults.',
+                'sub_fields' => [
+                    [ 'key' => 'field_cv_nhs_book_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                    [ 'key' => 'field_cv_nhs_book_body',  'label' => 'Body',  'name' => 'body',  'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+                ],
+            ],
+            [ 'key' => 'field_cv_nhs_book_note', 'label' => 'How to Book — Info Box', 'name' => 'cv_nhs_book_note', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'instructions' => 'Basic HTML allowed.' ],
+            [ 'key' => 'field_cv_nhs_safety_headline', 'label' => 'Safety — Headline', 'name' => 'cv_nhs_safety_headline', 'type' => 'text', 'placeholder' => 'Safe, Approved, and Effective' ],
+            [ 'key' => 'field_cv_nhs_safety_subhead', 'label' => 'Safety — Sub-headline', 'name' => 'cv_nhs_safety_subhead', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ],
+            [
+                'key' => 'field_cv_nhs_safety_cards', 'label' => 'Safety — Cards', 'name' => 'cv_nhs_safety_cards', 'type' => 'repeater',
+                'min' => 0, 'max' => 4, 'layout' => 'block', 'button_label' => 'Add Card',
+                'instructions' => 'Leave empty to use the two built-in defaults.',
+                'sub_fields' => [
+                    [ 'key' => 'field_cv_nhs_safety_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                    [ 'key' => 'field_cv_nhs_safety_body',  'label' => 'Body',  'name' => 'body',  'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'instructions' => 'Basic HTML allowed.' ],
+                ],
+            ],
+            [ 'key' => 'field_cv_nhs_safety_note', 'label' => 'Safety — Info Box', 'name' => 'cv_nhs_safety_note', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'instructions' => 'Basic HTML allowed.' ],
+            [ 'key' => 'field_cv_nhs_promo_headline', 'label' => 'Not Eligible — Headline', 'name' => 'cv_nhs_promo_headline', 'type' => 'text', 'placeholder' => 'Not Eligible for the NHS Vaccine?' ],
+            [
+                'key' => 'field_cv_nhs_faqs', 'label' => 'FAQ Items', 'name' => 'cv_nhs_faqs', 'type' => 'repeater',
+                'min' => 0, 'max' => 30, 'layout' => 'block', 'button_label' => 'Add FAQ',
+                'instructions' => 'Leave empty to use the built-in defaults.',
+                'sub_fields' => [
+                    [ 'key' => 'field_cv_nhs_faq_q', 'label' => 'Question', 'name' => 'question', 'type' => 'text' ],
+                    [ 'key' => 'field_cv_nhs_faq_a', 'label' => 'Answer',   'name' => 'answer',   'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'instructions' => 'Basic HTML allowed.' ],
+                ],
             ],
 
         ],
@@ -284,7 +322,7 @@ add_action( 'acf/init', function () {
                 'name'         => 'cv_priv_price',
                 'type'         => 'text',
                 'instructions' => 'Single source of truth — appears on the pricing card, "Book Now" button, Why-Southdowns inclusion line, final CTA badges and trust row.',
-                'placeholder'  => '£89.50',
+                'placeholder'  => '£92.50',
             ],
             [
                 'key'          => 'field_cv_priv_price_label',
@@ -327,6 +365,66 @@ add_action( 'acf/init', function () {
                 'rows'        => 2,
                 'placeholder' => 'No waiting lists. No eligibility criteria. Just the Pfizer vaccine, administered by our expert team — at a time that suits you.',
             ],
+
+            // ---- Tab · Page Sections (previously hardcoded) ----
+            [ 'key' => 'field_cv_priv_tab_sections', 'label' => 'Page Sections', 'name' => '', 'type' => 'tab' ],
+            // S2 stat bar
+            [ 'key' => 'field_cv_priv_stat_cards', 'label' => 'Stat Bar Cards', 'name' => 'cv_priv_stat_cards', 'type' => 'repeater', 'min' => 0, 'max' => 6, 'layout' => 'table', 'button_label' => 'Add Stat', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_stat_value', 'label' => 'Value', 'name' => 'value', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_stat_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
+            ] ],
+            // S3 who-is-this-for
+            [ 'key' => 'field_cv_priv_s3_headline', 'label' => 'Who Is This For — Headline', 'name' => 'cv_priv_s3_headline', 'type' => 'text', 'placeholder' => 'Stay Protected — Even if You\'re Not NHS Eligible' ],
+            [ 'key' => 'field_cv_priv_s3_body', 'label' => 'Who Is This For — Intro', 'name' => 'cv_priv_s3_body', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+            [ 'key' => 'field_cv_priv_s3_cards', 'label' => 'Who Is This For — Cards', 'name' => 'cv_priv_s3_cards', 'type' => 'repeater', 'min' => 0, 'max' => 8, 'layout' => 'block', 'button_label' => 'Add Card', 'instructions' => 'Icons & colours stay in the design (by position). Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_s3_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_s3_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'text' ],
+            ] ],
+            // S4 pricing headers
+            [ 'key' => 'field_cv_priv_price_headline', 'label' => 'Pricing — Headline', 'name' => 'cv_priv_price_headline', 'type' => 'text', 'placeholder' => 'Simple, All-Inclusive Price' ],
+            [ 'key' => 'field_cv_priv_price_subhead', 'label' => 'Pricing — Sub-headline', 'name' => 'cv_priv_price_subhead', 'type' => 'text', 'placeholder' => 'One price covers everything — no hidden charges, no consultation fees.' ],
+            // S5 vaccine
+            [ 'key' => 'field_cv_priv_vaccine_headline', 'label' => 'Vaccine — Headline', 'name' => 'cv_priv_vaccine_headline', 'type' => 'text', 'placeholder' => 'The Pfizer-BioNTech COVID-19 Vaccine' ],
+            [ 'key' => 'field_cv_priv_vaccine_subhead', 'label' => 'Vaccine — Sub-headline', 'name' => 'cv_priv_vaccine_subhead', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ],
+            [ 'key' => 'field_cv_priv_vaccine_stats', 'label' => 'Vaccine — Proof Stats', 'name' => 'cv_priv_vaccine_stats', 'type' => 'repeater', 'min' => 0, 'max' => 6, 'layout' => 'table', 'button_label' => 'Add Stat', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_vs_value', 'label' => 'Value', 'name' => 'value', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_vs_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
+            ] ],
+            // S6 side effects
+            [ 'key' => 'field_cv_priv_se_headline', 'label' => 'Side Effects — Headline', 'name' => 'cv_priv_se_headline', 'type' => 'text', 'placeholder' => 'Side Effects & After Care' ],
+            [ 'key' => 'field_cv_priv_se_subhead', 'label' => 'Side Effects — Sub-headline', 'name' => 'cv_priv_se_subhead', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ],
+            [ 'key' => 'field_cv_priv_common_se', 'label' => 'Common Side Effects', 'name' => 'cv_priv_common_se', 'type' => 'repeater', 'min' => 0, 'max' => 12, 'layout' => 'table', 'button_label' => 'Add Item', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [ [ 'key' => 'field_cv_priv_common_text', 'label' => 'Text', 'name' => 'text', 'type' => 'text' ] ] ],
+            [ 'key' => 'field_cv_priv_urgent_se', 'label' => 'When to Seek Advice', 'name' => 'cv_priv_urgent_se', 'type' => 'repeater', 'min' => 0, 'max' => 12, 'layout' => 'table', 'button_label' => 'Add Item', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [ [ 'key' => 'field_cv_priv_urgent_text', 'label' => 'Text', 'name' => 'text', 'type' => 'text' ] ] ],
+            // S7 why choose
+            [ 'key' => 'field_cv_priv_why_headline', 'label' => 'Why Choose — Headline', 'name' => 'cv_priv_why_headline', 'type' => 'text', 'placeholder' => 'Why Choose Southdowns Pharmacy?' ],
+            [ 'key' => 'field_cv_priv_why_subhead', 'label' => 'Why Choose — Sub-headline', 'name' => 'cv_priv_why_subhead', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '' ],
+            [ 'key' => 'field_cv_priv_why_cards', 'label' => 'Why Choose — Cards', 'name' => 'cv_priv_why_cards', 'type' => 'repeater', 'min' => 0, 'max' => 9, 'layout' => 'block', 'button_label' => 'Add Card', 'instructions' => 'Icons stay in the design (by position). Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_why_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_why_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+            ] ],
+            // S8 how to book
+            [ 'key' => 'field_cv_priv_book_headline', 'label' => 'How to Book — Headline', 'name' => 'cv_priv_book_headline', 'type' => 'text', 'placeholder' => 'How to Book Your Vaccine' ],
+            [ 'key' => 'field_cv_priv_book_subhead', 'label' => 'How to Book — Sub-headline', 'name' => 'cv_priv_book_subhead', 'type' => 'text' ],
+            [ 'key' => 'field_cv_priv_book_steps', 'label' => 'How to Book — Steps', 'name' => 'cv_priv_book_steps', 'type' => 'repeater', 'min' => 0, 'max' => 6, 'layout' => 'block', 'button_label' => 'Add Step', 'instructions' => 'Numbers & icons stay in the design (by position). Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_book_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_book_tagline', 'label' => 'Tagline', 'name' => 'tagline', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_book_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+            ] ],
+            // S9 NHS cross-promo headline
+            [ 'key' => 'field_cv_priv_nhs_headline', 'label' => 'NHS Cross-promo — Headline', 'name' => 'cv_priv_nhs_headline', 'type' => 'text', 'placeholder' => 'Could You Get the Vaccine Free on the NHS?' ],
+            // FAQ
+            [ 'key' => 'field_cv_priv_faq_headline', 'label' => 'FAQ — Headline', 'name' => 'cv_priv_faq_headline', 'type' => 'text', 'placeholder' => 'Frequently Asked Questions' ],
+            [ 'key' => 'field_cv_priv_faq_subhead', 'label' => 'FAQ — Sub-heading', 'name' => 'cv_priv_faq_subhead', 'type' => 'textarea', 'rows' => 2, 'placeholder' => 'Everything you need to know about the private COVID-19 vaccine service at Southdowns Pharmacy.' ],
+            [ 'key' => 'field_cv_priv_faqs', 'label' => 'FAQ Items', 'name' => 'cv_priv_faqs', 'type' => 'repeater', 'min' => 0, 'max' => 30, 'layout' => 'block', 'button_label' => 'Add FAQ', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_faq_q', 'label' => 'Question', 'name' => 'question', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_faq_a', 'label' => 'Answer', 'name' => 'answer', 'type' => 'textarea', 'rows' => 4, 'new_lines' => '' ],
+            ] ],
+            // Final CTA badges + trust
+            [ 'key' => 'field_cv_priv_badges', 'label' => 'Final CTA — Badges', 'name' => 'cv_priv_badges', 'type' => 'repeater', 'min' => 0, 'max' => 8, 'layout' => 'table', 'button_label' => 'Add Badge', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [ [ 'key' => 'field_cv_priv_badge_text', 'label' => 'Text', 'name' => 'text', 'type' => 'text' ] ] ],
+            [ 'key' => 'field_cv_priv_trust', 'label' => 'Final CTA — Trust Stats', 'name' => 'cv_priv_trust', 'type' => 'repeater', 'min' => 0, 'max' => 6, 'layout' => 'table', 'button_label' => 'Add Stat', 'instructions' => 'Leave empty to use defaults.', 'sub_fields' => [
+                [ 'key' => 'field_cv_priv_trust_value', 'label' => 'Value', 'name' => 'value', 'type' => 'text' ],
+                [ 'key' => 'field_cv_priv_trust_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
+            ] ],
 
         ],
     ] );

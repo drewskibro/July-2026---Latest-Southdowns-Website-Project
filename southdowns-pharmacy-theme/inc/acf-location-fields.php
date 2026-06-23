@@ -227,6 +227,31 @@ add_action( 'acf/init', function () {
             // ============================================================
             // TAB 4 — TESTIMONIALS
             // ============================================================
+            // ============================================================
+            // TAB — SERVICES (the pill list on the branch pages)
+            // ============================================================
+            [
+                'key'   => 'field_loc_tab_services',
+                'label' => 'Services',
+                'name'  => '',
+                'type'  => 'tab',
+            ],
+            [
+                'key'          => 'field_loc_services',
+                'label'        => 'Services Available',
+                'name'         => 'branch_services',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 40,
+                'layout'       => 'table',
+                'button_label' => 'Add Service',
+                'instructions' => 'Shown as pills under "Services Available at this branch". Tick "Featured" to highlight it in blue. Leave empty to use the built-in default list.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_loc_svc_name', 'label' => 'Service', 'name' => 'name', 'type' => 'text' ],
+                    [ 'key' => 'field_loc_svc_featured', 'label' => 'Featured', 'name' => 'featured', 'type' => 'true_false', 'ui' => 1, 'instructions' => 'Highlight in blue' ],
+                ],
+            ],
+
             [
                 'key'   => 'field_loc_tab_reviews',
                 'label' => 'Testimonials',
@@ -334,6 +359,18 @@ add_action( 'acf/init', function () {
                 'preview_size'  => 'medium',
                 'instructions'  => 'Image for the Davies Pharmacy card in the "Other Southdowns Branches" section. Recommended: 600×400px. Leave empty to use the default stock photo.',
             ],
+
+            // ============================================================
+            // DUAL CTA — "Book" + "AI Agent" section (page-location.php)
+            // ============================================================
+            [ 'key' => 'field_loc_cta_heading', 'label' => 'CTA — Section Heading', 'name' => 'branch_cta_heading', 'type' => 'text', 'placeholder' => 'Ready to Get Started?' ],
+            [ 'key' => 'field_loc_book_heading', 'label' => 'CTA — Book Card Heading', 'name' => 'branch_book_heading', 'type' => 'text', 'placeholder' => 'Book an Appointment' ],
+            [ 'key' => 'field_loc_book_points', 'label' => 'CTA — Book Card Points', 'name' => 'branch_book_points', 'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'instructions' => 'One bullet per line. Leave empty to use the built-in defaults.' ],
+            [ 'key' => 'field_loc_book_btn', 'label' => 'CTA — Book Button Label', 'name' => 'branch_book_btn', 'type' => 'text', 'placeholder' => "Book Now — It's Free" ],
+            [ 'key' => 'field_loc_ai_badge', 'label' => 'CTA — AI Card Badge', 'name' => 'branch_ai_badge', 'type' => 'text', 'placeholder' => 'INSTANT HELP' ],
+            [ 'key' => 'field_loc_ai_heading', 'label' => 'CTA — AI Card Heading', 'name' => 'branch_ai_heading', 'type' => 'text', 'placeholder' => 'Speak to Our AI Agent' ],
+            [ 'key' => 'field_loc_ai_points', 'label' => 'CTA — AI Card Points', 'name' => 'branch_ai_points', 'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'instructions' => 'One bullet per line. Leave empty to use the built-in defaults.' ],
+            [ 'key' => 'field_loc_ai_btn', 'label' => 'CTA — AI Button Label', 'name' => 'branch_ai_btn', 'type' => 'text', 'placeholder' => 'Chat with AI Agent' ],
 
         ], // end fields
     ] ); // end acf_add_local_field_group

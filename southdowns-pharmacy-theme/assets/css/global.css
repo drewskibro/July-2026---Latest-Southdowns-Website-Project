@@ -70,8 +70,8 @@ img { transition: transform 0.5s ease; }
 /* Desktop Main Menu spacing */
 @media (min-width: 768px) {
   nav[aria-label="Main Menu"] {
-    font-size: 17px;
-    line-height: 25.5px;
+    font-size: 19px;
+    line-height: 28px;
   }
   nav[aria-label="Main Menu"] > ul > li {
     margin-left: 10px;
@@ -318,4 +318,23 @@ img { transition: transform 0.5s ease; }
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
+}
+
+/* ============================================================
+   GLOBAL TYPE SCALE — client request: "enlarge fonts one size"
+   Tailwind's text-* utilities (loaded via the CDN) are rem-based,
+   so raising the root font-size enlarges body copy and headings
+   site-wide in proportion. 16px (browser default) -> 17px ≈ +6%.
+   Tune this single value to make the whole site larger/smaller.
+   ============================================================ */
+html { font-size: 17px; }
+
+/* ============================================================
+   AMELIA BOOKING — type size override (client request).
+   The booking widget is Amelia v2; its wrapper on this site is
+   .amelia-v2-booking #amelia-container.am-fs__wrapper. This blanket
+   rule normalises every text element inside the widget to one size.
+   ============================================================ */
+.amelia-v2-booking #amelia-container.am-fs__wrapper * {
+    font-size: 19px !important;
 }

@@ -13,8 +13,7 @@ $phone_raw   = sp_phone_raw();
 $phone       = sp_phone();
 
 // Hero image placeholder
-$hero_img = 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80&auto=format&fit=crop';
-/* TODO: swap $hero_img for a real pharmacy/prescriptions image */
+$hero_img = sp_field( 'rx_hero_image', 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=1200&q=80&auto=format&fit=crop' );
 
 // Roundel font stack (exact pattern from page-emsworth.php)
 $rx_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
@@ -47,10 +46,10 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
   <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
     <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full mb-4 border border-white/20 self-start font-jost">
       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      NHS &amp; PRIVATE PRESCRIPTIONS &bull; HAMPSHIRE
+      <?php echo sp_field( 'rx_hero_badge', 'NHS &amp; PRIVATE PRESCRIPTIONS &bull; HAMPSHIRE' ); ?>
     </div>
-    <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;">Prescriptions Made Easy &mdash; Collect From Your Local Hampshire Pharmacy</h1>
-    <p class="text-white text-base leading-relaxed mb-5 font-jost">Nominate your nearest Southdowns branch and we&rsquo;ll handle your NHS repeat prescriptions. Reminders, family ordering, and expert pharmacist support included.</p>
+    <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'rx_hero_heading', 'Prescriptions Made Easy &mdash; Collect From Your Local Hampshire Pharmacy' ); ?></h1>
+    <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo sp_field( 'rx_hero_subtext', 'Nominate your nearest Southdowns branch and we&rsquo;ll handle your NHS repeat prescriptions. Reminders, family ordering, and expert pharmacist support included.' ); ?></p>
     <div class="flex flex-wrap gap-3">
       <a href="https://southdownspharmacygroup.co.uk/nominate-us/" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg font-jost">
         Nominate Your Pharmacy
@@ -69,10 +68,10 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 pr-16 lg:pl-16 lg:pr-28 py-12" style="background-color:#1a73e9;">
       <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-5 py-2.5 rounded-full mb-6 border border-white/20 self-start font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        NHS &amp; PRIVATE PRESCRIPTIONS &bull; HAMPSHIRE
+        <?php echo sp_field( 'rx_hero_badge', 'NHS &amp; PRIVATE PRESCRIPTIONS &bull; HAMPSHIRE' ); ?>
       </div>
-      <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-6 font-jost" style="line-height:1.1;">Prescriptions Made Easy &mdash; Collect From Your Local Hampshire Pharmacy</h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Nominate your nearest Southdowns branch and we&rsquo;ll handle your NHS repeat prescriptions. Reminders, family ordering, and expert pharmacist support included.</p>
+      <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'rx_hero_heading', 'Prescriptions Made Easy &mdash; Collect From Your Local Hampshire Pharmacy' ); ?></h1>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo sp_field( 'rx_hero_subtext', 'Nominate your nearest Southdowns branch and we&rsquo;ll handle your NHS repeat prescriptions. Reminders, family ordering, and expert pharmacist support included.' ); ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="https://southdownspharmacygroup.co.uk/nominate-us/" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Nominate Your Pharmacy
@@ -86,7 +85,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <!-- Trust strip -->
       <div class="flex flex-wrap gap-x-5 gap-y-2 text-white text-sm font-medium font-jost">
         <?php
-        $rx_trust = [ 'GPhC Registered', 'All Four Locations', 'NHS &amp; Private', 'Same-Day Collection' ];
+        $rx_trust = sp_list( 'rx_hero_trust', [ 'GPhC Registered', 'All Four Locations', 'NHS &amp; Private', 'Same-Day Collection' ] );
         foreach ( $rx_trust as $item ) : ?>
         <div class="flex items-center gap-1.5">
           <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -161,37 +160,26 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
   <div class="relative section-container">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
 
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="1">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">10,000+</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Patients Served</div>
-        <div class="mt-3 flex justify-center">
-          <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
-        </div>
+      <?php
+      $rx_stats = sp_rows( 'rx_stats', [
+        [ '10,000+', 'Patients Served' ],
+        [ '4', 'Hampshire Locations' ],
+        [ 'Free', 'NHS Repeat Prescriptions' ],
+        [ '4.9/5', 'Patient Satisfaction' ],
+      ], [ 0 => 'value', 1 => 'label' ] );
+      $rx_stat_icons = [
+        '<svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>',
+        '<svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>',
+        '<svg class="w-6 h-6 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+        '<svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>',
+      ];
+      foreach ( $rx_stats as $rx_si => $st ) : ?>
+      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="<?php echo $rx_si + 1; ?>">
+        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost"><?php echo esc_html( $st[0] ); ?></div>
+        <div class="text-sm text-blue-100 font-medium font-jost"><?php echo esc_html( $st[1] ); ?></div>
+        <div class="mt-3 flex justify-center"><?php echo $rx_stat_icons[ $rx_si ] ?? ''; ?></div>
       </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="2">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">4</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Hampshire Locations</div>
-        <div class="mt-3 flex justify-center">
-          <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="3">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">Free</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">NHS Repeat Prescriptions</div>
-        <div class="mt-3 flex justify-center">
-          <svg class="w-6 h-6 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="4">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">4.9/5</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Patient Satisfaction</div>
-        <div class="mt-3 flex justify-center">
-          <svg class="w-6 h-6 text-yellow-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-        </div>
-      </div>
+      <?php endforeach; ?>
 
     </div>
   </div>
@@ -211,8 +199,8 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
         <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Simple Process</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-jost">Ready in Three Simple Steps</h2>
-      <p class="text-lg text-gray-500 max-w-2xl mx-auto font-jost">Nominate your branch, let us prepare your medication, and collect when it suits you.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4 font-jost"><?php echo sp_field( 'rx_how_heading', 'Ready in Three Simple Steps' ); ?></h2>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_how_intro', 'Nominate your branch, let us prepare your medication, and collect when it suits you.' ); ?></p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -220,7 +208,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <!-- Photo placeholder -->
       <div class="relative rounded-2xl overflow-hidden shadow-xl yf-reveal">
         <!-- TODO: replace with a real image of a pharmacist handling a prescription -->
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format&fit=crop"
+        <img src="<?php echo esc_url( sp_field( 'rx_how_image', 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80&auto=format&fit=crop' ) ); ?>"
              alt="Pharmacist preparing prescription medication"
              class="w-full aspect-[4/3] object-cover" loading="lazy"/>
         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
@@ -233,7 +221,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <!-- Steps -->
       <div>
         <?php
-        $rx_steps = [
+        $rx_steps = sp_rows( 'rx_steps', [
             [
                 'title' => 'Nominate Your Pharmacy',
                 'body'  => 'Nominate your preferred Southdowns branch online or in person. Once nominated, your GP sends your electronic prescription directly to us &mdash; no paper needed.',
@@ -249,7 +237,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
                 'body'  => 'Visit your local branch at a time that suits you. We&rsquo;ll send you a reminder before you run out so you never miss a dose.',
                 'pill'  => 'At your convenience',
             ],
-        ];
+        ], [ 'title' => 'title', 'body' => 'body', 'pill' => 'pill' ] );
         ?>
         <div class="space-y-6">
           <?php foreach ( $rx_steps as $i => $step ) :
@@ -275,7 +263,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
             <div class="w-9 h-9 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
-            <span class="font-jost">NHS EPS means no paper prescription &mdash; your GP sends everything to us electronically.</span>
+            <span class="font-jost"><?php echo sp_field( 'rx_how_note', 'NHS EPS means no paper prescription &mdash; your GP sends everything to us electronically.' ); ?></span>
           </div>
         </div>
       </div>
@@ -298,12 +286,12 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-white/20"></div>
         <span class="badge-text text-white/70 text-sm font-normal tracking-[0.15em] uppercase font-jost">What&rsquo;s Included</span>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Everything Included &mdash; No Extra Charges</h2>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost">Your NHS prescription service, handled from start to finish.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'rx_feat_heading', 'Everything Included &mdash; No Extra Charges' ); ?></h2>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_feat_intro', 'Your NHS prescription service, handled from start to finish.' ); ?></p>
     </div>
 
     <?php
-    $rx_features = [
+    $rx_features = sp_rows( 'rx_features', [
         [
             'title' => 'Same-Day Collection',
             'desc'  => 'Order before 12pm and collect the same day from any of our four Hampshire branches.',
@@ -334,7 +322,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
             'desc'  => 'Order NHS repeat prescriptions via the NHS App. Nominate your chosen Southdowns branch and order directly through the app.',
             'icon'  => '<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="M8 6h8M8 10h8M8 14h5"/>',
         ],
-    ];
+    ], [ 'title' => 'title', 'desc' => 'desc' ] );
     ?>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
       <?php foreach ( $rx_features as $idx => $feat ) : ?>
@@ -379,21 +367,22 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
           <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Nominate Us</span>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-5 font-jost">Nominate Your Southdowns Branch Today</h2>
-        <p class="text-gray-600 leading-relaxed mb-4 font-jost">Nominating your local Southdowns Pharmacy means your GP can send prescriptions directly to us &mdash; no paper, no extra trips. Once you&rsquo;re set up, ordering your repeat prescriptions takes minutes.</p>
-        <p class="text-gray-600 leading-relaxed mb-7 font-jost">You can also sign up on our website to order private prescriptions, track orders, and manage your family&rsquo;s medication in one place.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-5 font-jost"><?php echo sp_field( 'rx_nom_heading', 'Nominate Your Southdowns Branch Today' ); ?></h2>
+        <div class="space-y-4 text-gray-600 leading-relaxed font-jost mb-7">
+        <?php echo sp_field( 'rx_nom_body', '<p>Nominating your local Southdowns Pharmacy means your GP can send prescriptions directly to us &mdash; no paper, no extra trips. Once you&rsquo;re set up, ordering your repeat prescriptions takes minutes.</p><p>You can also sign up on our website to order private prescriptions, track orders, and manage your family&rsquo;s medication in one place.</p>' ); ?>
+        </div>
 
         <!-- Benefits list -->
         <ul class="space-y-3 mb-8">
           <?php
-          $rx_benefits = [
+          $rx_benefits = sp_list( 'rx_benefits', [
               'Nominate online or in branch in under 2 minutes',
               'GP sends prescriptions to us electronically',
               'Automatic reminders before you run out',
               'Order for yourself and your family',
               'Expert pharmacist advice whenever you need it',
               'NHS and private prescriptions both accepted',
-          ];
+          ] );
           foreach ( $rx_benefits as $b ) : ?>
           <li class="flex items-center gap-3 text-gray-700 font-jost">
             <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -411,7 +400,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <!-- Image placeholder -->
       <div class="relative rounded-2xl overflow-hidden shadow-xl yf-reveal" data-delay="2">
         <!-- TODO: replace with a real image of someone collecting a prescription at a pharmacy counter -->
-        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80&auto=format&fit=crop"
+        <img src="<?php echo esc_url( sp_field( 'rx_nom_image', 'https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80&auto=format&fit=crop' ) ); ?>"
              alt="Patient collecting prescription at Southdowns Pharmacy"
              class="w-full aspect-[4/3] object-cover" loading="lazy"/>
         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/25 to-transparent"></div>
@@ -439,12 +428,12 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-white/20"></div>
         <span class="badge-text text-white/70 text-sm font-normal tracking-[0.15em] uppercase font-jost">Repeat Dispensing</span>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">What Is NHS Repeat Dispensing?</h2>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost">A smarter way to manage long-term medications &mdash; we handle the schedule for you.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'rx_rep_heading', 'What Is NHS Repeat Dispensing?' ); ?></h2>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_rep_intro', 'A smarter way to manage long-term medications &mdash; we handle the schedule for you.' ); ?></p>
     </div>
 
     <div class="max-w-3xl mx-auto mb-10 yf-reveal" data-delay="1">
-      <p class="text-blue-100 leading-relaxed text-lg mb-6 font-jost text-center">Repeat dispensing allows your GP to issue a batch of prescriptions for medications you take regularly. You don&rsquo;t need to request a new prescription each time &mdash; we manage the schedule and dispense at the right intervals automatically.</p>
+      <p class="text-blue-100 leading-relaxed text-lg mb-6 font-jost text-center"><?php echo sp_field( 'rx_rep_body', 'Repeat dispensing allows your GP to issue a batch of prescriptions for medications you take regularly. You don&rsquo;t need to request a new prescription each time &mdash; we manage the schedule and dispense at the right intervals automatically.' ); ?></p>
 
       <!-- EPS note box -->
       <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-6 py-5 flex items-start gap-4">
@@ -452,8 +441,8 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
         </div>
         <div>
-          <p class="text-white font-semibold mb-1 font-jost">Electronic Repeat Dispensing (EPS)</p>
-          <p class="text-blue-200 text-sm font-jost leading-relaxed">We are fully integrated with the NHS Electronic Prescription Service. Your GP sends prescriptions directly to our pharmacy electronically. No paper, no delays.</p>
+          <p class="text-white font-semibold mb-1 font-jost"><?php echo sp_field( 'rx_eps_heading', 'Electronic Repeat Dispensing (EPS)' ); ?></p>
+          <p class="text-blue-200 text-sm font-jost leading-relaxed"><?php echo sp_field( 'rx_eps_body', 'We are fully integrated with the NHS Electronic Prescription Service. Your GP sends prescriptions directly to our pharmacy electronically. No paper, no delays.' ); ?></p>
         </div>
       </div>
     </div>
@@ -461,12 +450,12 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     <!-- 4 benefit cards 2x2 -->
     <div class="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
       <?php
-      $rx_repeat_cards = [
+      $rx_repeat_cards = sp_rows( 'rx_repeat_cards', [
           [ 'title' => 'Convenience',             'desc' => 'No repeated GP appointments for the same medication.',                                 'icon' => '<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>' ],
           [ 'title' => 'Time-Saving',              'desc' => 'We handle prescription requests automatically on your behalf.',                        'icon' => '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' ],
           [ 'title' => 'Better Medication Management', 'desc' => 'Regular intervals mean you never run out of essential medication.',               'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
           [ 'title' => 'Pharmacist Monitoring',   'desc' => 'Our team checks your medication at every dispensing for accuracy and your safety.',     'icon' => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
-      ];
+      ], [ 'title' => 'title', 'desc' => 'desc' ] );
       foreach ( $rx_repeat_cards as $idx => $card ) : ?>
       <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6" data-delay="<?php echo $idx + 1; ?>">
         <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center mb-4">
@@ -489,8 +478,8 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
   <div class="relative z-10 section-container">
     <div class="text-center mb-12 yf-reveal">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">NHS &amp; Private Prescriptions Welcome</h2>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost">Whatever your prescription type, all four branches have you covered.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'rx_acc_heading', 'NHS &amp; Private Prescriptions Welcome' ); ?></h2>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_acc_intro', 'Whatever your prescription type, all four branches have you covered.' ); ?></p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10">
@@ -501,11 +490,11 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(34,197,94,0.25);border:1px solid rgba(34,197,94,0.4);">
             <svg class="w-6 h-6 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white font-jost">NHS Prescriptions</h3>
+          <h3 class="text-xl font-bold text-white font-jost"><?php echo sp_field( 'rx_nhs_title', 'NHS Prescriptions' ); ?></h3>
         </div>
         <ul class="space-y-3">
           <?php
-          $rx_nhs_list = [
+          $rx_nhs_list = sp_list( 'rx_nhs_list', [
               'Electronic prescriptions (EPS)',
               'Paper prescriptions from your GP',
               'Hospital discharge prescriptions',
@@ -513,7 +502,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
               'Repeat dispensing prescriptions',
               'Same-day prescription collection',
               'Prescription exemptions honoured',
-          ];
+          ] );
           foreach ( $rx_nhs_list as $item ) : ?>
           <li class="flex items-center gap-3 text-white font-jost text-sm">
             <svg class="w-4 h-4 text-green-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -529,11 +518,11 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(139,92,246,0.25);border:1px solid rgba(139,92,246,0.4);">
             <svg class="w-6 h-6 text-purple-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white font-jost">Private Prescriptions</h3>
+          <h3 class="text-xl font-bold text-white font-jost"><?php echo sp_field( 'rx_pvt_title', 'Private Prescriptions' ); ?></h3>
         </div>
         <ul class="space-y-3">
           <?php
-          $rx_pvt_list = [
+          $rx_pvt_list = sp_list( 'rx_pvt_list', [
               'Private GP prescriptions',
               'Specialist prescriptions',
               'Weight loss medications (Mounjaro, Wegovy)',
@@ -541,7 +530,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
               'Hair loss treatments',
               'Emergency medication supplies',
               'Competitive private prescription pricing',
-          ];
+          ] );
           foreach ( $rx_pvt_list as $item ) : ?>
           <li class="flex items-center gap-3 text-white font-jost text-sm">
             <svg class="w-4 h-4 text-purple-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
@@ -554,7 +543,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     </div>
 
     <!-- Statement -->
-    <p class="text-center text-blue-100 max-w-2xl mx-auto font-jost yf-reveal">All four Southdowns branches accept NHS and private prescriptions. Nominate any branch and your GP can send prescriptions to us electronically.</p>
+    <p class="text-center text-blue-100 max-w-2xl mx-auto font-jost yf-reveal"><?php echo sp_field( 'rx_acc_statement', 'All four Southdowns branches accept NHS and private prescriptions. Nominate any branch and your GP can send prescriptions to us electronically.' ); ?></p>
 
   </div>
 </section>
@@ -572,13 +561,13 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
         <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Our Pharmacies</span>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">Nominate Your Nearest Hampshire Branch</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">All four Southdowns branches accept NHS and private prescriptions.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost"><?php echo sp_field( 'rx_loc_heading', 'Nominate Your Nearest Hampshire Branch' ); ?></h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_loc_intro', 'All four Southdowns branches accept NHS and private prescriptions.' ); ?></p>
     </div>
 
     <!-- Branch photo cards — exact weight loss component -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 yf-reveal">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
+      <?php foreach ( sp_branch_order() as $i ) :
         $b = sp_branch( $i ); ?>
       <div class="group relative bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
         <div class="relative overflow-hidden aspect-[4/3]">
@@ -603,7 +592,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           </a>
         </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
 
     <!-- Info banner -->
@@ -614,8 +603,8 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         </div>
       </div>
       <div class="flex-1 text-center md:text-left">
-        <p class="text-white text-lg font-semibold mb-1 font-jost">Nominating takes under 2 minutes</p>
-        <p class="text-blue-100 text-base font-jost">Nominate online or visit any of our four Hampshire branches in person. Your GP can then send all prescriptions directly to us electronically.</p>
+        <p class="text-white text-lg font-semibold mb-1 font-jost"><?php echo sp_field( 'rx_loc_banner_heading', 'Nominating takes under 2 minutes' ); ?></p>
+        <p class="text-blue-100 text-base font-jost"><?php echo sp_field( 'rx_loc_banner_body', 'Nominate online or visit any of our four Hampshire branches in person. Your GP can then send all prescriptions directly to us electronically.' ); ?></p>
       </div>
       <a href="https://southdownspharmacygroup.co.uk/nominate-us/" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm font-jost flex-shrink-0">
         Nominate Your Pharmacy
@@ -639,19 +628,19 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="badge-rule w-10 h-px bg-white/15"></div>
         <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Why Choose Us</span>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Why Patients Choose Southdowns</h2>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost">Your local pharmacist &mdash; not a faceless online service.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'rx_why_heading', 'Why Patients Choose Southdowns' ); ?></h2>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_why_intro', 'Your local pharmacist &mdash; not a faceless online service.' ); ?></p>
     </div>
 
     <?php
-    $rx_why_cards = [
+    $rx_why_cards = sp_rows( 'rx_why_cards', [
         [ 'title' => 'GPhC-Registered Pharmacists',       'desc' => 'Expert, qualified dispensing at all four branches.',                                                     'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
         [ 'title' => 'Same-Day Collection',               'desc' => 'Order before 12pm and collect the same day.',                                                            'icon' => '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' ],
         [ 'title' => 'Automatic Reminders',               'desc' => 'We remind you before you run out &mdash; so you never miss a dose.',                                    'icon' => '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>' ],
         [ 'title' => 'Electronic Prescriptions',          'desc' => 'Fully integrated with NHS EPS across all four branches.',                                                'icon' => '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><path d="M9 7h6M9 11h6M9 15h4"/>' ],
         [ 'title' => 'Family Prescription Management',    'desc' => 'Handle prescriptions for your whole family from one account.',                                           'icon' => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
         [ 'title' => 'Expert Advice',                     'desc' => 'Your local pharmacy team on hand to answer any medication questions.',                                   'icon' => '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>' ],
-    ];
+    ], [ 'title' => 'title', 'desc' => 'desc' ] );
     ?>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <?php foreach ( $rx_why_cards as $idx => $card ) : ?>
@@ -682,18 +671,18 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
           <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
           <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">FAQs</span>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">Prescription Service FAQs</h2>
-        <p class="text-gray-600 mb-8 font-jost">Everything you need to know about our prescription services across Hampshire.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost"><?php echo sp_field( 'rx_faq_heading', 'Prescription Service FAQs' ); ?></h2>
+        <p class="text-gray-600 mb-8 font-jost"><?php echo sp_field( 'rx_faq_intro', 'Everything you need to know about our prescription services across Hampshire.' ); ?></p>
 
         <!-- Sidebar trust stats -->
         <div class="grid grid-cols-2 gap-3 mb-8">
           <?php
-          $rx_faq_stats = [
+          $rx_faq_stats = sp_rows( 'rx_faq_stats', [
               [ 'value' => '4',      'label' => 'Branches' ],
               [ 'value' => 'Free',   'label' => 'NHS Service' ],
               [ 'value' => 'Same Day', 'label' => 'Collection' ],
               [ 'value' => '4.9/5', 'label' => 'Rating' ],
-          ];
+          ], [ 'value' => 'value', 'label' => 'label' ] );
           foreach ( $rx_faq_stats as $s ) : ?>
           <div class="bg-white border border-gray-100 rounded-2xl p-4 text-center shadow-sm">
             <div class="text-2xl font-bold text-blue-600 font-jost"><?php echo esc_html( $s['value'] ); ?></div>
@@ -711,7 +700,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
       <!-- FAQ accordion -->
       <div class="space-y-3 yf-reveal" data-delay="2">
         <?php
-        $rx_faqs = [
+        $rx_faqs = sp_rows( 'rx_faqs', [
             [
                 'q' => 'How do I nominate Southdowns as my pharmacy?',
                 'a' => 'You can nominate any of our four branches online at southdownspharmacygroup.co.uk/nominate-us, in person at your chosen branch, or by asking your GP to nominate us on your behalf.',
@@ -736,7 +725,7 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
                 'q' => 'Do you accept private prescriptions?',
                 'a' => 'Yes, all four branches accept private prescriptions including weight loss medications, specialist prescriptions, travel medication and more.',
             ],
-        ];
+        ], [ 'q' => 'question', 'a' => 'answer' ] );
         foreach ( $rx_faqs as $faq ) : ?>
         <details class="rx-faq-item">
           <summary class="rx-faq-question font-jost">
@@ -762,41 +751,39 @@ $rx_txt  = "font-family:{$rx_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
     <!-- Trust badge pills -->
     <div class="flex flex-wrap justify-center gap-3 mb-10 yf-reveal">
+      <?php
+      $rx_cta_pills = sp_list( 'rx_cta_pills', [ 'GPhC Registered', 'Free NHS Service', 'Same-Day Collection', 'Four Hampshire Branches' ] );
+      $rx_pill_icons = [
+        '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+        '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
+        '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+        '<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>',
+      ];
+      foreach ( $rx_cta_pills as $rx_pi => $pill ) : ?>
       <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20 font-jost">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        GPhC Registered
+        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><?php echo $rx_pill_icons[ $rx_pi ] ?? ''; ?></svg>
+        <?php echo esc_html( $pill ); ?>
       </span>
-      <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20 font-jost">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Free NHS Service
-      </span>
-      <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20 font-jost">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-        Same-Day Collection
-      </span>
-      <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20 font-jost">
-        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        Four Hampshire Branches
-      </span>
+      <?php endforeach; ?>
     </div>
 
     <!-- Heading -->
     <div class="yf-reveal mb-6">
-      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-jost">Nominate Your Pharmacy Today</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost">Free NHS prescriptions. Same-day collection. Expert pharmacist support across four Hampshire branches.</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'rx_cta_heading', 'Nominate Your Pharmacy Today' ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost"><?php echo sp_field( 'rx_cta_subtext', 'Free NHS prescriptions. Same-day collection. Expert pharmacist support across four Hampshire branches.' ); ?></p>
     </div>
 
     <!-- Checklist -->
     <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2 max-w-xl mx-auto mb-10 text-left yf-reveal" data-delay="1">
       <?php
-      $rx_cta_points = [
+      $rx_cta_points = sp_list( 'rx_cta_points', [
           'Free NHS repeat prescriptions',
           'Same-day collection before 12pm',
           'Automatic reminders so you never run out',
           'Electronic prescriptions via NHS EPS',
           'Manage your whole family&rsquo;s medications',
           'GPhC-registered pharmacists at every branch',
-      ];
+      ] );
       foreach ( $rx_cta_points as $point ) : ?>
       <div class="flex items-center gap-2.5 text-sm text-blue-100 font-jost">
         <svg class="w-4 h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>

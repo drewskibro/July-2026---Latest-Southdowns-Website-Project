@@ -446,6 +446,71 @@ add_action( 'acf/init', function () {
                 'placeholder' => 'Travellers protected each year',
             ],
 
+            // ============================================================
+            // TAB — DESTINATIONS / FAQ / CTA  (previously hardcoded grids)
+            // ============================================================
+            [ 'key' => 'field_th_tab_extras', 'label' => 'Destinations / FAQ / CTA', 'name' => '', 'type' => 'tab' ],
+            [
+                'key'          => 'field_th_destinations',
+                'label'        => 'Destination Cards (“Where Are You Headed?”)',
+                'name'         => 'th_destinations',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 16,
+                'layout'       => 'block',
+                'button_label' => 'Add Destination',
+                'instructions' => 'Photo cards in the destinations grid. Leave empty to use the eight built-in defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_th_dest_image',    'label' => 'Image',    'name' => 'image',    'type' => 'image', 'return_format' => 'url', 'preview_size' => 'medium', 'instructions' => 'Recommended 600 × 450 px. Leave empty to keep the built-in photo for this position.' ],
+                    [ 'key' => 'field_th_dest_region',   'label' => 'Region',   'name' => 'region',   'type' => 'text', 'instructions' => 'Small label above the name, e.g. "Southeast Asia".' ],
+                    [ 'key' => 'field_th_dest_name',     'label' => 'Name',     'name' => 'name',     'type' => 'text', 'instructions' => 'e.g. "Thailand".' ],
+                    [ 'key' => 'field_th_dest_vaccines', 'label' => 'Vaccines', 'name' => 'vaccines', 'type' => 'text', 'instructions' => 'Short caption, e.g. "Hep A/B · Typhoid · Rabies".' ],
+                ],
+            ],
+            [
+                'key'          => 'field_th_faqs',
+                'label'        => 'FAQ Items',
+                'name'         => 'th_faqs',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 30,
+                'layout'       => 'block',
+                'button_label' => 'Add FAQ',
+                'instructions' => 'Accordion items (numbers added automatically). Answers accept basic HTML. Leave empty to use the eight built-in defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_th_faq_question', 'label' => 'Question', 'name' => 'question', 'type' => 'text' ],
+                    [ 'key' => 'field_th_faq_answer',   'label' => 'Answer',   'name' => 'answer',   'type' => 'textarea', 'rows' => 5, 'instructions' => 'Basic HTML allowed.' ],
+                ],
+            ],
+            [
+                'key'          => 'field_th_pills',
+                'label'        => 'Final CTA — Trust Pills',
+                'name'         => 'th_pills',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 8,
+                'layout'       => 'table',
+                'button_label' => 'Add Pill',
+                'instructions' => 'Small badges in the final call-to-action. Icons cycle by position. Leave empty to use defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_th_pill_text', 'label' => 'Text', 'name' => 'text', 'type' => 'text' ],
+                ],
+            ],
+            [
+                'key'          => 'field_th_checklist',
+                'label'        => 'Final CTA — Checklist',
+                'name'         => 'th_checklist',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 12,
+                'layout'       => 'table',
+                'button_label' => 'Add Item',
+                'instructions' => 'Ticked list in the final call-to-action. Leave empty to use defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_th_checklist_text', 'label' => 'Text', 'name' => 'text', 'type' => 'text' ],
+                ],
+            ],
+
         ],
     ] );
 

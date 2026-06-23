@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Thailand Travel Vaccinations
+ * Template Name: India Travel Vaccinations
  *
- * Hampshire Thailand travel health & vaccinations landing page.
+ * Hampshire India travel health & vaccinations landing page.
  *
  * @package Southdowns_Pharmacy
  */
@@ -14,7 +14,7 @@ get_header();
 $tv = tv_data();
 ?>
 
-<!-- INTERIM CONTENT: Thailand destination copy is placeholder pending the client's clinical brief — all medical content to be reviewed before publication. -->
+<!-- INTERIM CONTENT: India destination copy is placeholder pending the client's clinical brief — all medical content to be reviewed before publication. -->
 
 <style>
   /* ───── Animated glow border (used on featured pricing card) ───── */
@@ -97,14 +97,14 @@ $tv = tv_data();
 
     <!-- Right: image -->
     <div class="relative">
-      <img src="<?php echo esc_url( sp_field( 'tv_hero_image', 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80&auto=format&fit=crop' ) ); ?>" alt="Thailand temple at sunset" class="absolute inset-0 w-full h-full object-cover" loading="eager"/>
+      <img src="<?php echo esc_url( sp_field( 'tv_hero_image', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200&q=80&auto=format&fit=crop' ) ); ?>" alt="Taj Mahal at sunrise in India" class="absolute inset-0 w-full h-full object-cover" loading="eager"/>
       <div class="absolute inset-0 bg-gradient-to-l from-transparent to-blue-900/20"></div>
     </div>
   </div>
 
   <!-- Mobile / tablet: stacked image with overlay -->
   <div class="lg:hidden relative min-h-[500px]" style="background:#1a73e9;">
-    <img src="<?php echo esc_url( sp_field( 'tv_hero_image', 'https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200&q=80&auto=format&fit=crop' ) ); ?>" alt="Thailand temple at sunset" class="absolute inset-0 w-full h-full object-cover opacity-30" loading="eager"/>
+    <img src="<?php echo esc_url( sp_field( 'tv_hero_image', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1200&q=80&auto=format&fit=crop' ) ); ?>" alt="Taj Mahal at sunrise in India" class="absolute inset-0 w-full h-full object-cover opacity-30" loading="eager"/>
     <div class="absolute inset-0 dot-pattern opacity-40 pointer-events-none"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-blue-900/40 via-blue-800/60 to-blue-900/80"></div>
 
@@ -193,7 +193,6 @@ $tv = tv_data();
       'Recommended Vaccines' => [ 'subhead' => 'Strongly advised depending on your itinerary', 'colour' => 'amber' ],
       'Required Vaccines'    => [ 'subhead' => 'May be mandatory depending on your route',      'colour' => 'rose' ],
       'Entry Requirements'   => [ 'subhead' => 'May apply depending on your route',            'colour' => 'rose' ],
-      'Antimalarial Protection' => [ 'subhead' => 'Important — malaria protection for this destination', 'colour' => 'amber' ],
     ];
 
     /* Colour helper for category tags */

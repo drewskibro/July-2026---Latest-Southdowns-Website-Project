@@ -149,3 +149,26 @@ add_action( 'acf/init', function () {
     ] );
 
 } );
+
+/**
+ * Footer brand text — global, edited under Pharmacy Settings.
+ * Wired in footer.php via sp_option().
+ */
+add_action( 'acf/init', function () {
+    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+        return;
+    }
+    acf_add_local_field_group( [
+        'key'             => 'group_pharmacy_footer',
+        'title'           => 'Footer',
+        'style'           => 'default',
+        'label_placement' => 'top',
+        'location'        => [
+            [ [ 'param' => 'options_page', 'operator' => '==', 'value' => 'pharmacy-settings' ] ],
+        ],
+        'fields' => [
+            [ 'key' => 'field_sp_footer_tagline', 'label' => 'Footer Tagline', 'name' => 'sp_footer_tagline', 'type' => 'text', 'default_value' => 'Independent. Innovative. Community Focused.' ],
+            [ 'key' => 'field_sp_footer_blurb', 'label' => 'Footer Blurb', 'name' => 'sp_footer_blurb', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => 'Providing award-winning NHS and private healthcare services across four locations in Hampshire, with a NaTHNaC-registered Yellow Fever Vaccination Centre at Bosmere Pharmacy, Havant.' ],
+        ],
+    ] );
+} );
