@@ -162,31 +162,26 @@
 })();
 </script>
 
-<!-- Voiceflow chatbot — global loader. Auto-opens once per session on desktop only, after a 10s delay. -->
+<!-- Voiceflow chatbot — global loader. Opens automatically on the first visit per session. -->
 <script>
 (function(d, t) {
-  var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-  v.onload = function() {
-    window.voiceflow.chat.load({
-      verify: { projectID: '6a3aabd3555c9e49a471855f' },
-      url: 'https://general-runtime.voiceflow.com',
-      versionID: 'production',
-      voice: {
-        url: "https://runtime-api.voiceflow.com"
-      }
-    });
-
-    // Auto-open once per session on desktop only
-    if (window.innerWidth >= 1024 && !sessionStorage.getItem('vf_sdpg_opened')) {
-      setTimeout(function() {
-        window.voiceflow.chat.open();
-        sessionStorage.setItem('vf_sdpg_opened', 'true');
-      }, 10000);
+    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    v.onload = function() {
+      window.voiceflow.chat.load({
+        verify: { projectID: '6a3aabd3555c9e49a471855f' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production'
+      }).then(() => {
+        const chatShown = sessionStorage.getItem('vf_chatShown');
+        if (!chatShown) {
+          window.voiceflow.chat.open();
+          sessionStorage.setItem('vf_chatShown', 'true');
+        }
+      });
     }
-  }
-  v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-  v.type = "text/javascript";
-  s.parentNode.insertBefore(v, s);
+    v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+    v.type = 'text/javascript';
+    s.parentNode.insertBefore(v, s);
 })(document, 'script');
 </script>
 
