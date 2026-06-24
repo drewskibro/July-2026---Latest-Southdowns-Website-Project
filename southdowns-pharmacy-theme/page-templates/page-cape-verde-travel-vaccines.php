@@ -251,7 +251,7 @@ $tv = tv_data();
                 <svg class="w-5 h-5 text-amber-300 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                 <div>
                   <p class="text-amber-100 text-sm font-jost font-semibold leading-relaxed">Yellow Fever vaccinations and ICVP certificates are available at our Bosmere Pharmacy, Havant location only.</p>
-                  <a href="<?php echo esc_url( home_url( '/bosmere/' ) ); ?>" class="mt-2 inline-flex items-center gap-1.5 text-amber-200 font-semibold text-sm font-jost hover:text-amber-100 transition-colors duration-200">
+                  <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="mt-2 inline-flex items-center gap-1.5 text-amber-200 font-semibold text-sm font-jost hover:text-amber-100 transition-colors duration-200">
                     Book Yellow Fever at Bosmere Pharmacy, Havant
                     <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </a>
@@ -575,7 +575,7 @@ $tv = tv_data();
       <svg class="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       <div>
         <p class="text-amber-900 text-sm font-jost font-semibold leading-relaxed"><?php echo sp_field( 'tv_loc_yf_note', $tv['tv_loc_yf_note'] ); ?></p>
-        <a href="<?php echo esc_url( home_url( '/bosmere/' ) ); ?>" class="mt-2 inline-flex items-center gap-1.5 text-amber-700 font-semibold text-sm font-jost hover:text-amber-800 transition-colors duration-200">
+        <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="mt-2 inline-flex items-center gap-1.5 text-amber-700 font-semibold text-sm font-jost hover:text-amber-800 transition-colors duration-200">
           Book Yellow Fever at Bosmere Pharmacy, Havant
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>

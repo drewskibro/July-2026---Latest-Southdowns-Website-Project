@@ -50,7 +50,7 @@ $destinations = [
       <div class="flex-1 flex flex-col justify-end pb-2">
 
         <!-- Top Menu -->
-        <nav aria-label="Top Menu" class="text-[15px] font-light text-zinc-700">
+        <nav aria-label="Top Menu" class="text-[15px] font-medium text-zinc-700">
           <ul class="flex items-center justify-end gap-6 py-2">
             <li><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="hover:text-blue-600 transition-colors">FAQs</a></li>
             <li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="hover:text-blue-600 transition-colors">Blog</a></li>

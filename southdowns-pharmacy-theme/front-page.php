@@ -63,13 +63,13 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         </div>
         <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s1_img ); ?>');"></div>
 <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:8%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
+          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
         </div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
           <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="Yellow Fever Centre" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
         </div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:8%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
+          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.13]" />
         </div>
       </div>
     </div>

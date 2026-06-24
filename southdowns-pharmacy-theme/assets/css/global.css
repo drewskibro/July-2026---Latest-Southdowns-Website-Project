@@ -336,5 +336,5 @@ html { font-size: 17px; }
    rule normalises every text element inside the widget to one size.
    ============================================================ */
 .amelia-v2-booking #amelia-container.am-fs__wrapper * {
-    font-size: 19px !important;
+    font-size: 21px !important;
 }

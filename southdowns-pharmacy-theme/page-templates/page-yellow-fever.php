@@ -5,7 +5,10 @@
  * Select this template on the Yellow Fever page via Page → Template in the editor.
  */
 get_header();
-$booking_url = sp_booking_url();
+// Yellow Fever is Bosmere-only (NaTHNaC-certified centre), so every booking CTA on
+// this page must scroll to the on-page Bosmere-filtered Amelia form (#book) rather
+// than the all-branches /book-appointment/ page.
+$booking_url = '#book';
 $phone_raw   = sp_phone_raw();
 $phone       = sp_phone();
 
@@ -699,7 +702,7 @@ $yf_how_img   = sp_field( 'yf_how_image',   'https://images.unsplash.com/photo-1
 <!-- ============================================================
      S12: FINAL CTA — Blue gradient, trust badges, CTAs, disclaimer + JS
      ============================================================ -->
-<section class="py-16 md:py-24 overflow-hidden relative" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);" id="book">
+<section class="py-16 md:py-24 overflow-hidden relative" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
   <div class="absolute inset-0 opacity-10">
     <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full translate-x-1/4 translate-y-1/4"></div>
@@ -799,7 +802,8 @@ document.querySelectorAll('.yf-faq-trigger').forEach(function(btn) {
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost"><?php echo sp_field( 'yf_book_heading', 'Book Your Yellow Fever Vaccination' ); ?></h2>
       <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'yf_book_intro', 'Yellow Fever vaccinations and ICVP certificates are available at our Bosmere Pharmacy, Havant location only. Choose your time below.' ); ?></p>
     </div>
-    <?php echo do_shortcode( '[ameliastepbooking layout=2 location=2 category=9 service=34 show=category,service,employee,datetime,info]' ); ?>
+    <?php // Bosmere (location 2) · Travel Health category 9 · Yellow Fever (service 34) · clinician (employee 4) ?>
+    <?php echo do_shortcode( '[ameliastepbooking layout=2 location=2 employee=4 category=9 service=34 show=category,service,employee,datetime,info]' ); ?>
   </div>
 </section>
 
