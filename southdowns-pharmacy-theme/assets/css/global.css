@@ -338,3 +338,21 @@ html { font-size: 17px; }
 .amelia-v2-booking #amelia-container.am-fs__wrapper * {
     font-size: 21px !important;
 }
+
+/* ============================================================
+   AMELIA BOOKING — hide location/branch (client request).
+   Every embed is filtered to a single branch, so the location is
+   redundant. Two places show it in the service-list ("init") view:
+   (1) the address row inside each service card, and
+   (2) the standalone location card (its address is a Google-Maps
+       <a> link, which is unique to the location item).
+   If a form ever needs the user to pick a location, remove rule (2).
+   ============================================================ */
+/* (1) Address/location row inside a service card */
+.amelia-v2-booking .am-fs__init-item__info-inner:has(.am-icon-locations) {
+    display: none !important;
+}
+/* (2) Standalone location card (identified by its map-link anchor) */
+.amelia-v2-booking .am-fs__init-item__content:has(a.am-fs__init-item__info-name) {
+    display: none !important;
+}
