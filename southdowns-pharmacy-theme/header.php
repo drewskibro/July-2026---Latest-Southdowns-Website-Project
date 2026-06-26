@@ -191,7 +191,7 @@ $destinations = [
             </li>
 
             <!-- PRICING (flat) -->
-            <li class="py-3"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Pricing</a></li>
+            <li class="py-3"><a href="<?php echo esc_url( home_url( '/pricing/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Pricing</a></li>
 
             <!-- BOOK APPOINTMENT CTA -->
             <li class="py-3 ml-2">
@@ -283,7 +283,7 @@ $destinations = [
       </li>
 
       <!-- Flat links -->
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Pricing</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/pricing/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Pricing</a></li>
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">FAQs</a></li>
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Blog</a></li>
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">About Us</a></li>
