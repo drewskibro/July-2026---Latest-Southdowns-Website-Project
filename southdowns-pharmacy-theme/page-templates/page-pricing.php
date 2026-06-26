@@ -18,7 +18,17 @@ $pr_pills = sp_list( 'pr_hero_pills', [ 'NHS &amp; Private Services', '4 Hampshi
 
 <style>
   html { scroll-behavior: smooth; }
-  .pr-cat { scroll-margin-top: 7rem; }
+  /* Hide the scrollbar on the mobile category strip */
+  .pr-tabs { scrollbar-width: none; }
+  .pr-tabs::-webkit-scrollbar { display: none; }
+  .pr-tab { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  /* Active category button */
+  .pr-tab[aria-selected="true"] {
+    background-color: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    color: #ffffff !important;
+  }
+  .pr-tab[aria-selected="true"] .pr-tab-count { color: rgba(255,255,255,.75) !important; }
 </style>
 
 <!-- ============================================================
@@ -61,43 +71,51 @@ $pr_pills = sp_list( 'pr_hero_pills', [ 'NHS &amp; Private Services', '4 Hampshi
 </section>
 
 <!-- ============================================================
-     PRICE LIST — quick-nav + masonry of category cards
+     PRICE LIST — pick a category, its services appear below
      ============================================================ -->
-<section class="py-16 md:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+<section class="py-12 md:py-20 bg-white">
+  <div class="max-w-4xl mx-auto px-4 md:px-8">
 
     <?php $pr_note = sp_field( 'pr_intro_note', '' ); if ( $pr_note ) : ?>
-    <p class="text-center text-slate-500 text-sm md:text-base font-jost max-w-3xl mx-auto mb-10 leading-relaxed"><?php echo $pr_note; ?></p>
+    <p class="text-center text-slate-500 text-sm md:text-base font-jost max-w-3xl mx-auto mb-8 leading-relaxed"><?php echo $pr_note; ?></p>
     <?php endif; ?>
 
-    <!-- Category quick-nav -->
-    <div class="flex flex-wrap justify-center gap-2 mb-12">
-      <?php foreach ( $pr_cats as $pr_c ) : if ( empty( $pr_c['name'] ) ) { continue; } $pr_slug = sanitize_title( $pr_c['name'] ); ?>
-      <a href="#<?php echo esc_attr( $pr_slug ); ?>" class="inline-flex items-center text-sm font-medium text-slate-600 bg-[#fdf9f6] border border-[#e8e0d8] px-4 py-2 rounded-full hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-colors font-jost"><?php echo esc_html( $pr_c['name'] ); ?></a>
-      <?php endforeach; ?>
-    </div>
+    <p class="text-center text-slate-400 text-xs uppercase tracking-[0.15em] font-jost mb-4">Choose a category</p>
 
-    <!-- Masonry of price cards -->
-    <div class="columns-1 md:columns-2 lg:columns-3 gap-6">
-      <?php foreach ( $pr_cats as $pr_c ) :
+    <!-- Category tabs (horizontal strip on mobile, wrapped on desktop) -->
+    <div class="pr-tabs flex md:flex-wrap md:justify-center gap-2 overflow-x-auto md:overflow-visible pb-2 mb-8 -mx-4 px-4 md:mx-0 md:px-0" role="tablist" aria-label="Service categories">
+      <?php foreach ( $pr_cats as $pr_i => $pr_c ) :
         if ( empty( $pr_c['name'] ) ) { continue; }
         $pr_slug = sanitize_title( $pr_c['name'] );
       ?>
-      <div id="<?php echo esc_attr( $pr_slug ); ?>" class="pr-cat break-inside-avoid mb-6 bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-800 font-jost mb-1"><?php echo esc_html( $pr_c['name'] ); ?></h2>
+      <button type="button" id="prtab-<?php echo esc_attr( $pr_slug ); ?>" class="pr-tab flex-shrink-0 whitespace-nowrap inline-flex items-center gap-2 text-sm font-medium text-slate-600 bg-[#fdf9f6] border border-[#e8e0d8] px-4 py-2 rounded-full hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 font-jost" role="tab" aria-controls="prpanel-<?php echo esc_attr( $pr_slug ); ?>" aria-selected="<?php echo 0 === $pr_i ? 'true' : 'false'; ?>" data-cat="<?php echo esc_attr( $pr_slug ); ?>">
+        <?php echo esc_html( $pr_c['name'] ); ?>
+        <span class="pr-tab-count text-xs text-slate-400 font-normal"><?php echo count( $pr_c['services'] ); ?></span>
+      </button>
+      <?php endforeach; ?>
+    </div>
+
+    <!-- Category panels — only the selected one is visible -->
+    <?php foreach ( $pr_cats as $pr_i => $pr_c ) :
+      if ( empty( $pr_c['name'] ) ) { continue; }
+      $pr_slug = sanitize_title( $pr_c['name'] );
+    ?>
+    <div id="prpanel-<?php echo esc_attr( $pr_slug ); ?>" class="pr-panel <?php echo 0 === $pr_i ? '' : 'hidden'; ?>" role="tabpanel" aria-labelledby="prtab-<?php echo esc_attr( $pr_slug ); ?>" data-panel="<?php echo esc_attr( $pr_slug ); ?>">
+      <div class="bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 md:p-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-slate-800 font-jost mb-1"><?php echo esc_html( $pr_c['name'] ); ?></h2>
         <?php if ( ! empty( $pr_c['description'] ) ) : ?>
-        <p class="text-sm text-slate-500 font-jost leading-relaxed mb-4"><?php echo esc_html( $pr_c['description'] ); ?></p>
+        <p class="text-sm md:text-base text-slate-500 font-jost leading-relaxed mb-5"><?php echo esc_html( $pr_c['description'] ); ?></p>
         <?php else : ?>
-        <div class="mb-4"></div>
+        <div class="mb-5"></div>
         <?php endif; ?>
 
         <ul class="divide-y divide-[#e8e0d8]">
           <?php foreach ( $pr_c['services'] as $pr_s ) :
             $pr_price = trim( (string) $pr_s['price'] );
             $pr_num   = (float) preg_replace( '/[^0-9.]/', '', $pr_price );
-            $pr_free  = ( $pr_price !== '' && $pr_num == 0.0 );
+            $pr_free  = $pr_price !== '' && $pr_num == 0.0;
           ?>
-          <li class="flex items-baseline justify-between gap-4 py-3">
+          <li class="flex items-center justify-between gap-4 py-3.5">
             <div class="min-w-0">
               <span class="block text-slate-800 font-medium font-jost leading-snug"><?php echo esc_html( $pr_s['name'] ); ?></span>
               <?php if ( ! empty( $pr_s['duration'] ) ) : ?>
@@ -118,8 +136,8 @@ $pr_pills = sp_list( 'pr_hero_pills', [ 'NHS &amp; Private Services', '4 Hampshi
           <?php endforeach; ?>
         </ul>
       </div>
-      <?php endforeach; ?>
     </div>
+    <?php endforeach; ?>
 
   </div>
 </section>
@@ -140,5 +158,25 @@ $pr_pills = sp_list( 'pr_hero_pills', [ 'NHS &amp; Private Services', '4 Hampshi
     <?php echo do_shortcode( '[ameliastepbooking layout=2 show=location,category,service,employee,datetime,info]' ); ?>
   </div>
 </section>
+
+<!-- Pricing category switcher: show only the selected category's services -->
+<script>
+(function () {
+  var tabs   = document.querySelectorAll('.pr-tab');
+  var panels = document.querySelectorAll('.pr-panel');
+  if ( ! tabs.length ) { return; }
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var cat = tab.getAttribute('data-cat');
+      tabs.forEach(function (t) {
+        t.setAttribute('aria-selected', t.getAttribute('data-cat') === cat ? 'true' : 'false');
+      });
+      panels.forEach(function (p) {
+        p.classList.toggle('hidden', p.getAttribute('data-panel') !== cat);
+      });
+    });
+  });
+})();
+</script>
 
 <?php get_footer();
