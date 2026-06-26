@@ -19,17 +19,17 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
 <!-- ============================================================
      HERO SLIDER
      ============================================================ -->
-<section class="relative w-full min-h-[500px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden" id="hero-slider">
-  <div class="relative w-full min-h-[500px] md:min-h-[500px] lg:min-h-[600px]">
+<section class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px] overflow-hidden" id="hero-slider">
+  <div class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px]">
 
     <!-- Slide 1: Travel Vaccines -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10" data-slide="0">
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $s1_img ); ?>');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10">
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day</span>
         </div>
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s1_heading', '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s1_subtext', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ); ?></p>
@@ -42,7 +42,7 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Same day appointments typically available—book early to avoid disappointment.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day Appointments</span>
@@ -61,7 +61,7 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Expert Pharmacists</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s1_img ); ?>');"></div>
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s1_img ); ?>');"></div>
 <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:8%;transform:translateX(-50%);">
           <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
         </div>
@@ -77,11 +77,11 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
     <!-- Slide 2: Weight Loss -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0" data-slide="1">
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10">
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
         </div>
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
@@ -94,7 +94,7 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Average 15-20kg weight loss with monthly check-ins included.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
@@ -113,18 +113,18 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');background-position:85% center;"></div>
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');background-position:85% center;"></div>
       </div>
     </div>
 
     <!-- Slide 3: Blood Tests -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0" data-slide="2">
       <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s3_img ); ?>');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10">
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours</span>
         </div>
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s3_heading', '<span class="serif-accent">Comprehensive</span> blood testing' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s3_subtext', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' ); ?></p>
@@ -137,7 +137,7 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Results typically available within 24-48 hours.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours &middot; 4 Locations</span>
@@ -156,7 +156,7 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> B12 &amp; Full Screening</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('<?php echo esc_url( $s3_img ); ?>');background-position:85% center;"></div>
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover" style="background-image:url('<?php echo esc_url( $s3_img ); ?>');background-position:85% center;"></div>
       </div>
     </div>
 
@@ -299,9 +299,16 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         ['Travel Health',     home_url('/travel-vaccinations/'),  'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274005-1.jpeg', 'Travel health vaccinations at Southdowns Pharmacy'],
         ['Ear Wax Removal',   home_url('/ear-wax-removal/'),        'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944517596-0.jpeg', 'Ear wax removal service at Southdowns Pharmacy'],
       ];
-      foreach ( $treatments as $t ) : ?>
-      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block">
-        <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4]">
+      $treatments_total = count( $treatments );
+      foreach ( $treatments as $i => $t ) :
+        // On mobile the grid is 2-up; if there's an odd number of cards, make the
+        // final card span full width (as a wide banner) instead of sitting half-width.
+        $t_orphan = ( $i === $treatments_total - 1 && $treatments_total % 2 === 1 );
+        $t_col    = $t_orphan ? 'col-span-2 md:col-span-1' : '';
+        $t_aspect = $t_orphan ? 'aspect-[16/10] md:aspect-[3/4]' : 'aspect-[3/4]';
+      ?>
+      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block <?php echo $t_col; ?>">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg <?php echo $t_aspect; ?>">
           <img alt="<?php echo esc_attr( $t[3] ); ?>" src="<?php echo esc_url( $t[2] ); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
           <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/40 transition-colors duration-300 flex items-center justify-center">
