@@ -242,8 +242,9 @@ $why_icons = [
 
   <!-- Mobile: full-width image with overlay -->
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
-  <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-  <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
+  <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+  <!-- Relative (not absolute) so the hero grows with its content and never clips the top; min-height keeps it tall. -->
+  <div class="md:hidden relative z-10 flex flex-col justify-end min-h-[85vh] px-6 pt-28 pb-12 hero-legible">
     <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
       <div class="badge-rule w-8 h-px bg-white/30"></div>
       <span class="badge-text text-white/80 text-xs font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
