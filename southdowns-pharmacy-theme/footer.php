@@ -162,29 +162,6 @@
 })();
 </script>
 
-<!-- Voiceflow chatbot — global loader. Opens automatically on the first visit per session. -->
-<script>
-(function(d, t) {
-    var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-    v.onload = function() {
-      window.voiceflow.chat.load({
-        verify: { projectID: '6a3aabd3555c9e49a471855f' },
-        url: 'https://general-runtime.voiceflow.com',
-        versionID: 'production'
-      }).then(() => {
-        const chatShown = sessionStorage.getItem('vf_chatShown');
-        if (!chatShown) {
-          window.voiceflow.chat.open();
-          sessionStorage.setItem('vf_chatShown', 'true');
-        }
-      });
-    }
-    v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
-    v.type = 'text/javascript';
-    s.parentNode.insertBefore(v, s);
-})(document, 'script');
-</script>
-
 <!-- Open the Voiceflow chat from any "Speak to our AI agent" trigger (delegated, future-proof). -->
 <script>
 (function() {
