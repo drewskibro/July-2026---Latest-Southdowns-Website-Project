@@ -443,7 +443,7 @@ $cs_steps = sp_rows( 'cs_steps', [
     </div>
 
     <div class="cs-reveal rounded-3xl border border-blue-100 shadow-sm bg-gradient-to-br from-blue-50 to-white p-6 md:p-10">
-      <?php echo do_shortcode( '[contact-form-7 id="contraception-booking" title="Contraception Booking"]' ); ?>
+      <?php echo do_shortcode( '[ameliastepbooking layout=2 show=location,category,service,employee,datetime,info]' ); ?>
       <p class="text-center text-sm text-gray-400 mt-6 font-jost"><?php echo sp_field( 'cs_book_formnote', 'By submitting this form you consent to Southdowns Pharmacy Group contacting you about your appointment. Your information is kept strictly confidential.' ); ?></p>
     </div>
   </div>
