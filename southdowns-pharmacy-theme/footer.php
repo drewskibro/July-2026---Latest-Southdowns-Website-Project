@@ -24,11 +24,13 @@
         <ul class="space-y-4">
           <?php foreach ( sp_branch_order() as $i ) :
             $branch = sp_branch( $i );
+            // Footer shows the full pharmacy name for Rowlands Castle.
+            $footer_branch_name = ( $branch['name'] === 'Rowlands Castle' ) ? 'Rowlands Castle Pharmacy' : $branch['name'];
           ?>
           <li>
             <a href="<?php echo esc_url( $branch['maps_url'] ); ?>" class="group" target="_blank" rel="noopener noreferrer">
               <div class="text-gray-900 font-medium text-base mb-1 group-hover:text-blue-600 transition-colors font-jost">
-                <?php echo esc_html( $branch['name'] ); ?>
+                <?php echo esc_html( $footer_branch_name ); ?>
               </div>
               <div class="text-gray-500 text-sm font-jost">
                 <?php echo esc_html( $branch['address_line1'] . ', ' . $branch['address_line2'] . ', ' . $branch['city'] . ', ' . $branch['postcode'] ); ?>
