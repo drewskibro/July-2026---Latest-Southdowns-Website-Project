@@ -368,34 +368,24 @@ function sp_awards(): array {
 add_action( 'wp_enqueue_scripts', function() {
     $ver = wp_get_theme()->get( 'Version' );
 
-    // Tailwind CSS CDN
-    wp_enqueue_script(
-        'tailwind-cdn',
-        'https://cdn.tailwindcss.com',
+    // Compiled Tailwind CSS — purged + minified, pre-generated from the theme
+    // templates (assets/css/tailwind.css). Replaces the runtime Tailwind Play
+    // CDN, which shipped ~380KB of JS that compiled CSS in the browser on every
+    // page load and blocked rendering (the main cause of poor PageSpeed scores).
+    // To rebuild after adding new utility classes, see assets/css/README-tailwind.md.
+    wp_enqueue_style(
+        'southdowns-tailwind',
+        get_template_directory_uri() . '/assets/css/tailwind.css',
         [],
-        null,
-        false
+        $ver
     );
 
-    // Tailwind config (Jost font family)
-    wp_add_inline_script( 'tailwind-cdn', '
-        tailwind.config = {
-            content: [],
-            theme: {
-                extend: {
-                    fontFamily: {
-                        jost: ["Jost", "sans-serif"]
-                    }
-                }
-            }
-        };
-    ' );
-
-    // Global theme stylesheet (Jost font + shared CSS classes)
+    // Global theme stylesheet (Jost @font-face + shared custom CSS). Loaded
+    // after Tailwind so the theme's own rules win.
     wp_enqueue_style(
         'southdowns-global',
         get_template_directory_uri() . '/assets/css/global.css',
-        [],
+        [ 'southdowns-tailwind' ],
         $ver
     );
 
@@ -440,6 +430,15 @@ add_action( 'wp_enqueue_scripts', function() {
         );
     }
 } );
+
+// Resource hints — warm up connections to the origins that serve the webfonts
+// and hero imagery, so the browser doesn't pay DNS/TLS setup cost mid-render.
+add_action( 'wp_head', function () {
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="dns-prefetch" href="https://images.unsplash.com">' . "\n";
+    echo '<link rel="dns-prefetch" href="https://c.animaapp.com">' . "\n";
+}, 1 );
 
 
 // ============================================================
