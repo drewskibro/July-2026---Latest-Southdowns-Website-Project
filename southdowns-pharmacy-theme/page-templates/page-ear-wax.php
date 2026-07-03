@@ -20,11 +20,11 @@ $hero_badge       = get_field( 'ew_hero_badge' )      ?: 'TympaHealth Certified'
 $hero_headline    = get_field( 'ew_hero_headline' )   ?: 'Professional <span class="serif-accent">ear wax removal</span> by microsuction';
 $hero_body        = get_field( 'ew_hero_body' )       ?: 'Powered by TympaHealth, our trained clinicians use gentle low-pressure microsuction &mdash; the gold standard in ear care. No water, no mess, completely painless with immediate results.';
 $hero_sub_text    = get_field( 'ew_hero_sub_text' )   ?: '&pound;50 one ear &middot; &pound;55 both ears &middot; Same-day appointments';
-$hero_roundel_1   = get_field( 'ew_hero_roundel_1' )  ?: 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png';
+$hero_roundel_1   = get_field( 'ew_hero_roundel_1' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
 $hero_roundel_1_alt = get_field( 'ew_hero_roundel_1_alt' ) ?: 'Same Day Appointments';
-$hero_roundel_2   = get_field( 'ew_hero_roundel_2' )  ?: 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png';
+$hero_roundel_2   = get_field( 'ew_hero_roundel_2' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
 $hero_roundel_2_alt = get_field( 'ew_hero_roundel_2_alt' ) ?: 'TympaHealth Certified';
-$hero_roundel_3   = get_field( 'ew_hero_roundel_3' )  ?: 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png';
+$hero_roundel_3   = get_field( 'ew_hero_roundel_3' )  ?: get_template_directory_uri() . '/assets/img/roundel-5-star.webp';
 $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
 ?>
 

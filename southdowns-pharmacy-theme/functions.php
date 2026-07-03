@@ -446,7 +446,7 @@ add_action( 'wp_head', function () {
     if ( ! is_front_page() || ! function_exists( 'sp_field' ) ) {
         return;
     }
-    $img = sp_field( 'home_s1_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png' );
+    $img = sp_field( 'home_s1_image', get_template_directory_uri() . '/assets/img/hero-travel.webp' );
     if ( $img ) {
         echo '<link rel="preload" as="image" href="' . esc_url( $img ) . '" fetchpriority="high">' . "\n";
     }

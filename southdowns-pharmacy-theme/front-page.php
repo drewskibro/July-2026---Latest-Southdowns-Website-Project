@@ -11,9 +11,9 @@ $star_svg = '<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-
 $stars = str_repeat( $star_svg, 5 );
 
 // Hero slide background images — editable via Home Page Content → Hero Slider
-$s1_img = sp_field( 'home_s1_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png' );
-$s2_img = sp_field( 'home_s2_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227843-0.png' );
-$s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227870-1.png' );
+$s1_img = sp_field( 'home_s1_image', get_template_directory_uri() . '/assets/img/hero-travel.webp' );
+$s2_img = sp_field( 'home_s2_image', get_template_directory_uri() . '/assets/img/hero-weight-loss.webp' );
+$s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img/hero-blood-test.webp' );
 ?>
 
 <!-- ============================================================
@@ -63,13 +63,13 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
         </div>
         <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s1_img ); ?>');"></div>
 <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:8%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
         </div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="Yellow Fever Centre" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-yellow-fever.webp' ); ?>" alt="Yellow Fever Centre" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
         </div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:8%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.13]" />
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.13]" />
         </div>
       </div>
     </div>
@@ -295,9 +295,9 @@ $s3_img = sp_field( 'home_s3_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
       <?php
       $treatments = [
-        ['Weight Loss',       home_url('/weight-loss/'),    'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944273995-0.jpeg', 'Weight loss treatment at Southdowns Pharmacy'],
-        ['Travel Health',     home_url('/travel-vaccinations/'),  'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274005-1.jpeg', 'Travel health vaccinations at Southdowns Pharmacy'],
-        ['Ear Wax Removal',   home_url('/ear-wax-removal/'),        'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944517596-0.jpeg', 'Ear wax removal service at Southdowns Pharmacy'],
+        ['Weight Loss',       home_url('/weight-loss/'),    get_template_directory_uri() . '/assets/img/treatment-weight-loss.webp', 'Weight loss treatment at Southdowns Pharmacy'],
+        ['Travel Health',     home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/treatment-travel.webp', 'Travel health vaccinations at Southdowns Pharmacy'],
+        ['Ear Wax Removal',   home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/treatment-ear-wax.webp', 'Ear wax removal service at Southdowns Pharmacy'],
       ];
       $treatments_total = count( $treatments );
       foreach ( $treatments as $i => $t ) :
@@ -565,9 +565,9 @@ $testimonials = sp_rows( 'home_testimonials', [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
       <?php
       $products = sp_rows( 'home_products', [
-        ['PREMIUM',     'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax-removal/'),        'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818122-0.png', 'Ear Wax Removal'],
-        ['BEST SELLER', 'B12 Injections',  'Energy boost vitamin therapy to support your wellness journey',            home_url('/b12-injections/'), 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818147-1.png', 'B12 Injections'],
-        ['EXCLUSIVE',   'Travel Health',   'Complete vaccination packages for your next adventure',                    home_url('/travel-vaccinations/'),  'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818166-2.png', 'Travel Health'],
+        ['PREMIUM',     'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/product-ear-wax.webp', 'Ear Wax Removal'],
+        ['BEST SELLER', 'B12 Injections',  'Energy boost vitamin therapy to support your wellness journey',            home_url('/b12-injections/'), get_template_directory_uri() . '/assets/img/product-b12.webp', 'B12 Injections'],
+        ['EXCLUSIVE',   'Travel Health',   'Complete vaccination packages for your next adventure',                    home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/product-travel.webp', 'Travel Health'],
       ], [ 0 => 'badge', 1 => 'title', 2 => 'desc', 3 => 'url', 4 => 'image' ] );
       foreach ( $products as $p ) : ?>
       <a href="<?php echo esc_url( $p[3] ); ?>" class="group block relative">
