@@ -440,6 +440,52 @@ add_action( 'wp_head', function () {
     echo '<link rel="dns-prefetch" href="https://c.animaapp.com">' . "\n";
 }, 1 );
 
+// Preload the homepage hero image (LCP). It is painted as a CSS background,
+// which browsers only discover after CSS parses — preloading fetches it up front.
+add_action( 'wp_head', function () {
+    if ( ! is_front_page() || ! function_exists( 'sp_field' ) ) {
+        return;
+    }
+    $img = sp_field( 'home_s1_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png' );
+    if ( $img ) {
+        echo '<link rel="preload" as="image" href="' . esc_url( $img ) . '" fetchpriority="high">' . "\n";
+    }
+}, 2 );
+
+// ============================================================
+// IMAGE PERFORMANCE — async decode + lazy-load (front-end only)
+// ============================================================
+// Post-processes the rendered HTML: adds decoding="async" to every <img>, and
+// loading="lazy" to images past the first few (the logo + above-the-fold hero
+// stay eager to protect LCP). Any <img> that already sets these keeps its value.
+add_action( 'template_redirect', function () {
+    if ( is_admin() || is_feed() || is_embed()
+        || ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+        || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        return;
+    }
+    ob_start( 'sp_optimize_img_tags' );
+} );
+
+function sp_optimize_img_tags( $html ) {
+    if ( false === stripos( (string) $html, '<img' ) ) {
+        return $html;
+    }
+    $n = 0;
+    return preg_replace_callback( '/<img\b[^>]*>/i', function ( $m ) use ( &$n ) {
+        $tag = $m[0];
+        $n++;
+        if ( false === stripos( $tag, 'decoding=' ) ) {
+            $tag = preg_replace( '/<img\b/i', '<img decoding="async"', $tag, 1 );
+        }
+        // Keep the first 3 images eager (logo + hero) so lazy-loading never delays LCP.
+        if ( $n > 3 && false === stripos( $tag, 'loading=' ) ) {
+            $tag = preg_replace( '/<img\b/i', '<img loading="lazy"', $tag, 1 );
+        }
+        return $tag;
+    }, $html );
+}
+
 
 // ============================================================
 // INCLUDE ACF FIELD GROUP REGISTRATIONS
