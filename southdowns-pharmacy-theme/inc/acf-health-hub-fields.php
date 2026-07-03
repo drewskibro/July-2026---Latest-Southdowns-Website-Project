@@ -3,7 +3,8 @@
  * ACF Local Field Group — Health Hub Page (page-templates/page-health-hub.php)
  * Wires the hero, topic cards and section headings. The blog post loops
  * (featured + latest grid) pull live WordPress posts and stay dynamic.
- * Topic-card filter slugs stay in code (they drive the JS category filter).
+ * Topic-card buckets stay in code (they drive the server-side category filter;
+ * see $hh_bucket_defs in page-health-hub.php).
  */
 
 add_action( 'acf/init', function () {
