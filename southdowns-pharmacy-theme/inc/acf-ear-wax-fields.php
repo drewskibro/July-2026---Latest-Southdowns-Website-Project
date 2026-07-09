@@ -743,6 +743,17 @@ add_action( 'acf/init', function () {
                 'placeholder' => '10,000+',
             ],
 
+            // ============================================================
+            // TAB — LOCATION & BOOKING (section headers)
+            // ============================================================
+            [ 'key' => 'field_ew_tab_locbook', 'label' => 'Location & Booking', 'name' => '', 'type' => 'tab' ],
+            [ 'key' => 'field_ew_loc_eyebrow',  'label' => 'Location — Eyebrow',  'name' => 'ew_loc_eyebrow',  'type' => 'text', 'placeholder' => 'Our Location' ],
+            [ 'key' => 'field_ew_loc_headline', 'label' => 'Location — Headline', 'name' => 'ew_loc_headline', 'type' => 'text', 'placeholder' => 'Available at Emsworth Pharmacy' ],
+            [ 'key' => 'field_ew_loc_subhead',  'label' => 'Location — Sub-headline', 'name' => 'ew_loc_subhead', 'type' => 'textarea', 'rows' => 2, 'placeholder' => 'Our TympaHealth-certified ear wax removal service is offered exclusively at our Emsworth branch.' ],
+            [ 'key' => 'field_ew_book_eyebrow',  'label' => 'Booking — Eyebrow',  'name' => 'ew_book_eyebrow',  'type' => 'text', 'placeholder' => 'Book Online · Emsworth' ],
+            [ 'key' => 'field_ew_book_headline', 'label' => 'Booking — Headline', 'name' => 'ew_book_headline', 'type' => 'text', 'placeholder' => 'Book Your Ear Wax Removal' ],
+            [ 'key' => 'field_ew_book_subhead',  'label' => 'Booking — Sub-headline', 'name' => 'ew_book_subhead', 'type' => 'textarea', 'rows' => 2, 'placeholder' => 'Our TympaHealth ear wax removal service is available at our Emsworth branch. Choose your time below.' ],
+
         ],
     ] );
 

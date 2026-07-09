@@ -14,7 +14,7 @@ $cvp_hero_badge     = sp_field( 'cv_priv_hero_badge',    'Private COVID-19 Vacci
 $cvp_hero_headline  = sp_field( 'cv_priv_hero_headline', 'Private COVID-19 Vaccine in Hampshire &mdash; Available Today' );
 $cvp_hero_body      = sp_field( 'cv_priv_hero_body',     'Not eligible for the NHS COVID-19 vaccine this season? Southdowns Pharmacy offers private COVID-19 vaccination using the latest Pfizer vaccine &mdash; no eligibility criteria, no waiting list, no GP referral needed. Walk in or book online at any of our four Hampshire locations.' );
 $cvp_hero_image     = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop';
-$cvp_price          = sp_field( 'cv_priv_price',         '£89.50' );
+$cvp_price          = sp_field( 'cv_priv_price',         '£92.50' );
 $cvp_price_label    = sp_field( 'cv_priv_price_label',   'per person · all-inclusive' );
 $cvp_final_headline = sp_field( 'cv_priv_final_cta_headline', 'Stay Protected.<br>Book Your Private<br>COVID-19 Vaccine Today.' );
 $cvp_final_body     = sp_field( 'cv_priv_final_cta_body',     'No waiting lists. No eligibility criteria. Just the Pfizer vaccine, administered by our expert team — at a time that suits you.' );
@@ -152,27 +152,20 @@ $cvp_inclusions     = ! empty( $cvp_inclusions_raw ) ? array_column( $cvp_inclus
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-
-      <div class="yf-reveal yf-card-lift text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors" data-delay="1">
-        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost"><?php echo esc_html( $cvp_price ); ?></div>
-        <div class="text-sm md:text-base text-blue-100 font-medium font-jost">Per Dose</div>
+      <?php
+      $cvp_stat_cards_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_stat_cards' ) : null;
+      $cvp_stat_cards = ! empty( $cvp_stat_cards_raw ) ? $cvp_stat_cards_raw : [
+        [ 'value' => $cvp_price, 'label' => 'Per Dose' ],
+        [ 'value' => 'Pfizer',   'label' => 'Latest Vaccine' ],
+        [ 'value' => 'No',       'label' => 'NHS Eligibility Needed' ],
+        [ 'value' => 'Same',     'label' => 'Day Appointments Available' ],
+      ];
+      foreach ( $cvp_stat_cards as $csi => $stat ) : ?>
+      <div class="yf-reveal yf-card-lift text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors" data-delay="<?php echo (int) ( $csi + 1 ); ?>">
+        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost"><?php echo esc_html( $stat['value'] ?? '' ); ?></div>
+        <div class="text-sm md:text-base text-blue-100 font-medium font-jost"><?php echo esc_html( $stat['label'] ?? '' ); ?></div>
       </div>
-
-      <div class="yf-reveal yf-card-lift text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors" data-delay="2">
-        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost">Pfizer</div>
-        <div class="text-sm md:text-base text-blue-100 font-medium font-jost">Latest Vaccine</div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors" data-delay="3">
-        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost">No</div>
-        <div class="text-sm md:text-base text-blue-100 font-medium font-jost">NHS Eligibility Needed</div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors" data-delay="4">
-        <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost">Same</div>
-        <div class="text-sm md:text-base text-blue-100 font-medium font-jost">Day Appointments Available</div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -193,53 +186,36 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
 
       <div>
         <span class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-blue-100 uppercase tracking-wider font-jost">Who Is This For?</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-5 font-jost">Stay Protected &mdash; Even if You&rsquo;re Not NHS Eligible</h2>
-        <p class="text-gray-600 text-lg leading-relaxed mb-8 font-jost">The NHS Spring 2026 programme is restricted to those aged 75+, care home residents, and the severely immunosuppressed. If you fall outside those cohorts, our private service means you don&rsquo;t have to go without.</p>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-5 font-jost"><?php echo sp_field( 'cv_priv_s3_headline', 'Stay Protected &mdash; Even if You&rsquo;re Not NHS Eligible' ); ?></h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8 font-jost"><?php echo sp_field( 'cv_priv_s3_body', 'The NHS Spring 2026 programme is restricted to those aged 75+, care home residents, and the severely immunosuppressed. If you fall outside those cohorts, our private service means you don&rsquo;t have to go without.' ); ?></p>
 
-        <!-- Icon cards grid -->
+        <!-- Icon cards grid — text editable; icons + colours stay in design, by position -->
         <?php
-        $cvp_s3_cards = [
-            [
-                'title' => 'Not NHS Eligible',
-                'desc'  => 'Not in the current cohort? You can still get vaccinated privately.',
-                'icon'  => '<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
-                'colour' => 'bg-blue-50 border-blue-100 text-blue-600',
-            ],
-            [
-                'title' => 'Travelling Soon',
-                'desc'  => 'Heading somewhere higher-risk? Protect yourself before you go.',
-                'icon'  => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
-                'colour' => 'bg-teal-50 border-teal-100 text-teal-600',
-            ],
-            [
-                'title' => 'Underlying Conditions',
-                'desc'  => 'Additional peace of mind beyond NHS eligibility thresholds.',
-                'icon'  => '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>',
-                'colour' => 'bg-rose-50 border-rose-100 text-rose-500',
-            ],
-            [
-                'title' => 'Carer or Family',
-                'desc'  => 'Protect the people around you by reducing your own risk.',
-                'icon'  => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-                'colour' => 'bg-amber-50 border-amber-100 text-amber-600',
-            ],
-            [
-                'title' => 'Simply Want Protection',
-                'desc'  => 'No reason needed — stay up to date on your own terms.',
-                'icon'  => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
-                'colour' => 'bg-indigo-50 border-indigo-100 text-indigo-600',
-            ],
+        $cvp_s3_meta = [
+            [ 'colour' => 'bg-blue-50 border-blue-100 text-blue-600',     'icon' => '<path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>' ],
+            [ 'colour' => 'bg-teal-50 border-teal-100 text-teal-600',     'icon' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
+            [ 'colour' => 'bg-rose-50 border-rose-100 text-rose-500',     'icon' => '<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>' ],
+            [ 'colour' => 'bg-amber-50 border-amber-100 text-amber-600',  'icon' => '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
+            [ 'colour' => 'bg-indigo-50 border-indigo-100 text-indigo-600', 'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
+        ];
+        $cvp_s3_cards_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_cards' ) : null;
+        $cvp_s3_cards = ! empty( $cvp_s3_cards_raw ) ? $cvp_s3_cards_raw : [
+            [ 'title' => 'Not NHS Eligible',        'desc' => 'Not in the current cohort? You can still get vaccinated privately.' ],
+            [ 'title' => 'Travelling Soon',         'desc' => 'Heading somewhere higher-risk? Protect yourself before you go.' ],
+            [ 'title' => 'Underlying Conditions',   'desc' => 'Additional peace of mind beyond NHS eligibility thresholds.' ],
+            [ 'title' => 'Carer or Family',         'desc' => 'Protect the people around you by reducing your own risk.' ],
+            [ 'title' => 'Simply Want Protection',  'desc' => 'No reason needed — stay up to date on your own terms.' ],
         ];
         ?>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-7">
-          <?php foreach ( $cvp_s3_cards as $card ) : ?>
-          <div class="flex items-start gap-3 bg-white border rounded-xl px-4 py-3.5 shadow-sm <?php echo $card['colour']; ?>">
-            <div class="flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center <?php echo $card['colour']; ?>">
-              <svg class="w-4.5 h-4.5 w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $card['icon']; ?></svg>
+          <?php foreach ( $cvp_s3_cards as $ci => $card ) : $m = $cvp_s3_meta[ $ci % count( $cvp_s3_meta ) ]; ?>
+          <div class="flex items-start gap-3 bg-white border rounded-xl px-4 py-3.5 shadow-sm <?php echo $m['colour']; ?>">
+            <div class="flex-shrink-0 w-9 h-9 rounded-lg border flex items-center justify-center <?php echo $m['colour']; ?>">
+              <svg class="w-4.5 h-4.5 w-[18px] h-[18px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $m['icon']; ?></svg>
             </div>
             <div>
-              <p class="font-semibold text-slate-800 text-sm font-jost leading-snug"><?php echo esc_html( $card['title'] ); ?></p>
-              <p class="text-gray-500 text-xs font-jost leading-relaxed mt-0.5"><?php echo esc_html( $card['desc'] ); ?></p>
+              <p class="font-semibold text-slate-800 text-sm font-jost leading-snug"><?php echo esc_html( $card['title'] ?? '' ); ?></p>
+              <p class="text-gray-500 text-xs font-jost leading-relaxed mt-0.5"><?php echo esc_html( $card['desc'] ?? '' ); ?></p>
             </div>
           </div>
           <?php endforeach; ?>
@@ -278,8 +254,8 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
       Transparent Pricing
     </span>
-    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Simple, All-Inclusive Price</h2>
-    <p class="text-blue-200 text-lg max-w-xl mx-auto mb-14 font-jost">One price covers everything — no hidden charges, no consultation fees.</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'cv_priv_price_headline', 'Simple, All-Inclusive Price' ); ?></h2>
+    <p class="text-blue-200 text-lg max-w-xl mx-auto mb-14 font-jost"><?php echo sp_field( 'cv_priv_price_subhead', 'One price covers everything — no hidden charges, no consultation fees.' ); ?></p>
 
     <!-- Glowing price card -->
     <div class="flex justify-center mb-14">
@@ -326,14 +302,15 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
         About the Vaccine
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">The Pfizer-BioNTech COVID-19 Vaccine</h2>
-      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost">An updated mRNA vaccine formulated against current circulating strains, with a proven track record of safety and effectiveness.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'cv_priv_vaccine_headline', 'The Pfizer-BioNTech COVID-19 Vaccine' ); ?></h2>
+      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost"><?php echo sp_field( 'cv_priv_vaccine_subhead', 'An updated mRNA vaccine formulated against current circulating strains, with a proven track record of safety and effectiveness.' ); ?></p>
     </div>
 
     <!-- Proof stats -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
       <?php
-      $vaccine_stats = [
+      $vaccine_stats_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_vaccine_stats' ) : null;
+      $vaccine_stats = ! empty( $vaccine_stats_raw ) ? $vaccine_stats_raw : [
         [ 'value' => 'Billions', 'label' => 'of doses administered worldwide' ],
         [ 'value' => 'MHRA',     'label' => 'approved & continuously monitored' ],
         [ 'value' => 'Same',     'label' => 'Pfizer vaccine used by the NHS' ],
@@ -393,8 +370,8 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         What to Expect
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Side Effects & After Care</h2>
-      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost">Most side effects are mild and resolve within a couple of days — they are a sign your immune system is responding.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'cv_priv_se_headline', 'Side Effects &amp; After Care' ); ?></h2>
+      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost"><?php echo sp_field( 'cv_priv_se_subhead', 'Most side effects are mild and resolve within a couple of days — they are a sign your immune system is responding.' ); ?></p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -403,7 +380,8 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
         <h3 class="text-xl font-bold text-white mb-5 font-jost">Common Side Effects</h3>
         <ul class="space-y-3">
           <?php
-          $common_se = [
+          $common_se_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_common_se' ) : null;
+          $common_se = ! empty( $common_se_raw ) ? array_column( $common_se_raw, 'text' ) : [
             'Soreness, redness or swelling at the injection site',
             'Feeling tired or fatigued',
             'Headache',
@@ -429,7 +407,8 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
         <p class="text-white font-jost text-sm mb-5">Serious reactions are very rare. Contact 111 or seek urgent care if you experience:</p>
         <ul class="space-y-3">
           <?php
-          $urgent_se = [
+          $urgent_se_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_urgent_se' ) : null;
+          $urgent_se = ! empty( $urgent_se_raw ) ? array_column( $urgent_se_raw, 'text' ) : [
             'Difficulty breathing or shortness of breath',
             'Swelling of the face, lips, tongue or throat',
             'Chest pain or a rapid or irregular heartbeat',
@@ -458,37 +437,23 @@ $cvp_s3_image = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_s3_image'
      S7 · WHY SOUTHDOWNS  (blue gradient, premium glassmorphism)
 ════════════════════════════════════════════════════════ -->
 <?php
-$cvp_why_cards = [
-    [
-        'title' => 'GPhC-Registered Pharmacists',
-        'desc'  => 'Every dose is administered by a fully qualified, GPhC-registered pharmacist prescriber — never a technician or trainee.',
-        'icon'  => [ 'rgba(16,185,129,0.25)', 'rgba(52,211,153,0.5)', '#6ee7b7', '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
-    ],
-    [
-        'title' => 'Same-Day Appointments',
-        'desc'  => 'Walk in or book online for a same-day slot — most patients are seen, vaccinated and out the door within 20 minutes.',
-        'icon'  => [ 'rgba(6,182,212,0.25)', 'rgba(34,211,238,0.5)', '#67e8f9', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>' ],
-    ],
-    [
-        'title' => 'Four Convenient Locations',
-        'desc'  => 'Branches in Emsworth, Havant, Davies Pharmacy and Rowlands Castle — there is always a Southdowns near you.',
-        'icon'  => [ 'rgba(244,63,94,0.25)', 'rgba(253,164,175,0.5)', '#fda4af', '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
-    ],
-    [
-        'title' => 'Genuine Pfizer Vaccine',
-        'desc'  => 'Authentic, MHRA-approved Pfizer stock only — stored and handled to manufacturer cold-chain standards.',
-        'icon'  => [ 'rgba(245,158,11,0.25)', 'rgba(252,211,77,0.5)', '#fcd34d', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
-    ],
-    [
-        'title' => 'All-Inclusive Pricing',
-        'desc'  => 'One transparent fee covers everything — consultation, vaccine, observation and your digital record. No hidden extras, no surprises.',
-        'icon'  => [ 'rgba(139,92,246,0.25)', 'rgba(196,181,253,0.5)', '#c4b5fd', '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>' ],
-    ],
-    [
-        'title' => 'Peace of Mind, Same Day',
-        'desc'  => 'No referral, no waiting list, no paperwork chase — walk in and leave protected the same morning.',
-        'icon'  => [ 'rgba(249,115,22,0.25)', 'rgba(253,186,116,0.5)', '#fdba74', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' ],
-    ],
+// Card text editable (Page Sections → Why Choose); icon colours/paths stay in design, by position.
+$cvp_why_meta = [
+    [ 'rgba(16,185,129,0.25)', 'rgba(52,211,153,0.5)', '#6ee7b7', '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' ],
+    [ 'rgba(6,182,212,0.25)', 'rgba(34,211,238,0.5)', '#67e8f9', '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>' ],
+    [ 'rgba(244,63,94,0.25)', 'rgba(253,164,175,0.5)', '#fda4af', '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
+    [ 'rgba(245,158,11,0.25)', 'rgba(252,211,77,0.5)', '#fcd34d', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
+    [ 'rgba(139,92,246,0.25)', 'rgba(196,181,253,0.5)', '#c4b5fd', '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/>' ],
+    [ 'rgba(249,115,22,0.25)', 'rgba(253,186,116,0.5)', '#fdba74', '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' ],
+];
+$cvp_why_cards_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_why_cards' ) : null;
+$cvp_why_cards = ! empty( $cvp_why_cards_raw ) ? $cvp_why_cards_raw : [
+    [ 'title' => 'GPhC-Registered Pharmacists', 'desc' => 'Every dose is administered by a fully qualified, GPhC-registered pharmacist prescriber — never a technician or trainee.' ],
+    [ 'title' => 'Same-Day Appointments',       'desc' => 'Walk in or book online for a same-day slot — most patients are seen, vaccinated and out the door within 20 minutes.' ],
+    [ 'title' => 'Four Convenient Locations',   'desc' => 'Branches in Emsworth, Havant, Davies Pharmacy and Rowlands Castle — there is always a Southdowns near you.' ],
+    [ 'title' => 'Genuine Pfizer Vaccine',      'desc' => 'Authentic, MHRA-approved Pfizer stock only — stored and handled to manufacturer cold-chain standards.' ],
+    [ 'title' => 'All-Inclusive Pricing',       'desc' => 'One transparent fee covers everything — consultation, vaccine, observation and your digital record. No hidden extras, no surprises.' ],
+    [ 'title' => 'Peace of Mind, Same Day',     'desc' => 'No referral, no waiting list, no paperwork chase — walk in and leave protected the same morning.' ],
 ];
 ?>
 <section class="relative py-16 md:py-24 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
@@ -502,12 +467,12 @@ $cvp_why_cards = [
         <div class="badge-rule w-10 h-px bg-white/30"></div>
         <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Our Promise to You</span>
       </div>
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Why Choose Southdowns Pharmacy?</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Authentic Pfizer stock, GPhC-registered prescribers, and four Hampshire locations — private COVID protection without the wait.</p>
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost"><?php echo esc_html( sp_field( 'cv_priv_why_headline', 'Why Choose Southdowns Pharmacy?' ) ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo esc_html( sp_field( 'cv_priv_why_subhead', 'Authentic Pfizer stock, GPhC-registered prescribers, and four Hampshire locations — private COVID protection without the wait.' ) ); ?></p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       <?php foreach ( $cvp_why_cards as $i => $card ) :
-        $icon  = $card['icon'];
+        $icon = $cvp_why_meta[ $i % count( $cvp_why_meta ) ];
       ?>
       <div class="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105">
         <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 group-hover:scale-110 transition-transform" style="background:<?php echo $icon[0]; ?>;border:1px solid <?php echo $icon[1]; ?>;">
@@ -535,41 +500,31 @@ $cvp_why_cards = [
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Getting Started
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">How to Book Your Vaccine</h2>
-      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost">Three easy ways to secure your appointment — choose whatever works best for you.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost"><?php echo esc_html( sp_field( 'cv_priv_book_headline', 'How to Book Your Vaccine' ) ); ?></h2>
+      <p class="text-blue-200 text-lg max-w-2xl mx-auto font-jost"><?php echo esc_html( sp_field( 'cv_priv_book_subhead', 'Three easy ways to secure your appointment — choose whatever works best for you.' ) ); ?></p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
       <?php
-      $book_steps = [
-        [
-          'num'      => '01',
-          'title'    => 'Book Online',
-          'tagline'  => 'Done in under 60 seconds',
-          'desc'     => 'Choose your branch, pick a slot, confirm — our booking system is open 24/7 and you will receive instant confirmation.',
-          'icon'     => '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
-        ],
-        [
-          'num'      => '02',
-          'title'    => 'Call Your Branch',
-          'tagline'  => 'Speak to a pharmacist',
-          'desc'     => 'Prefer a conversation? Our team will answer your questions and find you a slot that fits around your day.',
-          'icon'     => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/>',
-        ],
-        [
-          'num'      => '03',
-          'title'    => 'Walk In',
-          'tagline'  => 'Often seen the same day',
-          'desc'     => 'No appointment? Pop into any of our four Hampshire branches — subject to availability, we will do our best to fit you in.',
-          'icon'     => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
-        ],
+      // Step number + icon stay in design (by position); title/tagline/desc editable (Page Sections → How to Book).
+      $book_steps_meta = [
+        [ 'num' => '01', 'icon' => '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>' ],
+        [ 'num' => '02', 'icon' => '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/>' ],
+        [ 'num' => '03', 'icon' => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>' ],
       ];
-      foreach ( $book_steps as $step ) : ?>
+      $book_steps_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_book_steps' ) : null;
+      $book_steps = ! empty( $book_steps_raw ) ? $book_steps_raw : [
+        [ 'title' => 'Book Online',      'tagline' => 'Done in under 60 seconds', 'desc' => 'Choose your branch, pick a slot, confirm — our booking system is open 24/7 and you will receive instant confirmation.' ],
+        [ 'title' => 'Call Your Branch', 'tagline' => 'Speak to a pharmacist',     'desc' => 'Prefer a conversation? Our team will answer your questions and find you a slot that fits around your day.' ],
+        [ 'title' => 'Walk In',          'tagline' => 'Often seen the same day',    'desc' => 'No appointment? Pop into any of our four Hampshire branches — subject to availability, we will do our best to fit you in.' ],
+      ];
+      foreach ( $book_steps as $si => $step ) :
+        $meta = $book_steps_meta[ $si % count( $book_steps_meta ) ]; ?>
       <div class="group relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 overflow-hidden hover:bg-white/15 hover:-translate-y-1 transition-all duration-300 reveal-item">
-        <span aria-hidden="true" class="absolute -top-4 -right-2 text-[7rem] leading-none font-extrabold text-white/5 font-jost select-none pointer-events-none group-hover:text-white/10 transition-colors"><?php echo esc_html( $step['num'] ); ?></span>
+        <span aria-hidden="true" class="absolute -top-4 -right-2 text-[7rem] leading-none font-extrabold text-white/5 font-jost select-none pointer-events-none group-hover:text-white/10 transition-colors"><?php echo esc_html( $meta['num'] ); ?></span>
         <div class="relative z-10">
           <div class="w-12 h-12 rounded-xl bg-blue-500/20 border border-blue-400/30 flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $step['icon']; ?></svg>
+            <svg class="w-6 h-6 text-blue-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $meta['icon']; ?></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-1.5 font-jost"><?php echo esc_html( $step['title'] ); ?></h3>
           <p class="text-blue-300 text-xs font-semibold uppercase tracking-wider font-jost mb-3"><?php echo esc_html( $step['tagline'] ); ?></p>
@@ -598,7 +553,7 @@ $cvp_why_cards = [
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         Free NHS Vaccine
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5 font-jost">Could You Get the Vaccine Free on the NHS?</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5 font-jost"><?php echo esc_html( sp_field( 'cv_priv_nhs_headline', 'Could You Get the Vaccine Free on the NHS?' ) ); ?></h2>
       <p class="text-slate-600 text-lg mb-6 font-jost">For Spring 2026, the NHS COVID-19 programme is available free of charge to people aged 75 and over, care home residents, and those who are severely immunosuppressed. If you think you may be eligible, it is worth checking before booking a private appointment.</p>
       <div class="bg-blue-50 border border-blue-100 rounded-2xl px-8 py-6 mb-8 text-left">
         <p class="text-blue-900 font-semibold font-jost mb-3">You may be eligible for a free NHS COVID-19 vaccine if you are:</p>
@@ -633,7 +588,7 @@ $cvp_why_cards = [
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
+      <?php foreach ( sp_branch_order() as $i ) :
         $b = sp_branch( $i );
         $addr = trim( $b['address_line1'] . ( $b['address_line2'] ? ', ' . $b['address_line2'] : '' ) );
         if ( '' === $addr ) { $addr = $b['city']; }
@@ -661,7 +616,7 @@ $cvp_why_cards = [
           </a>
         </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -677,13 +632,16 @@ $cvp_why_cards = [
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Common Questions
       </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost">Frequently Asked Questions</h2>
-      <p class="text-slate-600 text-lg max-w-xl mx-auto font-jost">Everything you need to know about the private COVID-19 vaccine service at Southdowns Pharmacy.</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost"><?php echo esc_html( sp_field( 'cv_priv_faq_headline', 'Frequently Asked Questions' ) ); ?></h2>
+      <p class="text-slate-600 text-lg max-w-xl mx-auto font-jost"><?php echo esc_html( sp_field( 'cv_priv_faq_subhead', 'Everything you need to know about the private COVID-19 vaccine service at Southdowns Pharmacy.' ) ); ?></p>
     </div>
 
     <div class="max-w-3xl mx-auto space-y-3">
       <?php
-      $faqs = [
+      $faqs_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_faqs' ) : null;
+      $faqs = ! empty( $faqs_raw )
+        ? array_map( function ( $f ) { return [ 'q' => $f['question'], 'a' => $f['answer'] ]; }, $faqs_raw )
+        : [
         [
           'q' => 'Why would I pay for a COVID-19 vaccine when the NHS offers one for free?',
           'a' => 'The NHS Spring 2026 programme is limited to specific high-risk groups. If you fall outside those groups but still want protection — perhaps before a holiday, because of personal health circumstances, or simply for peace of mind — our private service gives you access to the same Pfizer vaccine without a referral or eligibility check.',
@@ -748,7 +706,8 @@ $cvp_why_cards = [
   <div class="section-container relative z-10 text-center">
     <div class="flex flex-wrap justify-center gap-2 mb-8">
       <?php
-      $badges = [
+      $badges_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_badges' ) : null;
+      $badges = ! empty( $badges_raw ) ? array_column( $badges_raw, 'text' ) : [
         'Pfizer-BioNTech Vaccine',
         'MHRA Approved',
         'GPhC-Registered Pharmacists',
@@ -771,16 +730,13 @@ $cvp_why_cards = [
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Book Your Appointment
       </a>
-      <a href="tel:<?php echo esc_attr( sp_phone_raw() ); ?>" class="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl font-jost border border-white/30 hover:bg-white/25 transition-colors duration-200 text-lg">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/></svg>
-        <?php echo esc_html( sp_phone() ); ?>
-      </a>
     </div>
 
     <!-- Trust row -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto border-t border-white/10 pt-10">
       <?php
-      $trust_stats = [
+      $trust_stats_raw = function_exists( 'get_field' ) ? get_field( 'cv_priv_trust' ) : null;
+      $trust_stats = ! empty( $trust_stats_raw ) ? $trust_stats_raw : [
         [ 'value' => '4',         'label' => 'Hampshire Locations' ],
         [ 'value' => 'Same Day',  'label' => 'Appointments Available' ],
         [ 'value' => 'GPhC',      'label' => 'Registered Pharmacists' ],

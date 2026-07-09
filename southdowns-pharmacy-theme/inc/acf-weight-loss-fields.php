@@ -68,7 +68,7 @@ add_action( 'acf/init', function () {
                 'type'         => 'textarea',
                 'rows'         => 3,
                 'instructions' => 'Short paragraph shown beneath the headline in the hero section.',
-                'placeholder'  => 'Mounjaro and Wegovy prescriptions from our Hampshire pharmacists. No GP referral. No long waits. Expert face-to-face care at Southsea, Waterlooville, Havant & Portsmouth.',
+                'placeholder'  => 'Mounjaro and Wegovy prescriptions from our Hampshire pharmacists. No GP referral. No long waits. Expert face-to-face care at Emsworth, Havant & Rowlands Castle.',
             ],
             [
                 'key'          => 'field_wl_hero_badge_text',
@@ -256,7 +256,7 @@ add_action( 'acf/init', function () {
                 'name'         => 'wl_mounjaro_price',
                 'type'         => 'text',
                 'instructions' => 'Appended as the last bullet on the Mounjaro card. Leave empty to omit.',
-                'placeholder'  => 'From £149/month including pharmacist support',
+                'placeholder'  => 'From £156.50/month including pharmacist support',
             ],
 
             // ---- Wegovy card -------------------------------------
@@ -321,7 +321,7 @@ add_action( 'acf/init', function () {
                 'name'         => 'wl_wegovy_price',
                 'type'         => 'text',
                 'instructions' => 'Appended as the last bullet on the Wegovy card. Leave empty to omit.',
-                'placeholder'  => 'From £149/month including pharmacist support',
+                'placeholder'  => 'From £140/month including pharmacist support',
             ],
 
             // ============================================================
@@ -445,6 +445,57 @@ add_action( 'acf/init', function () {
                 'sub_fields'   => [
                     [ 'key' => 'field_wl_faq_question', 'label' => 'Question', 'name' => 'question', 'type' => 'text' ],
                     [ 'key' => 'field_wl_faq_answer',   'label' => 'Answer',   'name' => 'answer',   'type' => 'textarea', 'rows' => 5, 'instructions' => 'Basic HTML allowed.' ],
+                ],
+            ],
+
+            // ============================================================
+            // TAB 6 — BENEFITS / STEPS / WHY  (S5, S6, S9 card grids)
+            // ============================================================
+            [ 'key' => 'field_wl_tab_sections', 'label' => 'Benefits / Steps / Why', 'name' => '', 'type' => 'tab' ],
+            [
+                'key'          => 'field_wl_benefits',
+                'label'        => 'Benefit Cards (“What you can expect”)',
+                'name'         => 'wl_benefits',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 9,
+                'layout'       => 'block',
+                'button_label' => 'Add Benefit',
+                'instructions' => 'The outcomes grid. Card icons cycle by position (kept in the design). Leave empty to use the six built-in defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_wl_benefit_image', 'label' => 'Image', 'name' => 'image', 'type' => 'image', 'return_format' => 'url', 'preview_size' => 'medium', 'instructions' => 'Card photo (recommended 600 × 400 px). Leave empty to keep the built-in photo for this position.' ],
+                    [ 'key' => 'field_wl_benefit_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                    [ 'key' => 'field_wl_benefit_desc',  'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+                ],
+            ],
+            [
+                'key'          => 'field_wl_steps',
+                'label'        => 'Programme Steps (“How our programme works”)',
+                'name'         => 'wl_steps',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 8,
+                'layout'       => 'block',
+                'button_label' => 'Add Step',
+                'instructions' => 'Numbered steps. Numbers + colours are added automatically by position. Leave empty to use the four built-in defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_wl_step_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                    [ 'key' => 'field_wl_step_desc',  'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+                ],
+            ],
+            [
+                'key'          => 'field_wl_why_cards',
+                'label'        => 'Why Southdowns Cards',
+                'name'         => 'wl_why_cards',
+                'type'         => 'repeater',
+                'min'          => 0,
+                'max'          => 9,
+                'layout'       => 'block',
+                'button_label' => 'Add Card',
+                'instructions' => 'The “Why Hampshire chooses Southdowns” grid. Icons cycle by position (kept in the design). Leave empty to use the six built-in defaults.',
+                'sub_fields'   => [
+                    [ 'key' => 'field_wl_why_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
+                    [ 'key' => 'field_wl_why_desc',  'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
                 ],
             ],
         ],

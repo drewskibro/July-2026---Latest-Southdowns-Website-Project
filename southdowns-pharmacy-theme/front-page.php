@@ -9,25 +9,30 @@ get_header();
 $booking_url = sp_booking_url();
 $star_svg = '<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
 $stars = str_repeat( $star_svg, 5 );
+
+// Hero slide background images — editable via Home Page Content → Hero Slider
+$s1_img = sp_field( 'home_s1_image', get_template_directory_uri() . '/assets/img/hero-travel.webp' );
+$s2_img = sp_field( 'home_s2_image', get_template_directory_uri() . '/assets/img/hero-weight-loss.webp' );
+$s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img/hero-blood-test.webp' );
 ?>
 
 <!-- ============================================================
      HERO SLIDER
      ============================================================ -->
-<section class="relative w-full min-h-[500px] md:min-h-[500px] lg:min-h-[600px] overflow-hidden" id="hero-slider">
-  <div class="relative w-full min-h-[500px] md:min-h-[500px] lg:min-h-[600px]">
+<section class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px] overflow-hidden" id="hero-slider">
+  <div class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px]">
 
     <!-- Slide 1: Travel Vaccines -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100 z-10" data-slide="0">
-      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
+      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $s1_img ); ?>');"></div>
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day</span>
         </div>
-        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><span class="serif-accent">Same-day</span> vaccine &amp; blood test appointments</h1>
-        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.</p>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s1_heading', '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments' ); ?></h1>
+        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s1_subtext', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ); ?></p>
         <div class="mb-4">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
             Book Appointment
@@ -37,13 +42,13 @@ $stars = str_repeat( $star_svg, 5 );
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Same day appointments typically available—book early to avoid disappointment.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day Appointments</span>
           </div>
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><span class="serif-accent">Same-day</span> vaccine &amp; blood test appointments</h1>
-          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.</p>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s1_heading', '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments' ); ?></h1>
+          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s1_subtext', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ); ?></p>
           <div class="mb-6">
             <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
               Book Appointment
@@ -56,30 +61,30 @@ $stars = str_repeat( $star_svg, 5 );
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Expert Pharmacists</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773049303978-0.png');"></div>
-        <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s1_img ); ?>');"></div>
+<div class="absolute z-30 flex flex-col items-center" style="left:50%;top:8%;transform:translateX(-50%);">
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
         </div>
         <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="Yellow Fever Centre" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-yellow-fever.webp' ); ?>" alt="Yellow Fever Centre" class="w-[170px] h-[170px] object-contain drop-shadow-lg" />
         </div>
-        <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
+        <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:8%;transform:translateX(-50%);">
+          <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.13]" />
         </div>
       </div>
     </div>
 
     <!-- Slide 2: Weight Loss -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0" data-slide="1">
-      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227843-0.png');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
+      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');"></div>
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
         </div>
-        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;">Medical <span class="serif-accent">weight loss</span> programme</h1>
-        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.</p>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
+        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
         <div class="mb-4">
           <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
             Learn More
@@ -89,13 +94,13 @@ $stars = str_repeat( $star_svg, 5 );
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Average 15-20kg weight loss with monthly check-ins included.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
           </div>
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;">Medical <span class="serif-accent">weight loss</span> programme</h1>
-          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.</p>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
+          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
           <div class="mb-6">
             <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
               Learn More
@@ -108,21 +113,21 @@ $stars = str_repeat( $star_svg, 5 );
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227843-0.png');background-position:85% center;"></div>
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');background-position:85% center;"></div>
       </div>
     </div>
 
     <!-- Slide 3: Blood Tests -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0" data-slide="2">
-      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227870-1.png');"></div>
-      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
+      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s3_img ); ?>');"></div>
+      <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+      <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
           <div class="badge-rule w-8 h-px bg-white/30"></div>
-          <span class="badge-text text-white/80 text-xs font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours</span>
+          <span class="badge-text text-white/90 text-xs font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours</span>
         </div>
-        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><span class="serif-accent">Comprehensive</span> blood testing</h1>
-        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost">Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.</p>
+        <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s3_heading', '<span class="serif-accent">Comprehensive</span> blood testing' ); ?></h1>
+        <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s3_subtext', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' ); ?></p>
         <div class="mb-4">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
             Book Blood Test
@@ -132,13 +137,13 @@ $stars = str_repeat( $star_svg, 5 );
         <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Results typically available within 24-48 hours.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours &middot; 4 Locations</span>
           </div>
-          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><span class="serif-accent">Comprehensive</span> blood testing</h1>
-          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost">Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.</p>
+          <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s3_heading', '<span class="serif-accent">Comprehensive</span> blood testing' ); ?></h1>
+          <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s3_subtext', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' ); ?></p>
           <div class="mb-6">
             <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
               Book Blood Test
@@ -151,7 +156,7 @@ $stars = str_repeat( $star_svg, 5 );
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> B12 &amp; Full Screening</span>
           </div>
         </div>
-        <div class="w-1/2 min-h-[500px] lg:min-h-[600px] bg-cover" style="background-image:url('https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773078227870-1.png');background-position:85% center;"></div>
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover" style="background-image:url('<?php echo esc_url( $s3_img ); ?>');background-position:85% center;"></div>
       </div>
     </div>
 
@@ -165,10 +170,10 @@ $stars = str_repeat( $star_svg, 5 );
   </div>
 
   <!-- Prev/Next Arrows -->
-  <button class="slider-prev absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors" aria-label="Previous slide">
+  <button class="slider-prev absolute left-4 bottom-3 z-20 w-10 h-10 md:top-1/2 md:bottom-auto md:-translate-y-1/2 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors" aria-label="Previous slide">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
   </button>
-  <button class="slider-next absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors" aria-label="Next slide">
+  <button class="slider-next absolute right-4 bottom-3 z-20 w-10 h-10 md:top-1/2 md:bottom-auto md:-translate-y-1/2 md:w-12 md:h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors" aria-label="Next slide">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
   </button>
 </section>
@@ -196,6 +201,84 @@ $stars = str_repeat( $star_svg, 5 );
 </script>
 
 <!-- ============================================================
+     AWARD-WINNING PHARMACY GROUP
+     Awards sourced verbatim from southdownspharmacygroup.co.uk/about-us
+     ============================================================ -->
+<section class="relative py-12 md:py-16 bg-white border-t border-[#e8e0d8]">
+  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-8 md:mb-10">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_awards_eyebrow', 'Recognised for Excellence' ); ?></span>
+      </div>
+      <h2 class="flex items-center justify-center gap-3 md:gap-4 text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 font-jost">
+        <svg class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="#FFE907" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <span><?php echo sp_field( 'home_awards_heading', 'Nationally Award-Winning Pharmacy Group' ); ?></span>
+        <svg class="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="#FFE907" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      </h2>
+    </div>
+
+    <div id="awards-track" class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory awards-no-scrollbar sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+      <?php
+      // Awards are edited globally under Pharmacy Settings → Awards (sp_awards()).
+      $awards = sp_awards();
+      $awards_total = count( $awards );
+      foreach ( $awards as $i => $aw ) :
+        // When the row count is odd, the final card is orphaned on the 2-col (tablet) layout — centre it.
+        $orphan = ( $i === $awards_total - 1 && $awards_total % 2 === 1 )
+          ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-1 lg:max-w-none'
+          : '';
+      ?>
+      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
+        <div class="h-16 md:h-20 flex items-center justify-center mb-4">
+          <img src="<?php echo esc_url( $aw['logo'] ); ?>" alt="<?php echo esc_attr( $aw['org'] . ' logo' ); ?>" class="max-h-full max-w-[150px] w-auto object-contain" loading="lazy" />
+        </div>
+        <div class="text-3xl font-bold text-blue-700 font-jost mb-1.5"><?php echo esc_html( $aw['year'] ); ?></div>
+        <h3 class="text-base font-semibold text-slate-800 font-jost leading-snug mb-2"><?php echo esc_html( $aw['title'] ); ?></h3>
+        <p class="text-sm text-slate-500 font-jost"><?php echo esc_html( $aw['org'] ); ?></p>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
+  <style>
+    .awards-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .awards-no-scrollbar::-webkit-scrollbar { display: none; }
+  </style>
+  <script>
+    (function () {
+      var track = document.getElementById('awards-track');
+      if (!track) return;
+      var mobile = window.matchMedia('(max-width: 639px)');
+      var idx = 0, timer = null, resumeTimer = null;
+
+      function step() {
+        var cards = track.children;
+        if (!cards.length) return;
+        idx = (idx + 1) % cards.length;
+        track.scrollTo({ left: cards[idx].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
+      }
+      function start() {
+        stop();
+        if (!mobile.matches) return;
+        timer = setInterval(step, 3500);
+      }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+      function pauseThenResume() {
+        stop();
+        clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(start, 5000);
+      }
+
+      start();
+      (mobile.addEventListener ? mobile.addEventListener('change', start) : mobile.addListener(start));
+      track.addEventListener('touchstart', stop, { passive: true });
+      track.addEventListener('touchend', pauseThenResume, { passive: true });
+    })();
+  </script>
+</section>
+
+<!-- ============================================================
      MOST POPULAR TREATMENTS
      ============================================================ -->
 <section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">
@@ -209,18 +292,23 @@ $stars = str_repeat( $star_svg, 5 );
       <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Comprehensive healthcare solutions tailored to your needs, delivered with care at our Hampshire locations.</p>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
       <?php
       $treatments = [
-        ['Weight Loss',       home_url('/weight-loss/'),    'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944273995-0.jpeg', 'Weight loss treatment at Southdowns Pharmacy'],
-        ['Travel Health',     home_url('/travel-health/'),  'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274005-1.jpeg', 'Travel health vaccinations at Southdowns Pharmacy'],
-        ['Ear Wax Removal',   home_url('/ear-wax/'),        'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944517596-0.jpeg', 'Ear wax removal service at Southdowns Pharmacy'],
-        ['Hair Loss',         home_url('/hair-loss/'),      'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944274011-2.jpeg', 'Hair loss treatment at Southdowns Pharmacy'],
-        ['Smoking Cessation', home_url('/smoking-cessation/'), 'https://c.animaapp.com/mkl3y6t51Gb5OV/img/uploaded-asset-1769944583782-0.jpeg', 'Smoking cessation support at Southdowns Pharmacy'],
+        ['Weight Loss',       home_url('/weight-loss/'),    get_template_directory_uri() . '/assets/img/treatment-weight-loss.webp', 'Weight loss treatment at Southdowns Pharmacy'],
+        ['Travel Health',     home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/treatment-travel.webp', 'Travel health vaccinations at Southdowns Pharmacy'],
+        ['Ear Wax Removal',   home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/treatment-ear-wax.webp', 'Ear wax removal service at Southdowns Pharmacy'],
       ];
-      foreach ( $treatments as $t ) : ?>
-      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block">
-        <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[3/4]">
+      $treatments_total = count( $treatments );
+      foreach ( $treatments as $i => $t ) :
+        // On mobile the grid is 2-up; if there's an odd number of cards, make the
+        // final card span full width (as a wide banner) instead of sitting half-width.
+        $t_orphan = ( $i === $treatments_total - 1 && $treatments_total % 2 === 1 );
+        $t_col    = $t_orphan ? 'col-span-2 md:col-span-1' : '';
+        $t_aspect = $t_orphan ? 'aspect-[16/10] md:aspect-[3/4]' : 'aspect-[3/4]';
+      ?>
+      <a href="<?php echo esc_url( $t[1] ); ?>" class="group block <?php echo $t_col; ?>">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg <?php echo $t_aspect; ?>">
           <img alt="<?php echo esc_attr( $t[3] ); ?>" src="<?php echo esc_url( $t[2] ); ?>" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
           <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/40 transition-colors duration-300 flex items-center justify-center">
@@ -252,19 +340,19 @@ $stars = str_repeat( $star_svg, 5 );
         <div class="badge-divider w-px h-8 bg-white/15"></div>
         <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost">Locations Across Hampshire</span>
       </div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-6 font-jost">Search Vaccines by<br class="hidden md:block" /> Destination</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">At <?php echo esc_html( sp_pharmacy_name() ); ?>, we provide expert travel health services across Hampshire. Find the vaccines you need for your next adventure.</p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-6 font-jost"><?php echo sp_field( 'home_dest_heading', 'Search Vaccines by Destination' ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_dest_intro', 'At ' . esc_html( sp_pharmacy_name() ) . ', we provide expert travel health services across Hampshire. Find the vaccines you need for your next adventure.' ); ?></p>
     </div>
 
     <!-- Stats -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-14">
       <?php
-      $stats = [
+      $stats = sp_rows( 'home_dest_stats', [
         ['4',    'Hampshire Locations'],
         ['20+',  'Vaccines Available'],
         ['Same', 'Day Appointments'],
         ['5★',   'Rated Service'],
-      ];
+      ], [ 0 => 'value', 1 => 'label' ] );
       foreach ( $stats as $s ) : ?>
       <div class="text-center p-6 md:p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-colors">
         <div class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 font-jost"><?php echo esc_html( $s[0] ); ?></div>
@@ -276,7 +364,7 @@ $stars = str_repeat( $star_svg, 5 );
     <!-- Destination Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
       <?php
-      $destinations = [
+      $destinations = sp_rows( 'home_destinations', [
         ['Africa',                  'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Africa.webp',                      '5 recommended vaccines'],
         ['Australasia & Pacific',   'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Australasia-Pacific.webp',         '4 recommended vaccines'],
         ['Caribbean',               'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Carribbean.webp',                  '4 recommended vaccines'],
@@ -287,9 +375,9 @@ $stars = str_repeat( $star_svg, 5 );
         ['Middle East',             'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Middle-East.webp',                 '5 recommended vaccines'],
         ['North America',           'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/North-America.webp',               '4 recommended vaccines'],
         ['South America &amp; Antarctica', 'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/South-America-Antartica.webp', '6 recommended vaccines'],
-      ];
+      ], [ 0 => 'name', 2 => 'subtitle' ] );
       foreach ( $destinations as $d ) : ?>
-      <a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="group block">
+      <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="group block">
         <div class="relative overflow-hidden rounded-2xl mb-4 shadow-lg">
           <img alt="<?php echo esc_attr( $d[0] ); ?>" src="<?php echo esc_url( $d[1] ); ?>" class="aspect-[4/3] w-full object-cover transition-transform duration-300 group-hover:scale-110" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -314,22 +402,22 @@ $stars = str_repeat( $star_svg, 5 );
     <div class="text-center mb-10 md:mb-16">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-white/15"></div>
-        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Trusted by Thousands</span>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_test_eyebrow', 'Trusted by Thousands' ); ?></span>
       </div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost">What Our Patients Say</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Real experiences from real patients across our Hampshire locations.</p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost"><?php echo sp_field( 'home_test_heading', 'What Our Patients Say' ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_test_intro', 'Real experiences from real patients across our Hampshire locations.' ); ?></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       <?php
-      $testimonials = [
-        ['SJ', 'Sarah Johnson',   'Portsmouth Branch',     '"Excellent service from start to finish. The pharmacist was incredibly knowledgeable about travel vaccines and made me feel completely at ease. Same day appointment was a lifesaver!"'],
-        ['MT', 'Michael Thompson','Southsea Branch',       '"The weight loss programme has been life-changing. Professional, supportive, and results-driven. I\'ve lost 18kg in 4 months with their expert guidance."'],
-        ['EP', 'Emma Patel',      'Waterlooville Branch',  '"Quick, efficient blood testing service. Results came back within 24 hours and the staff explained everything clearly. Highly recommend for anyone needing health checks."'],
-        ['DW', 'David Williams',  'Havant Branch',         '"Fantastic ear wax removal service. Painless procedure and immediate relief. The practitioner was gentle and professional throughout. Worth every penny."'],
-        ['RC', 'Rachel Chen',     'Portsmouth Branch',     '"As a frequent traveller, I rely on Southdowns for all my travel health needs. Yellow fever certification was processed immediately. Couldn\'t ask for better service."'],
-        ['JM', 'James Mitchell',  'Southsea Branch',       '"The smoking cessation programme helped me quit after 15 years. Supportive team, effective treatment, and ongoing check-ins made all the difference. Smoke-free for 6 months now!"'],
-      ];
+$testimonials = sp_rows( 'home_testimonials', [
+        ['SJ', 'Sarah Johnson',   'Emsworth Branch',         '"Excellent service from start to finish. The pharmacist was incredibly knowledgeable about travel vaccines and made me feel completely at ease. Same day appointment was a lifesaver!"'],
+        ['MT', 'Michael Thompson','Rowlands Castle Branch',  '"The weight loss programme has been life-changing. Professional, supportive, and results-driven. I\'ve lost 18kg in 4 months with their expert guidance."'],
+        ['EP', 'Emma Patel',      'Davies Pharmacy, Havant', '"Quick, efficient blood testing service. Results came back within 24 hours and the staff explained everything clearly. Highly recommend for anyone needing health checks."'],
+        ['DW', 'David Williams',  'Emsworth Branch',         '"Fantastic ear wax removal service. Painless procedure and immediate relief. The practitioner was gentle and professional throughout. Worth every penny."'],
+        ['RC', 'Rachel Chen',     'Bosmere Pharmacy, Havant','"As a frequent traveller, I rely on Southdowns for all my travel health needs. Yellow fever certification was processed immediately. Couldn\'t ask for better service."'],
+        ['JM', 'James Mitchell',  'Rowlands Castle Branch',  '"The smoking cessation programme helped me quit after 15 years. Supportive team, effective treatment, and ongoing check-ins made all the difference. Smoke-free for 6 months now!"'],
+      ], [ 0 => 'initials', 1 => 'name', 2 => 'location', 3 => 'quote' ] );
       foreach ( $testimonials as $t ) : ?>
       <div class="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 hover:scale-105">
         <div class="flex gap-1 mb-4"><?php echo $stars; ?></div>
@@ -347,20 +435,19 @@ $stars = str_repeat( $star_svg, 5 );
 
     <!-- Trust Indicators -->
     <div class="mt-12 md:mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      <?php
+      $home_trust = sp_rows( 'home_trust', [
+        [ '4.9/5',   'Average Rating' ],
+        [ '400+',    '5-Star Reviews' ],
+        [ '10,000+', 'Happy Patients' ],
+      ], [ 0 => 'value', 1 => 'label' ] );
+      foreach ( $home_trust as $ti_idx => $ti ) : ?>
+      <?php if ( $ti_idx > 0 ) : ?><div class="hidden md:block w-px h-12 bg-white/30"></div><?php endif; ?>
       <div class="text-center">
-        <div class="text-white text-3xl md:text-4xl font-bold mb-1 font-jost">4.9/5</div>
-        <div class="text-blue-200 text-sm md:text-base font-jost">Average Rating</div>
+        <div class="text-white text-3xl md:text-4xl font-bold mb-1 font-jost"><?php echo esc_html( $ti[0] ); ?></div>
+        <div class="text-blue-200 text-sm md:text-base font-jost"><?php echo esc_html( $ti[1] ); ?></div>
       </div>
-      <div class="hidden md:block w-px h-12 bg-white/30"></div>
-      <div class="text-center">
-        <div class="text-white text-3xl md:text-4xl font-bold mb-1 font-jost">400+</div>
-        <div class="text-blue-200 text-sm md:text-base font-jost">5-Star Reviews</div>
-      </div>
-      <div class="hidden md:block w-px h-12 bg-white/30"></div>
-      <div class="text-center">
-        <div class="text-white text-3xl md:text-4xl font-bold mb-1 font-jost">10,000+</div>
-        <div class="text-blue-200 text-sm md:text-base font-jost">Happy Patients</div>
-      </div>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -374,26 +461,26 @@ $stars = str_repeat( $star_svg, 5 );
       <div class="flex-1">
         <div class="premium-badge flex items-center justify-start gap-4 mb-6">
           <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Expert Advice</span>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_hub_eyebrow', 'Expert Advice' ); ?></span>
         </div>
         <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 font-jost">
-          Latest from the <span class="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Health Hub</span>
+          <?php echo sp_field( 'home_hub_heading', 'Latest from the <span class="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Health Hub</span>' ); ?>
         </h2>
       </div>
-      <a href="<?php echo esc_url( home_url( '/health-hub/' ) ); ?>" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg transition-colors group">
+      <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-lg transition-colors group">
         View all articles
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       <?php
-      $articles = [
+      $articles = sp_rows( 'home_articles', [
         ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop', 'Weight Loss', 'Mounjaro vs Wegovy: What the Clinical Trials Actually Show', '"My GP mentioned Wegovy. But my friend lost loads of weight on Mounjaro. Are they the same thing? Should I ask for the other one?...'],
         ['https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=400&fit=crop', 'Weight Loss', 'Mounjaro Side Effects: What to Expect at Your Monthly Review', "How Southdowns Pharmacy's face-to-face clinical support helps patients across Hampshire manage their weight loss journey with confidence..."],
         ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop', 'Weight Loss', "Why Most Hampshire Patients Wish They'd Started Mounjaro Sooner", 'The weight loss treatment that makes people say "I should have started this sooner" — now available across Hampshire...'],
-      ];
+      ], [ 1 => 'category', 2 => 'title', 3 => 'excerpt' ] );
       foreach ( $articles as $a ) : ?>
-      <a href="<?php echo esc_url( home_url( '/health-hub/' ) ); ?>" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+      <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
         <div class="relative overflow-hidden aspect-[3/2]">
           <img src="<?php echo esc_url( $a[0] ); ?>" alt="<?php echo esc_attr( $a[2] ); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
           <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider"><?php echo esc_html( $a[1] ); ?></span>
@@ -416,39 +503,39 @@ $stars = str_repeat( $star_svg, 5 );
   <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div>
-        <h2 class="text-4xl md:text-5xl font-semibold text-white mb-4 font-jost">Popular Vaccines</h2>
-        <p class="text-blue-100 text-lg mb-8 font-jost">Find out everything about these popular vaccines we can provide at <?php echo esc_html( sp_pharmacy_name() ); ?>.</p>
+        <h2 class="text-4xl md:text-5xl font-semibold text-white mb-4 font-jost"><?php echo sp_field( 'home_vac_heading', 'Popular Vaccines' ); ?></h2>
+        <p class="text-blue-100 text-lg mb-8 font-jost"><?php echo sp_field( 'home_vac_intro', 'Find out everything about these popular vaccines we can provide at ' . esc_html( sp_pharmacy_name() ) . '.' ); ?></p>
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <?php
-          $vaccines = [
+          $vaccines = sp_rows( 'home_vaccines', [
             ['name' => 'Yellow Fever',                       'url' => home_url( '/yellow-fever/' )],
-            ['name' => 'Hepatitis A',                        'url' => home_url( '/travel-health/' )],
-            ['name' => 'Typhoid',                            'url' => home_url( '/travel-health/' )],
-            ['name' => 'Hepatitis B',                        'url' => home_url( '/travel-health/' )],
-            ['name' => 'Rabies',                             'url' => home_url( '/travel-health/' )],
-            ['name' => 'Cholera',                            'url' => home_url( '/travel-health/' )],
-            ['name' => 'Japanese Encephalitis',              'url' => home_url( '/travel-health/' )],
-            ['name' => 'Meningitis (ACWY)',                  'url' => home_url( '/travel-health/' )],
-            ['name' => 'Tick Borne Encephalitis',            'url' => home_url( '/travel-health/' )],
-            ['name' => 'Malaria Tablets',                    'url' => home_url( '/travel-health/' )],
-            ['name' => 'MMR (Measles, Mumps & Rubella)',     'url' => home_url( '/travel-health/' )],
-            ['name' => 'Dengue Fever (Qdenga)',              'url' => home_url( '/travel-health/' )],
-          ];
+            ['name' => 'Hepatitis A',                        'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Typhoid',                            'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Hepatitis B',                        'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Rabies',                             'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Cholera',                            'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Japanese Encephalitis',              'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Meningitis (ACWY)',                  'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Tick Borne Encephalitis',            'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Malaria Tablets',                    'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'MMR (Measles, Mumps & Rubella)',     'url' => home_url( '/travel-vaccinations/' )],
+            ['name' => 'Dengue Fever (Qdenga)',              'url' => home_url( '/travel-vaccinations/' )],
+          ], [ 'name' => 'name', 'url' => 'url' ] );
           foreach ( $vaccines as $v ) : ?>
           <li><a href="<?php echo esc_url( $v['url'] ); ?>" class="group relative flex items-center justify-center min-h-[88px] px-6 pr-12 bg-blue-50 rounded-xl text-blue-900 font-bold text-xl text-center font-jost transition-all duration-300 ease-in-out hover:bg-white hover:-translate-y-0.5 hover:shadow-lg"><span><?php echo esc_html( $v['name'] ); ?></span><svg class="absolute right-5 w-5 h-5 text-blue-400 group-hover:text-blue-700 group-hover:translate-x-1 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></li>
           <?php endforeach; ?>
         </ul>
         <div class="mb-6">
-          <a href="<?php echo esc_url( home_url( '/travel-health/' ) ); ?>" class="inline-flex items-center gap-2 text-white font-semibold text-lg font-jost border-b-2 border-white/40 hover:border-white pb-1 transition-colors">
+          <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="inline-flex items-center gap-2 text-white font-semibold text-lg font-jost border-b-2 border-white/40 hover:border-white pb-1 transition-colors">
             View all vaccines
             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
         </div>
-        <p class="text-white/80 text-sm font-jost"><strong class="text-white">Vaccine not listed?</strong> We can provide any travel vaccine. <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="text-white underline hover:text-blue-200">Contact us</a> for more information.</p>
+        <p class="text-white/80 text-sm font-jost"><strong class="text-white">Vaccine not listed?</strong> We can provide any travel vaccine. <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="text-white underline hover:text-blue-200">Contact us</a> for more information.</p>
       </div>
       <div class="hidden md:block">
         <div class="relative rounded-2xl overflow-hidden shadow-2xl">
-          <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Couple-at-airport.webp" alt="Travel health at Southdowns Pharmacy" class="w-full h-full object-cover" loading="lazy" />
+          <img src="<?php echo esc_url( sp_field( 'home_vac_image', 'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Couple-at-airport.webp' ) ); ?>" alt="Travel health at Southdowns Pharmacy" class="w-full h-full object-cover" loading="lazy" />
           <div class="absolute top-6 right-6">
             <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/assets/Roundals-Yellow-Fever-Centre.webp" alt="Yellow Fever Centre" class="w-32 h-32 object-contain drop-shadow-lg" />
           </div>
@@ -470,18 +557,18 @@ $stars = str_repeat( $star_svg, 5 );
     <div class="text-center mb-12 md:mb-16">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-white/15"></div>
-        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost">Premium Collection</span>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_prod_eyebrow', 'Premium Collection' ); ?></span>
       </div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost">Our Premium Products</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-jost">Discover our exclusive range of premium healthcare products, crafted with excellence.</p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost"><?php echo sp_field( 'home_prod_heading', 'Our Premium Products' ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_prod_intro', 'Discover our exclusive range of premium healthcare products, crafted with excellence.' ); ?></p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
       <?php
-      $products = [
-        ['PREMIUM',     'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax/'),        'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818122-0.png', 'Ear Wax Removal'],
-        ['BEST SELLER', 'B12 Injections',  'Energy boost vitamin therapy to support your wellness journey',            home_url('/b12-injections/'), 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818147-1.png', 'B12 Injections'],
-        ['EXCLUSIVE',   'Travel Health',   'Complete vaccination packages for your next adventure',                    home_url('/travel-health/'),  'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773135818166-2.png', 'Travel Health'],
-      ];
+      $products = sp_rows( 'home_products', [
+        ['PREMIUM',     'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/product-ear-wax.webp', 'Ear Wax Removal'],
+        ['BEST SELLER', 'B12 Injections',  'Energy boost vitamin therapy to support your wellness journey',            home_url('/b12-injections/'), get_template_directory_uri() . '/assets/img/product-b12.webp', 'B12 Injections'],
+        ['EXCLUSIVE',   'Travel Health',   'Complete vaccination packages for your next adventure',                    home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/product-travel.webp', 'Travel Health'],
+      ], [ 0 => 'badge', 1 => 'title', 2 => 'desc', 3 => 'url', 4 => 'image' ] );
       foreach ( $products as $p ) : ?>
       <a href="<?php echo esc_url( $p[3] ); ?>" class="group block relative">
         <div class="absolute top-4 right-4 z-20 bg-white/90 text-blue-600 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"><?php echo esc_html( $p[0] ); ?></div>
@@ -502,10 +589,30 @@ $stars = str_repeat( $star_svg, 5 );
         <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <p class="text-white text-lg leading-relaxed"><strong class="font-bold">Product not listed?</strong> <span class="text-blue-100">Don't worry, we can provide a wide range of healthcare products and services.</span> <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="text-white font-bold hover:text-blue-200 transition-colors underline decoration-2 underline-offset-4">Contact us</a> <span class="text-blue-100">for more information.</span></p>
+        <p class="text-white text-lg leading-relaxed"><strong class="font-bold">Product not listed?</strong> <span class="text-blue-100">Don't worry, we can provide a wide range of healthcare products and services.</span> <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="text-white font-bold hover:text-blue-200 transition-colors underline decoration-2 underline-offset-4">Contact us</a> <span class="text-blue-100">for more information.</span></p>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ============================================================
+     BOOKING — FULL WIZARD
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="book-appointment">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-2 md:mb-3">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_book_eyebrow', 'Book Online &middot; Same-Day Availability' ); ?></span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 mb-6 font-jost"><?php echo sp_field( 'home_book_heading', 'Book Your Appointment' ); ?></h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_book_intro', 'Choose your location, service, and time. It only takes a minute.' ); ?></p>
+    </div>
+
+    <?php echo do_shortcode('[ameliastepbooking layout=2 show=location,category,service,employee,datetime,info]'); ?>
+  </div>
+</section>
+
+
 
 <?php get_footer(); ?>

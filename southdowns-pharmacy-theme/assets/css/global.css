@@ -34,6 +34,9 @@
   background-size: 24px 24px;
 }
 
+/* Hero (mobile): keep text legible over the slide background images */
+.hero-legible { text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
+
 /* Destination card hover (travel health) */
 .dest-card:hover .dest-overlay { opacity: 1; }
 .dest-card:hover img { transform: scale(1.08); }
@@ -70,8 +73,8 @@ img { transition: transform 0.5s ease; }
 /* Desktop Main Menu spacing */
 @media (min-width: 768px) {
   nav[aria-label="Main Menu"] {
-    font-size: 17px;
-    line-height: 25.5px;
+    font-size: 19px;
+    line-height: 28px;
   }
   nav[aria-label="Main Menu"] > ul > li {
     margin-left: 10px;
@@ -108,7 +111,7 @@ img { transition: transform 0.5s ease; }
   transform: translateX(-50%) translateY(0);
 }
 .mega-dd-content { display: flex; font-family: 'Jost', sans-serif; }
-.mega-dd-section { padding: 20px 24px; min-width: 240px; background: #f8fafc; }
+.mega-dd-section { padding: 20px 18px; min-width: 210px; background: #f8fafc; }
 .mega-dd-section + .mega-dd-section { border-left: 1px solid #e2e8f0; }
 .mega-dd-title {
   font-size: 11px;
@@ -159,8 +162,8 @@ img { transition: transform 0.5s ease; }
 .mega-dd-featured {
   background: linear-gradient(135deg, #eff6ff, #dbeafe);
   padding: 24px;
-  min-width: 260px;
-  max-width: 280px;
+  min-width: 232px;
+  max-width: 248px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -228,7 +231,7 @@ img { transition: transform 0.5s ease; }
   transition: max-height .3s ease;
   background: #f3f4f6;
 }
-.mob-dd-sub.open { max-height: 500px; }
+.mob-dd-sub.open { max-height: 700px; }
 .mob-dd-sub a {
   display: block;
   padding: 10px 22.5px 10px 40px;
@@ -318,4 +321,41 @@ img { transition: transform 0.5s ease; }
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
+}
+
+/* ============================================================
+   GLOBAL TYPE SCALE — client request: "enlarge fonts one size"
+   Tailwind's text-* utilities (loaded via the CDN) are rem-based,
+   so raising the root font-size enlarges body copy and headings
+   site-wide in proportion. 16px (browser default) -> 17px ≈ +6%.
+   Tune this single value to make the whole site larger/smaller.
+   ============================================================ */
+html { font-size: 17px; }
+
+/* ============================================================
+   AMELIA BOOKING — type size override (client request).
+   The booking widget is Amelia v2; its wrapper on this site is
+   .amelia-v2-booking #amelia-container.am-fs__wrapper. This blanket
+   rule normalises every text element inside the widget to one size.
+   ============================================================ */
+.amelia-v2-booking #amelia-container.am-fs__wrapper * {
+    font-size: 21px !important;
+}
+
+/* ============================================================
+   AMELIA BOOKING — hide location/branch (client request).
+   Every embed is filtered to a single branch, so the location is
+   redundant. Two places show it in the service-list ("init") view:
+   (1) the address row inside each service card, and
+   (2) the standalone location card (its address is a Google-Maps
+       <a> link, which is unique to the location item).
+   If a form ever needs the user to pick a location, remove rule (2).
+   ============================================================ */
+/* (1) Address/location row inside a service card */
+.amelia-v2-booking .am-fs__init-item__info-inner:has(.am-icon-locations) {
+    display: none !important;
+}
+/* (2) Standalone location card (identified by its map-link anchor) */
+.amelia-v2-booking .am-fs__init-item__content:has(a.am-fs__init-item__info-name) {
+    display: none !important;
 }

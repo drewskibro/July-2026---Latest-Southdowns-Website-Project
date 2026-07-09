@@ -26,6 +26,12 @@ $bosmere_services = [
     'Shingles Vaccinations','Travel Vaccinations','Thyroid Health Check',
     'Weight Loss Injections','Weight Loss Consultation','Ear Wax Removal',
 ];
+// Editable via Branch Location Details → Services. Leave empty to use the defaults above.
+$svc_rows = function_exists('get_field') ? get_field('branch_services') : null;
+if ( ! empty( $svc_rows ) ) {
+    $bosmere_services          = array_column( $svc_rows, 'name' );
+    $bosmere_services_featured = array_column( array_filter( $svc_rows, function ( $r ) { return ! empty( $r['featured'] ); } ), 'name' );
+}
 
 // ── Contact & Hours ─────────────────────────────────────────────
 $addr1         = get_field('branch_address_line1')       ?: 'Bosmere Medical Centre, Solent Road';
@@ -44,7 +50,7 @@ $maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.
 $by_car        = get_field('branch_by_car')              ?: 'Easily accessible from the A27 and A3(M) Havant interchange. Large free car park directly outside the pharmacy.';
 $car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A27 / A3(M),Large free car park';
 $by_bus        = get_field('branch_by_bus')              ?: 'Stagecoach bus routes serve Havant town centre with stops close to Solent Road. The town\'s central bus interchange is nearby.';
-$bus_routes_raw= get_field('branch_bus_routes')          ?: '23,35,700';
+$bus_routes_raw= get_field('branch_bus_routes')          ?: '30,31,700';
 $by_train      = get_field('branch_by_train')            ?: 'Bedhampton is the closest station (~555m, 7 min walk). Havant Station is approx 860m away (~11 min walk). Both are served by South Western Railway and Southern.';
 $train_stn_raw = get_field('branch_train_stations')      ?: 'Bedhampton Station|7 min walk,Havant Station|11 min walk';
 $on_foot       = get_field('branch_on_foot')             ?: 'Located within Bosmere Medical Centre on Solent Road. The centre is well signposted and easy to find from the surrounding residential area.';
@@ -334,7 +340,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
       </div>
 
       <!-- By Bus — sky-blue accent -->
-      <!-- Bus routes 23, 35, 700 to be confirmed with client before publishing -->
+      <!-- Bus routes verified against bustimes.org, May 2026 -->
       <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 loc-card-lift overflow-hidden">
         <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl" style="background:linear-gradient(90deg,#38bdf8,#7dd3fc);"></div>
         <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style="background:rgba(56,189,248,0.2);border:1px solid rgba(56,189,248,0.3);">
@@ -437,58 +443,35 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-      <!-- Review 1 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0s;">
+      <?php
+      // Editable via Branch Location Details → Testimonials. Leave empty to show these defaults.
+      $reviews_default = [
+        [ 'quote' => 'Having a pharmacy right inside the medical centre is incredibly convenient. I can see my doctor and collect my prescription all in one visit. The staff are always welcoming and efficient.', 'author_name' => 'Patricia K.', 'author_initials' => 'PK', 'service' => 'Prescription Services', 'review_date' => 'March 2025', 'avatar_bg' => 'from-blue-500 to-blue-700' ],
+        [ 'quote' => 'I needed a travel health consultation at short notice and they fit me in the same day. Thorough, professional, and the evening hours are a lifesaver when you can\'t get away from work during the day.', 'author_name' => 'Simon B.', 'author_initials' => 'SB', 'service' => 'Travel Health', 'review_date' => 'February 2025', 'avatar_bg' => 'from-indigo-500 to-indigo-700' ],
+        [ 'quote' => 'Came in on a Sunday for a minor ailment — couldn\'t believe the pharmacy was open. The pharmacist was just as thorough as any weekday visit. Brilliant service and so handy being inside the medical centre.', 'author_name' => 'Angela H.', 'author_initials' => 'AH', 'service' => 'Minor Ailments', 'review_date' => 'January 2025', 'avatar_bg' => 'from-teal-500 to-teal-700' ],
+      ];
+      $reviews = function_exists('get_field') ? get_field('branch_testimonials') : null;
+      if ( empty( $reviews ) ) { $reviews = $reviews_default; }
+      $review_delays = [ '0', '0.1', '0.2' ];
+      foreach ( $reviews as $ri => $rev ) :
+        $bg = ! empty( $rev['avatar_bg'] ) ? $rev['avatar_bg'] : 'from-blue-500 to-blue-700';
+      ?>
+      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:<?php echo esc_attr( $review_delays[ $ri ] ?? '0' ); ?>s;">
         <div class="flex gap-1 mb-4">
           <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
         </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Having a pharmacy right inside the medical centre is incredibly convenient. I can see my doctor and collect my prescription all in one visit. The staff are always welcoming and efficient."</p>
+        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"<?php echo esc_html( $rev['quote'] ); ?>"</p>
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">PK</span>
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br <?php echo esc_attr( $bg ); ?> flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold font-jost"><?php echo esc_html( $rev['author_initials'] ); ?></span>
           </div>
           <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Patricia K.</div>
-            <div class="text-gray-400 text-xs font-jost">Prescription Services &middot; March 2025</div>
+            <div class="text-gray-900 font-semibold text-sm font-jost"><?php echo esc_html( $rev['author_name'] ); ?></div>
+            <div class="text-gray-400 text-xs font-jost"><?php echo esc_html( $rev['service'] ); ?> &middot; <?php echo esc_html( $rev['review_date'] ); ?></div>
           </div>
         </div>
       </div>
-
-      <!-- Review 2 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0.1s;">
-        <div class="flex gap-1 mb-4">
-          <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
-        </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"I needed a travel health consultation at short notice and they fit me in the same day. Thorough, professional, and the evening hours are a lifesaver when you can't get away from work during the day."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">SB</span>
-          </div>
-          <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Simon B.</div>
-            <div class="text-gray-400 text-xs font-jost">Travel Health &middot; February 2025</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0.2s;">
-        <div class="flex gap-1 mb-4">
-          <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
-        </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Came in on a Sunday for a minor ailment — couldn't believe the pharmacy was open. The pharmacist was just as thorough as any weekday visit. Brilliant service and so handy being inside the medical centre."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">AH</span>
-          </div>
-          <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Angela H.</div>
-            <div class="text-gray-400 text-xs font-jost">Minor Ailments &middot; January 2025</div>
-          </div>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div><!-- /Review cards -->
 
     <!-- Trust strip -->
@@ -521,7 +504,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
 
     <div class="text-center mb-12 loc-reveal">
-      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Ready to Get Started?</h2>
+      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4"><?php echo get_field( 'branch_cta_heading' ) ?: 'Ready to Get Started?'; ?></h2>
       <p class="text-blue-200 text-lg font-jost max-w-2xl mx-auto">Book an appointment at our Bosmere branch or speak to our AI health assistant instantly.</p>
     </div>
 
@@ -532,10 +515,13 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-gray-900 text-2xl font-semibold font-jost mb-3">Book an Appointment</h3>
+        <h3 class="text-gray-900 text-2xl font-semibold font-jost mb-3"><?php echo get_field( 'branch_book_heading' ) ?: 'Book an Appointment'; ?></h3>
         <p class="text-gray-500 font-jost mb-6 leading-relaxed">Same-day appointments available at Bosmere Medical Centre, with extended evening and weekend hours to fit around your schedule.</p>
         <ul class="space-y-2 mb-8">
-          <?php foreach (['No GP referral needed', 'Open 7 days — including evenings', 'All consultations strictly private', 'GPhC-registered pharmacists'] as $pt): ?>
+          <?php
+          $cta_points_raw = function_exists( 'get_field' ) ? get_field( 'branch_book_points' ) : '';
+          $cta_points = $cta_points_raw ? array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $cta_points_raw ) ) ) ) : ['No GP referral needed', 'Open 7 days — including evenings', 'All consultations strictly private', 'GPhC-registered pharmacists'];
+          foreach ( $cta_points as $pt ): ?>
           <li class="flex items-center gap-3 text-gray-700 text-sm font-jost">
             <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             <?php echo esc_html($pt); ?>
@@ -545,7 +531,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         <a href="<?php echo esc_url($booking_url); ?>"
            class="flex items-center justify-center gap-2 w-full text-white font-semibold text-base px-6 py-4 rounded-2xl shadow-lg font-jost transition-all hover:shadow-xl hover:-translate-y-0.5"
            style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          Book Now — It's Free
+          <?php echo get_field( 'branch_book_btn' ) ?: "Book Now — It's Free"; ?>
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
         <p class="text-center text-gray-400 text-xs font-jost mt-3">No card required &bull; Cancel anytime</p>
@@ -561,15 +547,18 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         </div>
         <div class="inline-flex items-center gap-1.5 bg-green-400/20 text-green-300 text-xs font-bold px-3 py-1.5 rounded-full border border-green-400/30 font-jost mb-6">
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-          INSTANT HELP
+          <?php echo get_field( 'branch_ai_badge' ) ?: 'INSTANT HELP'; ?>
         </div>
         <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-white/15">
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-white text-2xl font-semibold font-jost mb-3">Speak to Our AI Agent</h3>
+        <h3 class="text-white text-2xl font-semibold font-jost mb-3"><?php echo get_field( 'branch_ai_heading' ) ?: 'Speak to Our AI Agent'; ?></h3>
         <p class="text-purple-200 font-jost mb-6 leading-relaxed">Get instant answers about services, pricing, and availability at Bosmere — available 24/7, no waiting.</p>
         <ul class="space-y-2 mb-8">
-          <?php foreach (['Available 24 hours a day, 7 days a week', 'Instant answers about all services', 'Check availability before booking', 'Completely free to use'] as $pt): ?>
+          <?php
+          $ai_points_raw = function_exists( 'get_field' ) ? get_field( 'branch_ai_points' ) : '';
+          $ai_points = $ai_points_raw ? array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $ai_points_raw ) ) ) ) : ['Available 24 hours a day, 7 days a week', 'Instant answers about all services', 'Check availability before booking', 'Completely free to use'];
+          foreach ( $ai_points as $pt ): ?>
           <li class="flex items-center gap-3 text-purple-100 text-sm font-jost">
             <svg class="w-5 h-5 text-purple-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             <?php echo esc_html($pt); ?>
@@ -578,7 +567,7 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
         </ul>
         <a href="<?php echo esc_url(home_url('/ai-agent/')); ?>"
            class="flex items-center justify-center gap-2 w-full bg-white/15 border border-white/30 text-white font-semibold text-base px-6 py-4 rounded-2xl font-jost hover:bg-white/25 transition-all backdrop-blur-sm">
-          Chat with AI Agent
+          <?php echo get_field( 'branch_ai_btn' ) ?: 'Chat with AI Agent'; ?>
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         </a>
         <p class="text-center text-purple-300 text-xs font-jost mt-3">No sign-up required &bull; Instant responses</p>
@@ -588,6 +577,22 @@ foreach ( array_filter( array_map( 'trim', explode( ',', $train_stn_raw ) ) ) as
   </div>
 </section>
 
+<!-- ============================================================
+     S3B: INLINE BOOKING — BOSMERE PRE-FILTERED
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="book-bosmere">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-2 md:mb-3 loc-reveal">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Book at Bosmere &middot; Same-Day Availability</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Book Your Bosmere Appointment</h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Choose your service and time — your appointment will be at Bosmere Medical Centre.</p>
+    </div>
+    <?php echo do_shortcode('[ameliastepbooking layout=2 location=2 show=category,service,employee,datetime,info]'); ?>
+  </div>
+</section>
 
 <!-- ============================================================
      S5: OTHER BRANCHES
@@ -607,7 +612,7 @@ $other_branches = [
   ],
   [
     'name'     => 'Rowlands Castle',
-    'addr'     => '12 The Green, Rowlands Castle, PO9 6BN',
+    'addr'     => '14 The Green, Rowlands Castle, PO9 6BN',
     'phone'    => '023 9212 3456',
     'phone_raw'=> '02392123456',
     'hours_wd' => 'Mon–Fri 9am–6pm',

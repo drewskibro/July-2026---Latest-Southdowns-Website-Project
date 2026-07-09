@@ -48,7 +48,7 @@ $th_why_cards     = ! empty( $th_why_cards_raw ) ? $th_why_cards_raw : [
     [
         'image'      => 'https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&h=400&fit=crop',
         'title'      => 'Every Vaccine In Stock',
-        'body'       => 'No prescription delays or follow-up visits. We stock every travel vaccine including Yellow Fever, DTP, Typhoid, Rabies, Japanese Encephalitis, and malaria prevention.',
+        'body'       => 'No prescription delays or follow-up visits. We stock every travel vaccine including DTP, Typhoid, Rabies, Japanese Encephalitis, and malaria prevention, plus Yellow Fever at our Bosmere Pharmacy, Havant branch.',
         'link_label' => 'View All Vaccines',
         'link_url'   => '#vaccines',
     ],
@@ -109,8 +109,8 @@ $th_services_cards     = ! empty( $th_services_cards_raw ) ? $th_services_cards_
     ],
     [
         'title'        => 'Yellow Fever Vaccination',
-        'body'         => 'We are an NHS-registered Yellow Fever Vaccination Centre. A single dose provides lifelong immunity and the ICVP certificate is valid for life. Accepted at all borders.',
-        'bullets'      => "ICVP certificate issued same day\nValid for life — no boosters needed\nNHS-registered centre",
+        'body'         => 'Our Bosmere Pharmacy, Havant branch is an NHS-registered Yellow Fever Vaccination Centre. A single dose provides lifelong immunity and the ICVP certificate is valid for life. Accepted at all borders.',
+        'bullets'      => "ICVP certificate issued same day\nValid for life — no boosters needed\nAvailable at our Bosmere, Havant branch only",
         'is_highlight' => true,
         'top_badge'    => 'Official Vaccination Centre',
         'link_label'   => 'Learn more about Yellow Fever',
@@ -127,7 +127,7 @@ $th_vaccines_banner_cta      = sp_field( 'th_vaccines_banner_cta_label', 'Book N
 
 $th_vaccines_raw = function_exists( 'get_field' ) ? get_field( 'th_vaccines_list' ) : null;
 $th_vaccines     = ! empty( $th_vaccines_raw ) ? $th_vaccines_raw : [
-    [ 'name' => 'Yellow Fever',                 'description' => 'ICVP certificate included &middot; Valid for life',           'is_yf' => true  ],
+    [ 'name' => 'Yellow Fever',                 'description' => 'ICVP certificate included &middot; Valid for life &middot; Bosmere, Havant only', 'is_yf' => true  ],
     [ 'name' => 'Hepatitis A',                  'description' => 'Single dose gives 1 year protection, booster lasts 25 years', 'is_yf' => false ],
     [ 'name' => 'Hepatitis B',                  'description' => 'Course of 3 doses over 6 months &middot; Long-term protection', 'is_yf' => false ],
     [ 'name' => 'Typhoid',                      'description' => 'Injection or oral capsules &middot; 3-year protection',        'is_yf' => false ],
@@ -187,8 +187,8 @@ $th_trust_stat_caption = sp_field( 'th_trust_stat_caption', 'Travellers protecte
 $th_trust_points_raw = function_exists( 'get_field' ) ? get_field( 'th_trust_points' ) : null;
 $th_trust_points     = ! empty( $th_trust_points_raw ) ? $th_trust_points_raw : [
     [ 'title' => 'GPhC Registered Pharmacists',         'body' => 'All our travel health pharmacists are registered with the General Pharmaceutical Council and hold specialist travel health qualifications.' ],
-    [ 'title' => 'NHS-Designated Yellow Fever Centre',  'body' => 'One of very few approved Yellow Fever vaccination centres in Hampshire, we meet NHS standards for international travel certification.' ],
-    [ 'title' => '4 Convenient Hampshire Locations',    'body' => 'Cosham, Emsworth, Havant, and Purbrook &mdash; with free parking, wheelchair access, and extended opening hours at most sites.' ],
+    [ 'title' => 'NHS-Designated Yellow Fever Centre',  'body' => 'Our Bosmere Pharmacy, Havant branch is one of very few approved Yellow Fever vaccination centres in Hampshire, meeting NHS standards for international travel certification.' ],
+    [ 'title' => '4 Convenient Hampshire Locations',    'body' => 'Emsworth, Havant, and Rowlands Castle &mdash; with free parking, wheelchair access, and extended opening hours at most sites.' ],
     [ 'title' => 'Trusted by Local GPs',                'body' => 'Hampshire GPs refer their patients to us for travel health advice, knowing they&rsquo;ll receive expert care and up-to-date guidance.' ],
 ];
 
@@ -288,13 +288,13 @@ $th_service_icons = [
 
     <!-- Badge images straddling the centre divider -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398761-2.png" alt="Yellow Fever Centre" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-yellow-fever.webp' ); ?>" alt="Yellow Fever Centre" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg"/>
     </div>
   </div>
 
@@ -385,95 +385,32 @@ $th_service_icons = [
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">From tropical Asia to safari Africa, we have the vaccinations and expert advice to keep you safe wherever your adventure takes you.</p>
     </div>
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-
-      <!-- Thailand -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="1">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=450&fit=crop" alt="Thailand travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
+      <?php
+      // Destination cards — client-editable (Travel Health → Destinations / FAQ / CTA).
+      $dest_raw     = function_exists( 'get_field' ) ? get_field( 'th_destinations' ) : null;
+      $destinations = ! empty( $dest_raw ) ? $dest_raw : [
+          [ 'image' => 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=450&fit=crop', 'region' => 'Southeast Asia', 'name' => 'Thailand',         'vaccines' => 'Hep A/B &middot; Typhoid &middot; Rabies' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=450&fit=crop', 'region' => 'South Asia',     'name' => 'India',            'vaccines' => 'Hep A/B &middot; Typhoid &middot; DTP' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=450&fit=crop', 'region' => 'East Africa',    'name' => 'Kenya',            'vaccines' => 'Yellow Fever &middot; Typhoid &middot; Malaria' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&h=450&fit=crop', 'region' => 'Southeast Asia', 'name' => 'Vietnam',          'vaccines' => 'Hep A &middot; Typhoid &middot; Rabies' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&h=450&fit=crop', 'region' => 'East Africa',    'name' => 'Tanzania',         'vaccines' => 'Yellow Fever &middot; Malaria &middot; Typhoid' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&h=450&fit=crop', 'region' => 'North Africa',   'name' => 'Morocco',          'vaccines' => 'Hep A &middot; Typhoid &middot; Rabies' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=450&fit=crop', 'region' => 'Southeast Asia', 'name' => 'Indonesia / Bali', 'vaccines' => 'Hep A/B &middot; Typhoid &middot; Rabies' ],
+          [ 'image' => 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=450&fit=crop', 'region' => 'Middle East',    'name' => 'Dubai / UAE',      'vaccines' => 'Hep A &middot; DTP &middot; Advice' ],
+      ];
+      foreach ( $destinations as $di => $dest ) :
+          $d_img = ! empty( $dest['image'] ) ? $dest['image'] : 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=450&fit=crop';
+      ?>
+      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="<?php echo (int) ( ( $di % 4 ) + 1 ); ?>">
+        <img src="<?php echo esc_url( $d_img ); ?>" alt="<?php echo esc_attr( ( $dest['name'] ?? '' ) . ' travel vaccinations' ); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
         <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">Southeast Asia</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Thailand</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A/B &middot; Typhoid &middot; Rabies</p>
+          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost"><?php echo esc_html( $dest['region'] ?? '' ); ?></div>
+          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost"><?php echo esc_html( $dest['name'] ?? '' ); ?></h3>
+          <p class="text-blue-100/80 text-xs font-jost"><?php echo $dest['vaccines'] ?? ''; ?></p>
         </div>
       </div>
-
-      <!-- India -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="2">
-        <img src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&h=450&fit=crop" alt="India travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">South Asia</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">India</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A/B &middot; Typhoid &middot; DTP</p>
-        </div>
-      </div>
-
-      <!-- Kenya -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="3">
-        <img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&h=450&fit=crop" alt="Kenya travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">East Africa</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Kenya</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Yellow Fever &middot; Typhoid &middot; Malaria</p>
-        </div>
-      </div>
-
-      <!-- Vietnam -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="4">
-        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600&h=450&fit=crop" alt="Vietnam travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">Southeast Asia</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Vietnam</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A &middot; Typhoid &middot; Rabies</p>
-        </div>
-      </div>
-
-      <!-- Tanzania -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="1">
-        <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&h=450&fit=crop" alt="Tanzania safari travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">East Africa</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Tanzania</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Yellow Fever &middot; Malaria &middot; Typhoid</p>
-        </div>
-      </div>
-
-      <!-- Morocco -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="2">
-        <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=600&h=450&fit=crop" alt="Morocco travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">North Africa</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Morocco</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A &middot; Typhoid &middot; Rabies</p>
-        </div>
-      </div>
-
-      <!-- Indonesia / Bali -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="3">
-        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&h=450&fit=crop" alt="Indonesia Bali travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">Southeast Asia</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Indonesia / Bali</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A/B &middot; Typhoid &middot; Rabies</p>
-        </div>
-      </div>
-
-      <!-- Dubai / UAE -->
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="4">
-        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=450&fit=crop" alt="Dubai UAE travel vaccinations" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4">
-          <div class="text-xs text-blue-200 font-semibold uppercase tracking-wider mb-1 font-jost">Middle East</div>
-          <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost">Dubai / UAE</h3>
-          <p class="text-blue-100/80 text-xs font-jost">Hep A &middot; DTP &middot; Advice</p>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
     <!-- CTA strip -->
     <div class="text-center mt-10">
@@ -583,7 +520,7 @@ $th_service_icons = [
         </div>
         <div>
           <div class="font-bold <?php echo $is_yf ? 'text-amber-200' : 'text-white'; ?> font-jost mb-1"><?php echo wp_kses_post( $v['name'] ); ?></div>
-          <div class="text-xs <?php echo $is_yf ? 'text-amber-100/80' : 'text-blue-100/80'; ?> font-jost"><?php echo wp_kses_post( $v['description'] ); ?></div>
+          <div class="text-sm md:text-base <?php echo $is_yf ? 'text-amber-100/80' : 'text-blue-100/80'; ?> font-jost"><?php echo wp_kses_post( $v['description'] ); ?></div>
         </div>
         <?php if ( $is_yf ) : ?>
         <div class="ml-auto flex-shrink-0">
@@ -596,7 +533,7 @@ $th_service_icons = [
 
     <div class="mt-10 p-5 rounded-2xl bg-white/10 border border-white/20 flex flex-col sm:flex-row items-start sm:items-center gap-4">
       <svg class="flex-shrink-0 w-8 h-8 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      <p class="text-blue-100 text-sm leading-relaxed font-jost flex-1"><?php echo wp_kses_post( $th_vaccines_banner_body ); ?></p>
+      <p class="text-blue-100 text-base md:text-lg leading-relaxed font-jost flex-1"><?php echo wp_kses_post( $th_vaccines_banner_body ); ?></p>
       <a href="<?php echo esc_url( $booking_url ); ?>" class="flex-shrink-0 inline-flex items-center gap-2 bg-white text-blue-700 font-semibold text-sm px-5 py-2.5 rounded-full hover:bg-blue-50 transition-colors shadow font-jost">
         <?php echo esc_html( $th_vaccines_banner_cta ); ?> <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
@@ -648,9 +585,6 @@ $th_service_icons = [
           <div class="flex flex-wrap gap-3">
             <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-blue-700 transition-colors font-jost">
               Book Online
-            </a>
-            <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="inline-flex items-center gap-2 text-blue-600 text-sm font-semibold px-4 py-2 rounded-full border border-blue-200 hover:border-blue-400 transition-colors font-jost">
-              Call Us
             </a>
           </div>
           <?php elseif ( ! empty( $bullets ) ) : ?>
@@ -782,16 +716,9 @@ $th_service_icons = [
               <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
               <div><div class="font-semibold text-slate-800 text-sm font-jost">No GP Referral</div><div class="text-xs text-gray-500 font-jost">Walk in or book ahead</div></div>
             </div>
-            <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-blue-100">
-              <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.58a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-              <div><div class="font-semibold text-slate-800 text-sm font-jost"><?php echo esc_html( $phone ); ?></div><div class="text-xs text-gray-500 font-jost">Free to call</div></div>
-            </div>
           </div>
-          <a href="<?php echo esc_url( $booking_url ); ?>" class="block text-center text-white font-semibold py-3.5 rounded-full shadow-lg font-jost transition-opacity hover:opacity-90 mb-3" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+          <a href="<?php echo esc_url( $booking_url ); ?>" class="block text-center text-white font-semibold py-3.5 rounded-full shadow-lg font-jost transition-opacity hover:opacity-90" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
             Book Travel Consultation
-          </a>
-          <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="block text-center text-blue-700 font-semibold py-3.5 rounded-full border border-blue-200 hover:border-blue-400 transition-colors font-jost">
-            Call <?php echo esc_html( $phone ); ?>
           </a>
         </div>
       </div>
@@ -799,35 +726,37 @@ $th_service_icons = [
       <!-- FAQ accordion -->
       <div class="lg:col-span-2 space-y-4">
         <?php
-        $faqs = [
-          ['01', 'How far in advance should I book travel vaccinations?',
-           'We recommend booking at least <strong>6–8 weeks before travel</strong>. Some vaccines require a course of injections over several weeks (e.g. Rabies requires 3 doses over 21–28 days, Hepatitis B requires 3 doses over 6 months). That said, we can still help with last-minute trips and will do our best to protect you even with limited time.'],
-          ['02', 'Do I need a GP referral for travel vaccinations?',
-           '<strong>No GP referral is needed.</strong> Simply book directly with us online or by phone. Our qualified pharmacists can assess your needs, recommend the right vaccines, and administer them all in the same appointment. No waiting lists, no bouncing between services.'],
-          ['03', 'Which vaccinations are free on the NHS for travel?',
-           'A small number of travel vaccines are available free on the NHS if your GP provides them: Hepatitis A, Typhoid, Cholera, and Polio (if boosters are needed). <strong>Most travel vaccines are private</strong> (not NHS-funded), including Yellow Fever, Rabies, Japanese Encephalitis, Hepatitis B, and Meningitis ACWY (for travel). We can advise you on what&rsquo;s available and at what cost during your consultation.'],
-          ['04', 'What happens at a travel health consultation?',
-           'Your appointment typically takes <strong>20–30 minutes</strong>. A qualified travel health pharmacist will: review your destination(s) and planned activities; check your vaccination history; discuss any relevant medical conditions; recommend appropriate vaccines and malaria prevention; and provide written destination-specific health advice. Approved vaccines are usually administered the same day.'],
-          ['05', 'Can you vaccinate children for travel?',
-           'Yes, we vaccinate children for travel. <strong>Most vaccines can be given from 12 months of age</strong>, and some from 6 weeks. We will tailor recommendations to your child&rsquo;s age and destination. Please bring any previous vaccination records to the appointment.'],
-          ['06', 'Do you stock malaria tablets?',
-           'Yes. We supply all commonly prescribed anti-malarial medications including <strong>Doxycycline</strong>, <strong>Malarone (Atovaquone/Proguanil)</strong>, and <strong>Lariam (Mefloquine)</strong>. The right choice depends on your destination, medical history, and personal preferences &mdash; we&rsquo;ll discuss all options at your consultation.'],
-          ['07', 'What is the Yellow Fever certificate (ICVP) and do you issue them?',
-           'The <strong>International Certificate of Vaccination or Prophylaxis (ICVP)</strong>, also known as the "Yellow Card," is an official WHO document proving you have been vaccinated against Yellow Fever. Some countries require it for entry. We are an NHS-approved Yellow Fever Vaccination Centre and issue ICVP certificates on the same day as vaccination. The certificate is now valid for life (no booster or renewal needed).'],
-          ['08', 'Can I get all my vaccines in one appointment?',
-           '<strong>Yes, in most cases.</strong> We can administer multiple vaccines on the same day &mdash; most travel vaccines can be given simultaneously. We stock everything you&rsquo;re likely to need and will coordinate your jabs efficiently to minimise the number of appointments required. Courses requiring multiple doses (such as Rabies or Hepatitis B) will need follow-up visits.'],
+        // FAQ — client-editable (Travel Health → Destinations / FAQ / CTA). Numbers added by position.
+        $faqs_raw = function_exists( 'get_field' ) ? get_field( 'th_faqs' ) : null;
+        $faqs = ! empty( $faqs_raw ) ? $faqs_raw : [
+          [ 'question' => 'How far in advance should I book travel vaccinations?',
+            'answer'   => 'We recommend booking at least <strong>6–8 weeks before travel</strong>. Some vaccines require a course of injections over several weeks (e.g. Rabies requires 3 doses over 21–28 days, Hepatitis B requires 3 doses over 6 months). That said, we can still help with last-minute trips and will do our best to protect you even with limited time.' ],
+          [ 'question' => 'Do I need a GP referral for travel vaccinations?',
+            'answer'   => '<strong>No GP referral is needed.</strong> Simply book directly with us online or by phone. Our qualified pharmacists can assess your needs, recommend the right vaccines, and administer them all in the same appointment. No waiting lists, no bouncing between services.' ],
+          [ 'question' => 'Which vaccinations are free on the NHS for travel?',
+            'answer'   => 'A small number of travel vaccines are available free on the NHS if your GP provides them: Hepatitis A, Typhoid, Cholera, and Polio (if boosters are needed). <strong>Most travel vaccines are private</strong> (not NHS-funded), including Yellow Fever, Rabies, Japanese Encephalitis, Hepatitis B, and Meningitis ACWY (for travel). We can advise you on what&rsquo;s available and at what cost during your consultation.' ],
+          [ 'question' => 'What happens at a travel health consultation?',
+            'answer'   => 'Your appointment typically takes <strong>20–30 minutes</strong>. A qualified travel health pharmacist will: review your destination(s) and planned activities; check your vaccination history; discuss any relevant medical conditions; recommend appropriate vaccines and malaria prevention; and provide written destination-specific health advice. Approved vaccines are usually administered the same day.' ],
+          [ 'question' => 'Can you vaccinate children for travel?',
+            'answer'   => 'Yes, we vaccinate children for travel. <strong>Most vaccines can be given from 12 months of age</strong>, and some from 6 weeks. We will tailor recommendations to your child&rsquo;s age and destination. Please bring any previous vaccination records to the appointment.' ],
+          [ 'question' => 'Do you stock malaria tablets?',
+            'answer'   => 'Yes. We supply all commonly prescribed anti-malarial medications including <strong>Doxycycline</strong>, <strong>Malarone (Atovaquone/Proguanil)</strong>, and <strong>Lariam (Mefloquine)</strong>. The right choice depends on your destination, medical history, and personal preferences &mdash; we&rsquo;ll discuss all options at your consultation.' ],
+          [ 'question' => 'What is the Yellow Fever certificate (ICVP) and do you issue them?',
+            'answer'   => 'The <strong>International Certificate of Vaccination or Prophylaxis (ICVP)</strong>, also known as the "Yellow Card," is an official WHO document proving you have been vaccinated against Yellow Fever. Some countries require it for entry. Our Bosmere Pharmacy, Havant branch is an NHS-approved Yellow Fever Vaccination Centre and issues ICVP certificates on the same day as vaccination. The certificate is now valid for life (no booster or renewal needed).' ],
+          [ 'question' => 'Can I get all my vaccines in one appointment?',
+            'answer'   => '<strong>Yes, in most cases.</strong> We can administer multiple vaccines on the same day &mdash; most travel vaccines can be given simultaneously. We stock everything you&rsquo;re likely to need and will coordinate your jabs efficiently to minimise the number of appointments required. Courses requiring multiple doses (such as Rabies or Hepatitis B) will need follow-up visits.' ],
         ];
-        foreach ( $faqs as $faq ) : ?>
+        foreach ( $faqs as $fi => $faq ) : ?>
         <div class="tv-faq-item tv-reveal border border-gray-200 rounded-2xl overflow-hidden" data-delay="2">
           <button class="tv-faq-trigger w-full flex items-center gap-4 p-6 text-left bg-white hover:bg-blue-50/50 transition-colors" type="button">
-            <span class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-bold font-jost" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"><?php echo esc_html( $faq[0] ); ?></span>
-            <span class="flex-1 font-semibold text-slate-800 text-base leading-snug font-jost"><?php echo $faq[1]; ?></span>
+            <span class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center text-white text-sm font-bold font-jost" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);"><?php echo esc_html( str_pad( (string) ( $fi + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+            <span class="flex-1 font-semibold text-slate-800 text-base leading-snug font-jost"><?php echo esc_html( $faq['question'] ?? '' ); ?></span>
             <span class="tv-faq-icon flex-shrink-0 w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </span>
           </button>
           <div class="tv-faq-answer">
-            <div class="px-6 pb-6 text-gray-600 leading-relaxed font-jost text-sm"><?php echo $faq[2]; ?></div>
+            <div class="px-6 pb-6 text-gray-600 leading-relaxed font-jost text-sm"><?php echo $faq['answer'] ?? ''; ?></div>
           </div>
         </div>
         <?php endforeach; ?>
@@ -855,14 +784,14 @@ $th_service_icons = [
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
+      <?php foreach ( sp_branch_order() as $pos => $i ) :
         $b       = sp_branch( $i );
         $name    = $b['name'];
         $addr1   = $b['address_line1'];
         $addr2   = $b['address_line2'];
         $hours   = sp_branch_hours_html( $b );
         $img     = $b['card_image'];
-        $delay   = $i;
+        $delay   = $pos + 1;
       ?>
       <div class="tv-reveal tv-card-lift bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm group flex flex-col" data-delay="<?php echo $delay; ?>">
         <div class="relative overflow-hidden aspect-[4/3]">
@@ -891,7 +820,7 @@ $th_service_icons = [
           </a>
         </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
 
     <!-- Info banner -->
@@ -927,17 +856,22 @@ $th_service_icons = [
     <!-- Trust badge pills -->
     <div class="flex flex-wrap justify-center gap-3 mb-10">
       <?php
-      $trust_pills = [
-        ['<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', 'GPhC Registered'],
-        ['<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>', '4 Hampshire Locations'],
-        ['<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>', 'Same-Day Appointments'],
-        ['<polyline points="20 6 9 17 4 12"/>', 'No GP Referral Needed'],
-        ['<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>', '20+ Vaccines In Stock'],
+      // Trust pills — labels client-editable (Travel Health → Destinations / FAQ / CTA). Icons cycle by position.
+      $pill_icons = [
+        '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+        '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+        '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+        '<polyline points="20 6 9 17 4 12"/>',
+        '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>',
       ];
-      foreach ( $trust_pills as $pill ) : ?>
+      $pills_raw   = function_exists( 'get_field' ) ? get_field( 'th_pills' ) : null;
+      $trust_pills = ! empty( $pills_raw ) ? array_column( $pills_raw, 'text' ) : [
+        'GPhC Registered', '4 Hampshire Locations', 'Same-Day Appointments', 'No GP Referral Needed', '20+ Vaccines In Stock',
+      ];
+      foreach ( $trust_pills as $pi => $pill_label ) : $picon = $pill_icons[ $pi % count( $pill_icons ) ]; ?>
       <div class="flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full border border-white/20 font-jost">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $pill[0]; ?></svg>
-        <?php echo esc_html( $pill[1] ); ?>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $picon; ?></svg>
+        <?php echo esc_html( $pill_label ); ?>
       </div>
       <?php endforeach; ?>
     </div>
@@ -948,16 +882,14 @@ $th_service_icons = [
         Book Travel Consultation
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
-      <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="inline-flex items-center gap-2 text-white/90 font-semibold text-lg px-8 py-4 rounded-full border-2 border-white/30 hover:border-white/60 transition-colors font-jost">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.58a2 2 0 0 1 2-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Call <?php echo esc_html( $phone ); ?>
-      </a>
     </div>
 
     <!-- Checklist -->
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mx-auto mb-10">
       <?php
-      $checklist = [
+      // Checklist — client-editable (Travel Health → Destinations / FAQ / CTA).
+      $checklist_raw = function_exists( 'get_field' ) ? get_field( 'th_checklist' ) : null;
+      $checklist = ! empty( $checklist_raw ) ? array_column( $checklist_raw, 'text' ) : [
         'All travel vaccines in stock',
         'No GP referral required',
         'Written health advice included',
@@ -981,7 +913,7 @@ $th_service_icons = [
       <span>&middot;</span>
       <span>GPhC Registered</span>
       <span>&middot;</span>
-      <span>NHS Yellow Fever Centre</span>
+      <span>NHS Yellow Fever Centre &middot; Bosmere, Havant</span>
     </div>
   </div>
 </section>

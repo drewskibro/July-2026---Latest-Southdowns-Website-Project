@@ -97,6 +97,65 @@ function sp_field( string $field_name, $fallback = '' ) {
 }
 
 /**
+ * Overlay an ACF repeater of associative rows onto a hardcoded $defaults array.
+ *
+ * Each default row is an array (e.g. with 'title', 'desc', 'icon', 'colour').
+ * If the repeater has rows, its sub-field values overwrite the matching keys on
+ * the default at the same index (icons/colours/etc. left in code are preserved);
+ * extra rows reuse the last default's non-mapped keys. If the repeater is empty
+ * the untouched $defaults are returned, so the page renders identically.
+ *
+ * @param string $field_name  ACF repeater field name.
+ * @param array  $defaults    Array of associative default rows.
+ * @param array  $map         [ default_key => acf_sub_field_name ].
+ * @return array
+ */
+function sp_rows( string $field_name, array $defaults, array $map ): array {
+    if ( ! function_exists( 'have_rows' ) || ! have_rows( $field_name ) ) {
+        return $defaults;
+    }
+    $rows = [];
+    $i = 0;
+    while ( have_rows( $field_name ) ) {
+        the_row();
+        $base = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
+        foreach ( $map as $key => $sub ) {
+            $val = get_sub_field( $sub );
+            if ( $val !== null && $val !== '' ) {
+                $base[ $key ] = $val;
+            }
+        }
+        $rows[] = $base;
+        $i++;
+    }
+    return $rows ?: $defaults;
+}
+
+/**
+ * Overlay a simple ACF repeater (one text sub-field) onto a list of string $defaults.
+ * Returns the client's items if any exist, otherwise the hardcoded defaults.
+ *
+ * @param string $field_name  ACF repeater field name.
+ * @param array  $defaults    Array of default strings.
+ * @param string $sub         Sub-field name holding the string (default 'text').
+ * @return array
+ */
+function sp_list( string $field_name, array $defaults, string $sub = 'text' ): array {
+    if ( ! function_exists( 'have_rows' ) || ! have_rows( $field_name ) ) {
+        return $defaults;
+    }
+    $items = [];
+    while ( have_rows( $field_name ) ) {
+        the_row();
+        $val = get_sub_field( $sub );
+        if ( $val !== null && $val !== '' ) {
+            $items[] = $val;
+        }
+    }
+    return $items ?: $defaults;
+}
+
+/**
  * Pharmacy name.
  */
 function sp_pharmacy_name(): string {
@@ -119,9 +178,13 @@ function sp_phone(): string {
 
 /**
  * Primary booking URL.
+ *
+ * Hardlinked to the internal Book Appointment page (page-book-appointment.php),
+ * which embeds the Amelia booking form. Every "Book Appointment" / "Contact Us"
+ * CTA across the theme routes through this helper.
  */
 function sp_booking_url(): string {
-    return sp_option( 'sp_booking_url', '#' );
+    return home_url( '/book-appointment/' );
 }
 
 /**
@@ -133,14 +196,14 @@ function sp_logo_url(): string {
         $logo = wp_get_attachment_image_url( $custom_logo_id, 'full' );
         if ( $logo ) return $logo;
     }
-    return sp_option( 'sp_logo_url', 'https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773141719755-0.png' );
+    return sp_option( 'sp_logo_url', wp_upload_dir()['baseurl'] . '/2026/06/Untitled-design-79.png' );
 }
 
 /**
  * Primary contact email.
  */
 function sp_email(): string {
-    return sp_option( 'sp_email', 'info@southdownspharmacy.co.uk' );
+    return sp_option( 'sp_email', 'bookings@southdownspharmacygroup.co.uk' );
 }
 
 /**
@@ -184,10 +247,10 @@ function sp_branch( int $branch ): array {
         3 => [
             'card_image'      => 'https://images.unsplash.com/photo-1576602976047-174e57a47881?w=600&q=80&auto=format&fit=crop',
             'name'            => 'Davies Pharmacy',
-            'address_line1'   => '',
-            'address_line2'   => '',
+            'address_line1'   => '12 West Street',
+            'address_line2'   => 'Havant',
             'city'            => 'Hampshire',
-            'postcode'        => '',
+            'postcode'        => 'PO9 1PF',
             'phone'           => '023 9212 3456',
             'hours_weekday'   => 'Mon–Fri: 9:00am – 6:00pm',
             'hours_saturday'  => 'Saturday: 9:00am – 1:00pm',
@@ -197,7 +260,7 @@ function sp_branch( int $branch ): array {
         4 => [
             'card_image'      => 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&q=80&auto=format&fit=crop',
             'name'            => 'Rowlands Castle',
-            'address_line1'   => '12 The Green',
+            'address_line1'   => '14 The Green',
             'address_line2'   => 'Rowlands Castle',
             'city'            => 'Hampshire',
             'postcode'        => 'PO9 6BN',
@@ -242,6 +305,61 @@ function sp_branch_hours_html( array $b ): string {
     return implode( '<br>', array_map( 'esc_html', $lines ) );
 }
 
+/**
+ * Branch display order — branch numbers ordered alphabetically by branch name
+ * (Bosmere/Havant, Davies, Emsworth, Rowlands Castle).
+ *
+ * Loop with `foreach ( sp_branch_order() as $i )` then `sp_branch( $i )` so
+ * every branch list across the site renders in the same consistent order.
+ *
+ * @return int[]
+ */
+function sp_branch_order(): array {
+    return [ 2, 3, 1, 4 ];
+}
+
+/**
+ * Award-winning credentials, shown on the Home and About Us pages.
+ *
+ * Editable globally via Pharmacy Settings → Awards (ACF options repeater
+ * "sp_awards"). Falls back to the hardcoded list below, so both pages render
+ * identically until edited. Logos live in the media library.
+ *
+ * @return array[] each: [ year, title, org, logo ] (logo = full URL)
+ */
+function sp_awards(): array {
+    $logo_base = wp_upload_dir()['baseurl'] . '/2026/05/';
+    $defaults = [
+        [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png' ],
+        [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png' ],
+        [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png' ],
+        [ 'year' => '2017', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '2.png' ],
+    ];
+
+    if ( ! function_exists( 'have_rows' ) || ! have_rows( 'sp_awards', 'option' ) ) {
+        return $defaults;
+    }
+
+    $rows = [];
+    $i = 0;
+    while ( have_rows( 'sp_awards', 'option' ) ) {
+        the_row();
+        $base  = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
+        $year  = get_sub_field( 'year' );
+        $title = get_sub_field( 'title' );
+        $org   = get_sub_field( 'organisation' );
+        $logo  = get_sub_field( 'logo' ); // image field, return_format = url
+        $rows[] = [
+            'year'  => ( $year !== '' && $year !== null )   ? $year  : ( $base['year']  ?? '' ),
+            'title' => ( $title !== '' && $title !== null ) ? $title : ( $base['title'] ?? '' ),
+            'org'   => ( $org !== '' && $org !== null )     ? $org   : ( $base['org']   ?? '' ),
+            'logo'  => $logo ?: ( $base['logo'] ?? '' ),
+        ];
+        $i++;
+    }
+    return $rows ?: $defaults;
+}
+
 
 // ============================================================
 // ASSET ENQUEUING
@@ -250,34 +368,24 @@ function sp_branch_hours_html( array $b ): string {
 add_action( 'wp_enqueue_scripts', function() {
     $ver = wp_get_theme()->get( 'Version' );
 
-    // Tailwind CSS CDN
-    wp_enqueue_script(
-        'tailwind-cdn',
-        'https://cdn.tailwindcss.com',
+    // Compiled Tailwind CSS — purged + minified, pre-generated from the theme
+    // templates (assets/css/tailwind.css). Replaces the runtime Tailwind Play
+    // CDN, which shipped ~380KB of JS that compiled CSS in the browser on every
+    // page load and blocked rendering (the main cause of poor PageSpeed scores).
+    // To rebuild after adding new utility classes, see assets/css/README-tailwind.md.
+    wp_enqueue_style(
+        'southdowns-tailwind',
+        get_template_directory_uri() . '/assets/css/tailwind.css',
         [],
-        null,
-        false
+        $ver
     );
 
-    // Tailwind config (Jost font family)
-    wp_add_inline_script( 'tailwind-cdn', '
-        tailwind.config = {
-            content: [],
-            theme: {
-                extend: {
-                    fontFamily: {
-                        jost: ["Jost", "sans-serif"]
-                    }
-                }
-            }
-        };
-    ' );
-
-    // Global theme stylesheet (Jost font + shared CSS classes)
+    // Global theme stylesheet (Jost @font-face + shared custom CSS). Loaded
+    // after Tailwind so the theme's own rules win.
     wp_enqueue_style(
         'southdowns-global',
         get_template_directory_uri() . '/assets/css/global.css',
-        [],
+        [ 'southdowns-tailwind' ],
         $ver
     );
 
@@ -323,6 +431,61 @@ add_action( 'wp_enqueue_scripts', function() {
     }
 } );
 
+// Resource hints — warm up connections to the origins that serve the webfonts
+// and hero imagery, so the browser doesn't pay DNS/TLS setup cost mid-render.
+add_action( 'wp_head', function () {
+    echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+    echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+    echo '<link rel="dns-prefetch" href="https://images.unsplash.com">' . "\n";
+    echo '<link rel="dns-prefetch" href="https://c.animaapp.com">' . "\n";
+}, 1 );
+
+// Preload the homepage hero image (LCP). It is painted as a CSS background,
+// which browsers only discover after CSS parses — preloading fetches it up front.
+add_action( 'wp_head', function () {
+    if ( ! is_front_page() || ! function_exists( 'sp_field' ) ) {
+        return;
+    }
+    $img = sp_field( 'home_s1_image', get_template_directory_uri() . '/assets/img/hero-travel.webp' );
+    if ( $img ) {
+        echo '<link rel="preload" as="image" href="' . esc_url( $img ) . '" fetchpriority="high">' . "\n";
+    }
+}, 2 );
+
+// ============================================================
+// IMAGE PERFORMANCE — async decode + lazy-load (front-end only)
+// ============================================================
+// Post-processes the rendered HTML: adds decoding="async" to every <img>, and
+// loading="lazy" to images past the first few (the logo + above-the-fold hero
+// stay eager to protect LCP). Any <img> that already sets these keeps its value.
+add_action( 'template_redirect', function () {
+    if ( is_admin() || is_feed() || is_embed()
+        || ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+        || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+        return;
+    }
+    ob_start( 'sp_optimize_img_tags' );
+} );
+
+function sp_optimize_img_tags( $html ) {
+    if ( false === stripos( (string) $html, '<img' ) ) {
+        return $html;
+    }
+    $n = 0;
+    return preg_replace_callback( '/<img\b[^>]*>/i', function ( $m ) use ( &$n ) {
+        $tag = $m[0];
+        $n++;
+        if ( false === stripos( $tag, 'decoding=' ) ) {
+            $tag = preg_replace( '/<img\b/i', '<img decoding="async"', $tag, 1 );
+        }
+        // Keep the first 3 images eager (logo + hero) so lazy-loading never delays LCP.
+        if ( $n > 3 && false === stripos( $tag, 'loading=' ) ) {
+            $tag = preg_replace( '/<img\b/i', '<img loading="lazy"', $tag, 1 );
+        }
+        return $tag;
+    }, $html );
+}
+
 
 // ============================================================
 // INCLUDE ACF FIELD GROUP REGISTRATIONS
@@ -336,6 +499,21 @@ require_once get_template_directory() . '/inc/acf-travel-health-fields.php';
 require_once get_template_directory() . '/inc/acf-ear-wax-fields.php';
 require_once get_template_directory() . '/inc/acf-blood-pressure-fields.php';
 require_once get_template_directory() . '/inc/acf-services-fields.php';
+require_once get_template_directory() . '/inc/acf-awards-fields.php';
+require_once get_template_directory() . '/inc/acf-home-fields.php';
+require_once get_template_directory() . '/inc/acf-about-fields.php';
+require_once get_template_directory() . '/inc/acf-pharmacy-first-fields.php';
+require_once get_template_directory() . '/inc/acf-nhs-prescriptions-fields.php';
+require_once get_template_directory() . '/inc/acf-flu-fields.php';
+require_once get_template_directory() . '/inc/acf-b12-fields.php';
+require_once get_template_directory() . '/inc/acf-contraception-fields.php';
+require_once get_template_directory() . '/inc/acf-book-appointment-fields.php';
+require_once get_template_directory() . '/inc/acf-faq-fields.php';
+require_once get_template_directory() . '/inc/acf-health-hub-fields.php';
+require_once get_template_directory() . '/inc/acf-yellow-fever-fields.php';
+require_once get_template_directory() . '/inc/acf-travel-vaccines-fields.php';
+require_once get_template_directory() . '/inc/acf-legal-fields.php';
+require_once get_template_directory() . '/inc/acf-pricing-fields.php';
 
 
 // ============================================================
@@ -365,9 +543,36 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-blood-pressure.php',
         // Services hub landing page
         'page-templates/page-services.php',
+        // About Us
+        'page-templates/page-about-us.php',
+        // Pharmacy First
+        'page-templates/page-pharmacy-first.php',
+        // Service pages (Flu, B12, Contraception)
+        'page-templates/page-flu-vaccinations.php',
+        'page-templates/page-b12-injections.php',
+        'page-templates/page-contraception.php',
+        // Book Appointment, FAQ, Health Hub
+        'page-templates/page-book-appointment.php',
+        'page-templates/page-faq.php',
+        'page-templates/page-health-hub.php',
+        // Pricing
+        'page-templates/page-pricing.php',
+        // Travel vaccine destination pages
+        'page-templates/page-cape-verde-travel-vaccines.php',
+        'page-templates/page-india-travel-vaccines.php',
+        'page-templates/page-kenya-travel-vaccines.php',
+        'page-templates/page-thailand-travel-vaccines.php',
+        // Legal pages
+        'page-templates/page-privacy-policy.php',
+        'page-templates/page-cookie-policy.php',
+        'page-templates/page-terms-conditions.php',
     ];
     $template = get_page_template_slug( $post->ID );
     if ( in_array( $template, $custom_templates, true ) ) {
+        return false;
+    }
+    // Home page (front-page.php) when set as the static front page
+    if ( (int) get_option( 'page_on_front' ) === (int) $post->ID ) {
         return false;
     }
     return $use_block_editor;

@@ -20,7 +20,7 @@ $cv_programme_intro = sp_field( 'cv_nhs_programme_intro', 'For Spring 2026, the 
 $cv_elig_eyebrow    = sp_field( 'cv_nhs_elig_eyebrow',    'Spring 2026 Eligibility' );
 $cv_elig_headline   = sp_field( 'cv_nhs_elig_headline',   'Are You Eligible for a Free NHS COVID Vaccine?' );
 $cv_elig_subhead    = sp_field( 'cv_nhs_elig_subhead',    'The Spring 2026 programme is targeted at those at highest risk. Check whether you qualify below.' );
-$cv_promo_body      = sp_field( 'cv_nhs_promo_body',      'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>&pound;89.50 per dose</strong> &mdash; ideal for those who want to stay protected but fall outside the current NHS cohorts.' );
+$cv_promo_body      = sp_field( 'cv_nhs_promo_body',      'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>&pound;92.50 per dose</strong> &mdash; ideal for those who want to stay protected but fall outside the current NHS cohorts.' );
 $cv_locations_eyebrow  = sp_field( 'cv_nhs_locations_eyebrow',  '4 Locations Across Hampshire' );
 $cv_locations_headline = sp_field( 'cv_nhs_locations_headline', 'Book at Your Nearest Hampshire Branch' );
 $cv_locations_subhead  = sp_field( 'cv_nhs_locations_subhead',  'Free NHS COVID-19 vaccinations available at all four Southdowns Pharmacy locations.' );
@@ -50,6 +50,41 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
         'title' => 'Immunosuppressed Individuals (Aged 6 Months+)',
         'body'  => 'If you or your child are immunosuppressed due to a medical condition or treatment — such as chemotherapy, certain immunological conditions, or organ transplant — you are eligible regardless of age. Please bring details of your condition to your appointment.',
     ],
+];
+
+// Sections previously hardcoded — now editable (Booking / Safety / FAQ tab).
+$cv_programme_headline = sp_field( 'cv_nhs_programme_headline', 'Protecting Those Most at Risk' );
+
+$cv_book_headline = sp_field( 'cv_nhs_book_headline', 'Three Ways to Book Your NHS COVID Vaccine' );
+$cv_book_subhead  = sp_field( 'cv_nhs_book_subhead', 'Booking is simple. Choose whichever method works best for you.' );
+$cv_book_methods_raw = function_exists( 'get_field' ) ? get_field( 'cv_nhs_book_methods' ) : null;
+$cv_book_methods = ! empty( $cv_book_methods_raw ) ? $cv_book_methods_raw : [
+    [ 'title' => 'Book Online', 'body' => 'Use the NHS app or visit nhs.uk to book your COVID-19 vaccine appointment at your nearest Southdowns Pharmacy branch. Available 24 hours a day.' ],
+    [ 'title' => 'Call 119', 'body' => 'Call 119 free of charge to book your NHS COVID-19 vaccine by phone. Lines are open seven days a week.' ],
+    [ 'title' => 'Walk In or Call Us', 'body' => 'Visit any of our four Hampshire locations during opening hours and speak to our team directly, or call your nearest branch and we&apos;ll book you in.' ],
+];
+$cv_book_note = sp_field( 'cv_nhs_book_note', 'Eligible patients will receive a notification from the NHS inviting them to book their seasonal COVID-19 vaccine. <strong>You do not need to wait for this letter</strong> &mdash; you can book proactively at any time.' );
+
+$cv_safety_headline = sp_field( 'cv_nhs_safety_headline', 'Safe, Approved, and Effective' );
+$cv_safety_subhead  = sp_field( 'cv_nhs_safety_subhead', 'Every COVID-19 vaccine offered through Southdowns Pharmacy is approved by the Medicines and Healthcare products Regulatory Agency (MHRA).' );
+$cv_safety_cards_raw = function_exists( 'get_field' ) ? get_field( 'cv_nhs_safety_cards' ) : null;
+$cv_safety_cards = ! empty( $cv_safety_cards_raw ) ? $cv_safety_cards_raw : [
+    [ 'title' => 'Are COVID-19 Vaccines Safe?', 'body' => 'Yes. All vaccines offered under the NHS programme are approved by the MHRA and subject to ongoing safety monitoring. They have been administered to hundreds of millions of people worldwide and have a well-established safety record.' ],
+    [ 'title' => 'What Side Effects Should I Expect?', 'body' => 'Side effects are typically mild and short-lived. The most common include a sore or tender arm at the injection site, mild fatigue, headache, or flu-like symptoms in the day or two following vaccination. Serious reactions are extremely rare.<br><br>Our pharmacists observe all patients for a short period after vaccination.' ],
+];
+$cv_safety_note = sp_field( 'cv_nhs_safety_note', '<strong class="text-white">Which vaccine will I receive?</strong> Vaccine availability may vary by season and location. Our pharmacy team will confirm which vaccine you will receive when you book or arrive for your appointment.' );
+
+$cv_promo_headline = sp_field( 'cv_nhs_promo_headline', 'Not Eligible for the NHS Vaccine?' );
+
+$cv_faqs_raw = function_exists( 'get_field' ) ? get_field( 'cv_nhs_faqs' ) : null;
+$cv_faqs = ! empty( $cv_faqs_raw ) ? $cv_faqs_raw : [
+    [ 'question' => 'Do I need a letter or invitation before I can book?', 'answer' => 'No. While eligible patients will receive an NHS notification, you do not need to wait for it. You can book proactively at any of our branches, via the NHS app, or by calling 119.' ],
+    [ 'question' => 'Is the vaccine really free?', 'answer' => 'Yes. If you meet the current NHS eligibility criteria, your COVID-19 vaccine is completely free of charge &mdash; there is nothing to pay.' ],
+    [ 'question' => 'Which vaccine will I receive?', 'answer' => 'Vaccine availability varies by season. Our team will confirm which vaccine you will receive at the time of booking or at your appointment.' ],
+    [ 'question' => 'How long does the appointment take?', 'answer' => 'The vaccination itself takes only a few minutes. We ask patients to remain for a short observation period afterwards &mdash; typically 10 to 15 minutes in total.' ],
+    [ 'question' => 'Can I bring someone with me?', 'answer' => 'Yes. You are welcome to bring a family member or carer. Please let our team know in advance if you require any assistance.' ],
+    [ 'question' => 'I was eligible last season but don&apos;t see myself in the current list &mdash; what should I do?', 'answer' => 'The eligibility criteria changed for Spring 2026. If you are no longer included in the NHS cohorts, you may wish to consider our private vaccination service at &pound;92.50. Speak to our pharmacist for personalised advice.' ],
+    [ 'question' => 'Is the vaccine safe for immunosuppressed patients?', 'answer' => 'Yes. Immunosuppressed individuals are actually a priority group for the NHS programme, as they are at higher risk of serious illness. Please bring details of your condition or treatment to your appointment so our pharmacist can advise appropriately.' ],
 ];
 ?>
 
@@ -208,7 +243,7 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16 yf-reveal">
       <div>
         <span class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-4 py-2 rounded-full mb-6 border border-blue-100 uppercase tracking-wider">NHS COVID-19 Programme</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost">Protecting Those Most at Risk</h2>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo esc_html( $cv_programme_headline ); ?></h2>
         <p class="text-gray-600 text-lg leading-relaxed mb-5 font-jost">The NHS seasonal COVID-19 vaccination programme provides free vaccines to those most vulnerable to serious illness from COVID-19. The programme is reviewed regularly by the Joint Committee on Vaccination and Immunisation (JCVI), whose recommendations are accepted by ministers and form the basis of NHS eligibility each season.</p>
         <p class="text-gray-600 text-lg leading-relaxed font-jost">By getting vaccinated, you help protect yourself from serious illness, hospitalisation, and the complications that COVID-19 can cause &mdash; particularly if you are older or have an underlying health condition.</p>
       </div>
@@ -316,36 +351,26 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span class="uppercase tracking-wider text-xs font-semibold">How to Book</span>
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost">Three Ways to Book Your NHS COVID Vaccine</h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost">Booking is simple. Choose whichever method works best for you.</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost"><?php echo esc_html( $cv_book_headline ); ?></h2>
+      <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost"><?php echo esc_html( $cv_book_subhead ); ?></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 yf-reveal">
 
-      <div class="yf-step bg-white rounded-2xl p-8 border border-blue-100/50 shadow-sm hover:shadow-xl hover:shadow-blue-100/30 hover:-translate-y-1 transition-all duration-300" data-delay="1">
-        <div class="yf-step-num w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center text-xl font-bold mb-5 shadow-lg shadow-blue-500/25">1</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 font-jost">Book Online</h3>
-        <p class="text-gray-600 leading-relaxed font-jost">Use the NHS app or visit nhs.uk to book your COVID-19 vaccine appointment at your nearest Southdowns Pharmacy branch. Available 24 hours a day.</p>
+      <?php foreach ( $cv_book_methods as $mi => $method ) : ?>
+      <div class="yf-step bg-white rounded-2xl p-8 border border-blue-100/50 shadow-sm hover:shadow-xl hover:shadow-blue-100/30 hover:-translate-y-1 transition-all duration-300" data-delay="<?php echo (int) ( $mi + 1 ); ?>">
+        <div class="yf-step-num w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center text-xl font-bold mb-5 shadow-lg shadow-blue-500/25"><?php echo (int) ( $mi + 1 ); ?></div>
+        <h3 class="text-xl font-bold text-slate-800 mb-3 font-jost"><?php echo esc_html( $method['title'] ?? '' ); ?></h3>
+        <p class="text-gray-600 leading-relaxed font-jost"><?php echo $method['body'] ?? ''; ?></p>
       </div>
-
-      <div class="yf-step bg-white rounded-2xl p-8 border border-blue-100/50 shadow-sm hover:shadow-xl hover:shadow-blue-100/30 hover:-translate-y-1 transition-all duration-300" data-delay="2">
-        <div class="yf-step-num w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center text-xl font-bold mb-5 shadow-lg shadow-blue-500/25">2</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 font-jost">Call 119</h3>
-        <p class="text-gray-600 leading-relaxed font-jost">Call 119 free of charge to book your NHS COVID-19 vaccine by phone. Lines are open seven days a week.</p>
-      </div>
-
-      <div class="yf-step bg-white rounded-2xl p-8 border border-blue-100/50 shadow-sm hover:shadow-xl hover:shadow-blue-100/30 hover:-translate-y-1 transition-all duration-300" data-delay="3">
-        <div class="yf-step-num w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl flex items-center justify-center text-xl font-bold mb-5 shadow-lg shadow-blue-500/25">3</div>
-        <h3 class="text-xl font-bold text-slate-800 mb-3 font-jost">Walk In or Call Us</h3>
-        <p class="text-gray-600 leading-relaxed font-jost">Visit any of our four Hampshire locations during opening hours and speak to our team directly, or call your nearest branch and we&apos;ll book you in.</p>
-      </div>
+      <?php endforeach; ?>
 
     </div>
 
     <!-- Info box -->
     <div class="max-w-3xl mx-auto bg-blue-50 rounded-2xl p-6 border border-blue-100 flex items-start gap-4 yf-reveal">
       <svg class="w-6 h-6 text-blue-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <p class="text-blue-700 text-sm leading-relaxed font-jost">Eligible patients will receive a notification from the NHS inviting them to book their seasonal COVID-19 vaccine. <strong>You do not need to wait for this letter</strong> &mdash; you can book proactively at any time.</p>
+      <p class="text-blue-700 text-sm leading-relaxed font-jost"><?php echo $cv_book_note; ?></p>
     </div>
 
   </div>
@@ -364,37 +389,33 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span class="uppercase tracking-wider text-xs font-semibold">Safety Information</span>
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-jost">Safe, Approved, and Effective</h2>
-      <p class="text-lg text-blue-100 max-w-3xl mx-auto font-jost">Every COVID-19 vaccine offered through Southdowns Pharmacy is approved by the Medicines and Healthcare products Regulatory Agency (MHRA).</p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-jost"><?php echo esc_html( $cv_safety_headline ); ?></h2>
+      <p class="text-lg text-blue-100 max-w-3xl mx-auto font-jost"><?php echo esc_html( $cv_safety_subhead ); ?></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10 yf-reveal">
 
-      <!-- Card 1: Safety -->
+      <?php
+      $cv_safety_icons = [
+        '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>',
+        '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+      ];
+      foreach ( $cv_safety_cards as $si => $card ) : ?>
       <div class="bg-white rounded-2xl p-8 border border-gray-200 yf-card-lift shadow-sm">
         <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $cv_safety_icons[ $si % count( $cv_safety_icons ) ]; ?></svg>
         </div>
-        <h3 class="text-xl font-bold text-slate-800 mb-4 font-jost">Are COVID-19 Vaccines Safe?</h3>
-        <p class="text-gray-600 leading-relaxed font-jost">Yes. All vaccines offered under the NHS programme are approved by the MHRA and subject to ongoing safety monitoring. They have been administered to hundreds of millions of people worldwide and have a well-established safety record.</p>
+        <h3 class="text-xl font-bold text-slate-800 mb-4 font-jost"><?php echo esc_html( $card['title'] ?? '' ); ?></h3>
+        <p class="text-gray-600 leading-relaxed font-jost"><?php echo $card['body'] ?? ''; ?></p>
       </div>
-
-      <!-- Card 2: Side effects -->
-      <div class="bg-white rounded-2xl p-8 border border-gray-200 yf-card-lift shadow-sm">
-        <div class="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-        </div>
-        <h3 class="text-xl font-bold text-slate-800 mb-4 font-jost">What Side Effects Should I Expect?</h3>
-        <p class="text-gray-600 leading-relaxed mb-4 font-jost">Side effects are typically mild and short-lived. The most common include a sore or tender arm at the injection site, mild fatigue, headache, or flu-like symptoms in the day or two following vaccination. Serious reactions are extremely rare.</p>
-        <p class="text-gray-600 text-sm font-jost">Our pharmacists observe all patients for a short period after vaccination.</p>
-      </div>
+      <?php endforeach; ?>
 
     </div>
 
     <!-- Vaccine info box -->
     <div class="max-w-3xl mx-auto bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 flex items-start gap-4 yf-reveal">
       <svg class="w-6 h-6 text-blue-200 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-      <p class="text-blue-100 text-sm leading-relaxed font-jost"><strong class="text-white">Which vaccine will I receive?</strong> Vaccine availability may vary by season and location. Our pharmacy team will confirm which vaccine you will receive when you book or arrive for your appointment.</p>
+      <p class="text-blue-100 text-sm leading-relaxed font-jost"><?php echo $cv_safety_note; ?></p>
     </div>
 
   </div>
@@ -413,7 +434,7 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
       <span class="uppercase tracking-wider text-xs font-semibold">Private Vaccination Available</span>
     </div>
 
-    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost">Not Eligible for the NHS Vaccine?</h2>
+    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 font-jost"><?php echo esc_html( $cv_promo_headline ); ?></h2>
     <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 leading-relaxed font-jost"><?php echo wp_kses_post( $cv_promo_body ); ?></p>
 
     <a href="<?php echo esc_url( home_url( '/covid-vaccine-private/' ) ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-[1.02] text-base font-jost">
@@ -444,7 +465,7 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 yf-reveal">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
+      <?php foreach ( sp_branch_order() as $i ) :
         $b = sp_branch( $i ); ?>
       <div class="group relative bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
         <div class="relative overflow-hidden aspect-[4/3]">
@@ -469,7 +490,7 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
           </a>
         </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
 
     <!-- Info banner -->
@@ -539,25 +560,16 @@ $cv_cards     = ! empty( $cv_cards_raw ) ? $cv_cards_raw : [
         <div class="space-y-4" id="faq-list">
 
           <?php
-          $faqs = [
-            [ '01', 'Do I need a letter or invitation before I can book?',         'No. While eligible patients will receive an NHS notification, you do not need to wait for it. You can book proactively at any of our branches, via the NHS app, or by calling 119.' ],
-            [ '02', 'Is the vaccine really free?',                                  'Yes. If you meet the current NHS eligibility criteria, your COVID-19 vaccine is completely free of charge &mdash; there is nothing to pay.' ],
-            [ '03', 'Which vaccine will I receive?',                                'Vaccine availability varies by season. Our team will confirm which vaccine you will receive at the time of booking or at your appointment.' ],
-            [ '04', 'How long does the appointment take?',                          'The vaccination itself takes only a few minutes. We ask patients to remain for a short observation period afterwards &mdash; typically 10 to 15 minutes in total.' ],
-            [ '05', 'Can I bring someone with me?',                                 'Yes. You are welcome to bring a family member or carer. Please let our team know in advance if you require any assistance.' ],
-            [ '06', 'I was eligible last season but don&apos;t see myself in the current list &mdash; what should I do?', 'The eligibility criteria changed for Spring 2026. If you are no longer included in the NHS cohorts, you may wish to consider our private vaccination service at &pound;89.50. Speak to our pharmacist for personalised advice.' ],
-            [ '07', 'Is the vaccine safe for immunosuppressed patients?',           'Yes. Immunosuppressed individuals are actually a priority group for the NHS programme, as they are at higher risk of serious illness. Please bring details of your condition or treatment to your appointment so our pharmacist can advise appropriately.' ],
-          ];
-          foreach ( $faqs as $faq ) : ?>
+          foreach ( $cv_faqs as $fi => $faq ) : ?>
           <div class="yf-faq-item bg-white border border-gray-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg">
             <button class="yf-faq-trigger w-full flex items-center justify-between text-left p-6 hover:bg-gray-50/50 transition-colors">
               <div class="flex items-center gap-4 flex-1">
-                <span class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-md shadow-blue-500/20"><?php echo esc_html( $faq[0] ); ?></span>
-                <span class="text-slate-800 font-semibold text-base md:text-lg font-jost"><?php echo $faq[1]; ?></span>
+                <span class="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-xl flex items-center justify-center font-bold text-sm shadow-md shadow-blue-500/20"><?php echo esc_html( str_pad( (string) ( $fi + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span>
+                <span class="text-slate-800 font-semibold text-base md:text-lg font-jost"><?php echo esc_html( $faq['question'] ?? '' ); ?></span>
               </div>
               <svg class="yf-faq-icon w-5 h-5 text-blue-400 flex-shrink-0 ml-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             </button>
-            <div class="yf-faq-answer"><div class="px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-base font-jost"><?php echo $faq[2]; ?></div></div>
+            <div class="yf-faq-answer"><div class="px-6 pb-6 pt-0 text-gray-600 leading-relaxed text-base font-jost"><?php echo $faq['answer'] ?? ''; ?></div></div>
           </div>
           <?php endforeach; ?>
 

@@ -14,45 +14,30 @@
                alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>"
                class="h-16 w-auto" />
         </div>
-        <p class="text-gray-600 text-base leading-relaxed font-jost mb-6">
-          <?php echo esc_html( sp_option( 'sp_footer_tagline', 'NATHNAC registered Yellow Fever Centre providing comprehensive healthcare services across 4 locations in Hampshire.' ) ); ?>
-        </p>
-        <div class="flex items-center gap-3">
-          <a href="<?php echo esc_url( sp_option( 'sp_social_facebook', '#' ) ); ?>"
-             aria-label="Facebook"
-             class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-blue-600 hover:text-white transition-all duration-300 text-gray-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </a>
-          <a href="<?php echo esc_url( sp_option( 'sp_social_twitter', '#' ) ); ?>"
-             aria-label="Twitter / X"
-             class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-blue-600 hover:text-white transition-all duration-300 text-gray-600">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-            </svg>
-          </a>
-        </div>
+        <p class="text-slate-800 text-base font-semibold font-jost mb-2"><?php echo sp_option( 'sp_footer_tagline', 'Independent. Innovative. Community Focused.' ); ?></p>
+        <p class="text-gray-600 text-base leading-relaxed font-jost mb-6"><?php echo sp_option( 'sp_footer_blurb', 'Providing award-winning NHS and private healthcare services across four locations in Hampshire, with a NaTHNaC-registered Yellow Fever Vaccination Centre at Bosmere Pharmacy, Havant.' ); ?></p>
       </div>
 
       <!-- Our Locations -->
       <div class="lg:col-span-1">
         <h3 class="text-gray-900 text-lg font-semibold mb-6 font-jost">Our Locations</h3>
         <ul class="space-y-4">
-          <?php for ( $i = 1; $i <= 4; $i++ ) :
+          <?php foreach ( sp_branch_order() as $i ) :
             $branch = sp_branch( $i );
+            // Footer shows the full pharmacy name for Rowlands Castle.
+            $footer_branch_name = ( $branch['name'] === 'Rowlands Castle' ) ? 'Rowlands Castle Pharmacy' : $branch['name'];
           ?>
           <li>
             <a href="<?php echo esc_url( $branch['maps_url'] ); ?>" class="group" target="_blank" rel="noopener noreferrer">
               <div class="text-gray-900 font-medium text-base mb-1 group-hover:text-blue-600 transition-colors font-jost">
-                <?php echo esc_html( $branch['name'] ); ?>
+                <?php echo esc_html( $footer_branch_name ); ?>
               </div>
               <div class="text-gray-500 text-sm font-jost">
                 <?php echo esc_html( $branch['address_line1'] . ', ' . $branch['address_line2'] . ', ' . $branch['city'] . ', ' . $branch['postcode'] ); ?>
               </div>
             </a>
           </li>
-          <?php endfor; ?>
+          <?php endforeach; ?>
         </ul>
       </div>
 
@@ -65,8 +50,6 @@
           <li><a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Weight Loss Programs</a></li>
           <li><a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">B12 Injections</a></li>
           <li><a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Ear Wax Removal</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/hair-loss/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Hair Loss Treatment</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/smoking-cessation/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Smoking Cessation</a></li>
         </ul>
       </div>
 
@@ -75,7 +58,7 @@
         <h3 class="text-gray-900 text-lg font-semibold mb-6 font-jost">Information</h3>
         <ul class="space-y-3 mb-6">
           <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">About Us</a></li>
-          <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Contact Us</a></li>
+          <li><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Contact Us</a></li>
           <li><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Privacy Policy</a></li>
           <li><a href="<?php echo esc_url( home_url( '/cookie-policy/' ) ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">Cookie Policy</a></li>
         </ul>
@@ -86,14 +69,6 @@
             </svg>
             <a href="mailto:<?php echo esc_attr( sp_email() ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">
               <?php echo esc_html( sp_email() ); ?>
-            </a>
-          </div>
-          <div class="flex items-start gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            <a href="tel:<?php echo esc_attr( sp_phone_raw() ); ?>" class="text-gray-600 text-base hover:text-blue-600 transition-colors font-jost">
-              <?php echo esc_html( sp_phone() ); ?>
             </a>
           </div>
         </div>
@@ -125,7 +100,7 @@
           </div>
         </a>
 
-        <a href="#" class="group relative bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-700 hover:from-purple-700 hover:via-purple-800 hover:to-indigo-800 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl overflow-hidden border-2 border-purple-400/30">
+        <a href="#" data-vf-open aria-label="Speak to our AI agent" class="group relative bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-700 hover:from-purple-700 hover:via-purple-800 hover:to-indigo-800 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl overflow-hidden border-2 border-purple-400/30">
           <div class="absolute top-4 right-4 bg-yellow-400 text-purple-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse">INSTANT HELP</div>
           <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
           <div class="relative z-10">
@@ -186,6 +161,27 @@
     });
   }, { threshold: 0.3 });
   badges.forEach(function(el) { obs.observe(el); });
+})();
+</script>
+
+<!-- Open the Voiceflow chat from any "Speak to our AI agent" trigger (delegated, future-proof). -->
+<script>
+(function() {
+  function openChat() {
+    if (window.voiceflow && window.voiceflow.chat && typeof window.voiceflow.chat.open === 'function') {
+      window.voiceflow.chat.open();
+      return true;
+    }
+    return false;
+  }
+  document.addEventListener('click', function(e) {
+    // Explicit triggers (nav + footer buttons): never navigate, just open the chat.
+    var btn = e.target.closest('[data-vf-open]');
+    if (btn) { e.preventDefault(); openChat(); return; }
+    // Dual-CTA "Chat with AI Agent" links: open chat if loaded, else fall back to the /ai-agent/ page.
+    var link = e.target.closest('a[href*="/ai-agent"]');
+    if (link && openChat()) { e.preventDefault(); }
+  });
 })();
 </script>
 </body>

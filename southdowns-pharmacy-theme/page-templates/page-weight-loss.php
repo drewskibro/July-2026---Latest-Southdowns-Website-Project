@@ -11,7 +11,7 @@ $phone       = sp_phone();
 
 $hero_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop';
 $hero_headline  = sp_field( 'wl_hero_headline',  'Lose 10&ndash;20% of your body weight in 12 months &mdash; with prescription support at your local Hampshire pharmacy' );
-$hero_body      = sp_field( 'wl_hero_body',      'Mounjaro and Wegovy prescriptions from our Hampshire pharmacists. No GP referral. No long waits. Expert face-to-face care at Southsea, Waterlooville, Havant &amp; Portsmouth.' );
+$hero_body      = sp_field( 'wl_hero_body',      'Mounjaro and Wegovy prescriptions from our Hampshire pharmacists. No GP referral. No long waits. Expert face-to-face care at Emsworth, Havant &amp; Rowlands Castle.' );
 $hero_badge     = sp_field( 'wl_hero_badge_text', 'Medical Weight Loss &middot; Hampshire' );
 
 $science_eyebrow      = sp_field( 'wl_science_eyebrow',      'Clinical Evidence' );
@@ -22,8 +22,8 @@ $science_quote        = sp_field( 'wl_science_quote',        'Patients on GLP-1 
 $science_quote_author = sp_field( 'wl_science_quote_author', 'Alex Chen, MPharm' );
 $science_quote_role   = sp_field( 'wl_science_quote_role',   'Lead Pharmacist, Southdowns Pharmacy' );
 
-$mounjaro_price = sp_field( 'wl_mounjaro_price', 'From &pound;149/month including pharmacist support' );
-$wegovy_price   = sp_field( 'wl_wegovy_price',   'From &pound;149/month including pharmacist support' );
+$mounjaro_price = sp_field( 'wl_mounjaro_price', 'From &pound;156.50/month including pharmacist support' );
+$wegovy_price   = sp_field( 'wl_wegovy_price',   'From &pound;140/month including pharmacist support' );
 
 // Treatments (S4)
 $treatments_eyebrow     = sp_field( 'wl_treatments_eyebrow',     'Prescription Treatments' );
@@ -108,11 +108,62 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
     [ 'question' => 'What are the common side effects?',
       'answer'   => 'The most common side effects are nausea, constipation, diarrhoea and reduced appetite, particularly in the first few weeks as your body adjusts to the medication. These are usually mild and temporary. Our pharmacists provide detailed advice on managing side effects and can adjust your dose if needed.' ],
     [ 'question' => 'How much does the programme cost?',
-      'answer'   => 'Your initial consultation is completely free. Monthly treatment costs start from &pound;149 and include your medication, the prescribing consultation and ongoing pharmacist support. Pricing varies by medication and dose. We will provide a full cost breakdown at your free consultation before you commit to anything.' ],
+      'answer'   => 'Your initial consultation is completely free. Monthly treatment costs start from &pound;140 and include your medication, the prescribing consultation and ongoing pharmacist support. Pricing varies by medication and dose. We will provide a full cost breakdown at your free consultation before you commit to anything.' ],
     [ 'question' => 'Can I use weight loss injections if I have type 2 diabetes?',
       'answer'   => 'Yes, and GLP-1 medications can be particularly beneficial for people with type 2 diabetes, as they also improve blood sugar control. However, your pharmacist will review your current medications and medical history carefully to ensure safety and appropriate dosing, particularly if you are taking insulin or sulphonylureas.' ],
     [ 'question' => 'What happens when I reach my goal weight?',
       'answer'   => 'When you reach your goal weight, our pharmacists will work with you on a structured exit plan to help maintain your results. This may involve a gradual dose reduction, lifestyle coaching and dietary advice. Our goal is to give you the tools to maintain a healthy weight long after completing the programme.' ],
+];
+
+// S5 Benefits — client-editable (Weight Loss → Benefits / Steps / Why). Card icons stay in code, by position.
+$benefits_raw = function_exists( 'get_field' ) ? get_field( 'wl_benefits' ) : null;
+$benefits     = ! empty( $benefits_raw ) ? $benefits_raw : [
+    [ 'image' => 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop', 'title' => 'Significant weight loss',        'desc' => '10&ndash;20% of body weight lost over 12 months, with most patients seeing results within the first 4 weeks.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop', 'title' => 'Improved blood sugar control',  'desc' => 'GLP-1 medications improve insulin sensitivity, helping to prevent or manage type 2 diabetes alongside weight loss.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop', 'title' => 'More energy, less fatigue',      'desc' => 'Patients consistently report better energy levels, improved sleep quality and greater motivation for exercise.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop', 'title' => 'Reduced cardiovascular risk',   'desc' => 'Lower blood pressure, improved cholesterol levels and reduced strain on your heart as you reach a healthier weight.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop', 'title' => 'Better mental wellbeing',       'desc' => 'Improved self-confidence, reduced anxiety around food and a greater sense of control over your health and body.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop', 'title' => 'Reduced joint pain',           'desc' => 'Less weight means less pressure on knees, hips and ankles &mdash; many patients report significantly reduced joint pain within months.' ],
+];
+$benefit_icons = [
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>',
+];
+
+// S6 Steps — client-editable. Numbers + alternating colours stay in code, by position.
+$steps_raw = function_exists( 'get_field' ) ? get_field( 'wl_steps' ) : null;
+$steps     = ! empty( $steps_raw ) ? $steps_raw : [
+    [ 'title' => 'Free consultation', 'desc' => 'Book a same-day appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, BMI and health goals to recommend the right treatment.' ],
+    [ 'title' => 'Same-day prescription &amp; injection training', 'desc' => 'If eligible, your prescription is issued the same day. We show you exactly how to self-administer your weekly injection safely and confidently.' ],
+    [ 'title' => 'Monthly check-ins &amp; dose adjustments', 'desc' => 'Return monthly for weight monitoring, blood pressure checks and dose titration. We adjust your medication as needed to maximise results and minimise side effects.' ],
+    [ 'title' => 'Reach your goal &amp; maintain results', 'desc' => 'At your goal weight, we guide you through a structured exit plan to help you maintain your results long-term, with lifestyle advice and ongoing support.' ],
+];
+$step_styles = [
+    [ 'card' => 'bg-blue-50 hover:bg-blue-100', 'num' => 'background-color:#1a73e9;' ],
+    [ 'card' => 'bg-gray-50 hover:bg-gray-100', 'num' => 'background: linear-gradient(135deg, #1a73e9, #1d4ed8);' ],
+];
+
+// S9 Why Southdowns — client-editable. Card icons stay in code, by position.
+$why_cards_raw = function_exists( 'get_field' ) ? get_field( 'wl_why_cards' ) : null;
+$why_cards     = ! empty( $why_cards_raw ) ? $why_cards_raw : [
+    [ 'title' => 'GPhC-Registered',           'desc' => 'All prescribers are General Pharmaceutical Council registered. Your safety and clinical standards are never compromised.' ],
+    [ 'title' => 'Same-Day Prescriptions',    'desc' => 'No waiting lists, no GP referrals. Book a free consultation online and start your weight loss programme the same day.' ],
+    [ 'title' => 'Face-to-Face Care',         'desc' => "Unlike online services, our pharmacists see you in person every month &mdash; monitoring progress, adjusting doses and answering your questions." ],
+    [ 'title' => '4 Hampshire Locations',     'desc' => 'Emsworth, Havant and Rowlands Castle &mdash; with free parking. Always a convenient branch near you.' ],
+    [ 'title' => 'MHRA-Approved Medications', 'desc' => 'We only prescribe UK-licensed, MHRA-approved medications. No compounded or unregulated products &mdash; ever.' ],
+    [ 'title' => '10,000+ Patients Served',   'desc' => 'Over a decade serving Hampshire communities. Our 4.9-star rating reflects the care and trust we build with every patient.' ],
+];
+$why_icons = [
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>',
+    '<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>',
 ];
 ?>
 
@@ -191,8 +242,9 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
   <!-- Mobile: full-width image with overlay -->
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
-  <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900/95 via-blue-900/70 to-transparent"></div>
-  <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 py-8 z-10">
+  <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
+  <!-- Relative (not absolute) so the hero grows with its content and never clips the top; min-height keeps it tall. -->
+  <div class="md:hidden relative z-10 flex flex-col justify-end min-h-[85vh] px-6 pt-28 pb-12 hero-legible">
     <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
       <div class="badge-rule w-8 h-px bg-white/30"></div>
       <span class="badge-text text-white/80 text-xs font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
@@ -251,13 +303,13 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Badge images straddling the centre divider -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398697-0.png" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
       <img src="https://southdownspharmacygroup.kinsta.cloud/wp-content/uploads/2026/04/Untitled-design-5.png" alt="Medical Weight Loss" class="w-[130px] h-[130px] object-cover drop-shadow-lg rounded-full" />
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
-      <img src="https://c.animaapp.com/mmkd7a1dRSnHAj/img/uploaded-asset-1773073398725-1.png" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
     </div>
   </div>
 
@@ -559,85 +611,23 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- 6 benefit cards -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="1">
+      <?php foreach ( $benefits as $bi => $bcard ) :
+          $b_img  = ! empty( $bcard['image'] ) ? $bcard['image'] : 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop';
+          $b_icon = $benefit_icons[ $bi % count( $benefit_icons ) ];
+      ?>
+      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="<?php echo (int) ( ( $bi % 3 ) + 1 ); ?>">
         <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop" alt="Healthy weight" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
+          <img src="<?php echo esc_url( $b_img ); ?>" alt="<?php echo esc_attr( $bcard['title'] ?? '' ); ?>" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
         </div>
         <div class="p-6">
           <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><?php echo $b_icon; ?></svg>
           </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">Significant weight loss</h3>
-          <p class="text-sm text-gray-600 font-jost">10&ndash;20% of body weight lost over 12 months, with most patients seeing results within the first 4 weeks.</p>
+          <h3 class="font-bold text-gray-900 mb-1 font-jost"><?php echo esc_html( $bcard['title'] ?? '' ); ?></h3>
+          <p class="text-sm text-gray-600 font-jost"><?php echo $bcard['desc'] ?? ''; ?></p>
         </div>
       </div>
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="2">
-        <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop" alt="Blood sugar control" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
-        </div>
-        <div class="p-6">
-          <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">Improved blood sugar control</h3>
-          <p class="text-sm text-gray-600 font-jost">GLP-1 medications improve insulin sensitivity, helping to prevent or manage type 2 diabetes alongside weight loss.</p>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="3">
-        <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop" alt="Better energy" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
-        </div>
-        <div class="p-6">
-          <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">More energy, less fatigue</h3>
-          <p class="text-sm text-gray-600 font-jost">Patients consistently report better energy levels, improved sleep quality and greater motivation for exercise.</p>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="1">
-        <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop" alt="Heart health" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
-        </div>
-        <div class="p-6">
-          <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">Reduced cardiovascular risk</h3>
-          <p class="text-sm text-gray-600 font-jost">Lower blood pressure, improved cholesterol levels and reduced strain on your heart as you reach a healthier weight.</p>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="2">
-        <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop" alt="Mental wellbeing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
-        </div>
-        <div class="p-6">
-          <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">Better mental wellbeing</h3>
-          <p class="text-sm text-gray-600 font-jost">Improved self-confidence, reduced anxiety around food and a greater sense of control over your health and body.</p>
-        </div>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm" data-delay="3">
-        <div class="h-44 overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop" alt="Joint health" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"/>
-        </div>
-        <div class="p-6">
-          <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
-            <svg class="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-1 font-jost">Reduced joint pain</h3>
-          <p class="text-sm text-gray-600 font-jost">Less weight means less pressure on knees, hips and ankles &mdash; many patients report significantly reduced joint pain within months.</p>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -687,37 +677,15 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
       <!-- Steps -->
       <div class="order-1 lg:order-2 space-y-5">
 
-        <div class="yf-reveal yf-step flex gap-5 p-5 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors" data-delay="1">
-          <div class="yf-step-num w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 font-jost" style="background-color:#1a73e9;">1</div>
+        <?php foreach ( $steps as $si => $step ) : $ss = $step_styles[ $si % count( $step_styles ) ]; ?>
+        <div class="yf-reveal yf-step flex gap-5 p-5 <?php echo $ss['card']; ?> rounded-2xl transition-colors" data-delay="<?php echo (int) ( $si + 1 ); ?>">
+          <div class="yf-step-num w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 font-jost" style="<?php echo $ss['num']; ?>"><?php echo (int) ( $si + 1 ); ?></div>
           <div>
-            <h3 class="font-bold text-gray-900 mb-1 font-jost">Free consultation</h3>
-            <p class="text-sm text-gray-600 font-jost">Book a same-day appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, BMI and health goals to recommend the right treatment.</p>
+            <h3 class="font-bold text-gray-900 mb-1 font-jost"><?php echo esc_html( $step['title'] ?? '' ); ?></h3>
+            <p class="text-sm text-gray-600 font-jost"><?php echo $step['desc'] ?? ''; ?></p>
           </div>
         </div>
-
-        <div class="yf-reveal yf-step flex gap-5 p-5 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors" data-delay="2">
-          <div class="yf-step-num w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 font-jost" style="background: linear-gradient(135deg, #1a73e9, #1d4ed8);">2</div>
-          <div>
-            <h3 class="font-bold text-gray-900 mb-1 font-jost">Same-day prescription &amp; injection training</h3>
-            <p class="text-sm text-gray-600 font-jost">If eligible, your prescription is issued the same day. We show you exactly how to self-administer your weekly injection safely and confidently.</p>
-          </div>
-        </div>
-
-        <div class="yf-reveal yf-step flex gap-5 p-5 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors" data-delay="3">
-          <div class="yf-step-num w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 font-jost" style="background-color:#1a73e9;">3</div>
-          <div>
-            <h3 class="font-bold text-gray-900 mb-1 font-jost">Monthly check-ins &amp; dose adjustments</h3>
-            <p class="text-sm text-gray-600 font-jost">Return monthly for weight monitoring, blood pressure checks and dose titration. We adjust your medication as needed to maximise results and minimise side effects.</p>
-          </div>
-        </div>
-
-        <div class="yf-reveal yf-step flex gap-5 p-5 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors" data-delay="4">
-          <div class="yf-step-num w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 font-jost" style="background: linear-gradient(135deg, #1a73e9, #1d4ed8);">4</div>
-          <div>
-            <h3 class="font-bold text-gray-900 mb-1 font-jost">Reach your goal &amp; maintain results</h3>
-            <p class="text-sm text-gray-600 font-jost">At your goal weight, we guide you through a structured exit plan to help you maintain your results long-term, with lifestyle advice and ongoing support.</p>
-          </div>
-        </div>
+        <?php endforeach; ?>
 
         <div class="yf-reveal pt-2" data-delay="5">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-full transition-colors font-jost shadow-lg shadow-blue-500/20">
@@ -815,7 +783,7 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- Branch photo cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 yf-reveal">
-      <?php for ( $i = 1; $i <= 4; $i++ ) :
+      <?php foreach ( sp_branch_order() as $i ) :
         $b = sp_branch( $i ); ?>
       <div class="group relative bg-white rounded-2xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col">
         <div class="relative overflow-hidden aspect-[4/3]">
@@ -840,7 +808,7 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
           </a>
         </div>
       </div>
-      <?php endfor; ?>
+      <?php endforeach; ?>
     </div>
 
     <!-- Info banner -->
@@ -883,55 +851,15 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
 
     <!-- 6-card grid -->
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="1">
+      <?php foreach ( $why_cards as $wi => $wcard ) : $w_icon = $why_icons[ $wi % count( $why_icons ) ]; ?>
+      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="<?php echo (int) ( ( $wi % 3 ) + 1 ); ?>">
         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><?php echo $w_icon; ?></svg>
         </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">GPhC-Registered</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">All prescribers are General Pharmaceutical Council registered. Your safety and clinical standards are never compromised.</p>
+        <h3 class="text-lg font-bold text-white mb-2 font-jost"><?php echo esc_html( $wcard['title'] ?? '' ); ?></h3>
+        <p class="text-blue-100 text-sm leading-relaxed font-jost"><?php echo $wcard['desc'] ?? ''; ?></p>
       </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="2">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">Same-Day Prescriptions</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">No waiting lists, no GP referrals. Book a free consultation online and start your weight loss programme the same day.</p>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="3">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">Face-to-Face Care</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">Unlike online services, our pharmacists see you in person every month &mdash; monitoring progress, adjusting doses and answering your questions.</p>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="1">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">4 Hampshire Locations</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">Southsea, Waterlooville, Havant and Portsmouth &mdash; with free parking. Always a convenient branch near you.</p>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="2">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">MHRA-Approved Medications</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">We only prescribe UK-licensed, MHRA-approved medications. No compounded or unregulated products &mdash; ever.</p>
-      </div>
-
-      <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-7" data-delay="3">
-        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-5">
-          <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-        </div>
-        <h3 class="text-lg font-bold text-white mb-2 font-jost">10,000+ Patients Served</h3>
-        <p class="text-blue-100 text-sm leading-relaxed font-jost">Over a decade serving Hampshire communities. Our 4.9-star rating reflects the care and trust we build with every patient.</p>
-      </div>
-
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
@@ -1056,10 +984,6 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-8 py-4 rounded-full hover:bg-blue-50 transition-colors shadow-xl text-base font-jost">
         Book Free Consultation
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
-      <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="inline-flex items-center gap-2 text-white font-semibold border-2 border-white/40 px-8 py-4 rounded-full hover:bg-white/10 transition-colors text-base font-jost">
-        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-        <?php echo esc_html( $phone ); ?>
       </a>
     </div>
 

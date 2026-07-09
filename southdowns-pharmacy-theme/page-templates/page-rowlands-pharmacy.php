@@ -3,7 +3,7 @@
  * Template Name: Rowlands Castle Pharmacy Location
  *
  * Dedicated location page for the Rowlands Castle branch.
- * 12 The Green, Rowlands Castle, Hampshire, PO9 6BN
+ * 14 The Green, Rowlands Castle, Hampshire, PO9 6BN
  * Tel: 023 9241 3952
  * Mon–Fri 9am–6pm | Sat 9am–1pm | Sun Closed
  */
@@ -18,7 +18,7 @@ $hero_subtitle = get_field('branch_hero_subtitle')       ?: 'Your Local Pharmacy
 $hero_desc     = get_field('branch_hero_description')    ?: 'Trusted village pharmacy on The Green — weight loss injections, travel vaccinations and NHS Pharmacy First services. No GP referral needed for most consultations.';
 
 // ── Contact & Hours ─────────────────────────────────────────────
-$addr1         = get_field('branch_address_line1')       ?: '12 The Green';
+$addr1         = get_field('branch_address_line1')       ?: '14 The Green';
 $addr2         = get_field('branch_address_line2')       ?: 'Rowlands Castle, Hampshire';
 $postcode      = get_field('branch_postcode')            ?: 'PO9 6BN';
 $phone         = get_field('branch_phone')               ?: '023 9241 3952';
@@ -30,11 +30,11 @@ $parking       = get_field('branch_parking')             ?: 'Parking on The Gree
 
 // ── Map & Directions ────────────────────────────────────────────
 $maps_src      = get_field('branch_maps_embed_src')      ?: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2516.7533281722576!2d-0.961667523760126!3d50.89127565552625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487445a4fe353377%3A0x2189f14c6daaf0fa!2sRowlands%20Castle%20Pharmacy%2C%20Flu%20%26%20Covid%20Vaccinations%20-%20Travel%20Clinic!5e0!3m2!1sen!2suk!4v1778833643777!5m2!1sen!2suk';
-$maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=12+The+Green,+Rowlands+Castle,+Hampshire+PO9+6BN';
+$maps_dir_url  = get_field('branch_maps_directions_url') ?: 'https://www.google.com/maps/dir/?api=1&destination=14+The+Green,+Rowlands+Castle,+Hampshire+PO9+6BN';
 $by_car        = get_field('branch_by_car')              ?: 'Rowlands Castle is easily reached from junction 2 of the A3(M). Take the B2149 south into the village — the pharmacy is on The Green at the heart of the village.';
 $car_tags_raw  = get_field('branch_by_car_tags')         ?: 'Off A3(M) Junction 2,B2149 into Village,Parking on The Green';
-$by_bus        = get_field('branch_by_bus')              ?: 'Bus routes 27, 37 and 8 serve Rowlands Castle. Route 27 runs from both Emsworth and Havant, stopping directly at The Green.';
-$bus_routes_raw= get_field('branch_bus_routes')          ?: '27,37,8';
+$by_bus        = get_field('branch_by_bus')              ?: 'Route 27 (Stagecoach South) is the main bus serving Rowlands Castle, running between Emsworth and Havant and stopping directly at The Green. Bus service to the village is limited, so the train station is often the more reliable option.';
+$bus_routes_raw= get_field('branch_bus_routes')          ?: '27';
 $by_train      = get_field('branch_by_train')            ?: 'Rowlands Castle station is on Bowes Hill, served by South Western Railway. The pharmacy on The Green is a 2–3 minute walk from the station exit.';
 $train_stn_raw = get_field('branch_train_stations')      ?: 'Rowlands Castle Station|2–3 min walk';
 $on_foot       = get_field('branch_on_foot')             ?: 'The pharmacy sits directly on the village green — the focal point of Rowlands Castle. Clearly visible from the station approach road.';
@@ -63,6 +63,12 @@ $rc_services = [
     'Weight Loss Injections',
     'Weight Loss Consultation',
 ];
+// Editable via Branch Location Details → Services. Leave empty to use the defaults above.
+$svc_rows = function_exists('get_field') ? get_field('branch_services') : null;
+if ( ! empty( $svc_rows ) ) {
+    $rc_services          = array_column( $svc_rows, 'name' );
+    $rc_services_featured = array_column( array_filter( $svc_rows, function ( $r ) { return ! empty( $r['featured'] ); } ), 'name' );
+}
 
 // ── Full opening hours table ────────────────────────────────────
 $opening_hours = [
@@ -323,7 +329,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
 
       <!-- Google Map -->
       <div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-2xl bg-white/10" style="min-height:420px;">
-        <iframe src="<?php echo esc_url($maps_src); ?>" title="Map showing Rowlands Castle Pharmacy at 12 The Green, Rowlands Castle, PO9 6BN" width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="<?php echo esc_url($maps_src); ?>" title="Map showing Rowlands Castle Pharmacy at 14 The Green, Rowlands Castle, PO9 6BN" width="100%" height="420" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
 
       <!-- Opening Hours table card -->
@@ -476,58 +482,35 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-      <!-- Review 1 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0s;">
+      <?php
+      // Editable via Branch Location Details → Testimonials. Leave empty to show these defaults.
+      $reviews_default = [
+        [ 'quote' => 'Such a welcoming village pharmacy. I started my weight loss injection programme here and the team have been brilliant — supportive, knowledgeable, and never rushed. Highly recommend.', 'author_name' => 'Sarah P.', 'author_initials' => 'SP', 'service' => 'Weight Loss Injections', 'review_date' => 'January 2025', 'avatar_bg' => 'from-blue-500 to-blue-700' ],
+        [ 'quote' => 'Travelling to South America and needed yellow fever, hep A and typhoid. Got everything sorted in one visit at the travel clinic. Easier and quicker than going through my GP — properly excellent service.', 'author_name' => 'James M.', 'author_initials' => 'JM', 'service' => 'Travel Vaccinations', 'review_date' => 'February 2025', 'avatar_bg' => 'from-indigo-500 to-indigo-700' ],
+        [ 'quote' => 'Used the NHS Pharmacy First service for a sinus infection — was seen, assessed and given antibiotics on the same day. No GP appointment needed. The pharmacist was thorough and reassuring throughout.', 'author_name' => 'Emma B.', 'author_initials' => 'EB', 'service' => 'NHS Pharmacy First', 'review_date' => 'March 2025', 'avatar_bg' => 'from-teal-500 to-teal-700' ],
+      ];
+      $reviews = function_exists('get_field') ? get_field('branch_testimonials') : null;
+      if ( empty( $reviews ) ) { $reviews = $reviews_default; }
+      $review_delays = [ '0', '0.1', '0.2' ];
+      foreach ( $reviews as $ri => $rev ) :
+        $bg = ! empty( $rev['avatar_bg'] ) ? $rev['avatar_bg'] : 'from-blue-500 to-blue-700';
+      ?>
+      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:<?php echo esc_attr( $review_delays[ $ri ] ?? '0' ); ?>s;">
         <div class="flex gap-1 mb-4">
           <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
         </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Such a welcoming village pharmacy. I started my weight loss injection programme here and the team have been brilliant — supportive, knowledgeable, and never rushed. Highly recommend."</p>
+        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"<?php echo esc_html( $rev['quote'] ); ?>"</p>
         <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">SP</span>
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br <?php echo esc_attr( $bg ); ?> flex items-center justify-center flex-shrink-0">
+            <span class="text-white text-sm font-bold font-jost"><?php echo esc_html( $rev['author_initials'] ); ?></span>
           </div>
           <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Sarah P.</div>
-            <div class="text-gray-400 text-xs font-jost">Weight Loss Injections &middot; January 2025</div>
+            <div class="text-gray-900 font-semibold text-sm font-jost"><?php echo esc_html( $rev['author_name'] ); ?></div>
+            <div class="text-gray-400 text-xs font-jost"><?php echo esc_html( $rev['service'] ); ?> &middot; <?php echo esc_html( $rev['review_date'] ); ?></div>
           </div>
         </div>
       </div>
-
-      <!-- Review 2 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0.1s;">
-        <div class="flex gap-1 mb-4">
-          <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
-        </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Travelling to South America and needed yellow fever, hep A and typhoid. Got everything sorted in one visit at the travel clinic. Easier and quicker than going through my GP — properly excellent service."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">JM</span>
-          </div>
-          <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">James M.</div>
-            <div class="text-gray-400 text-xs font-jost">Travel Vaccinations &middot; February 2025</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="bg-white rounded-2xl shadow-sm border border-blue-100 p-7 loc-reveal loc-card-lift" style="transition-delay:0.2s;">
-        <div class="flex gap-1 mb-4">
-          <?php for($s=0;$s<5;$s++): ?><svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><?php endfor; ?>
-        </div>
-        <p class="text-gray-700 text-base font-jost leading-relaxed mb-6 italic">"Used the NHS Pharmacy First service for a sinus infection — was seen, assessed and given antibiotics on the same day. No GP appointment needed. The pharmacist was thorough and reassuring throughout."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center flex-shrink-0">
-            <span class="text-white text-sm font-bold font-jost">EB</span>
-          </div>
-          <div>
-            <div class="text-gray-900 font-semibold text-sm font-jost">Emma B.</div>
-            <div class="text-gray-400 text-xs font-jost">NHS Pharmacy First &middot; March 2025</div>
-          </div>
-        </div>
-      </div>
-
+      <?php endforeach; ?>
     </div><!-- /Review cards -->
 
     <!-- Trust strip -->
@@ -560,7 +543,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
   <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
 
     <div class="text-center mb-12 loc-reveal">
-      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4">Ready to Get Started?</h2>
+      <h2 class="text-white text-3xl lg:text-4xl font-semibold font-jost mb-4"><?php echo get_field( 'branch_cta_heading' ) ?: 'Ready to Get Started?'; ?></h2>
       <p class="text-blue-200 text-lg font-jost max-w-2xl mx-auto">Book an appointment at our Rowlands Castle branch or speak to our AI health assistant instantly.</p>
     </div>
 
@@ -571,10 +554,13 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-gray-900 text-2xl font-semibold font-jost mb-3">Book an Appointment</h3>
+        <h3 class="text-gray-900 text-2xl font-semibold font-jost mb-3"><?php echo get_field( 'branch_book_heading' ) ?: 'Book an Appointment'; ?></h3>
         <p class="text-gray-500 font-jost mb-6 leading-relaxed">Same-day and next-day appointments available at our Rowlands Castle branch. No GP referral needed for most services.</p>
         <ul class="space-y-2 mb-8">
-          <?php foreach (['No GP referral needed', 'Same-day appointments available', 'All consultations strictly private', 'GPhC-registered pharmacists'] as $pt): ?>
+          <?php
+          $cta_points_raw = function_exists( 'get_field' ) ? get_field( 'branch_book_points' ) : '';
+          $cta_points = $cta_points_raw ? array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $cta_points_raw ) ) ) ) : ['No GP referral needed', 'Same-day appointments available', 'All consultations strictly private', 'GPhC-registered pharmacists'];
+          foreach ( $cta_points as $pt ): ?>
           <li class="flex items-center gap-3 text-gray-700 text-sm font-jost">
             <svg class="w-5 h-5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             <?php echo esc_html($pt); ?>
@@ -584,7 +570,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         <a href="<?php echo esc_url($booking_url); ?>"
            class="flex items-center justify-center gap-2 w-full text-white font-semibold text-base px-6 py-4 rounded-2xl shadow-lg font-jost transition-all hover:shadow-xl hover:-translate-y-0.5"
            style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
-          Book Now — It's Free
+          <?php echo get_field( 'branch_book_btn' ) ?: "Book Now — It's Free"; ?>
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
         <p class="text-center text-gray-400 text-xs font-jost mt-3">No card required &bull; Cancel anytime</p>
@@ -600,15 +586,18 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         </div>
         <div class="inline-flex items-center gap-1.5 bg-green-400/20 text-green-300 text-xs font-bold px-3 py-1.5 rounded-full border border-green-400/30 font-jost mb-6">
           <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-          INSTANT HELP
+          <?php echo get_field( 'branch_ai_badge' ) ?: 'INSTANT HELP'; ?>
         </div>
         <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-white/15">
           <svg class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-white text-2xl font-semibold font-jost mb-3">Speak to Our AI Agent</h3>
+        <h3 class="text-white text-2xl font-semibold font-jost mb-3"><?php echo get_field( 'branch_ai_heading' ) ?: 'Speak to Our AI Agent'; ?></h3>
         <p class="text-purple-200 font-jost mb-6 leading-relaxed">Get instant answers about services, pricing, and availability at Rowlands Castle — available 24/7, no waiting.</p>
         <ul class="space-y-2 mb-8">
-          <?php foreach (['Available 24 hours a day, 7 days a week', 'Instant answers about all services', 'Check availability before booking', 'Completely free to use'] as $pt): ?>
+          <?php
+          $ai_points_raw = function_exists( 'get_field' ) ? get_field( 'branch_ai_points' ) : '';
+          $ai_points = $ai_points_raw ? array_values( array_filter( array_map( 'trim', preg_split( '/\r\n|\r|\n/', $ai_points_raw ) ) ) ) : ['Available 24 hours a day, 7 days a week', 'Instant answers about all services', 'Check availability before booking', 'Completely free to use'];
+          foreach ( $ai_points as $pt ): ?>
           <li class="flex items-center gap-3 text-purple-100 text-sm font-jost">
             <svg class="w-5 h-5 text-purple-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
             <?php echo esc_html($pt); ?>
@@ -617,7 +606,7 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
         </ul>
         <a href="<?php echo esc_url(home_url('/ai-agent/')); ?>"
            class="flex items-center justify-center gap-2 w-full bg-white/15 border border-white/30 text-white font-semibold text-base px-6 py-4 rounded-2xl font-jost hover:bg-white/25 transition-all backdrop-blur-sm">
-          Chat with AI Agent
+          <?php echo get_field( 'branch_ai_btn' ) ?: 'Chat with AI Agent'; ?>
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         </a>
         <p class="text-center text-purple-300 text-xs font-jost mt-3">No sign-up required &bull; Instant responses</p>
@@ -626,7 +615,22 @@ $rc_txt  = "font-family:{$rc_font};-webkit-font-smoothing:antialiased;-moz-osx-f
     </div>
   </div>
 </section>
-
+<!-- ============================================================
+     S4B: INLINE BOOKING — ROWLANDS CASTLE PRE-FILTERED
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="book-rowlands">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-2 md:mb-3 loc-reveal">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Book at Rowlands Castle &middot; Same-Day Availability</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Book Your Rowlands Castle Appointment</h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Choose your service and time — your appointment will be at Rowlands Castle Pharmacy, 14 The Green.</p>
+    </div>
+    <?php echo do_shortcode('[ameliastepbooking layout=2 location=4 show=category,service,employee,datetime,info]'); ?>
+  </div>
+</section>
 
 <!-- ============================================================
      S5: OTHER BRANCHES

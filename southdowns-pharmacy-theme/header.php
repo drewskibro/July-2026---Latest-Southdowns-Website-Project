@@ -14,18 +14,19 @@ $branch_havant          = sp_branch( 2 );
 $branch_davies          = sp_branch( 3 );
 $branch_rowlands_castle = sp_branch( 4 );
 
+// Branches in alphabetical order: Bosmere (Havant), Davies, Emsworth, Rowlands Castle.
 $branches = [
-    [ 'data' => $branch_emsworth,        'url' => home_url( '/emsworth/' ) ],
     [ 'data' => $branch_havant,          'url' => home_url( '/bosmere/' ) ],
     [ 'data' => $branch_davies,          'url' => home_url( '/davies/' ) ],
+    [ 'data' => $branch_emsworth,        'url' => home_url( '/emsworth/' ) ],
     [ 'data' => $branch_rowlands_castle, 'url' => home_url( '/rowlands-pharmacy/' ) ],
 ];
 
 $destinations = [
-    [ 'name' => 'Thailand',    'flag' => 'th', 'desc' => 'Hep A, Typhoid, Rabies & more', 'url' => home_url( '/destinations/thailand/' ) ],
-    [ 'name' => 'India',       'flag' => 'in', 'desc' => 'Hep A, Typhoid, Japanese Enc.',  'url' => home_url( '/destinations/india/' ) ],
-    [ 'name' => 'Cape Verde',  'flag' => 'cv', 'desc' => 'Yellow Fever, Hep A, Typhoid',   'url' => home_url( '/destinations/cape-verde/' ) ],
-    [ 'name' => 'Kenya',       'flag' => 'ke', 'desc' => 'Yellow Fever, Hep A, Malaria',   'url' => home_url( '/destinations/kenya/' ) ],
+    [ 'name' => 'Thailand',    'flag' => 'th', 'desc' => 'Hep A, Typhoid, Rabies & more', 'url' => home_url( '/thailand-travel-vaccinations/' ) ],
+    [ 'name' => 'India',       'flag' => 'in', 'desc' => 'Hep A, Typhoid, Japanese Enc.',  'url' => home_url( '/india-travel-vaccinations/' ) ],
+    [ 'name' => 'Cape Verde',  'flag' => 'cv', 'desc' => 'Yellow Fever, Hep A, Typhoid',   'url' => home_url( '/cape-verde-travel-vaccinations/' ) ],
+    [ 'name' => 'Kenya',       'flag' => 'ke', 'desc' => 'Yellow Fever, Hep A, Malaria',   'url' => home_url( '/kenya-travel-vaccinations/' ) ],
 ];
 ?>
 
@@ -41,7 +42,7 @@ $destinations = [
       <!-- Logo -->
       <div class="flex-shrink-0 flex items-center py-3 pr-8">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( sp_pharmacy_name() ); ?>">
-          <img src="<?php echo esc_url( sp_logo_url() ); ?>" alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" class="h-12 lg:h-14 w-auto" />
+          <img src="<?php echo esc_url( sp_logo_url() ); ?>" alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" class="h-16 lg:h-20 w-auto" />
         </a>
       </div>
 
@@ -49,13 +50,14 @@ $destinations = [
       <div class="flex-1 flex flex-col justify-end pb-2">
 
         <!-- Top Menu -->
-        <nav aria-label="Top Menu" class="text-[15px] font-light text-zinc-700">
+        <nav aria-label="Top Menu" class="text-[15px] font-medium text-zinc-700">
           <ul class="flex items-center justify-end gap-6 py-2">
-            <li><a href="<?php echo esc_url( home_url( '/faqs/' ) ); ?>" class="hover:text-blue-600 transition-colors">FAQs</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="hover:text-blue-600 transition-colors">FAQs</a></li>
             <li><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="hover:text-blue-600 transition-colors">Blog</a></li>
-            <li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="hover:text-blue-600 transition-colors">Contact Us</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="hover:text-blue-600 transition-colors">About Us</a></li>
+            <li><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="hover:text-blue-600 transition-colors">Contact Us</a></li>
             <li>
-              <button type="button" aria-label="Speak to our AI agent" class="inline-flex items-center gap-2 bg-purple-600 text-white text-sm font-medium px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+              <button type="button" data-vf-open aria-label="Speak to our AI agent" class="inline-flex items-center gap-2 bg-purple-600 text-white text-[15px] font-medium px-5 py-2.5 rounded-full hover:bg-purple-700 transition-colors">
                 <span class="relative flex items-center justify-center w-4 h-4 flex-shrink-0">
                   <span class="absolute inset-0 rounded-full bg-white/40 animate-ping"></span>
                   <svg xmlns="http://www.w3.org/2000/svg" class="relative w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
@@ -69,6 +71,9 @@ $destinations = [
         <!-- Main Menu -->
         <nav aria-label="Main Menu" class="text-zinc-800 -mt-1">
           <ul class="flex items-center justify-end">
+
+            <!-- HOME (flat) -->
+            <li class="py-3"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="px-2 py-2 inline-block hover:text-blue-700 transition-colors">Home</a></li>
 
             <!-- SERVICES dropdown -->
             <li class="dd-parent py-3">
@@ -88,7 +93,7 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.063 2.522-.187 3.756-.249 2.502-2.13 4.477-4.62 4.79a48.108 48.108 0 01-8.386 0c-2.49-.313-4.371-2.288-4.62-4.79A48.196 48.196 0 013 12c0-1.267.063-2.522.187-3.756.249-2.502 2.13-4.477 4.62-4.79a48.108 48.108 0 018.386 0c2.49.313 4.371 2.288 4.62 4.79.124 1.234.187 2.49.187 3.756z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Yellow Fever</span><span class="mega-dd-link-desc">NATHNAC certified centre</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>" class="mega-dd-link">
+                    <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25c-3.5 4.5-6 7.875-6 11.25a6 6 0 0012 0c0-3.375-2.5-6.75-6-11.25z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Tests</span><span class="mega-dd-link-desc">Results within 24–48 hours</span></div>
                     </a>
@@ -99,13 +104,40 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396.234-.847 1.058-1.354 1.938-1.354H6.75z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Ear Wax Removal</span><span class="mega-dd-link-desc">Professional microsuction</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/health-wellbeing/' ) ); ?>" class="mega-dd-link">
+                    <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Health &amp; Wellbeing</span><span class="mega-dd-link-desc">Blood pressure, diabetes &amp; more</span></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">B12 Injections</span><span class="mega-dd-link-desc">Energy-boosting vitamin B12 jabs</span></div>
                     </a>
                     <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Loss</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
+                    </a>
+                  </div>
+                  <div class="mega-dd-section">
+                    <div class="mega-dd-title">NHS Services</div>
+                    <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.249-8.25-3.286z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Flu Vaccinations</span><span class="mega-dd-link-desc">NHS &amp; private flu jabs</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-6 4 12 2-6h6"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Pressure Checks</span><span class="mega-dd-link-desc">Free NHS heart-health checks</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/contraception-services/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Contraception Services</span><span class="mega-dd-link-desc">Pill, patch &amp; injection</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">NHS COVID Vaccination</span><span class="mega-dd-link-desc">Seasonal booster appointments</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/nhs-prescriptions/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h3.75a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">NHS Prescriptions</span><span class="mega-dd-link-desc">Repeat &amp; nominated prescriptions</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Pharmacy First</span><span class="mega-dd-link-desc">7 common conditions treated</span></div>
                     </a>
                   </div>
                   <div class="mega-dd-featured">
@@ -161,7 +193,7 @@ $destinations = [
 
             <!-- DESTINATIONS dropdown -->
             <li class="dd-parent py-3">
-              <a href="<?php echo esc_url( home_url( '/destinations/' ) ); ?>" class="px-2 py-2 inline-flex items-center hover:text-blue-700 transition-colors">
+              <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>" class="px-2 py-2 inline-flex items-center hover:text-blue-700 transition-colors">
                 <span>Destinations</span>
                 <svg class="dd-chevron" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
               </a>
@@ -190,7 +222,7 @@ $destinations = [
 
             <!-- BOOK APPOINTMENT CTA -->
             <li class="py-3 ml-2">
-              <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white text-sm font-medium px-7 py-3 rounded-full transition-colors">
+              <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-800 text-white text-[15px] font-medium px-8 py-3.5 rounded-full transition-colors">
                 Book Appointment
               </a>
             </li>
@@ -214,7 +246,7 @@ $destinations = [
       <!-- Logo (centre) -->
       <div class="w-6/12 flex items-center justify-center">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php echo esc_attr( sp_pharmacy_name() ); ?>">
-          <img alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" src="<?php echo esc_url( sp_logo_url() ); ?>" class="w-[70px] h-auto" />
+          <img alt="<?php echo esc_attr( sp_pharmacy_name() ); ?>" src="<?php echo esc_url( sp_logo_url() ); ?>" class="w-[105px] h-auto" />
         </a>
       </div>
 
@@ -229,6 +261,9 @@ $destinations = [
   <div id="mob-drawer" class="mob-drawer md:hidden bg-gray-50 border-b border-stone-300">
     <ul class="font-jost">
 
+      <!-- Home -->
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Home</a></li>
+
       <!-- Services accordion -->
       <li class="border-b border-stone-200">
         <div class="mob-dd-toggle flex justify-between items-center py-4 px-[22.5px] text-zinc-800 font-medium">
@@ -238,10 +273,16 @@ $destinations = [
         <div class="mob-dd-sub">
           <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>">Travel Vaccinations</a>
           <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) ); ?>">Yellow Fever</a>
-          <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
+          <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>">Blood Tests</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>
-          <a href="<?php echo esc_url( home_url( '/health-wellbeing/' ) ); ?>">Health &amp; Wellbeing</a>
+          <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>">B12 Injections</a>
           <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>">Weight Loss</a>
+          <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>">Flu Vaccinations</a>
+          <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>">Blood Pressure Checks</a>
+          <a href="<?php echo esc_url( home_url( '/contraception-services/' ) ); ?>">Contraception Services</a>
+          <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>">NHS COVID Vaccination</a>
+          <a href="<?php echo esc_url( home_url( '/nhs-prescriptions/' ) ); ?>">NHS Prescriptions</a>
+          <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>">Pharmacy First</a>
         </div>
       </li>
 
@@ -276,13 +317,14 @@ $destinations = [
 
       <!-- Flat links -->
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/pricing/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Pricing</a></li>
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/faqs/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">FAQs</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">FAQs</a></li>
       <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Blog</a></li>
-      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Contact Us</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">About Us</a></li>
+      <li class="border-b border-stone-200"><a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="block py-4 px-[22.5px] text-zinc-800 font-medium hover:text-blue-700">Contact Us</a></li>
 
       <!-- CTAs -->
       <li class="px-[22.5px] py-4 flex flex-col gap-3">
-        <button type="button" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium px-4 py-3 rounded-full transition-colors">
+        <button type="button" data-vf-open aria-label="Speak to our AI agent" class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white text-[15px] font-medium px-5 py-3.5 rounded-full transition-colors">
           <span class="relative flex items-center justify-center w-4 h-4 flex-shrink-0">
             <span class="absolute inset-0 rounded-full bg-white/40 animate-ping"></span>
             <svg xmlns="http://www.w3.org/2000/svg" class="relative w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
