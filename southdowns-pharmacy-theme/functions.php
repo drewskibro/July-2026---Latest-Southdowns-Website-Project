@@ -335,6 +335,7 @@ require_once get_template_directory() . '/inc/acf-covid-vaccine-fields.php';
 require_once get_template_directory() . '/inc/acf-travel-health-fields.php';
 require_once get_template_directory() . '/inc/acf-ear-wax-fields.php';
 require_once get_template_directory() . '/inc/acf-blood-pressure-fields.php';
+require_once get_template_directory() . '/inc/acf-services-fields.php';
 
 
 // ============================================================
@@ -362,6 +363,8 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-nhs-prescriptions.php',
         // Blood Pressure Checks service page
         'page-templates/page-blood-pressure.php',
+        // Services hub landing page
+        'page-templates/page-services.php',
     ];
     $template = get_page_template_slug( $post->ID );
     if ( in_array( $template, $custom_templates, true ) ) {
