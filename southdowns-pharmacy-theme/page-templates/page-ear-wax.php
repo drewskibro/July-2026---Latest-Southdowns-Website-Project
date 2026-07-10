@@ -560,7 +560,7 @@ $pricing_c_bullets_raw   = get_field( 'ew_pricing_consult_bullets' );
 $pricing_c_bullets       = $pricing_c_bullets_raw
     ? array_filter( array_map( 'trim', explode( "\n", $pricing_c_bullets_raw ) ) )
     : [ 'Consultation included', 'Same-day appointments', 'HD ear canal imaging', 'Hearing screening included' ];
-$pricing_t_price         = get_field( 'ew_pricing_treatment_price' )   ?: '&pound;55';
+$pricing_t_price         = get_field( 'ew_pricing_treatment_price' )   ?: '&pound;60';
 $pricing_t_title         = get_field( 'ew_pricing_treatment_title' )   ?: 'Both Ears';
 $pricing_t_body          = get_field( 'ew_pricing_treatment_body' )    ?: 'Professional ear wax removal for clear, healthy ears.';
 $pricing_t_bullets_raw   = get_field( 'ew_pricing_treatment_bullets' );
@@ -916,7 +916,7 @@ $emsworth_directions_url = 'https://maps.google.com/?q=' . urlencode( $emsworth[
 $cta_pills_raw   = get_field( 'ew_cta_trust_pills' );
 $cta_pills       = $cta_pills_raw
     ? array_filter( array_map( 'trim', explode( "\n", $cta_pills_raw ) ) )
-    : [ 'TympaHealth Certified', '&pound;50 One Ear', '&pound;55 Both Ears', 'Same-Day Available', 'Ages 18+ Only' ];
+    : [ 'TympaHealth Certified', '&pound;50 One Ear', '&pound;60 Both Ears', 'Same-Day Available', 'Ages 18+ Only' ];
 $cta_headline    = get_field( 'ew_cta_headline' )      ?: 'Clearer Hearing Starts Today';
 $cta_body        = get_field( 'ew_cta_body' )          ?: 'Don&rsquo;t suffer in silence. Book your ear wax removal appointment at one of our TympaHealth-equipped branches and experience immediate relief.';
 $cta_stat_rating  = get_field( 'ew_cta_stat_rating' )  ?: '4.9/5';
