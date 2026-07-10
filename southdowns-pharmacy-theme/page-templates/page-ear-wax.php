@@ -19,7 +19,7 @@ $hero_image_alt   = get_field( 'ew_hero_image_alt' )  ?: 'Professional ear wax r
 $hero_badge       = get_field( 'ew_hero_badge' )      ?: 'TympaHealth Certified';
 $hero_headline    = get_field( 'ew_hero_headline' )   ?: 'Professional <span class="serif-accent">ear wax removal</span> by microsuction';
 $hero_body        = get_field( 'ew_hero_body' )       ?: 'Powered by TympaHealth, our trained clinicians use gentle low-pressure microsuction &mdash; the gold standard in ear care. No water, no mess, completely painless with immediate results.';
-$hero_sub_text    = get_field( 'ew_hero_sub_text' )   ?: '&pound;50 one ear &middot; &pound;55 both ears &middot; Same-day appointments';
+$hero_sub_text    = get_field( 'ew_hero_sub_text' )   ?: '&pound;50 one ear &middot; &pound;60 both ears &middot; Same-day appointments';
 $hero_roundel_1   = get_field( 'ew_hero_roundel_1' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
 $hero_roundel_1_alt = get_field( 'ew_hero_roundel_1_alt' ) ?: 'Same Day Appointments';
 $hero_roundel_2   = get_field( 'ew_hero_roundel_2' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
@@ -560,7 +560,7 @@ $pricing_c_bullets_raw   = get_field( 'ew_pricing_consult_bullets' );
 $pricing_c_bullets       = $pricing_c_bullets_raw
     ? array_filter( array_map( 'trim', explode( "\n", $pricing_c_bullets_raw ) ) )
     : [ 'Consultation included', 'Same-day appointments', 'HD ear canal imaging', 'Hearing screening included' ];
-$pricing_t_price         = get_field( 'ew_pricing_treatment_price' )   ?: '&pound;55';
+$pricing_t_price         = get_field( 'ew_pricing_treatment_price' )   ?: '&pound;60';
 $pricing_t_title         = get_field( 'ew_pricing_treatment_title' )   ?: 'Both Ears';
 $pricing_t_body          = get_field( 'ew_pricing_treatment_body' )    ?: 'Professional ear wax removal for clear, healthy ears.';
 $pricing_t_bullets_raw   = get_field( 'ew_pricing_treatment_bullets' );
@@ -797,7 +797,7 @@ $faqs = ( ! empty( $faqs_acf ) ) ? $faqs_acf : $faqs_defaults;
         </div>
         <div class="hidden lg:block space-y-3">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="flex items-center justify-center gap-2 bg-white text-blue-700 hover:bg-blue-50 font-semibold px-6 py-3.5 rounded-full transition-all shadow-lg font-jost">Book Appointment</a>
-          <p class="text-blue-200 text-sm text-center font-jost">&pound;50 one ear &middot; &pound;55 both ears</p>
+          <p class="text-blue-200 text-sm text-center font-jost">&pound;50 one ear &middot; &pound;60 both ears</p>
         </div>
       </div>
 
@@ -916,7 +916,7 @@ $emsworth_directions_url = 'https://maps.google.com/?q=' . urlencode( $emsworth[
 $cta_pills_raw   = get_field( 'ew_cta_trust_pills' );
 $cta_pills       = $cta_pills_raw
     ? array_filter( array_map( 'trim', explode( "\n", $cta_pills_raw ) ) )
-    : [ 'TympaHealth Certified', '&pound;50 One Ear', '&pound;55 Both Ears', 'Same-Day Available', 'Ages 18+ Only' ];
+    : [ 'TympaHealth Certified', '&pound;50 One Ear', '&pound;60 Both Ears', 'Same-Day Available', 'Ages 18+ Only' ];
 $cta_headline    = get_field( 'ew_cta_headline' )      ?: 'Clearer Hearing Starts Today';
 $cta_body        = get_field( 'ew_cta_body' )          ?: 'Don&rsquo;t suffer in silence. Book your ear wax removal appointment at one of our TympaHealth-equipped branches and experience immediate relief.';
 $cta_stat_rating  = get_field( 'ew_cta_stat_rating' )  ?: '4.9/5';
