@@ -72,7 +72,7 @@ $svc_groups = [
               'icon' => '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' ],
             [ 'name' => 'Blood Pressure Checks', 'url' => '/blood-pressure-checks/', 'desc' => 'Free NHS blood pressure checks — no appointment, results in minutes.', 'nhs' => true, 'price' => '',
               'icon' => '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>' ],
-            [ 'name' => 'Ear Wax Removal', 'url' => '/ear-wax-removal/', 'desc' => 'Gentle TympaHealth microsuction with same-day appointments.', 'nhs' => false, 'price' => '£50 one ear · £55 both',
+            [ 'name' => 'Ear Wax Removal', 'url' => '/ear-wax-removal/', 'desc' => 'Gentle TympaHealth microsuction with same-day appointments.', 'nhs' => false, 'price' => '£50 one ear · £60 both',
               'icon' => '<path d="M6 8.5a6.5 6.5 0 1 1 13 0c0 6-6 6-6 10a3.5 3.5 0 1 1-7 0"/><path d="M8.5 8.5a3.5 3.5 0 1 1 7 0c0 3-3 3-3 5"/>' ],
         ],
     ],
@@ -113,7 +113,7 @@ if ( empty( $svc_faqs ) ) {
         [ 'q' => 'Can I get weight-loss treatment and travel vaccines without seeing my GP?',
           'a' => 'Yes. Our GPhC-registered pharmacists carry out a clinical assessment in-branch for weight loss (Mounjaro & Wegovy) and provide destination-specific travel vaccinations — all without needing to see your GP first.' ],
         [ 'q' => 'How much do your private services cost?',
-          'a' => 'Pricing varies by service — for example ear wax removal is £50 for one ear or £55 for both, and private COVID-19 vaccination starts from £89.50. You can see the full, transparent price list on our pricing page or ask any of our team.' ],
+          'a' => 'Pricing varies by service — for example ear wax removal is £50 for one ear or £60 for both, and private COVID-19 vaccination starts from £89.50. You can see the full, transparent price list on our pricing page or ask any of our team.' ],
         [ 'q' => 'How do I book an appointment?',
           'a' => 'Book online using the button on any service page, call us, or pop into your nearest branch. Our team will find you the earliest available slot — often the same day.' ],
     ];
@@ -409,7 +409,7 @@ if ( empty( $svc_faqs ) ) {
         $svc_price_snapshot = [
             [ 'name' => 'Blood Pressure Checks', 'price' => 'Free', 'note' => 'NHS service' ],
             [ 'name' => 'Pharmacy First',        'price' => 'Free', 'note' => 'NHS service' ],
-            [ 'name' => 'Ear Wax Removal',       'price' => '£50', 'note' => 'one ear · £55 both' ],
+            [ 'name' => 'Ear Wax Removal',       'price' => '£50', 'note' => 'one ear · £60 both' ],
             [ 'name' => 'Private COVID-19 Vaccine', 'price' => 'from £89.50', 'note' => 'no eligibility criteria' ],
             [ 'name' => 'Weight Loss',           'price' => 'Free', 'note' => 'initial consultation' ],
             [ 'name' => 'Travel Vaccinations',   'price' => 'Varies', 'note' => 'by destination — see full list' ],
