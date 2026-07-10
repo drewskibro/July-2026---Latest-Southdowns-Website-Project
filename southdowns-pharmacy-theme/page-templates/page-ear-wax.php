@@ -19,7 +19,7 @@ $hero_image_alt   = get_field( 'ew_hero_image_alt' )  ?: 'Professional ear wax r
 $hero_badge       = get_field( 'ew_hero_badge' )      ?: 'TympaHealth Certified';
 $hero_headline    = get_field( 'ew_hero_headline' )   ?: 'Professional <span class="serif-accent">ear wax removal</span> by microsuction';
 $hero_body        = get_field( 'ew_hero_body' )       ?: 'Powered by TympaHealth, our trained clinicians use gentle low-pressure microsuction &mdash; the gold standard in ear care. No water, no mess, completely painless with immediate results.';
-$hero_sub_text    = get_field( 'ew_hero_sub_text' )   ?: '&pound;50 one ear &middot; &pound;55 both ears &middot; Same-day appointments';
+$hero_sub_text    = get_field( 'ew_hero_sub_text' )   ?: '&pound;50 one ear &middot; &pound;60 both ears &middot; Same-day appointments';
 $hero_roundel_1   = get_field( 'ew_hero_roundel_1' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
 $hero_roundel_1_alt = get_field( 'ew_hero_roundel_1_alt' ) ?: 'Same Day Appointments';
 $hero_roundel_2   = get_field( 'ew_hero_roundel_2' )  ?: get_template_directory_uri() . '/assets/img/roundel-same-day.webp';
@@ -797,7 +797,7 @@ $faqs = ( ! empty( $faqs_acf ) ) ? $faqs_acf : $faqs_defaults;
         </div>
         <div class="hidden lg:block space-y-3">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="flex items-center justify-center gap-2 bg-white text-blue-700 hover:bg-blue-50 font-semibold px-6 py-3.5 rounded-full transition-all shadow-lg font-jost">Book Appointment</a>
-          <p class="text-blue-200 text-sm text-center font-jost">&pound;50 one ear &middot; &pound;55 both ears</p>
+          <p class="text-blue-200 text-sm text-center font-jost">&pound;50 one ear &middot; &pound;60 both ears</p>
         </div>
       </div>
 
