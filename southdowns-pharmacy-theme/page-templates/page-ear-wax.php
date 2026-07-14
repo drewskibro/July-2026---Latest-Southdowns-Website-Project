@@ -1030,8 +1030,8 @@ $cta_stat_patients= get_field( 'ew_cta_stat_patients') ?: '10,000+';
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost"><?php echo get_field( 'ew_book_headline' ) ?: 'Book Your Ear Wax Removal'; ?></h2>
       <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo get_field( 'ew_book_subhead' ) ?: 'Our TympaHealth ear wax removal service is available at our Emsworth branch. Choose your time below.'; ?></p>
     </div>
-    <?php // Emsworth (location 1) · Ear Wax Removal category 17 (services 52/53/54) · clinician (employee 2) ?>
-    <?php echo do_shortcode( '[ameliastepbooking layout=2 location=1 employee=2 category=17 show=category,service,employee,datetime,info]' ); ?>
+    <?php // Emsworth (location 1) · Ear Wax Removal category 17 (services 52/53/54) · clinician "Emsworth Pharmacy Earwax" (employee 44) ?>
+    <?php echo do_shortcode( '[ameliastepbooking layout=2 location=1 employee=44 category=17 show=category,service,employee,datetime,info]' ); ?>
   </div>
 </section>
 
