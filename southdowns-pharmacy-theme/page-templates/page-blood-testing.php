@@ -79,10 +79,10 @@ $bt_tests = [
    book at a branch that offers that test. Thyroid has no category ID (yet), so
    it is pinned by service + location. */
 $bt_book_tabs = [
-    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£69', 'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'shortcode' => '[ameliastepbooking layout=2 category=11 show=location,category,service,employee,datetime,info]' ],
-    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£69', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => '3 branches',    'davies_only' => false, 'note' => 'Available at <strong>Bosmere</strong>, <strong>Davies</strong> &amp; <strong>Emsworth</strong> &mdash; choose your branch below.', 'shortcode' => '[ameliastepbooking layout=2 category=11 show=location,category,service,employee,datetime,info]' ],
+    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
 ];
 
 /* Availability matrix — rows = tests, cols = branches. Rowlands offers none. */
@@ -149,6 +149,7 @@ if ( empty( $bt_faqs ) ) {
   .bt-tab { transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
   .bt-tab[aria-selected="true"] { background: #1d4ed8; color: #fff; border-color: #1d4ed8; box-shadow: 0 8px 20px rgba(29,78,216,0.28); transform: translateY(-2px); }
   .bt-tab[aria-selected="true"] .bt-tab-price { color: #dbeafe; }
+  .bt-tab[aria-selected="true"] .bt-tab-avail { color: rgba(255,255,255,0.9) !important; }
   .bt-panel { display: none; }
   .bt-panel.active { display: block; }
 
@@ -448,6 +449,10 @@ if ( empty( $bt_faqs ) ) {
         <button type="button" class="bt-tab flex flex-col items-center justify-center gap-0.5 text-center font-semibold text-slate-700 bg-white border-2 border-[#e8e0d8] px-4 py-3.5 rounded-2xl hover:border-blue-300 hover:bg-blue-50 font-jost shadow-sm" role="tab" data-tab="<?php echo esc_attr( $tab['key'] ); ?>" aria-selected="<?php echo 0 === $bi ? 'true' : 'false'; ?>">
           <span class="text-sm md:text-base leading-tight"><?php echo esc_html( $tab['label'] ); ?></span>
           <span class="bt-tab-price text-xs font-bold text-blue-600"><?php echo esc_html( $tab['price'] ); ?></span>
+          <span class="bt-tab-avail inline-flex items-center gap-1 text-[11px] mt-1 <?php echo $tab['davies_only'] ? 'text-blue-600 font-semibold' : 'text-slate-400 font-medium'; ?>">
+            <svg class="w-3 h-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <?php echo esc_html( $tab['avail'] ); ?>
+          </span>
         </button>
         <?php endforeach; ?>
       </div>
@@ -460,6 +465,10 @@ if ( empty( $bt_faqs ) ) {
     <!-- Panels -->
     <?php foreach ( $bt_book_tabs as $bi => $tab ) : ?>
     <div class="bt-panel <?php echo 0 === $bi ? 'active' : ''; ?>" data-panel="<?php echo esc_attr( $tab['key'] ); ?>">
+      <div class="flex items-start sm:items-center justify-center gap-2.5 max-w-2xl mx-auto mb-6 px-4 py-3 rounded-xl <?php echo $tab['davies_only'] ? 'bg-blue-50 border border-blue-100 text-blue-800' : 'bg-emerald-50 border border-emerald-100 text-emerald-800'; ?>">
+        <svg class="w-4 h-4 flex-shrink-0 mt-0.5 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p class="text-sm font-jost"><?php echo wp_kses( $tab['note'], [ 'strong' => [] ] ); ?></p>
+      </div>
       <?php echo do_shortcode( $tab['shortcode'] ); ?>
     </div>
     <?php endforeach; ?>
