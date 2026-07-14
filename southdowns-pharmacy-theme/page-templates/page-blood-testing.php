@@ -79,10 +79,10 @@ $bt_tests = [
    book at a branch that offers that test. Thyroid has no category ID (yet), so
    it is pinned by service + location. */
 $bt_book_tabs = [
-    [ 'key' => 'fbc',         'label' => 'Full Blood Count',      'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening',    'shortcode' => '[ameliastepbooking layout=2 category=11 show=location,category,service,employee,datetime,info]' ],
-    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',           'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'thyroid',     'label' => 'Thyroid',               'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£69', 'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'shortcode' => '[ameliastepbooking layout=2 category=11 show=location,category,service,employee,datetime,info]' ],
+    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
 ];
 
 /* Availability matrix — rows = tests, cols = branches. Rowlands offers none. */
@@ -145,9 +145,10 @@ if ( empty( $bt_faqs ) ) {
   .bt-matrix .bt-col-davies { background: #eff6ff; }
   .bt-matrix thead .bt-col-davies { border-bottom-color: #1d4ed8; }
 
-  /* Booking tabs */
-  .bt-tab { transition: background 0.2s, color 0.2s, border-color 0.2s; }
-  .bt-tab[aria-selected="true"] { background: #1d4ed8; color: #fff; border-color: #1d4ed8; }
+  /* Booking test selector */
+  .bt-tab { transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+  .bt-tab[aria-selected="true"] { background: #1d4ed8; color: #fff; border-color: #1d4ed8; box-shadow: 0 8px 20px rgba(29,78,216,0.28); transform: translateY(-2px); }
+  .bt-tab[aria-selected="true"] .bt-tab-price { color: #dbeafe; }
   .bt-panel { display: none; }
   .bt-panel.active { display: block; }
 
@@ -436,11 +437,24 @@ if ( empty( $bt_faqs ) ) {
       <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Select a test below, then choose your branch and time. Only the branches that offer your chosen test are shown.</p>
     </div>
 
-    <!-- Tabs -->
-    <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
-      <?php foreach ( $bt_book_tabs as $bi => $tab ) : ?>
-      <button type="button" class="bt-tab flex-shrink-0 whitespace-nowrap text-sm font-semibold text-slate-600 bg-white border border-[#e8e0d8] px-4 py-2 rounded-full hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 font-jost" role="tab" data-tab="<?php echo esc_attr( $tab['key'] ); ?>" aria-selected="<?php echo 0 === $bi ? 'true' : 'false'; ?>"><?php echo esc_html( $tab['label'] ); ?></button>
-      <?php endforeach; ?>
+    <!-- Test selector (Step 1) -->
+    <div class="max-w-3xl mx-auto mb-10">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <span class="flex items-center justify-center w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold font-jost">1</span>
+        <span class="text-sm font-bold uppercase tracking-[0.12em] text-blue-700 font-jost">Choose your test</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3" role="tablist">
+        <?php foreach ( $bt_book_tabs as $bi => $tab ) : ?>
+        <button type="button" class="bt-tab flex flex-col items-center justify-center gap-0.5 text-center font-semibold text-slate-700 bg-white border-2 border-[#e8e0d8] px-4 py-3.5 rounded-2xl hover:border-blue-300 hover:bg-blue-50 font-jost shadow-sm" role="tab" data-tab="<?php echo esc_attr( $tab['key'] ); ?>" aria-selected="<?php echo 0 === $bi ? 'true' : 'false'; ?>">
+          <span class="text-sm md:text-base leading-tight"><?php echo esc_html( $tab['label'] ); ?></span>
+          <span class="bt-tab-price text-xs font-bold text-blue-600"><?php echo esc_html( $tab['price'] ); ?></span>
+        </button>
+        <?php endforeach; ?>
+      </div>
+      <p class="flex items-center justify-center gap-2 text-sm text-slate-500 mt-5 font-jost">
+        <svg class="w-4 h-4 text-blue-500 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        Then pick your branch &amp; time below
+      </p>
     </div>
 
     <!-- Panels -->
@@ -606,6 +620,11 @@ $bt_ldjson = [ '@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEn
   function activate(key) {
     tabs.forEach(function(t) { t.setAttribute('aria-selected', t.getAttribute('data-tab') === key ? 'true' : 'false'); });
     panels.forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-panel') === key); });
+    // Amelia calendars are built on load; those inside a hidden tab measure zero
+    // width and render collapsed. Firing resize once shown forces a re-layout.
+    window.dispatchEvent(new Event('resize'));
+    requestAnimationFrame(function() { window.dispatchEvent(new Event('resize')); });
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 150);
   }
   tabs.forEach(function(t) {
     t.addEventListener('click', function() { activate(t.getAttribute('data-tab')); });
