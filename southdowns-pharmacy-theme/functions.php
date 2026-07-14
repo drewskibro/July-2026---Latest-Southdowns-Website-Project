@@ -514,6 +514,7 @@ require_once get_template_directory() . '/inc/acf-yellow-fever-fields.php';
 require_once get_template_directory() . '/inc/acf-travel-vaccines-fields.php';
 require_once get_template_directory() . '/inc/acf-legal-fields.php';
 require_once get_template_directory() . '/inc/acf-pricing-fields.php';
+require_once get_template_directory() . '/inc/acf-blood-testing-fields.php';
 
 
 // ============================================================
@@ -543,6 +544,8 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-blood-pressure.php',
         // Services hub landing page
         'page-templates/page-services.php',
+        // Blood Testing hub
+        'page-templates/page-blood-testing.php',
         // About Us
         'page-templates/page-about-us.php',
         // Pharmacy First
