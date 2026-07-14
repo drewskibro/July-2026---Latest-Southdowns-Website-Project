@@ -5,7 +5,10 @@
  * Select this template on the Travel Health page via Page → Template in the editor.
  */
 get_header();
-$booking_url = sp_booking_url();
+// CTAs on this page scroll to the on-page travel calendar (#book section) so
+// paid/ad traffic converts here rather than on the all-branches /book-appointment/ page.
+// To revert to the all-branches booking page, change this back to sp_booking_url().
+$booking_url = '#book';
 $phone_raw   = sp_phone_raw();
 $phone       = sp_phone();
 
@@ -952,5 +955,26 @@ $th_service_icons = [
   els.forEach(function(el) { io.observe(el); });
 })();
 </script>
+
+<!-- ============================================================
+     BOOKING — Travel Vaccinations (all 4 branches · Amelia category 9)
+     Category 9 = "Travel Health" (Yellow Fever is service 34 within it).
+     No location/employee pinned — patient chooses branch, service & time,
+     and Amelia only offers branches where travel is actually available.
+     ============================================================ -->
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="book">
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
+    <div class="text-center mb-8 md:mb-10">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
+        <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'th_book_eyebrow', 'Book Online &middot; 4 Hampshire Branches' ); ?></span>
+      </div>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost"><?php echo sp_field( 'th_book_headline', 'Book Your Travel Appointment' ); ?></h2>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'th_book_subhead', 'Choose your branch, travel service and time below. No GP referral needed &mdash; same-day appointments often available.' ); ?></p>
+    </div>
+    <?php // All branches · Travel Health category 9 (all travel services shown; location + clinician selectable) ?>
+    <?php echo do_shortcode( '[ameliastepbooking layout=2 category=9 show=location,category,service,employee,datetime,info]' ); ?>
+  </div>
+</section>
 
 <?php get_footer(); ?>
