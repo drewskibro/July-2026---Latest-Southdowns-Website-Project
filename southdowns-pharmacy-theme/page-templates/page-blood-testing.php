@@ -12,7 +12,7 @@
  * URL slug: /blood-testing/  (fixes the existing footer "Blood Testing" link)
  *
  * Amelia mapping (confirmed from the client's Amelia install):
- *   Type 2 Diabetes Screening · category 11 · Bosmere(2) Davies(3) Emsworth(1)
+ *   Type 2 Diabetes Screening · category 11 · Davies(3) only  (all tests Davies-only per client)
  *   Full Blood Count          · category 18 · Davies(3) only
  *   Cholesterol Testing       · category 19 / service 59 · Davies(3) only
  *   Thyroid Function & Auto.   · service 60 · Davies(3) only
@@ -53,7 +53,7 @@ $bt_tests = [
         'key'      => 'diabetes',
         'name'     => 'Type 2 Diabetes Screening',
         'price'    => '£55',
-        'avail'    => 'Bosmere · Davies · Emsworth',
+        'avail'    => 'Davies only',
         'desc'     => 'A simple screening check to assess your blood sugar and diabetes risk, with clear guidance from our pharmacist on any next steps.',
         'icon'     => '<path d="M19 5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2"/><path d="M12 3v18"/><path d="M8 21h8"/><circle cx="12" cy="12" r="4"/>',
     ],
@@ -80,18 +80,9 @@ $bt_tests = [
    it is pinned by service + location. */
 $bt_book_tabs = [
     [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£69', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => '3 branches',    'davies_only' => false, 'note' => 'Available at <strong>Bosmere</strong>, <strong>Davies</strong> &amp; <strong>Emsworth</strong> &mdash; choose your branch below.', 'shortcode' => '[ameliastepbooking layout=2 category=11 show=location,category,service,employee,datetime,info]' ],
+    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=11 location=3 show=category,service,employee,datetime,info]' ],
     [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
     [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
-];
-
-/* Availability matrix — rows = tests, cols = branches. Rowlands offers none. */
-$bt_branch_cols = [ 'Bosmere', 'Davies', 'Emsworth', 'Rowlands' ];
-$bt_matrix = [
-    'Type 2 Diabetes Screening'      => [ 'Bosmere' => true,  'Davies' => true, 'Emsworth' => true,  'Rowlands' => false ],
-    'Full Blood Count'               => [ 'Bosmere' => false, 'Davies' => true, 'Emsworth' => false, 'Rowlands' => false ],
-    'Cholesterol Testing'            => [ 'Bosmere' => false, 'Davies' => true, 'Emsworth' => false, 'Rowlands' => false ],
-    'Thyroid Function & Autoimmune'  => [ 'Bosmere' => false, 'Davies' => true, 'Emsworth' => false, 'Rowlands' => false ],
 ];
 
 /* FAQ — ACF repeater override with hardcoded fallback. */
@@ -104,8 +95,8 @@ if ( function_exists( 'have_rows' ) && have_rows( 'bt_faq_items' ) ) {
 }
 if ( empty( $bt_faqs ) ) {
     $bt_faqs = [
-        [ 'q' => 'Which branches offer blood tests?',
-          'a' => 'Davies Pharmacy in Havant is our dedicated phlebotomy centre and offers all of our blood tests — Full Blood Count, Cholesterol, Thyroid and Type 2 Diabetes screening. Type 2 Diabetes screening is also available at our Bosmere and Emsworth branches. When you book online, only the branches that offer your chosen test are shown.' ],
+        [ 'q' => 'Where are your blood tests carried out?',
+          'a' => 'All of our blood tests — Full Blood Count, Type 2 Diabetes Screening, Cholesterol and Thyroid — are carried out at Davies Pharmacy, our dedicated phlebotomy centre at 12 West Street, Havant, PO9 1PF.' ],
         [ 'q' => 'Do I need a GP referral?',
           'a' => 'No. All of our blood tests are private services you can book directly — no GP referral and no waiting list.' ],
         [ 'q' => 'How quickly will I get my results?',
@@ -134,16 +125,6 @@ if ( empty( $bt_faqs ) ) {
   /* Test card */
   .bt-card { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
   .bt-card:hover { transform: translateY(-6px); box-shadow: 0 20px 45px rgba(30,58,138,0.12); border-color: #bfdbfe; }
-
-  /* Availability matrix */
-  .bt-matrix-wrap { overflow-x: auto; }
-  .bt-matrix { width: 100%; border-collapse: separate; border-spacing: 0; min-width: 560px; }
-  .bt-matrix th, .bt-matrix td { padding: 0.9rem 1rem; text-align: center; font-family: 'Jost', sans-serif; }
-  .bt-matrix thead th { font-size: 0.85rem; font-weight: 700; color: #1e3a8a; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 2px solid #e2e8f0; }
-  .bt-matrix tbody th { text-align: left; font-weight: 600; color: #1e293b; font-size: 0.95rem; white-space: nowrap; }
-  .bt-matrix tbody tr + tr th, .bt-matrix tbody tr + tr td { border-top: 1px solid #eef2f7; }
-  .bt-matrix .bt-col-davies { background: #eff6ff; }
-  .bt-matrix thead .bt-col-davies { border-bottom-color: #1d4ed8; }
 
   /* Booking test selector */
   .bt-tab { transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
@@ -193,7 +174,7 @@ if ( empty( $bt_faqs ) ) {
         PRIVATE BLOOD TESTING &bull; HAMPSHIRE
       </div>
       <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-6 font-jost" style="line-height:1.1;">Private Blood Testing in <span class="serif-accent">Hampshire</span></h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Understand your health in minutes. Fast, professional blood health checks with rapid results and expert pharmacy support &mdash; available at selected Southdowns branches, with no GP referral and no waiting list.</p>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Understand your health in minutes. Fast, professional blood health checks with rapid results and expert pharmacy support &mdash; carried out at our Davies Pharmacy phlebotomy centre in Havant, with no GP referral and no waiting list.</p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book a Blood Test
@@ -277,7 +258,7 @@ if ( empty( $bt_faqs ) ) {
         <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Our Blood Tests</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-jost">Choose Your Test</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Fast, professional testing from GPhC-registered pharmacists. Availability varies by branch &mdash; each test below shows where you can book.</p>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Fast, professional testing from GPhC-registered pharmacists at Davies Pharmacy, our dedicated phlebotomy centre in Havant.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -349,7 +330,7 @@ if ( empty( $bt_faqs ) ) {
 </section>
 
 <!-- ============================================================
-     S5: AVAILABILITY MATRIX — which test at which branch
+     S5: DAVIES LOCATION — all tests, one place
      ============================================================ -->
 <section class="py-16 md:py-24 bg-white">
   <div class="section-container">
@@ -359,39 +340,34 @@ if ( empty( $bt_faqs ) ) {
           <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
           <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Where to Book</span>
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">Availability by Branch</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Not every test is offered at every branch. Here is exactly where each is available &mdash; and the booking form only ever shows branches that offer your chosen test.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">One Location for All Your Tests</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Every blood test is carried out at Davies Pharmacy, our dedicated phlebotomy centre in Havant.</p>
       </div>
-      <div class="bt-matrix-wrap yf-reveal rounded-2xl border border-gray-200/80 shadow-sm">
-        <table class="bt-matrix">
-          <thead>
-            <tr>
-              <th style="text-align:left;">Test</th>
-              <?php foreach ( $bt_branch_cols as $col ) : ?>
-                <th class="<?php echo $col === 'Davies' ? 'bt-col-davies' : ''; ?>"><?php echo esc_html( $col ); ?><?php echo $col === 'Davies' ? '<br><span style="font-size:0.7rem;font-weight:600;color:#1d4ed8;">Phlebotomy Centre</span>' : ''; ?></th>
+      <div class="yf-reveal bg-white rounded-3xl border border-blue-100 shadow-sm overflow-hidden">
+        <div class="grid md:grid-cols-[1.1fr_1fr]">
+          <div class="p-8 md:p-10">
+            <span class="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full mb-4 font-jost">Phlebotomy Centre</span>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-jost">Davies Pharmacy, Havant</h3>
+            <div class="flex items-start gap-2 text-gray-600 mb-6 font-jost">
+              <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>12 West Street, Havant, Hampshire, PO9 1PF</span>
+            </div>
+            <ul class="space-y-2.5 mb-8">
+              <?php foreach ( $bt_tests as $t ) : ?>
+              <li class="flex items-center gap-2.5 text-slate-700 font-jost text-sm md:text-base">
+                <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <?php echo esc_html( $t['name'] ); ?> &mdash; <span class="font-semibold text-blue-700"><?php echo esc_html( $t['price'] ); ?></span>
+              </li>
               <?php endforeach; ?>
-            </tr>
-          </thead>
-          <tbody>
-            <?php foreach ( $bt_matrix as $test => $cols ) : ?>
-            <tr>
-              <th scope="row"><?php echo esc_html( $test ); ?></th>
-              <?php foreach ( $bt_branch_cols as $col ) : ?>
-              <td class="<?php echo $col === 'Davies' ? 'bt-col-davies' : ''; ?>">
-                <?php if ( ! empty( $cols[ $col ] ) ) : ?>
-                  <svg class="inline w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  <span class="sr-only">Available</span>
-                <?php else : ?>
-                  <span class="text-gray-300" aria-label="Not available">&mdash;</span>
-                <?php endif; ?>
-              </td>
-              <?php endforeach; ?>
-            </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </table>
+            </ul>
+            <a href="#book" data-book-tab="fbc" class="bt-book-link inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
+              Book at Davies
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+          <div class="min-h-[260px] md:min-h-full bg-cover bg-center" style="background-image:url('<?php echo esc_url( $bt_davies_img ); ?>');" role="img" aria-label="<?php echo esc_attr( $bt_davies_alt ); ?>"></div>
+        </div>
       </div>
-      <p class="text-center text-sm text-gray-500 mt-4 font-jost yf-reveal">Rowlands Castle does not currently offer blood testing. Davies Pharmacy, Havant offers the full range.</p>
     </div>
   </div>
 </section>
@@ -411,8 +387,8 @@ if ( empty( $bt_faqs ) ) {
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 yf-reveal">
       <?php
       $bt_steps = [
-          [ 'n' => '1', 'title' => 'Book Online', 'desc' => 'Choose your test and a convenient time at a branch that offers it. No GP referral needed.' ],
-          [ 'n' => '2', 'title' => 'Quick Appointment', 'desc' => 'Visit your chosen branch. Your sample is taken by trained staff in a discreet, professional setting.' ],
+          [ 'n' => '1', 'title' => 'Book Online', 'desc' => 'Choose your test and a convenient time at Davies Pharmacy, Havant. No GP referral needed.' ],
+          [ 'n' => '2', 'title' => 'Quick Appointment', 'desc' => 'Visit Davies Pharmacy in Havant. Your sample is taken by trained staff in a discreet, professional setting.' ],
           [ 'n' => '3', 'title' => 'Lab Analysis', 'desc' => 'Your sample is analysed and results are typically ready within 24&ndash;48 hours.' ],
           [ 'n' => '4', 'title' => 'Results &amp; Advice', 'desc' => 'Your pharmacist explains your results and any recommended next steps.' ],
       ];
@@ -438,7 +414,7 @@ if ( empty( $bt_faqs ) ) {
         <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Book Online</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Book Your Blood Test</h2>
-      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Select a test below, then choose your branch and time. Only the branches that offer your chosen test are shown.</p>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Select a test below, then choose your time. All blood tests are carried out at our Davies Pharmacy, Havant.</p>
     </div>
 
     <!-- Test selector (Step 1) -->
@@ -461,7 +437,7 @@ if ( empty( $bt_faqs ) ) {
       </div>
       <p class="flex items-center justify-center gap-2 text-sm text-slate-500 mt-5 font-jost">
         <svg class="w-4 h-4 text-blue-500 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
-        Then pick your branch &amp; time below
+        Then pick your time below
       </p>
     </div>
 
@@ -500,7 +476,7 @@ if ( empty( $bt_faqs ) ) {
           [ 'title' => 'GPhC-Registered Team', 'desc' => 'Every test is handled by qualified, regulated professionals.', 'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
           [ 'title' => 'Private &amp; Confidential', 'desc' => 'Discreet appointments and results handled in strict confidence.', 'icon' => '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' ],
           [ 'title' => 'Dedicated Phlebotomy Centre', 'desc' => 'Davies Pharmacy offers our full range under one roof.', 'icon' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
-          [ 'title' => 'Local &amp; Convenient', 'desc' => 'Testing close to home across selected Hampshire branches.', 'icon' => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>' ],
+          [ 'title' => 'One Trusted Location', 'desc' => 'All blood testing at our Davies Pharmacy phlebotomy centre in Havant.', 'icon' => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>' ],
       ];
       foreach ( $bt_why as $why ) : ?>
       <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-colors">
