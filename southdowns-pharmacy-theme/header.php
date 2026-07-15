@@ -112,6 +112,10 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Loss</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
                     </a>
+                    <a href="<?php echo esc_url( home_url( '/wegovy-pill/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7ZM8.5 8.5l7 7"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Wegovy Pill</span><span class="mega-dd-link-desc">Needle-free oral weight loss</span></div>
+                    </a>
                   </div>
                   <div class="mega-dd-section">
                     <div class="mega-dd-title">NHS Services</div>

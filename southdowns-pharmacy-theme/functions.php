@@ -515,6 +515,7 @@ require_once get_template_directory() . '/inc/acf-travel-vaccines-fields.php';
 require_once get_template_directory() . '/inc/acf-legal-fields.php';
 require_once get_template_directory() . '/inc/acf-pricing-fields.php';
 require_once get_template_directory() . '/inc/acf-blood-testing-fields.php';
+require_once get_template_directory() . '/inc/acf-wegovy-pill-fields.php';
 
 
 // ============================================================
@@ -560,6 +561,7 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-health-hub.php',
         // Pricing
         'page-templates/page-pricing.php',
+        'page-templates/page-wegovy-pill.php',
         // Travel vaccine destination pages
         'page-templates/page-cape-verde-travel-vaccines.php',
         'page-templates/page-india-travel-vaccines.php',

@@ -70,6 +70,8 @@ $svc_groups = [
         'services' => [
             [ 'name' => 'Weight Loss', 'url' => '/weight-loss/', 'desc' => 'Clinically supervised Mounjaro & Wegovy programmes — no GP referral.', 'nhs' => false, 'price' => 'Free consultation',
               'icon' => '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' ],
+            [ 'name' => 'Wegovy Pill', 'url' => '/wegovy-pill/', 'desc' => 'The MHRA-approved oral semaglutide — a needle-free alternative to the weekly jab.', 'nhs' => false, 'price' => 'from £128.50',
+              'icon' => '<path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/>' ],
             [ 'name' => 'Blood Pressure Checks', 'url' => '/blood-pressure-checks/', 'desc' => 'Free NHS blood pressure checks — no appointment, results in minutes.', 'nhs' => true, 'price' => '',
               'icon' => '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>' ],
             [ 'name' => 'Ear Wax Removal', 'url' => '/ear-wax-removal/', 'desc' => 'Gentle TympaHealth microsuction with same-day appointments.', 'nhs' => false, 'price' => '£50 one ear · £60 both',
