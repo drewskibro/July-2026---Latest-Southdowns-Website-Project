@@ -20,7 +20,7 @@ get_header();
 $booking_url = sp_booking_url();
 
 // ── Hero ───────────────────────────────────────────────────────────────────
-$wgp_hero_image    = ( function_exists( 'get_field' ) ? get_field( 'wgp_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1000&q=75&auto=format&fit=crop';
+$wgp_hero_image    = ( function_exists( 'get_field' ) ? get_field( 'wgp_hero_image' ) : '' ) ?: 'https://southdownspharmacygroup.co.uk/wp-content/uploads/2026/07/image.png';
 $wgp_hero_badge    = sp_field( 'wgp_hero_badge',    'Needle-Free Weight Loss &middot; MHRA Approved' );
 $wgp_hero_headline = sp_field( 'wgp_hero_headline', 'The Wegovy Pill Has Arrived' );
 $wgp_hero_body     = sp_field( 'wgp_hero_body',     'On 11 June 2026 the MHRA approved oral semaglutide &mdash; the first oral GLP-1 medicine licensed in the UK for weight loss, giving you a needle-free alternative to the weekly Wegovy injection.' );
@@ -206,9 +206,8 @@ $wgp_safety = sp_rows( 'wgp_safety', [
         </div>
       </div>
       <div class="wgp-reveal" data-delay="2">
-        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/3]">
-          <img src="<?php echo esc_url( sp_field( 'wgp_desc_image', 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=900&h=675&q=75&auto=format&fit=crop' ) ); ?>" alt="Pharmacist discussing oral semaglutide weight-loss treatment" class="w-full h-full object-cover" loading="lazy"/>
-          <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+        <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-square">
+          <img src="<?php echo esc_url( sp_field( 'wgp_desc_image', 'https://southdownspharmacygroup.co.uk/wp-content/uploads/2026/07/2.png' ) ); ?>" alt="Wegovy Pill 1.5mg oral semaglutide tablets &mdash; needle-free weight loss at Southdowns Pharmacy" class="w-full h-full object-cover" loading="lazy"/>
         </div>
       </div>
     </div>
@@ -307,6 +306,10 @@ $wgp_safety = sp_rows( 'wgp_safety', [
         <div class="space-y-4 text-lg text-gray-600 leading-relaxed font-jost">
           <?php echo sp_field( 'wgp_results_body', '<p>In the phase 3 OASIS 4 trial, adults taking the 25mg pill for around 64 weeks lost on average about <strong>16.6% of their body weight</strong> when taken as intended, compared with roughly 2% on placebo. Around one in three of those who took it consistently lost 20% or more.</p><p>These results are broadly comparable to high-dose injectable semaglutide. Individual results vary and depend on your starting weight, the dose you reach, and the lifestyle changes alongside it. The Wegovy pill works best as part of a comprehensive programme of dietary change, increased activity and regular follow-up.</p>' ); ?>
         </div>
+        <figure class="mt-6 rounded-2xl overflow-hidden border border-gray-200/80 bg-white shadow-sm">
+          <img src="<?php echo esc_url( sp_field( 'wgp_results_image', 'https://southdownspharmacygroup.co.uk/wp-content/uploads/2026/07/1.png' ) ); ?>" alt="Chart showing average weight loss over 64 weeks across three doses of the Wegovy pill" class="w-full h-auto" loading="lazy"/>
+          <figcaption class="text-xs text-gray-400 px-4 py-3 font-jost">Average weight loss across three treatments, from clinical studies where patients increased to the highest dose.</figcaption>
+        </figure>
         <div class="mt-6 rounded-2xl p-5 flex items-start gap-3 bg-white border border-amber-200">
           <svg class="flex-shrink-0 w-6 h-6 text-amber-500 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
           <p class="text-sm text-amber-900 leading-relaxed font-jost"><?php echo sp_field( 'wgp_results_warning', 'Be cautious of any product sold online as a &ldquo;Wegovy pill&rdquo; without a prescription. Only use a licensed product prescribed by a GMC-registered prescriber and dispensed by a GPhC-registered pharmacy.' ); ?></p>

@@ -57,6 +57,7 @@ add_action( 'acf/init', function () {
 			// ── Results ─────────────────────────────────────────
 			[ 'key' => 'field_wgp_results_heading', 'label' => 'Results Heading', 'name' => 'wgp_results_heading', 'type' => 'text', 'default_value' => 'How Well Does It Work?' ],
 			[ 'key' => 'field_wgp_results_body', 'label' => 'Results Body', 'name' => 'wgp_results_body', 'type' => 'wysiwyg', 'tabs' => 'visual', 'toolbar' => 'basic', 'media_upload' => 0 ],
+			[ 'key' => 'field_wgp_results_image', 'label' => 'Results Chart Image', 'name' => 'wgp_results_image', 'type' => 'image', 'return_format' => 'url', 'preview_size' => 'medium' ],
 
 			// ── Final CTA ───────────────────────────────────────
 			[ 'key' => 'field_wgp_cta_heading', 'label' => 'CTA Heading', 'name' => 'wgp_cta_heading', 'type' => 'text', 'default_value' => 'Ready to Start With<br/>the Wegovy Pill?' ],
