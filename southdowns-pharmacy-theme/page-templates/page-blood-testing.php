@@ -343,29 +343,34 @@ if ( empty( $bt_faqs ) ) {
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">One Location for All Your Tests</h2>
         <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Every blood test is carried out at Davies Pharmacy, our dedicated phlebotomy centre in Havant.</p>
       </div>
-      <div class="yf-reveal bg-white rounded-3xl border border-blue-100 shadow-sm overflow-hidden">
-        <div class="grid md:grid-cols-[1.1fr_1fr]">
-          <div class="p-8 md:p-10">
-            <span class="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full mb-4 font-jost">Phlebotomy Centre</span>
-            <h3 class="text-2xl font-bold text-gray-900 mb-2 font-jost">Davies Pharmacy, Havant</h3>
-            <div class="flex items-start gap-2 text-gray-600 mb-6 font-jost">
-              <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>12 West Street, Havant, Hampshire, PO9 1PF</span>
-            </div>
-            <ul class="space-y-2.5 mb-8">
-              <?php foreach ( $bt_tests as $t ) : ?>
-              <li class="flex items-center gap-2.5 text-slate-700 font-jost text-sm md:text-base">
-                <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                <?php echo esc_html( $t['name'] ); ?> &mdash; <span class="font-semibold text-blue-700"><?php echo esc_html( $t['price'] ); ?></span>
-              </li>
-              <?php endforeach; ?>
-            </ul>
+      <div class="yf-reveal grid md:grid-cols-2 gap-8 lg:gap-10 items-center bg-white rounded-3xl border border-blue-100 shadow-sm p-6 md:p-8 lg:p-10">
+        <div>
+          <span class="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full mb-4 font-jost">Phlebotomy Centre</span>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2 font-jost">Davies Pharmacy, Havant</h3>
+          <div class="flex items-start gap-2 text-gray-600 mb-6 font-jost">
+            <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>12 West Street, Havant, Hampshire, PO9 1PF</span>
+          </div>
+          <ul class="space-y-2.5 mb-8">
+            <?php foreach ( $bt_tests as $t ) : ?>
+            <li class="flex items-center gap-2.5 text-slate-700 font-jost text-sm md:text-base">
+              <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <?php echo esc_html( $t['name'] ); ?> &mdash; <span class="font-semibold text-blue-700"><?php echo esc_html( $t['price'] ); ?></span>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+          <div class="flex flex-wrap gap-3">
             <a href="#book" data-book-tab="fbc" class="bt-book-link inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
               Book at Davies
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Davies+Pharmacy+12+West+Street+Havant+PO9+1PF" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-700 font-semibold border-2 border-blue-200 px-6 py-3 rounded-full hover:bg-blue-50 transition-colors font-jost">
+              Get directions
+            </a>
           </div>
-          <div class="min-h-[260px] md:min-h-full bg-cover bg-center" style="background-image:url('<?php echo esc_url( $bt_davies_img ); ?>');" role="img" aria-label="<?php echo esc_attr( $bt_davies_alt ); ?>"></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-[4/3] shadow-md">
+          <img src="<?php echo esc_url( $bt_davies_img ); ?>" alt="<?php echo esc_attr( $bt_davies_alt ); ?>" class="w-full h-full object-cover" loading="lazy" />
         </div>
       </div>
     </div>
