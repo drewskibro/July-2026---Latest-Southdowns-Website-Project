@@ -125,7 +125,7 @@ function sp_pricing_defaults(): array {
 			'name'        => 'Diabetes Screening Check',
 			'description' => '',
 			'services'    => [
-				[ 'name' => 'Type 2 Diabetes Screening', 'duration' => '10min', 'price' => '£20.00' ],
+				[ 'name' => 'Type 2 Diabetes Screening', 'duration' => '10min', 'price' => '£55.00' ],
 			],
 		],
 		[
@@ -176,7 +176,7 @@ function sp_pricing_defaults(): array {
 			'name'        => 'Full Blood Count',
 			'description' => '',
 			'services'    => [
-				[ 'name' => 'Full Blood Count', 'duration' => '10min', 'price' => '£69.00' ],
+				[ 'name' => 'Full Blood Count', 'duration' => '10min', 'price' => '£79.00' ],
 			],
 		],
 		[
