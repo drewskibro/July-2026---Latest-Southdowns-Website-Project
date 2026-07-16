@@ -44,7 +44,7 @@ $bt_tests = [
     [
         'key'      => 'fbc',
         'name'     => 'Full Blood Count (FBC)',
-        'price'    => '£69',
+        'price'    => '£79',
         'avail'    => 'Davies only',
         'desc'     => 'A comprehensive check of key blood biomarkers — ideal if you feel tired or run down, are concerned about immunity, or simply want reassurance.',
         'icon'     => '<path d="M12 2v6"/><path d="M12 22a7 7 0 0 0 7-7c0-3-3-6.5-7-11-4 4.5-7 8-7 11a7 7 0 0 0 7 7z"/>',
@@ -79,7 +79,7 @@ $bt_tests = [
    book at a branch that offers that test. Thyroid has no category ID (yet), so
    it is pinned by service + location. */
 $bt_book_tabs = [
-    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£69', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=3 show=category,service,employee,datetime,info]' ],
     [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=11 location=3 show=category,service,employee,datetime,info]' ],
     [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=19 location=3 show=category,service,employee,datetime,info]' ],
     [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 service=60 location=3 show=category,service,employee,datetime,info]' ],
@@ -106,7 +106,7 @@ if ( empty( $bt_faqs ) ) {
         [ 'q' => 'Is the appointment private and confidential?',
           'a' => 'Yes. All appointments are carried out discreetly by trained staff, and your results are handled in strict confidence.' ],
         [ 'q' => 'How much do blood tests cost?',
-          'a' => 'Full Blood Count is £69, Type 2 Diabetes Screening £55, Cholesterol Testing £74, and the Thyroid Function & Autoimmune profile £79. You can see our full price list on the pricing page.' ],
+          'a' => 'Full Blood Count is £79, Type 2 Diabetes Screening £55, Cholesterol Testing £74, and the Thyroid Function & Autoimmune profile £79. You can see our full price list on the pricing page.' ],
     ];
 }
 ?>
