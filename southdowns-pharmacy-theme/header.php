@@ -93,7 +93,7 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.063 2.522-.187 3.756-.249 2.502-2.13 4.477-4.62 4.79a48.108 48.108 0 01-8.386 0c-2.49-.313-4.371-2.288-4.62-4.79A48.196 48.196 0 013 12c0-1.267.063-2.522.187-3.756.249-2.502 2.13-4.477 4.62-4.79a48.108 48.108 0 018.386 0c2.49.313 4.371 2.288 4.62 4.79.124 1.234.187 2.49.187 3.756z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Yellow Fever</span><span class="mega-dd-link-desc">NATHNAC certified centre</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="mega-dd-link">
+                    <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25c-3.5 4.5-6 7.875-6 11.25a6 6 0 0012 0c0-3.375-2.5-6.75-6-11.25z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Tests</span><span class="mega-dd-link-desc">Results within 24–48 hours</span></div>
                     </a>
@@ -273,7 +273,7 @@ $destinations = [
         <div class="mob-dd-sub">
           <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>">Travel Vaccinations</a>
           <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) ); ?>">Yellow Fever</a>
-          <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>">Blood Tests</a>
+          <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>
           <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>">B12 Injections</a>
           <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>">Weight Loss</a>
