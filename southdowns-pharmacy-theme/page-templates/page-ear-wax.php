@@ -983,9 +983,17 @@ $cta_stat_patients= get_field( 'ew_cta_stat_patients') ?: '10,000+';
 </div>
 
 <!-- Medical disclaimer -->
-<div class="bg-gray-50 border-t border-gray-200 py-6">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <p class="text-gray-400 text-xs leading-relaxed text-center font-jost">This information is for educational purposes and does not constitute medical advice. Ear wax removal by microsuction is a clinical procedure performed by trained healthcare professionals. Suitability is assessed during your initial consultation. Southdowns Pharmacy pharmacists are registered with the General Pharmaceutical Council (GPhC).</p>
+<div class="bg-gray-50 border-t border-gray-200 py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start gap-4 bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm">
+      <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </div>
+      <div>
+        <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wide mb-1.5 font-jost">Important Information</h3>
+        <p class="text-gray-600 text-sm leading-relaxed font-jost">This information is for educational purposes and does not constitute medical advice. Ear wax removal by microsuction is a clinical procedure performed by trained healthcare professionals. Suitability is assessed during your initial consultation. Southdowns Pharmacy pharmacists are registered with the <span class="font-semibold text-gray-700">General Pharmaceutical Council (GPhC)</span>.</p>
+      </div>
+    </div>
   </div>
 </div>
 
