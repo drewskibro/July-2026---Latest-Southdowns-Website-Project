@@ -133,6 +133,10 @@
         <p class="text-gray-900 text-base font-jost text-center md:text-left">
           Copyright &copy; <?php echo esc_html( date( 'Y' ) ); ?> <?php echo esc_html( sp_pharmacy_name() ); ?> Group. All rights reserved.
         </p>
+        <!-- Agency credit — brand anchor, dofollow -->
+        <p class="text-gray-500 text-sm font-jost text-center">
+          Engineered for AI search by <a href="https://gildhart.com/the-build/" target="_blank" rel="noopener" class="font-semibold text-gray-700 hover:text-blue-600 transition-colors">Gildhart</a>
+        </p>
         <div class="flex items-center gap-6">
           <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>" class="text-gray-900 text-base hover:text-blue-600 transition-colors font-jost">Privacy Policy</a>
           <span class="text-gray-300">|</span>
