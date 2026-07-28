@@ -33,8 +33,22 @@ function tv_template_map(): array {
 /* ── Resolve the current page's country dataset (used by the templates) ── */
 function tv_data(): array {
 	$slug = get_page_template_slug( get_the_ID() );
-	$key  = tv_template_map()[ $slug ] ?? 'cape-verde';
-	$all  = tv_defaults();
+	$key  = tv_template_map()[ $slug ] ?? null;
+
+	// Fallback: infer the destination from the page slug so a page with a
+	// missing/mis-assigned template never silently shows another
+	// destination's content (previously this defaulted to Cape Verde).
+	if ( null === $key ) {
+		$page_slug = (string) get_post_field( 'post_name', get_the_ID() );
+		foreach ( array_unique( array_values( tv_template_map() ) ) as $candidate ) {
+			if ( '' !== $page_slug && false !== strpos( $page_slug, $candidate ) ) {
+				$key = $candidate;
+				break;
+			}
+		}
+	}
+
+	$all = tv_defaults();
 	return $all[ $key ] ?? reset( $all );
 }
 
@@ -65,6 +79,7 @@ add_action( 'acf/init', function () {
 			$t( 'field_tv_hero_btn1', 'Primary Button', 'tv_hero_btn1' ),
 			$t( 'field_tv_hero_btn2', 'Secondary Button', 'tv_hero_btn2' ),
 			$t( 'field_tv_hero_image', 'Hero Image', 'tv_hero_image', 'image', [ 'return_format' => 'url', 'preview_size' => 'medium' ] ),
+			$t( 'field_tv_spotlight_image', 'Intro Spotlight Image', 'tv_spotlight_image', 'image', [ 'return_format' => 'url', 'preview_size' => 'medium', 'instructions' => 'Lifestyle image beside the intro copy. Falls back to the hero image if left empty.' ] ),
 			$rep( 'field_tv_hero_pills', 'Trust Pills', 'tv_hero_pills', [ $sub( 'field_tv_pill_text', 'Text', 'text' ) ], 'Add Pill' ),
 
 			// ── Intro ──
