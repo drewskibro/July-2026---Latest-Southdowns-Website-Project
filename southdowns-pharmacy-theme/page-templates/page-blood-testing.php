@@ -47,6 +47,8 @@ $bt_tests = [
         'price'    => '£79',
         'avail'    => 'Davies only',
         'desc'     => 'A comprehensive check of key blood biomarkers — ideal if you feel tired or run down, are concerned about immunity, or simply want reassurance.',
+        'learn_url'   => '/full-blood-count-test-hampshire/',
+        'learn_label' => 'Full blood count: what it measures',
         'icon'     => '<path d="M12 2v6"/><path d="M12 22a7 7 0 0 0 7-7c0-3-3-6.5-7-11-4 4.5-7 8-7 11a7 7 0 0 0 7 7z"/>',
     ],
     [
@@ -55,6 +57,8 @@ $bt_tests = [
         'price'    => '£55',
         'avail'    => 'Davies only',
         'desc'     => 'A simple screening check to assess your blood sugar and diabetes risk, with clear guidance from our pharmacist on any next steps.',
+        'learn_url'   => '/diabetes-blood-test-hampshire/',
+        'learn_label' => 'About type 2 diabetes screening',
         'icon'     => '<path d="M19 5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2"/><path d="M12 3v18"/><path d="M8 21h8"/><circle cx="12" cy="12" r="4"/>',
     ],
     [
@@ -63,6 +67,8 @@ $bt_tests = [
         'price'    => '£74',
         'avail'    => 'Davies only',
         'desc'     => 'Measure your cholesterol and understand your cardiovascular risk, with professional advice on lifestyle and next steps.',
+        'learn_url'   => '/cholesterol-test-hampshire/',
+        'learn_label' => 'About cholesterol testing',
         'icon'     => '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>',
     ],
     [
@@ -71,6 +77,8 @@ $bt_tests = [
         'price'    => '£79',
         'avail'    => 'Davies only',
         'desc'     => 'An advanced thyroid profile to identify potential thyroid dysfunction and autoimmune thyroid conditions early — energy, metabolism, mood and more.',
+        'learn_url'   => '/thyroid-test-hampshire/',
+        'learn_label' => 'About thyroid testing',
         'icon'     => '<path d="M12 2a3 3 0 0 0-3 3c0 1 .5 2 1 3-1 1-3 2.5-3 5a5 5 0 0 0 5 5 5 5 0 0 0 5-5c0-2.5-2-4-3-5 .5-1 1-2 1-3a3 3 0 0 0-3-3z"/>',
     ],
 ];
@@ -106,7 +114,7 @@ if ( empty( $bt_faqs ) ) {
         [ 'q' => 'Is the appointment private and confidential?',
           'a' => 'Yes. All appointments are carried out discreetly by trained staff, and your results are handled in strict confidence.' ],
         [ 'q' => 'How much do blood tests cost?',
-          'a' => 'Full Blood Count is £79, Type 2 Diabetes Screening £55, Cholesterol Testing £74, and the Thyroid Function & Autoimmune profile £79. You can see our full price list on the pricing page.' ],
+          'a' => 'Full Blood Count is £79, Type 2 Diabetes Screening £55, Cholesterol Testing £74, and the Thyroid Function & Autoimmune profile £79. You can see our full price list on the pricing page. For more detail on each test, read our guides to the <a href="' . esc_url( home_url( '/full-blood-count-test-hampshire/' ) ) . '" class="text-blue-700 font-semibold hover:underline">full blood count</a>, <a href="' . esc_url( home_url( '/diabetes-blood-test-hampshire/' ) ) . '" class="text-blue-700 font-semibold hover:underline">type 2 diabetes screening</a>, <a href="' . esc_url( home_url( '/cholesterol-test-hampshire/' ) ) . '" class="text-blue-700 font-semibold hover:underline">cholesterol testing</a> and <a href="' . esc_url( home_url( '/thyroid-test-hampshire/' ) ) . '" class="text-blue-700 font-semibold hover:underline">thyroid testing</a>.' ],
     ];
 }
 ?>
@@ -278,10 +286,13 @@ if ( empty( $bt_faqs ) ) {
             <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <?php echo esc_html( $t['avail'] ); ?>
           </span>
-          <a href="#book" data-book-tab="<?php echo esc_attr( $t['key'] ); ?>" class="bt-book-link inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors font-jost">
-            Book
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </a>
+          <div class="flex flex-wrap items-center gap-3">
+            <a href="<?php echo esc_url( home_url( $t['learn_url'] ) ); ?>" class="text-blue-700 text-sm font-semibold font-jost hover:text-blue-800 hover:underline transition-colors"><?php echo esc_html( $t['learn_label'] ); ?></a>
+            <a href="#book" data-book-tab="<?php echo esc_attr( $t['key'] ); ?>" class="bt-book-link inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-full transition-colors font-jost">
+              Book
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
         </div>
       </div>
       <?php endforeach; ?>
@@ -555,7 +566,7 @@ if ( empty( $bt_faqs ) ) {
             <?php echo esc_html( $faq['q'] ); ?>
             <svg class="bt-faq-chevron w-5 h-5 text-blue-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </summary>
-          <div class="bt-faq-answer"><?php echo esc_html( $faq['a'] ); ?></div>
+          <div class="bt-faq-answer"><?php echo wp_kses( $faq['a'], [ 'a' => [ 'href' => [], 'class' => [] ] ] ); ?></div>
         </details>
         <?php endforeach; ?>
       </div>
