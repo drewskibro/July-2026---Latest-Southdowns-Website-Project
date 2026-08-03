@@ -143,6 +143,10 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Pharmacy First</span><span class="mega-dd-link-desc">7 common conditions treated</span></div>
                     </a>
+                    <a href="<?php echo esc_url( home_url( '/meningitis-b-vaccine/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Meningitis B Vaccine</span><span class="mega-dd-link-desc">Free NHS jab for young people</span></div>
+                    </a>
                   </div>
                   <div class="mega-dd-featured">
                     <div class="mega-dd-featured-badge">Most Popular</div>
@@ -287,6 +291,7 @@ $destinations = [
           <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>">NHS COVID Vaccination</a>
           <a href="<?php echo esc_url( home_url( '/nhs-prescriptions/' ) ); ?>">NHS Prescriptions</a>
           <a href="<?php echo esc_url( home_url( '/pharmacy-first/' ) ); ?>">Pharmacy First</a>
+          <a href="<?php echo esc_url( home_url( '/meningitis-b-vaccine/' ) ); ?>">Meningitis B Vaccine</a>
         </div>
       </li>
 
