@@ -327,9 +327,6 @@ if ( empty( $mb_faqs ) ) {
             Find Your Nearest Branch
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
           </a>
-          <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="inline-flex items-center justify-center gap-2 text-blue-700 font-semibold border-2 border-blue-200 px-6 py-3.5 rounded-full hover:bg-blue-50 transition-colors font-jost">
-            Call <?php echo esc_html( $phone ); ?>
-          </a>
         </div>
       </div>
     </div>
@@ -504,9 +501,6 @@ if ( empty( $mb_faqs ) ) {
       <a href="#locations" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-8 py-4 rounded-full hover:bg-blue-50 transition-colors shadow-xl text-base font-jost">
         Find Your Nearest Branch
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </a>
-      <a href="tel:<?php echo esc_attr( $phone_raw ); ?>" class="inline-flex items-center gap-2 text-white font-semibold border-2 border-white/50 px-8 py-4 rounded-full hover:bg-white/10 hover:border-white transition-colors text-base font-jost">
-        Call <?php echo esc_html( $phone ); ?>
       </a>
     </div>
   </div>
