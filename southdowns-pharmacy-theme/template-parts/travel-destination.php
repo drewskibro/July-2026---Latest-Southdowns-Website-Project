@@ -26,6 +26,7 @@ $tv_tpl = wp_parse_args( $tv_tpl ?? [], [
 	'embed_calendar'  => false,
 	'yf_band'         => false, // full-width Yellow Fever / Bosmere callout band after the vaccines section
 	'related'         => [],    // related destination cards: [ [name, desc, url, img], ... ]
+	'show_pricing'    => true,  // S8 pricing section; disable while a destination has no confirmed prices
 ] );
 if ( '' === $tv_tpl['spotlight_image'] ) {
 	$tv_tpl['spotlight_image'] = $tv_tpl['hero_image'];
@@ -569,8 +570,9 @@ $tv = tv_data();
 
 
 <!-- ═══════════════════════════════════════════════════════
-     S8 · PRICING  (light, id="pricing")
+     S8 · PRICING  (light, id="pricing", optional via show_pricing)
 ════════════════════════════════════════════════════════ -->
+<?php if ( ! empty( $tv_tpl['show_pricing'] ) ) : ?>
 <section id="pricing" class="py-20 md:py-28 bg-white">
   <div class="section-container">
     <div class="text-center mb-14">
@@ -653,6 +655,7 @@ $tv = tv_data();
     </div>
   </div>
 </section>
+<?php endif; ?>
 
 
 

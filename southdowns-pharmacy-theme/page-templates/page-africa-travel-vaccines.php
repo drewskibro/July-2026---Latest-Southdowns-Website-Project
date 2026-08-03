@@ -21,6 +21,8 @@ $tv_tpl = [
 	'embed_calendar'  => true, // on-page Amelia travel calendar (#book)
 	// Full-width Yellow Fever / Bosmere band after the vaccines section.
 	'yf_band'         => true,
+	// Pricing hidden until confirmed Africa prices are available (all £TBC otherwise).
+	'show_pricing'    => false,
 	// "Popular African destinations" image cards (region page -> country pages).
 	'related'         => [
 		[ 'name' => 'Kenya', 'desc' => 'Safari trips, Yellow Fever & malaria advice', 'url' => '/kenya-travel-vaccinations/', 'img' => 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=800&q=80&auto=format&fit=crop' ],
