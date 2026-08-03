@@ -433,7 +433,8 @@ if ( empty( $mb_faqs ) ) {
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-reveal">
       <?php foreach ( sp_branch_order() as $i ) :
-        $b = sp_branch( $i );
+        $b    = sp_branch( $i );
+        $addr = sp_branch_address( $b );
       ?>
       <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition-shadow duration-300 flex flex-col">
         <div class="relative overflow-hidden h-44">
@@ -442,14 +443,24 @@ if ( empty( $mb_faqs ) ) {
           <span class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-slate-800 text-xs font-semibold font-jost px-2.5 py-1 rounded-full"><?php echo esc_html( $b['name'] ); ?></span>
         </div>
         <div class="p-5 space-y-2.5 flex flex-col flex-1">
+          <?php if ( $addr ) : ?>
           <div class="flex items-start gap-2 text-slate-600 text-sm font-jost">
             <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <?php echo esc_html( $b['address'] ); ?>
+            <?php echo esc_html( $addr ); ?>
+          </div>
+          <?php endif; ?>
+          <div class="flex items-start gap-2 text-slate-500 text-xs font-jost leading-relaxed">
+            <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <span><?php echo sp_branch_hours_html( $b ); ?></span>
           </div>
           <div class="flex items-center gap-2 text-slate-600 text-sm font-jost">
             <svg class="w-4 h-4 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17l-.08-.08z"/></svg>
-            <?php echo esc_html( $b['phone'] ); ?>
+            <a href="tel:<?php echo esc_attr( preg_replace( '/\s+/', '', $b['phone'] ) ); ?>" class="hover:text-blue-600 transition-colors"><?php echo esc_html( $b['phone'] ); ?></a>
           </div>
+          <a href="<?php echo esc_url( sp_branch_url( $i ) ); ?>" class="mt-auto flex items-center justify-center gap-2 w-full text-blue-600 text-sm font-semibold bg-blue-50 hover:bg-blue-100 px-4 py-2.5 rounded-xl transition-colors font-jost">
+            View <?php echo esc_html( $b['name'] ); ?>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
         </div>
       </div>
       <?php endforeach; ?>
