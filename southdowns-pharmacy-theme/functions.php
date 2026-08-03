@@ -296,6 +296,36 @@ function sp_branch( int $branch ): array {
  * @param array $b  Branch data array as returned by sp_branch().
  * @return string
  */
+/**
+ * Public URL of a branch page by branch number (1–4).
+ *
+ * @param int $branch Branch number 1–4.
+ * @return string
+ */
+function sp_branch_url( int $branch ): string {
+    $map = [
+        1 => '/emsworth/',
+        2 => '/bosmere/',
+        3 => '/davies/',
+        4 => '/rowlands-pharmacy/',
+    ];
+    return home_url( $map[ $branch ] ?? '/' );
+}
+
+/**
+ * Full one-line address for a branch (line 1, line 2, postcode).
+ *
+ * @param array $b Branch data from sp_branch().
+ * @return string
+ */
+function sp_branch_address( array $b ): string {
+    return implode( ', ', array_filter( [
+        $b['address_line1'] ?? '',
+        $b['address_line2'] ?? '',
+        $b['postcode']      ?? '',
+    ] ) );
+}
+
 function sp_branch_hours_html( array $b ): string {
     $lines = array_filter( [
         $b['hours_weekday']  ?? '',
