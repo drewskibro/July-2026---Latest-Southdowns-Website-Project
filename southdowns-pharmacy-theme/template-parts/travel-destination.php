@@ -24,6 +24,8 @@ $tv_tpl = wp_parse_args( $tv_tpl ?? [], [
 	'spotlight_image' => '',
 	'spotlight_alt'   => '',
 	'embed_calendar'  => false,
+	'yf_band'         => false, // full-width Yellow Fever / Bosmere callout band after the vaccines section
+	'related'         => [],    // related destination cards: [ [name, desc, url, img], ... ]
 ] );
 if ( '' === $tv_tpl['spotlight_image'] ) {
 	$tv_tpl['spotlight_image'] = $tv_tpl['hero_image'];
@@ -352,6 +354,43 @@ $tv = tv_data();
 
 
 <!-- ═══════════════════════════════════════════════════════
+     S3.5 · YELLOW FEVER BAND (amber, optional via yf_band)
+════════════════════════════════════════════════════════ -->
+<?php if ( ! empty( $tv_tpl['yf_band'] ) ) : ?>
+<section class="relative py-16 md:py-20 overflow-hidden" style="background: linear-gradient(135deg,#78350f 0%,#b45309 45%,#d97706 100%);">
+  <div class="absolute inset-0 dot-pattern pointer-events-none opacity-30"></div>
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(251,191,36,0.35) 0%,transparent 70%);"></div>
+  <div class="section-container relative z-10">
+    <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center">
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-jost uppercase tracking-wider mb-5 bg-white/15 backdrop-blur-sm text-amber-100 border border-white/20">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          NaTHNaC-Registered Yellow Fever Centre
+        </span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 font-jost leading-tight">Need a Yellow Fever Certificate? <span class="text-amber-200">Bosmere Pharmacy, Havant.</span></h2>
+        <p class="text-amber-100/90 text-lg font-jost leading-relaxed max-w-2xl mb-6">Many African countries require proof of Yellow Fever vaccination for entry. Our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates &mdash; and your certificate only becomes valid <strong class="text-white">10 days after vaccination</strong>, so book early.</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-amber-100 text-sm font-medium font-jost">
+          <?php foreach ( [ 'ICVP certificates issued on-site', 'Lifetime validity — one dose', 'Bosmere Pharmacy, Havant only' ] as $yf_point ) : ?>
+          <span class="inline-flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <?php echo esc_html( $yf_point ); ?>
+          </span>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="flex lg:justify-end">
+        <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="inline-flex items-center gap-2 bg-white text-amber-800 font-bold px-8 py-4 rounded-full hover:bg-amber-50 transition-colors shadow-xl text-base font-jost whitespace-nowrap">
+          Book Yellow Fever at Bosmere
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
+
+<!-- ═══════════════════════════════════════════════════════
      S4 · HEALTH RISKS  (light)
 ════════════════════════════════════════════════════════ -->
 <section class="py-20 md:py-28 bg-slate-50">
@@ -368,20 +407,28 @@ $tv = tv_data();
     <?php
     /* Risk-card text is client-editable (Travel Vaccines → Health Risks); icons stay in code, by index. */
     $risk_cards = sp_rows( 'tv_risks', $tv['tv_risks'], [ 'title' => 'title', 'desc' => 'desc' ] );
+    /* Icons + accents by index, matched to the standard risk order:
+       mosquito-borne / food & water / animal bites / sun & heat. */
     $risk_icons = [
-      '<path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.1.39-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.64.71 1.03 1.61 1.03 2.71 0 3.84-2.34 4.68-4.57 4.93.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>',
-      '<path d="M3 3h18v3H3zM5 6v15h14V6"/><path d="M9 10h6M9 14h6"/>',
+      '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+      '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3z"/><path d="M21 15v7"/>',
+      '<circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="20" cy="16" r="2"/><path d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z"/>',
       '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>',
-      '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+    ];
+    $risk_accents = [
+      [ 'chip' => 'bg-rose-50',    'icon' => 'text-rose-600',    'top' => 'border-t-rose-400' ],
+      [ 'chip' => 'bg-emerald-50', 'icon' => 'text-emerald-600', 'top' => 'border-t-emerald-400' ],
+      [ 'chip' => 'bg-violet-50',  'icon' => 'text-violet-600',  'top' => 'border-t-violet-400' ],
+      [ 'chip' => 'bg-amber-50',   'icon' => 'text-amber-600',   'top' => 'border-t-amber-400' ],
     ];
     ?>
 
     <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-      <?php foreach ( $risk_cards as $idx => $r ) : ?>
-      <div class="bg-white rounded-2xl p-7 md:p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal-item border-t-4 border-t-amber-400">
+      <?php foreach ( $risk_cards as $idx => $r ) : $ra = $risk_accents[ $idx % count( $risk_accents ) ]; ?>
+      <div class="bg-white rounded-2xl p-7 md:p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal-item border-t-4 <?php echo esc_attr( $ra['top'] ); ?>">
         <div class="flex items-start gap-4 mb-4">
-          <div class="flex-shrink-0 w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center">
-            <svg class="w-7 h-7 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $risk_icons[ $idx % count( $risk_icons ) ]; ?></svg>
+          <div class="flex-shrink-0 w-14 h-14 <?php echo esc_attr( $ra['chip'] ); ?> rounded-2xl flex items-center justify-center">
+            <svg class="w-7 h-7 <?php echo esc_attr( $ra['icon'] ); ?>" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $risk_icons[ $idx % count( $risk_icons ) ]; ?></svg>
           </div>
           <h3 class="text-lg md:text-xl font-bold text-slate-900 font-jost pt-3"><?php echo wp_kses_post( $r['title'] ); ?></h3>
         </div>
@@ -712,6 +759,43 @@ $tv = tv_data();
     </div>
   </div>
 </section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     S10.5 · RELATED DESTINATIONS (image cards, optional via related)
+════════════════════════════════════════════════════════ -->
+<?php if ( ! empty( $tv_tpl['related'] ) ) : ?>
+<section class="py-16 md:py-24 bg-white">
+  <div class="section-container">
+    <div class="text-center mb-12">
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold font-jost mb-6 bg-blue-50 text-blue-700 border border-blue-100">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Popular Destinations
+      </span>
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost">Planning a Specific Destination?</h2>
+      <p class="text-slate-600 text-lg max-w-2xl mx-auto font-jost">Explore our dedicated destination guides for detailed, country-specific vaccine advice.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <?php foreach ( $tv_tpl['related'] as $rel ) : ?>
+      <a href="<?php echo esc_url( home_url( $rel['url'] ) ); ?>" class="group block reveal-item">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg aspect-[16/10]">
+          <img src="<?php echo esc_url( $rel['img'] ); ?>" alt="<?php echo esc_attr( $rel['name'] ); ?> travel vaccinations" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6">
+            <h3 class="text-white text-2xl font-bold font-jost mb-1 group-hover:text-blue-200 transition-colors"><?php echo esc_html( $rel['name'] ); ?></h3>
+            <p class="text-blue-100 text-sm font-jost mb-2"><?php echo esc_html( $rel['desc'] ); ?></p>
+            <span class="inline-flex items-center gap-1.5 text-white text-sm font-semibold font-jost">
+              View vaccine guide
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
 
 
 <!-- ═══════════════════════════════════════════════════════
