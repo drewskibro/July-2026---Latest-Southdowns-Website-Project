@@ -32,6 +32,22 @@ if ( '' === $tv_tpl['spotlight_image'] ) {
 // Book CTAs: on-page calendar when embedded, otherwise the booking page.
 $tv_book_href = $tv_tpl['embed_calendar'] ? '#book' : sp_booking_url();
 
+/*
+ * force_defaults: when a wrapper sets this, all saved tv_* ACF values on the
+ * page are ignored and the tv_defaults() content renders verbatim. Use when a
+ * page's ACF rows are contaminated (e.g. created by duplicating another
+ * destination page) — saved fields would otherwise override code defaults.
+ * Scoped to tv_* fields only, so nothing else on the page is affected.
+ */
+if ( ! empty( $tv_tpl['force_defaults'] ) && function_exists( 'add_filter' ) ) {
+	add_filter( 'acf/pre_load_value', function ( $value, $post_id, $field ) {
+		if ( isset( $field['name'] ) && 0 === strpos( (string) $field['name'], 'tv_' ) ) {
+			return ''; // Treated as empty by sp_field()/sp_rows()/sp_list() -> code defaults win.
+		}
+		return $value;
+	}, 10, 3 );
+}
+
 // Country content (editable in WordPress — Travel Vaccines field group). Each
 // page stores its own values; $tv supplies this country's defaults as fallback.
 $tv = tv_data();
