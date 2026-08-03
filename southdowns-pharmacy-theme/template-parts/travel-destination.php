@@ -357,29 +357,28 @@ $tv = tv_data();
      S3.5 · YELLOW FEVER BAND (amber, optional via yf_band)
 ════════════════════════════════════════════════════════ -->
 <?php if ( ! empty( $tv_tpl['yf_band'] ) ) : ?>
-<section class="relative py-16 md:py-20 overflow-hidden" style="background: linear-gradient(135deg,#78350f 0%,#b45309 45%,#d97706 100%);">
-  <div class="absolute inset-0 dot-pattern pointer-events-none opacity-30"></div>
-  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(251,191,36,0.35) 0%,transparent 70%);"></div>
+<section class="relative py-16 md:py-20 overflow-hidden" style="background: linear-gradient(135deg,#fef9c3 0%,#fde68a 45%,#fbbf24 100%);">
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(255,255,255,0.5) 0%,transparent 70%);"></div>
   <div class="section-container relative z-10">
     <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center">
       <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-jost uppercase tracking-wider mb-5 bg-white/15 backdrop-blur-sm text-amber-100 border border-white/20">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-jost uppercase tracking-wider mb-5 bg-white/70 text-amber-900 border border-amber-500/40 shadow-sm">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
           NaTHNaC-Registered Yellow Fever Centre
         </span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 font-jost leading-tight">Need a Yellow Fever Certificate? <span class="text-amber-200">Bosmere Pharmacy, Havant.</span></h2>
-        <p class="text-amber-100/90 text-lg font-jost leading-relaxed max-w-2xl mb-6">Many African countries require proof of Yellow Fever vaccination for entry. Our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates &mdash; and your certificate only becomes valid <strong class="text-white">10 days after vaccination</strong>, so book early.</p>
-        <div class="flex flex-wrap gap-x-6 gap-y-2 text-amber-100 text-sm font-medium font-jost">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 font-jost leading-tight">Need a Yellow Fever Certificate? <span class="text-amber-900">Bosmere Pharmacy, Havant.</span></h2>
+        <p class="text-slate-800 text-lg font-jost leading-relaxed max-w-2xl mb-6">Many African countries require proof of Yellow Fever vaccination for entry. Our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates &mdash; and your certificate only becomes valid <strong class="text-slate-900">10 days after vaccination</strong>, so book early.</p>
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-slate-800 text-sm font-semibold font-jost">
           <?php foreach ( [ 'ICVP certificates issued on-site', 'Lifetime validity — one dose', 'Bosmere Pharmacy, Havant only' ] as $yf_point ) : ?>
           <span class="inline-flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-amber-300 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <svg class="w-4 h-4 text-amber-800 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
             <?php echo esc_html( $yf_point ); ?>
           </span>
           <?php endforeach; ?>
         </div>
       </div>
       <div class="flex lg:justify-end">
-        <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="inline-flex items-center gap-2 bg-white text-amber-800 font-bold px-8 py-4 rounded-full hover:bg-amber-50 transition-colors shadow-xl text-base font-jost whitespace-nowrap">
+        <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:bg-slate-800 transition-colors shadow-xl text-base font-jost whitespace-nowrap">
           Book Yellow Fever at Bosmere
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
