@@ -379,7 +379,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       // Region cards default to the travel hub; regions with a dedicated page override here.
       $region_links = [
         'Africa'                => '/africa-travel-vaccinations/',
-        'Australasia & Pacific' => '/australasia-pacific-travel-vaccinations/',
+        'Australasia & Pacific' => '/australasia-and-pacific-travel-vaccinations/',
         'Caribbean'             => '/caribbean-travel-vaccinations/',
       ];
       foreach ( $destinations as $d ) : ?>
