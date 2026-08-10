@@ -431,6 +431,7 @@ $th_service_icons = [
           $th_region_guides = [
             [ 'label' => 'Africa',      'url' => '/africa-travel-vaccinations/' ],
             [ 'label' => 'Caribbean',   'url' => '/caribbean-travel-vaccinations/' ],
+            [ 'label' => 'Australasia & Pacific', 'url' => '/australasia-pacific-travel-vaccinations/' ],
             [ 'label' => 'Kenya',       'url' => '/kenya-travel-vaccinations/' ],
             [ 'label' => 'Thailand',    'url' => '/thailand-travel-vaccinations/' ],
             [ 'label' => 'India',       'url' => '/india-travel-vaccinations/' ],
