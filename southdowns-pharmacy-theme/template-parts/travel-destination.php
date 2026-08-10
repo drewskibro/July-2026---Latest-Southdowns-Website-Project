@@ -451,7 +451,7 @@ if ( ! empty( $tv_tpl['feature_band'] ) ) :
       <div class="bg-white rounded-2xl p-7 md:p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 reveal-item border-t-4 <?php echo esc_attr( $ra['top'] ); ?>">
         <div class="flex items-start gap-4 mb-4">
           <div class="flex-shrink-0 w-14 h-14 <?php echo esc_attr( $ra['chip'] ); ?> rounded-2xl flex items-center justify-center">
-            <svg class="w-7 h-7 <?php echo esc_attr( $ra['icon'] ); ?>" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo $risk_icons[ $idx % count( $risk_icons ) ]; ?></svg>
+            <svg class="w-7 h-7 <?php echo esc_attr( $ra['icon'] ); ?>" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><?php echo ! empty( $r['icon'] ) ? $r['icon'] : $risk_icons[ $idx % count( $risk_icons ) ]; ?></svg>
           </div>
           <h3 class="text-lg md:text-xl font-bold text-slate-900 font-jost pt-3"><?php echo wp_kses_post( $r['title'] ); ?></h3>
         </div>

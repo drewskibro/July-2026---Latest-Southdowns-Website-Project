@@ -23,6 +23,7 @@
 function tv_template_map(): array {
 	return [
 		'page-templates/page-africa-travel-vaccines.php'     => 'africa',
+		'page-templates/page-australasia-pacific-travel-vaccines.php' => 'australasia',
 		'page-templates/page-caribbean-travel-vaccines.php'  => 'caribbean',
 		'page-templates/page-cape-verde-travel-vaccines.php' => 'cape-verde',
 		'page-templates/page-india-travel-vaccines.php'      => 'india',
@@ -370,6 +371,139 @@ function tv_defaults(): array {
 				[ 'value' => '4', 'label' => 'Hampshire Locations' ],
 			],
 			'tv_disclaimer' => 'Travel health recommendations for Africa are based on current NaTHNaC, WHO and MHRA guidance and are accurate as of July 2026. Requirements vary by country and may change &mdash; always check the latest NaTHNaC or Foreign, Commonwealth &amp; Development Office guidance before travel. Vaccine suitability is assessed on an individual basis by our GPhC-registered pharmacists at the time of consultation.',
+		],
+
+		// ── AUSTRALASIA & PACIFIC (region page) — clinical content pending pharmacist sign-off.
+		// Research verified 2026-08-06 (NaTHNaC/TravelHealthPro, Australian Immunisation
+		// Handbook, NSW Health, Health NZ). Re-check JE and malaria at publish — they
+		// shift with outbreaks and season. Region-specific positions that must NOT be
+		// changed to match other regions:
+		//   · No yellow fever anywhere in the region — it is an ENTRY requirement only.
+		//     Australia requires a certificate (arrival from/transit of a risk country);
+		//     New Zealand does NOT. Never state that both do.
+		//   · No malaria in Australia or New Zealand. Confirmed risk: Papua New Guinea
+		//     and Vanuatu. Solomon Islands unconfirmed in sources checked — hedged, not
+		//     stated as fact. PHARMACIST: confirm Solomon Islands before firming up.
+		//   · Japanese Encephalitis threshold is narrow: ~1 month+ during transmission
+		//     season, or residing in an affected area. A short city break does not
+		//     normally warrant it — do not oversell.
+		//   · Australia/NZ are rabies-free; Australian bat lyssavirus is the related risk.
+		'australasia' => [
+			'tv_hero_pill'  => 'Australasia &amp; Pacific Travel Health &middot; Hampshire',
+			'tv_hero_h1'    => 'Travel Vaccines for Australia, New Zealand &amp; the Pacific',
+			'tv_hero_intro' => 'Heading to the other side of the world? Whether it is a Sydney city break, a New Zealand road trip, island-hopping in Fiji or trekking in Papua New Guinea, what you need varies enormously across this region. Our Hampshire pharmacists will tell you exactly what is worth having &mdash; and what is not. Same-day appointments, no GP referral.',
+			'tv_hero_btn1'  => 'Book a Travel Consultation',
+			'tv_hero_btn2'  => 'Check What Vaccines You Need',
+			'tv_hero_pills' => [ [ 'text' => 'GPhC Registered' ], [ 'text' => 'Same-Day Appointments' ], [ 'text' => 'Expert Pharmacist Advice' ], [ 'text' => '4 Hampshire Locations' ] ],
+			'tv_hero_image' => 'https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=1200&q=80&auto=format&fit=crop',
+			'tv_intro_eyebrow' => 'Travel Health Advice',
+			'tv_intro_h2'   => 'Essential Vaccinations for Australasia &amp; the Pacific',
+			'tv_intro_p1'   => 'This is one of the most varied regions to prepare for. Australia and New Zealand are low-risk destinations with excellent healthcare, and many travellers need little more than up-to-date routine boosters. The Pacific Islands, Papua New Guinea and Timor-Leste are a different picture, with dengue, typhoid, hepatitis A and &mdash; in some countries &mdash; malaria all worth planning for.',
+			'tv_intro_p2'   => 'Our travel clinics in Havant, Emsworth and Rowlands Castle build advice around your actual route. A fortnight in Melbourne and a month across Fiji, Vanuatu and PNG call for very different preparation, and we will only recommend what your trip genuinely warrants. Long-haul travel also brings its own considerations, from jet lag to blood-clot risk, which we will cover at your appointment.',
+			'tv_vax_eyebrow' => 'Vaccination Guide',
+			'tv_vax_h2'     => 'Recommended Vaccines for Australasia &amp; the Pacific',
+			'tv_vax_intro'  => 'What you need depends heavily on which half of the region you are visiting. Our pharmacists confirm exactly what your itinerary warrants &mdash; and what it does not.',
+			'tv_vaccines'   => [
+				[ 'category' => 'Recommended Vaccines', 'name' => 'Hepatitis A', 'who' => 'Pacific Islands, PNG, longer or rural trips', 'doses' => '1 dose (booster at 6&ndash;12 months)', 'desc' => 'Spread through contaminated food and water. Recommended for the Pacific Islands and Papua New Guinea, and worth considering for extended trips to Australia or New Zealand.' ],
+				[ 'category' => 'Recommended Vaccines', 'name' => 'Typhoid', 'who' => 'Pacific Islands, PNG, Timor-Leste', 'doses' => '1 dose', 'desc' => 'Recommended where food and water hygiene may be variable. Generally not needed for Australia or New Zealand alone.' ],
+				[ 'category' => 'Recommended Vaccines', 'name' => 'Tetanus, Diphtheria &amp; Polio (booster)', 'who' => 'Anyone not up to date', 'doses' => '1 booster dose', 'desc' => 'The most commonly overlooked one. Worth a booster if it has been more than ten years, particularly for hiking, diving, camping or remote travel.' ],
+				[ 'category' => 'Recommended Vaccines', 'name' => 'Japanese Encephalitis', 'who' => 'Stays of a month or more in affected areas during the transmission season, and Papua New Guinea travel', 'doses' => '2 doses', 'desc' => 'Mosquito-borne, and recognised across a wider area of Australia than most people expect &mdash; parts of Victoria, New South Wales, Queensland, Western Australia, South Australia and the Northern Territory. Most cases occur December to March. Vaccination is generally considered for those living in an affected area or staying a month or more during the transmission season, so a short city break does not normally warrant it. Our pharmacists will advise honestly.' ],
+				[ 'category' => 'Also Worth Discussing', 'name' => 'Dengue (Qdenga)', 'who' => 'Northern Queensland and much of the Pacific', 'doses' => 'Course &mdash; pharmacist will advise', 'desc' => 'Dengue occurs in northern Queensland and across much of the Pacific, with periodic outbreaks. Ask whether the dengue vaccine suits your trip.' ],
+				[ 'category' => 'Also Worth Discussing', 'name' => 'Hepatitis B', 'who' => 'Longer stays, working trips, possible medical or dental care abroad', 'doses' => '3-dose course (accelerated schedules available)', 'desc' => 'Worth discussing for longer stays, working trips, or anyone who may need medical or dental treatment while away.' ],
+				[ 'category' => 'Also Worth Discussing', 'name' => 'MMR', 'who' => 'Anyone without two documented doses', 'doses' => 'Per UK schedule', 'desc' => 'Genuinely important for this region &mdash; measles outbreaks have affected Pacific island nations in recent years. Check you have had two doses.' ],
+				[ 'category' => 'Also Worth Discussing', 'name' => 'Rabies', 'who' => 'Bat exposure, PNG and Indonesia legs', 'doses' => '3 doses over 21&ndash;28 days', 'desc' => 'Australia and New Zealand are rabies-free, but Australian bat lyssavirus means bat exposure carries a related risk. Worth discussing if you may handle or be exposed to bats, or if your route includes Papua New Guinea or Indonesia.' ],
+				[ 'category' => 'Also Worth Discussing', 'name' => 'Malaria Tablets', 'who' => 'Papua New Guinea and Vanuatu', 'doses' => 'Tablets &mdash; not a vaccine', 'desc' => 'Recommended for Papua New Guinea and Vanuatu. Not needed for Australia or New Zealand, or for most Pacific islands &mdash; see the malaria section below.' ],
+			],
+			'tv_risk_eyebrow' => 'Risk Awareness',
+			'tv_risk_h2'    => 'Health Risks When Travelling to Australasia &amp; the Pacific',
+			'tv_risk_intro' => 'Understanding potential health risks helps you prepare properly. Our pharmacists assess your specific itinerary and activities to provide tailored advice.',
+			'tv_risks'      => [
+				[ 'title' => 'Extreme UV &amp; Sun Exposure', 'desc' => 'Australia and New Zealand have some of the highest UV levels in the world, far stronger than UK summer sun. High-factor sunscreen, hats, shade and covering up matter here more than almost anywhere &mdash; and burn times can be very short.', 'icon' => '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>' ],
+				[ 'title' => 'Mosquito-Borne Illness', 'desc' => 'Dengue in northern Queensland and across the Pacific, Japanese Encephalitis in the Torres Strait, Cape York and Papua New Guinea, and Zika in parts of the Pacific &mdash; the last being particularly important in pregnancy.', 'icon' => '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>' ],
+				[ 'title' => 'Marine &amp; Wildlife Hazards', 'desc' => 'Jellyfish (including box jellyfish and irukandji in northern Australian waters), stonefish, coral cuts, sea urchins and, more rarely, snakes and spiders. Heed local warnings and beach signage, keep wounds clean, and keep tetanus cover current.', 'icon' => '<path d="M2 12c2.5-4 5.5-6 10-6s7.5 2 10 6c-2.5 4-5.5 6-10 6s-7.5-2-10-6z"/><circle cx="9" cy="12" r="1.5"/><path d="M17 9c1 1.5 1 4.5 0 6"/>' ],
+				[ 'title' => 'Remote Areas &amp; Long-Haul Travel', 'desc' => 'Distances are vast and medical help can be hours away in the Outback or on smaller islands. Plan medication supplies, carry a basic kit and take comprehensive travel insurance. Flights of 20+ hours also raise blood-clot risk &mdash; move regularly, stay hydrated, and ask us about compression stockings.', 'icon' => '<path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a1 1 0 0 0-.9 1.7l5.6 3.9-2.3 2.3-2.6-.4a1 1 0 0 0-.9 1.6l2 2 2 2a1 1 0 0 0 1.6-.9l-.4-2.6 2.3-2.3 3.9 5.6a1 1 0 0 0 1.7-.9z"/>' ],
+			],
+			'tv_mal_eyebrow' => 'Malaria Risk',
+			'tv_mal_h2'     => 'Do You Need Malaria Tablets for Australia or the Pacific?',
+			'tv_mal_intro'  => 'For Australia and New Zealand, no &mdash; there is no malaria risk in either country. It becomes a real consideration only for specific Pacific destinations.',
+			'tv_malaria'    => [
+				[ 'title' => 'Where Risk Exists', 'desc' => 'There is malaria risk throughout Vanuatu, and in Papua New Guinea, where the most serious form is the most common. The Solomon Islands are generally also considered a malaria-risk country &mdash; our pharmacists will confirm the current position for your route. If your itinerary includes any of these, antimalarial tablets are likely to be recommended.' ],
+				[ 'title' => 'Where It Does Not', 'desc' => 'Australia, New Zealand, Fiji, Samoa, Tonga, the Cook Islands and most other Pacific islands have no malaria risk. Dengue is the more relevant mosquito-borne concern there.' ],
+				[ 'title' => 'Bite Prevention Everywhere', 'desc' => 'Use DEET-based repellent, cover up at dawn and dusk, and use treated nets in unscreened rooms. DEET repellents are stocked at all four branches.' ],
+			],
+			'tv_how_eyebrow' => 'Three-Step Process',
+			'tv_how_h2'     => 'How to Get Your Australasia &amp; Pacific Travel Vaccinations',
+			'tv_how_intro'  => 'Three simple steps from booking to being fully protected.',
+			'tv_how_steps'  => [
+				[ 'title' => 'Book Your Consultation', 'desc' => 'Book online or walk in at any of our Hampshire branches during opening hours. We serve patients from across Hampshire including Portsmouth, Southsea, Waterlooville, Havant, Fareham, Gosport and Chichester.' ],
+				[ 'title' => 'Expert Travel Health Assessment', 'desc' => 'Our GPhC-registered pharmacists review your itinerary, medical history and planned activities &mdash; and will tell you honestly where your trip needs little or nothing beyond routine boosters.' ],
+				[ 'title' => 'Same-Day Vaccination', 'desc' => 'Receive your vaccines at the same appointment. Recommended vaccines are in stock across our branches, with Yellow Fever certificates available at our Bosmere, Havant branch only.' ],
+			],
+			'tv_time_eyebrow' => 'Timing Guide',
+			'tv_time_h2'    => 'When to Get Your Australasia &amp; Pacific Travel Vaccinations',
+			'tv_time_intro' => 'Multi-dose courses make earlier planning worthwhile for this region &mdash; but we can still help if you fly this week.',
+			'tv_timing'     => [
+				[ 'tag' => 'Ideal', 'time' => '6–8 Weeks Before', 'desc' => 'Essential for multi-dose courses such as Japanese Encephalitis (2 doses) and Hepatitis B, and allows the 10-day Yellow Fever certificate validity if your route requires it.' ],
+				[ 'tag' => 'Good', 'time' => '2–4 Weeks Before', 'desc' => 'Time for single-dose vaccines including Hepatitis A and Typhoid, and to start antimalarials for Papua New Guinea or Vanuatu.' ],
+				[ 'tag' => 'Last Minute', 'time' => 'Days Before Departure', 'desc' => 'Most single-dose vaccines can be given same-day, and antimalarials arranged. Come in even if you fly this week.' ],
+			],
+			'tv_price_eyebrow' => 'Transparent Pricing',
+			'tv_price_h2'   => 'Australasia &amp; Pacific Travel Vaccination Pricing',
+			'tv_price_intro' => 'Transparent pricing with no hidden consultation fees. All prices include expert pharmacist assessment and vaccine administration.',
+			'tv_pkg1_title' => '', 'tv_pkg1_price' => '', 'tv_pkg1_items' => [],
+			'tv_pkg2_title' => '', 'tv_pkg2_price' => '', 'tv_pkg2_items' => [],
+			'tv_individual' => [
+				[ 'name' => 'Hepatitis A', 'price' => '£56.00' ],
+				[ 'name' => 'Typhoid', 'price' => '£40.00' ],
+				[ 'name' => 'Tetanus, Diphtheria &amp; Polio', 'price' => '£35.00' ],
+				[ 'name' => 'Hepatitis B (per dose)', 'price' => '£36.00' ],
+				[ 'name' => 'Japanese Encephalitis (per dose)', 'price' => '£119.00' ],
+				[ 'name' => 'Dengue (Qdenga)', 'price' => '£96.00' ],
+				[ 'name' => 'Rabies (per dose)', 'price' => '£98.50' ],
+				[ 'name' => 'MMR', 'price' => '£35.00' ],
+				[ 'name' => 'Yellow Fever + ICVP certificate (Bosmere, Havant only)', 'price' => '£95.00' ],
+			],
+			'tv_price_info' => '<strong>Prices confirmed at consultation.</strong> All prices include expert pharmacist consultation and vaccine administration. No hidden fees.',
+			'tv_loc_eyebrow' => 'Find Us',
+			'tv_loc_h2'     => 'Book at Your Nearest Hampshire Travel Clinic',
+			'tv_loc_intro'  => 'Australasia and Pacific travel vaccinations available across our Southdowns Pharmacy travel clinics. Same-day appointments subject to availability. Free parking at all branches.',
+			'tv_loc_yf_note' => 'Yellow Fever vaccinations and ICVP certificates are available at our Bosmere Pharmacy, Havant location only &mdash; relevant if you are arriving into Australia from, or transiting, a country with yellow fever risk.',
+			'tv_loc_footer' => 'Conveniently located to serve patients from across Hampshire including Portsmouth, Southsea, Waterlooville, Havant, Fareham, Gosport, Petersfield and Chichester.',
+			'tv_why_eyebrow' => 'Our Promise',
+			'tv_why_h2'     => 'Why Choose Southdowns Pharmacy for Your Australasia &amp; Pacific Travel Vaccinations?',
+			'tv_why'        => [
+				[ 'title' => 'Expert GPhC-Registered Pharmacists', 'desc' => 'Qualified specialists in travel health providing evidence-based, personalised advice for every itinerary across this varied region.' ],
+				[ 'title' => 'Honest Advice &mdash; Only What You Need', 'desc' => 'Australia and New Zealand are low-risk destinations. We will tell you plainly when your trip needs little beyond routine boosters, rather than selling you vaccines you do not need.' ],
+				[ 'title' => 'Same-Day Appointments', 'desc' => 'Walk in or book ahead &mdash; no waiting weeks for your travel vaccination appointment.' ],
+				[ 'title' => 'NaTHNaC Yellow Fever Centre at Bosmere', 'desc' => 'For Australia&rsquo;s entry-certificate requirement, our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates.' ],
+				[ 'title' => 'Four Hampshire Locations', 'desc' => 'Serving Portsmouth, Southsea, Waterlooville, Havant and wider Hampshire. Free parking at all sites.' ],
+				[ 'title' => 'Family-Friendly Consultations', 'desc' => 'Child-safe dosing expertise and a welcoming environment for families travelling with children of all ages.' ],
+			],
+			'tv_faq_eyebrow' => 'Common Questions',
+			'tv_faq_h2'     => 'Frequently Asked Questions',
+			'tv_faq_intro'  => 'Everything you need to know about Australasia and Pacific travel vaccinations at Southdowns Pharmacy.',
+			'tv_faqs'       => [
+				[ 'question' => 'Do I need vaccinations for Australia?', 'answer' => 'No vaccines are required for entry on health-risk grounds, and Australia is a low-risk destination. We do recommend checking your routine UK boosters are up to date, and Japanese Encephalitis or hepatitis A may be advised depending on where you are going and for how long. The only certificate requirement relates to arriving from a yellow fever country.' ],
+				[ 'question' => 'Do I need vaccinations for New Zealand?', 'answer' => 'None are required for entry and risk is very low. An up-to-date tetanus, diphtheria and polio booster is sensible, particularly for hiking and outdoor trips.' ],
+				[ 'question' => 'Do I need a yellow fever certificate for Australia or New Zealand?', 'answer' => 'Australia requires one if, in the six days before you arrive, you have stayed overnight in a yellow fever risk country or transited one for more than 12 hours. New Zealand does not currently require proof. There is no yellow fever in the region itself, so this is purely an entry requirement — check your full routing, including stopovers.' ],
+				[ 'question' => 'Is malaria a risk in Australia or the Pacific?', 'answer' => 'Not in Australia or New Zealand. It is a genuine consideration for Papua New Guinea and Vanuatu, where antimalarial tablets are usually recommended. Most other Pacific islands, including Fiji, Samoa and the Cook Islands, are malaria-free.' ],
+				[ 'question' => 'What is Japanese Encephalitis and do I need it?', 'answer' => 'A mosquito-borne infection now recognised across parts of Victoria, New South Wales, Queensland, South Australia, Western Australia and the Northern Territory, as well as Papua New Guinea. Most cases occur between December and March. Vaccination is generally considered for people staying a month or more during the transmission season, or living in an affected area — so a short holiday usually does not require it. It is a two-dose course, so allow time if it is advised.' ],
+				[ 'question' => 'Is dengue a risk in the Pacific Islands?', 'answer' => 'Yes, and in northern Queensland, with periodic outbreaks. Bite avoidance is important and a dengue vaccine may be appropriate for some travellers.' ],
+				[ 'question' => 'How far in advance should I book?', 'answer' => 'Ideally 6–8 weeks, because Japanese Encephalitis and Hepatitis B need more than one dose. We do offer same-day appointments for last-minute travellers.' ],
+				[ 'question' => 'Do I need anything for a long-haul flight?', 'answer' => 'Flights to Australia often exceed 20 hours, which raises blood-clot risk. We can advise on movement, hydration and compression stockings, and discuss jet lag management.' ],
+			],
+			'tv_cta_badges' => [ [ 'text' => 'GPhC Registered' ], [ 'text' => 'Recommended Vaccines in Stock' ], [ 'text' => 'Same-Day Appointments' ], [ 'text' => '4 Hampshire Locations' ] ],
+			'tv_cta_h2'     => 'Heading Down Under or to the Pacific?<br>Get the Right Advice First.',
+			'tv_cta_intro'  => 'Book your travel vaccination consultation at any of our Hampshire locations. Honest, personalised advice, recommended vaccines in stock, same-day appointments available.',
+			'tv_cta_btn1'   => 'Book a Travel Consultation',
+			'tv_cta_btn2'   => 'Find Your Nearest Branch',
+			'tv_trust'      => [
+				[ 'value' => 'Expert', 'label' => 'Travel Health Advice' ],
+				[ 'value' => 'Same-Day', 'label' => 'Appointments' ],
+				[ 'value' => 'GPhC', 'label' => 'Registered Pharmacists' ],
+				[ 'value' => '4', 'label' => 'Hampshire Locations' ],
+			],
+			'tv_disclaimer' => 'Travel health recommendations for Australasia and the Pacific are based on current NaTHNaC, WHO and MHRA guidance and are accurate as of August 2026. Requirements vary significantly by country and may change &mdash; always consult the latest NaTHNaC or Foreign, Commonwealth &amp; Development Office guidance before travel. Vaccine suitability is assessed on an individual basis by our GPhC-registered pharmacists at the time of consultation.',
 		],
 
 		// ── CARIBBEAN (region page) — clinical content pending pharmacist sign-off.

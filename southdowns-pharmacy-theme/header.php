@@ -25,6 +25,7 @@ $branches = [
 $destinations = [
     [ 'name' => 'Africa',      'flag' => 'za', 'desc' => 'Yellow Fever, malaria & more',   'url' => home_url( '/africa-travel-vaccinations/' ) ],
     [ 'name' => 'Caribbean',   'flag' => 'bb', 'desc' => 'Hep A, Typhoid, Dengue',         'url' => home_url( '/caribbean-travel-vaccinations/' ) ],
+    [ 'name' => 'Australasia & Pacific', 'flag' => 'au', 'desc' => 'Low risk — honest advice', 'url' => home_url( '/australasia-pacific-travel-vaccinations/' ) ],
     [ 'name' => 'Thailand',    'flag' => 'th', 'desc' => 'Hep A, Typhoid, Rabies & more', 'url' => home_url( '/thailand-travel-vaccinations/' ) ],
     [ 'name' => 'India',       'flag' => 'in', 'desc' => 'Hep A, Typhoid, Japanese Enc.',  'url' => home_url( '/india-travel-vaccinations/' ) ],
     [ 'name' => 'Cape Verde',  'flag' => 'cv', 'desc' => 'Yellow Fever, Hep A, Typhoid',   'url' => home_url( '/cape-verde-travel-vaccinations/' ) ],
