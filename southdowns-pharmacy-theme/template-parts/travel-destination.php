@@ -600,7 +600,7 @@ if ( ! empty( $tv_tpl['feature_band'] ) ) :
   <div class="section-container">
     <div class="text-center mb-14">
       <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold font-jost mb-6 bg-blue-50 text-blue-700 border border-blue-100">
-        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span class="text-base font-bold leading-none" aria-hidden="true">&pound;</span>
         <?php echo sp_field( 'tv_price_eyebrow', $tv['tv_price_eyebrow'] ); ?>
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 font-jost"><?php echo sp_field( 'tv_price_h2', $tv['tv_price_h2'] ); ?></h2>
