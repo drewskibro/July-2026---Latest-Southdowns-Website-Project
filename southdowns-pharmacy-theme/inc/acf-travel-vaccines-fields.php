@@ -2,8 +2,8 @@
 /**
  * ACF Local Field Group — Travel Vaccine destination pages (shared).
  *
- * One field group serves all four near-identical destination templates:
- *   Cape Verde · India · Kenya · Thailand
+ * One field group serves every destination/region template:
+ *   Africa · Caribbean · Cape Verde · India · Kenya · Thailand
  * Each PAGE stores its own values, so the client edits every country separately.
  *
  * Pre-fill: each field is seeded (via acf/load_value) from this file's
@@ -32,24 +32,38 @@ function tv_template_map(): array {
 }
 
 /* ── Resolve the current page's country dataset (used by the templates) ── */
-function tv_data(): array {
-	$slug = get_page_template_slug( get_the_ID() );
-	$key  = tv_template_map()[ $slug ] ?? null;
-
-	// Fallback: infer the destination from the page slug so a page with a
-	// missing/mis-assigned template never silently shows another
-	// destination's content (previously this defaulted to Cape Verde).
-	if ( null === $key ) {
-		$page_slug = (string) get_post_field( 'post_name', get_the_ID() );
-		foreach ( array_unique( array_values( tv_template_map() ) ) as $candidate ) {
-			if ( '' !== $page_slug && false !== strpos( $page_slug, $candidate ) ) {
-				$key = $candidate;
-				break;
-			}
+/**
+ * Resolve which destination a post belongs to.
+ *
+ * Primary: the assigned page template. Fallback: infer from the page slug, so a
+ * page whose template isn't set yet still resolves correctly. Returns null when
+ * neither matches — callers MUST NOT substitute another destination's content
+ * (a previous hardcoded 'cape-verde' fallback seeded Cape Verde copy into new
+ * pages, which then got saved on publish).
+ *
+ * @param int $post_id Post ID.
+ * @return string|null Destination key, or null if undetermined.
+ */
+function tv_key_for_post( int $post_id ): ?string {
+	$key = tv_template_map()[ get_page_template_slug( $post_id ) ] ?? null;
+	if ( null !== $key ) {
+		return $key;
+	}
+	$page_slug = (string) get_post_field( 'post_name', $post_id );
+	if ( '' === $page_slug ) {
+		return null;
+	}
+	foreach ( array_unique( array_values( tv_template_map() ) ) as $candidate ) {
+		if ( false !== strpos( $page_slug, $candidate ) ) {
+			return $candidate;
 		}
 	}
+	return null;
+}
 
+function tv_data(): array {
 	$all = tv_defaults();
+	$key = tv_key_for_post( (int) get_the_ID() );
 	return $all[ $key ] ?? reset( $all );
 }
 
@@ -224,9 +238,12 @@ add_action( 'acf/init', function () {
 		add_filter( 'acf/load_value/name=' . $n, function ( $value, $post_id, $field ) {
 			$empty = ( $value === null || $value === '' || $value === false || ( is_array( $value ) && empty( $value ) ) );
 			if ( ! $empty ) return $value;
-			$slug = get_page_template_slug( $post_id );
-			$key  = tv_template_map()[ $slug ] ?? 'cape-verde';
-			$all  = tv_defaults();
+			// Seed only when we can positively identify the destination. Never fall
+			// back to another destination: on a new page the template isn't set yet,
+			// and anything seeded here is persisted verbatim when the page is saved.
+			$key = tv_key_for_post( (int) $post_id );
+			if ( null === $key ) return $value;
+			$all = tv_defaults();
 			return $all[ $key ][ $field['name'] ] ?? $value;
 		}, 10, 3 );
 	}
