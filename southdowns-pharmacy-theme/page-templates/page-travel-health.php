@@ -422,6 +422,28 @@ $th_service_icons = [
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
       <p class="text-blue-200 text-sm mt-3 font-jost">Not seeing your destination? We cover 150+ countries &mdash; book a consultation for a personalised assessment.</p>
+
+      <!-- Region guides — reciprocal links to the regional vaccine pages -->
+      <div class="mt-8 pt-8 border-t border-white/15">
+        <p class="text-blue-200 text-sm font-semibold uppercase tracking-wider mb-4 font-jost">Region &amp; Country Guides</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <?php
+          $th_region_guides = [
+            [ 'label' => 'Africa',      'url' => '/africa-travel-vaccinations/' ],
+            [ 'label' => 'Caribbean',   'url' => '/caribbean-travel-vaccinations/' ],
+            [ 'label' => 'Kenya',       'url' => '/kenya-travel-vaccinations/' ],
+            [ 'label' => 'Thailand',    'url' => '/thailand-travel-vaccinations/' ],
+            [ 'label' => 'India',       'url' => '/india-travel-vaccinations/' ],
+            [ 'label' => 'Cape Verde',  'url' => '/cape-verde-travel-vaccinations/' ],
+          ];
+          foreach ( $th_region_guides as $th_guide ) : ?>
+          <a href="<?php echo esc_url( home_url( $th_guide['url'] ) ); ?>" class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-sm font-semibold px-4 py-2 rounded-full border border-white/20 hover:bg-white/25 transition-colors font-jost">
+            <?php echo esc_html( $th_guide['label'] ); ?>
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <?php endforeach; ?>
+        </div>
+      </div>
     </div>
   </div>
 </section>

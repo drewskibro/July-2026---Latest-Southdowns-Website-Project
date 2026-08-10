@@ -20,7 +20,16 @@ $tv_tpl = [
 	'spotlight_alt'   => 'Safari wildlife on the African savannah',
 	'embed_calendar'  => true, // on-page Amelia travel calendar (#book)
 	// Full-width Yellow Fever / Bosmere band after the vaccines section.
-	'yf_band'         => true,
+	'feature_band'    => [
+		'theme'    => 'yellow',
+		'eyebrow'  => 'NaTHNaC-Registered Yellow Fever Centre',
+		'headline' => 'Need a Yellow Fever Certificate?',
+		'accent'   => 'Bosmere Pharmacy, Havant.',
+		'body'     => 'Many African countries require proof of Yellow Fever vaccination for entry. Our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates &mdash; and your certificate only becomes valid <strong class="text-slate-900">10 days after vaccination</strong>, so book early.',
+		'points'   => [ 'ICVP certificates issued on-site', 'Lifetime validity — one dose', 'Bosmere Pharmacy, Havant only' ],
+		'cta'      => 'Book Yellow Fever at Bosmere',
+		'cta_url'  => home_url( '/yellow-fever/#book' ),
+	],
 	// Pricing hidden until confirmed Africa prices are available (all £TBC otherwise).
 	'show_pricing'    => false,
 	// "Popular African destinations" image cards (region page -> country pages).

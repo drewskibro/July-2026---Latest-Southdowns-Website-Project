@@ -597,6 +597,7 @@ add_filter( 'use_block_editor_for_post', function( bool $use_block_editor, \WP_P
         'page-templates/page-wegovy-pill.php',
         // Travel vaccine destination pages
         'page-templates/page-africa-travel-vaccines.php',
+        'page-templates/page-caribbean-travel-vaccines.php',
         'page-templates/page-cape-verde-travel-vaccines.php',
         'page-templates/page-india-travel-vaccines.php',
         'page-templates/page-kenya-travel-vaccines.php',

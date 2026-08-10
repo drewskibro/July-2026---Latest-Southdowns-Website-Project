@@ -377,7 +377,10 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         ['South America &amp; Antarctica', 'https://c.animaapp.com/mmkd7a1dRSnHAj/assets/South-America-Antartica.webp', '6 recommended vaccines'],
       ], [ 0 => 'name', 2 => 'subtitle' ] );
       // Region cards default to the travel hub; regions with a dedicated page override here.
-      $region_links = [ 'Africa' => '/africa-travel-vaccinations/' ];
+      $region_links = [
+        'Africa'    => '/africa-travel-vaccinations/',
+        'Caribbean' => '/caribbean-travel-vaccinations/',
+      ];
       foreach ( $destinations as $d ) : ?>
       <a href="<?php echo esc_url( home_url( $region_links[ $d[0] ] ?? '/travel-vaccinations/' ) ); ?>" class="group block">
         <div class="relative overflow-hidden rounded-2xl mb-4 shadow-lg">
