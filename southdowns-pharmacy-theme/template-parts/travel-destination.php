@@ -24,9 +24,10 @@ $tv_tpl = wp_parse_args( $tv_tpl ?? [], [
 	'spotlight_image' => '',
 	'spotlight_alt'   => '',
 	'embed_calendar'  => false,
-	'yf_band'         => false, // full-width Yellow Fever / Bosmere callout band after the vaccines section
+	'feature_band'    => [],    // full-width themed callout after the vaccines section (see S3.5)
 	'related'         => [],    // related destination cards: [ [name, desc, url, img], ... ]
 	'show_pricing'    => true,  // S8 pricing section; disable while a destination has no confirmed prices
+	'show_packages'   => true,  // package cards within S8; disable where package prices aren't confirmed
 ] );
 if ( '' === $tv_tpl['spotlight_image'] ) {
 	$tv_tpl['spotlight_image'] = $tv_tpl['hero_image'];
@@ -279,6 +280,7 @@ $tv = tv_data();
       'Required Vaccines'    => [ 'subhead' => 'May be mandatory depending on your route',      'colour' => 'rose' ],
       'Entry Requirements'   => [ 'subhead' => 'May apply depending on your route',            'colour' => 'rose' ],
       'Antimalarial Protection' => [ 'subhead' => 'Important — malaria protection for this destination', 'colour' => 'amber' ],
+      'Also Worth Discussing' => [ 'subhead' => 'Ask our pharmacists whether these apply to your trip', 'colour' => 'blue' ],
     ];
 
     /* Colour helper for category tags (light palette) */
@@ -355,35 +357,56 @@ $tv = tv_data();
 
 
 <!-- ═══════════════════════════════════════════════════════
-     S3.5 · YELLOW FEVER BAND (amber, optional via yf_band)
+     S3.5 · FEATURE BAND (optional via feature_band; themes: yellow | teal)
 ════════════════════════════════════════════════════════ -->
-<?php if ( ! empty( $tv_tpl['yf_band'] ) ) : ?>
-<section class="relative py-16 md:py-20 overflow-hidden" style="background: linear-gradient(135deg,#fef9c3 0%,#fde68a 45%,#fbbf24 100%);">
+<?php
+if ( ! empty( $tv_tpl['feature_band'] ) ) :
+	$fb = wp_parse_args( $tv_tpl['feature_band'], [
+		'theme'    => 'yellow', // 'yellow' (Yellow Fever) | 'teal' (Dengue)
+		'eyebrow'  => '',
+		'headline' => '',
+		'accent'   => '',       // second half of the headline, in the accent colour
+		'body'     => '',
+		'points'   => [],
+		'cta'      => '',
+		'cta_url'  => '',
+	] );
+	$fb_themes = [
+		'yellow' => [ 'bg' => 'linear-gradient(135deg,#fef9c3 0%,#fde68a 45%,#fbbf24 100%)', 'chip' => 'text-amber-900 border-amber-500/40', 'accent' => 'text-amber-900', 'tick' => 'text-amber-800' ],
+		'teal'   => [ 'bg' => 'linear-gradient(135deg,#ccfbf1 0%,#5eead4 45%,#2dd4bf 100%)', 'chip' => 'text-teal-900 border-teal-600/40',  'accent' => 'text-teal-900',  'tick' => 'text-teal-800' ],
+	];
+	$fbt = $fb_themes[ $fb['theme'] ] ?? $fb_themes['yellow'];
+?>
+<section class="relative py-16 md:py-20 overflow-hidden" style="background: <?php echo esc_attr( $fbt['bg'] ); ?>;">
   <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(255,255,255,0.5) 0%,transparent 70%);"></div>
   <div class="section-container relative z-10">
     <div class="grid lg:grid-cols-[1fr_auto] gap-10 items-center">
       <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-jost uppercase tracking-wider mb-5 bg-white/70 text-amber-900 border border-amber-500/40 shadow-sm">
+        <?php if ( $fb['eyebrow'] ) : ?>
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-jost uppercase tracking-wider mb-5 bg-white/70 border shadow-sm <?php echo esc_attr( $fbt['chip'] ); ?>">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-          NaTHNaC-Registered Yellow Fever Centre
+          <?php echo esc_html( $fb['eyebrow'] ); ?>
         </span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 font-jost leading-tight">Need a Yellow Fever Certificate? <span class="text-amber-900">Bosmere Pharmacy, Havant.</span></h2>
-        <p class="text-slate-800 text-lg font-jost leading-relaxed max-w-2xl mb-6">Many African countries require proof of Yellow Fever vaccination for entry. Our Bosmere branch is an officially designated Yellow Fever Vaccination Centre issuing valid ICVP certificates &mdash; and your certificate only becomes valid <strong class="text-slate-900">10 days after vaccination</strong>, so book early.</p>
+        <?php endif; ?>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 font-jost leading-tight"><?php echo esc_html( $fb['headline'] ); ?> <span class="<?php echo esc_attr( $fbt['accent'] ); ?>"><?php echo esc_html( $fb['accent'] ); ?></span></h2>
+        <p class="text-slate-800 text-lg font-jost leading-relaxed max-w-2xl mb-6"><?php echo wp_kses( $fb['body'], [ 'strong' => [ 'class' => [] ] ] ); ?></p>
         <div class="flex flex-wrap gap-x-6 gap-y-2 text-slate-800 text-sm font-semibold font-jost">
-          <?php foreach ( [ 'ICVP certificates issued on-site', 'Lifetime validity — one dose', 'Bosmere Pharmacy, Havant only' ] as $yf_point ) : ?>
+          <?php foreach ( $fb['points'] as $fb_point ) : ?>
           <span class="inline-flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-amber-800 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            <?php echo esc_html( $yf_point ); ?>
+            <svg class="w-4 h-4 flex-shrink-0 <?php echo esc_attr( $fbt['tick'] ); ?>" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            <?php echo esc_html( $fb_point ); ?>
           </span>
           <?php endforeach; ?>
         </div>
       </div>
+      <?php if ( $fb['cta'] ) : ?>
       <div class="flex lg:justify-end">
-        <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) . '#book' ); ?>" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:bg-slate-800 transition-colors shadow-xl text-base font-jost whitespace-nowrap">
-          Book Yellow Fever at Bosmere
+        <a href="<?php echo esc_url( $fb['cta_url'] ); ?>" class="inline-flex items-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:bg-slate-800 transition-colors shadow-xl text-base font-jost whitespace-nowrap">
+          <?php echo esc_html( $fb['cta'] ); ?>
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
+      <?php endif; ?>
     </div>
   </div>
 </section>
@@ -584,7 +607,8 @@ $tv = tv_data();
       <p class="text-slate-600 text-lg max-w-2xl mx-auto font-jost"><?php echo sp_field( 'tv_price_intro', $tv['tv_price_intro'] ); ?></p>
     </div>
 
-    <!-- Package cards -->
+    <!-- Package cards (hidden where package prices aren't confirmed) -->
+    <?php if ( ! empty( $tv_tpl['show_packages'] ) ) : ?>
     <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
 
       <!-- Package 1: Essential -->
@@ -631,6 +655,8 @@ $tv = tv_data();
         </div>
       </div>
     </div>
+
+    <?php endif; ?>
 
     <!-- Individual vaccine pricing -->
     <div class="max-w-4xl mx-auto bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-8">
