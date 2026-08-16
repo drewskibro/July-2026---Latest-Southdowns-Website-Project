@@ -379,7 +379,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       // Region cards default to the travel hub; regions with a dedicated page override here.
       $region_links = [
         'Africa'                => '/africa-travel-vaccinations/',
-        'Australasia & Pacific' => '/australasia-pacific-travel-vaccinations/',
+        'Australasia & Pacific' => '/australasia-and-pacific-travel-vaccinations/',
         'Caribbean'             => '/caribbean-travel-vaccinations/',
       ];
       foreach ( $destinations as $d ) : ?>
@@ -480,13 +480,18 @@ $testimonials = sp_rows( 'home_testimonials', [
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       <?php
+      // Index 4 is the article URL — cards link straight to the post (falls back
+      // to the blog index if empty). All five values are client-editable via
+      // Home Page Content → Articles.
       $articles = sp_rows( 'home_articles', [
-        ['https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop', 'Weight Loss', 'Mounjaro vs Wegovy: What the Clinical Trials Actually Show', '"My GP mentioned Wegovy. But my friend lost loads of weight on Mounjaro. Are they the same thing? Should I ask for the other one?...'],
-        ['https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=400&fit=crop', 'Weight Loss', 'Mounjaro Side Effects: What to Expect at Your Monthly Review', "How Southdowns Pharmacy's face-to-face clinical support helps patients across Hampshire manage their weight loss journey with confidence..."],
-        ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop', 'Weight Loss', "Why Most Hampshire Patients Wish They'd Started Mounjaro Sooner", 'The weight loss treatment that makes people say "I should have started this sooner" — now available across Hampshire...'],
-      ], [ 1 => 'category', 2 => 'title', 3 => 'excerpt' ] );
-      foreach ( $articles as $a ) : ?>
-      <a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+        ['https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&h=400&fit=crop', 'Blood Tests', 'Thyroid Function Testing in Hampshire', 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Davies Pharmacy, Havant...', '/thyroid-test-hampshire/'],
+        ['https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&h=400&fit=crop', 'Blood Tests', 'Understanding Your Blood Test Results', 'What do all those numbers and abbreviations actually mean? A plain-English guide to reading your results and knowing what to do next...', '/understanding-blood-test-results/'],
+        ['https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=400&fit=crop', 'Blood Tests', 'Type 2 Diabetes Screening: Should You Get Tested?', 'Type 2 diabetes often develops with no obvious symptoms. A simple screening check can tell you your risk — no GP referral needed...', '/diabetes-blood-test-hampshire/'],
+      ], [ 0 => 'image', 1 => 'category', 2 => 'title', 3 => 'excerpt', 4 => 'url' ] );
+      foreach ( $articles as $a ) :
+        $a_url = ! empty( $a[4] ) ? home_url( $a[4] ) : home_url( '/blog/' );
+      ?>
+      <a href="<?php echo esc_url( $a_url ); ?>" class="group block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
         <div class="relative overflow-hidden aspect-[3/2]">
           <img src="<?php echo esc_url( $a[0] ); ?>" alt="<?php echo esc_attr( $a[2] ); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
           <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider"><?php echo esc_html( $a[1] ); ?></span>
