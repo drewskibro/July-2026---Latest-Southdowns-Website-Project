@@ -311,8 +311,25 @@ $why_icons = [
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:15%;transform:translateX(-50%);">
       <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
     </div>
+    <?php
+    /*
+     * Centre roundel — built in-theme rather than an uploaded image.
+     * Replaces a previous "Average 15-20kg weight loss" badge, which made an
+     * unsubstantiated outcome claim that copy edits could not reach (it was
+     * baked into an image) and was hotlinked from the staging domain.
+     */
+    ?>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <img src="https://southdownspharmacygroup.kinsta.cloud/wp-content/uploads/2026/04/Untitled-design-5.png" alt="Medical Weight Loss" class="w-[130px] h-[130px] object-cover drop-shadow-lg rounded-full" />
+      <div class="w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center px-3 drop-shadow-lg"
+           style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 55%,#3b82f6 100%);box-shadow:0 0 0 3px rgba(29,78,216,0.45),0 0 0 6px rgba(255,255,255,0.55),0 8px 24px rgba(15,23,42,0.28);"
+           role="img" aria-label="GPhC registered pharmacist prescribers">
+        <svg class="w-5 h-5 text-blue-100 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span class="text-white font-extrabold leading-none font-jost" style="font-size:22px;letter-spacing:0.01em;">GPhC</span>
+        <span class="text-white font-bold leading-tight font-jost mt-0.5" style="font-size:10.5px;letter-spacing:0.08em;">REGISTERED</span>
+        <span class="text-blue-100 font-semibold leading-tight font-jost mt-1" style="font-size:9.5px;">Pharmacist Prescribers</span>
+      </div>
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:15%;transform:translateX(-50%);">
       <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[130px] h-[130px] object-contain drop-shadow-lg" />
