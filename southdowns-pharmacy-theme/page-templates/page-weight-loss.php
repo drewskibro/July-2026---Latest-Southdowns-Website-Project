@@ -6,56 +6,58 @@
  */
 get_header();
 $booking_url = sp_booking_url();
-$phone_raw   = sp_phone_raw();
-$phone       = sp_phone();
+// No phone number is shown on this page by design — enquiries route through the
+// free consultation booking so that clinical questions are answered in person.
 
 $hero_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop';
-$hero_headline  = sp_field( 'wl_hero_headline',  'Lose 10&ndash;20% of your body weight in 12 months &mdash; with prescription support at your local Hampshire pharmacy' );
-$hero_body      = sp_field( 'wl_hero_body',      'Mounjaro and Wegovy prescriptions from our Hampshire pharmacists. No GP referral. No long waits. Expert face-to-face care at Emsworth, Havant &amp; Rowlands Castle.' );
+$hero_headline  = sp_field( 'wl_hero_headline',  'Clinically supervised weight loss at your local Hampshire pharmacy' );
+$hero_body      = sp_field( 'wl_hero_body',      'Prescription weight management with Mounjaro or Wegovy, assessed and monitored face-to-face by our GPhC-registered pharmacists. Treatment is prescribed only where clinically appropriate following a full assessment. No GP referral needed.' );
 $hero_badge     = sp_field( 'wl_hero_badge_text', 'Medical Weight Loss &middot; Hampshire' );
 
 $science_eyebrow      = sp_field( 'wl_science_eyebrow',      'Clinical Evidence' );
-$science_headline     = sp_field( 'wl_science_headline',     'Why diets alone fail &mdash; the science in one chart' );
-$science_subhead      = sp_field( 'wl_science_subhead',      'In randomised trials, GLP-1 receptor agonists produce sustained weight loss that lifestyle intervention alone rarely achieves. The contrast is not subtle.' );
-$science_citation     = sp_field( 'wl_science_citation',     'Data adapted from the STEP-1 trial (Wilding et al., <em>N Engl J Med</em> 2021) and naturalistic dieting studies published in <em>Obesity Reviews</em>.' );
-$science_quote        = sp_field( 'wl_science_quote',        'Patients on GLP-1 therapy describe something dieting never gave them &mdash; relief from the constant thinking about food. That is what makes the weight loss sustainable.' );
+$science_headline     = sp_field( 'wl_science_headline',     'What the clinical evidence shows' );
+$science_subhead      = sp_field( 'wl_science_subhead',      'In randomised trials, GLP-1 receptor agonists produced greater average weight loss than lifestyle intervention alone. Individual results vary, and these medicines are licensed as an adjunct to a reduced-calorie diet and increased physical activity.' );
+$science_citation     = sp_field( 'wl_science_citation',     'STEP-1 trial (Wilding et al., <em>N Engl J Med</em> 2021): mean weight change over 68 weeks was &minus;14.9% with semaglutide 2.4mg versus &minus;2.4% with placebo. <strong>Both groups received the same lifestyle intervention.</strong> Trial averages are not a prediction of individual results.' );
+$science_quote        = sp_field( 'wl_science_quote',        'Patients on GLP-1 therapy often describe something dieting never gave them &mdash; relief from the constant thinking about food, which many find easier to sustain.' );
 $science_quote_author = sp_field( 'wl_science_quote_author', 'Alex Chen, MPharm' );
 $science_quote_role   = sp_field( 'wl_science_quote_role',   'Lead Pharmacist, Southdowns Pharmacy' );
 
-$mounjaro_price = sp_field( 'wl_mounjaro_price', 'From &pound;156.50/month including pharmacist support' );
-$wegovy_price   = sp_field( 'wl_wegovy_price',   'From &pound;140/month including pharmacist support' );
+// Costs are confirmed at consultation rather than advertised alongside efficacy
+// information. Leave these empty to keep that convention.
+$mounjaro_price = sp_field( 'wl_mounjaro_price', '' );
+$wegovy_price   = sp_field( 'wl_wegovy_price',   '' );
 
 // Treatments (S4)
 $treatments_eyebrow     = sp_field( 'wl_treatments_eyebrow',     'Prescription Treatments' );
-$treatments_headline    = sp_field( 'wl_treatments_headline',    'Clinically proven weight loss medications' );
-$treatments_subhead     = sp_field( 'wl_treatments_subhead',     'Our GPhC-registered pharmacists prescribe the two most effective GLP-1 medications available in the UK, tailored to your health profile.' );
+$treatments_headline    = sp_field( 'wl_treatments_headline',    'The medicines we prescribe' );
+$treatments_subhead     = sp_field( 'wl_treatments_subhead',     'Our GPhC-registered pharmacists prescribe two UK-licensed GLP-1 medicines. Which one is appropriate &mdash; if either is &mdash; depends on your health profile and is decided at your assessment.' );
 $treatments_cta_label   = sp_field( 'wl_treatments_cta_label',   'Book Free Consultation' );
-$treatments_eligibility = sp_field( 'wl_treatments_eligibility', '<strong>Eligibility:</strong> You must have a BMI of 30 or above, or 27+ with a weight-related health condition such as type 2 diabetes or hypertension. Our pharmacists will assess your suitability at your free consultation.' );
+$treatments_eligibility = sp_field( 'wl_treatments_eligibility', '<strong>Eligibility:</strong> You must have a BMI of 30 or above, or 27+ with a weight-related health condition such as type 2 diabetes or hypertension. These medicines are not suitable for everyone &mdash; our pharmacists will assess your suitability, and may advise that treatment is not appropriate for you. Costs are confirmed at your free consultation.' );
 
 $mounjaro_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_mounjaro_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80&auto=format&fit=crop';
 $mounjaro_image_alt = sp_field( 'wl_mounjaro_image_alt', 'Mounjaro weight loss injection' );
-$mounjaro_badge     = sp_field( 'wl_mounjaro_badge',     'Most Popular' );
+$mounjaro_badge     = sp_field( 'wl_mounjaro_badge',     '' );
 $mounjaro_name      = sp_field( 'wl_mounjaro_name',      'Mounjaro&reg;' );
 $mounjaro_subtitle  = sp_field( 'wl_mounjaro_subtitle',  'Tirzepatide &middot; GIP &amp; GLP-1 receptor agonist' );
-$mounjaro_body      = sp_field( 'wl_mounjaro_body',      'The newest and most effective medication available. Mounjaro targets two hormones simultaneously, producing up to <strong>22.5% weight loss</strong> in clinical trials &mdash; more than any other approved treatment.' );
-$mounjaro_bullets_raw = sp_field( 'wl_mounjaro_bullets', "Weekly self-injection, 2.5mg starting dose\nDual-action: reduces appetite &amp; improves insulin sensitivity\nMHRA-approved for BMI &ge;30, or &ge;27 with comorbidities" );
+$mounjaro_body      = sp_field( 'wl_mounjaro_body',      'Tirzepatide acts on two gut hormone receptors (GIP and GLP-1), which reduces appetite. In the SURMOUNT-1 trial, participants taking the maximum 15mg dose lost an average of up to 22.5% of body weight over 72 weeks. Trial averages are not a prediction of individual results.' );
+$mounjaro_bullets_raw = sp_field( 'wl_mounjaro_bullets', "Weekly self-injection, starting at 2.5mg and titrated gradually\nReduces appetite and affects insulin sensitivity\nUK-licensed for BMI &ge;30, or &ge;27 with a weight-related condition\nPrescribed only where clinically appropriate following assessment" );
 $mounjaro_bullets   = array_values( array_filter( array_map( 'trim', preg_split( "/\r\n|\r|\n/", (string) $mounjaro_bullets_raw ) ) ) );
 if ( $mounjaro_price ) { $mounjaro_bullets[] = $mounjaro_price; }
 
 $wegovy_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_wegovy_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&auto=format&fit=crop';
 $wegovy_image_alt = sp_field( 'wl_wegovy_image_alt', 'Wegovy weight loss injection' );
-$wegovy_badge     = sp_field( 'wl_wegovy_badge',     'Well Established' );
+$wegovy_badge     = sp_field( 'wl_wegovy_badge',     '' );
 $wegovy_name      = sp_field( 'wl_wegovy_name',      'Wegovy&reg;' );
 $wegovy_subtitle  = sp_field( 'wl_wegovy_subtitle',  'Semaglutide &middot; GLP-1 receptor agonist' );
-$wegovy_body      = sp_field( 'wl_wegovy_body',      'The gold-standard GLP-1 medication with an extensive clinical track record. SUSTAIN and STEP trial data show up to <strong>15% body weight reduction</strong> &mdash; a major advance over lifestyle intervention alone.' );
-$wegovy_bullets_raw = sp_field( 'wl_wegovy_bullets', "Weekly self-injection, 0.25mg starting dose\nMimics natural GLP-1 hormone to suppress appetite\nMHRA-approved for BMI &ge;30, or &ge;27 with comorbidities" );
+$wegovy_body      = sp_field( 'wl_wegovy_body',      'Semaglutide mimics the natural GLP-1 hormone to reduce appetite, and has a long clinical track record. In the STEP-1 trial, participants taking 2.4mg lost an average of 14.9% of body weight over 68 weeks, compared with 2.4% on placebo. Trial averages are not a prediction of individual results.' );
+$wegovy_bullets_raw = sp_field( 'wl_wegovy_bullets', "Weekly self-injection, starting at 0.25mg and titrated gradually\nMimics the natural GLP-1 hormone to reduce appetite\nUK-licensed for BMI &ge;30, or &ge;27 with a weight-related condition\nPrescribed only where clinically appropriate following assessment" );
 $wegovy_bullets   = array_values( array_filter( array_map( 'trim', preg_split( "/\r\n|\r|\n/", (string) $wegovy_bullets_raw ) ) ) );
 if ( $wegovy_price ) { $wegovy_bullets[] = $wegovy_price; }
 
 // Testimonials (S7)
 $testimonials_eyebrow  = sp_field( 'wl_testimonials_eyebrow',  'Patient Stories' );
 $testimonials_headline = sp_field( 'wl_testimonials_headline', 'Real patients, real results' );
-$testimonials_subhead  = sp_field( 'wl_testimonials_subhead',  'Hundreds of Hampshire patients have transformed their health through our medical weight loss programme.' );
+$testimonials_subhead  = sp_field( 'wl_testimonials_subhead',  'What Hampshire patients say about the care they receive on our weight management programme. Individual results vary.' );
 
 $testimonials_reviews_raw = function_exists( 'get_field' ) ? get_field( 'wl_testimonials_reviews' ) : null;
 $testimonials_reviews     = ! empty( $testimonials_reviews_raw ) ? $testimonials_reviews_raw : [
@@ -85,7 +87,7 @@ $testimonials_trust_icons = [
 // FAQ (S10)
 $faq_eyebrow   = sp_field( 'wl_faq_eyebrow',   'FAQs' );
 $faq_headline  = sp_field( 'wl_faq_headline',  'Common questions about medical weight loss' );
-$faq_intro     = sp_field( 'wl_faq_intro',     'Everything you need to know before starting your journey. Can&rsquo;t find your answer? Call us free.' );
+$faq_intro     = sp_field( 'wl_faq_intro',     'Everything you need to know before starting. Can&rsquo;t find your answer? Ask us at your free consultation.' );
 $faq_cta_label = sp_field( 'wl_faq_cta_label', 'Book Free Consultation' );
 
 $faq_stats_raw = function_exists( 'get_field' ) ? get_field( 'wl_faq_stats' ) : null;
@@ -98,32 +100,36 @@ $faq_stats     = ! empty( $faq_stats_raw ) ? $faq_stats_raw : [
 $faq_items_raw = function_exists( 'get_field' ) ? get_field( 'wl_faq_items' ) : null;
 $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
     [ 'question' => 'Am I eligible for weight loss injections?',
-      'answer'   => 'You are generally eligible if you have a BMI of 30 or above, or a BMI of 27 or above alongside a weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol or sleep apnoea. Our pharmacists will carry out a full assessment at your free consultation to confirm eligibility.' ],
+      'answer'   => 'You may be eligible if you have a BMI of 30 or above, or a BMI of 27 or above alongside a weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol or sleep apnoea. Meeting the BMI criteria does not automatically mean treatment is suitable &mdash; our pharmacists carry out a full assessment of your medical history and current medicines, and may advise that these medicines are not appropriate for you.' ],
+    [ 'question' => 'Who should not take these medicines?',
+      'answer'   => 'These medicines are not suitable for everyone. They should not be used if you are pregnant, breastfeeding or trying to conceive, or if you have a personal or family history of medullary thyroid carcinoma or multiple endocrine neoplasia type 2. Tell your pharmacist if you have ever had pancreatitis, gallbladder disease, severe kidney or liver problems, diabetic retinopathy, or an eating disorder. Always tell us about every medicine you take, including insulin and sulphonylureas.' ],
+    [ 'question' => 'Do I still need to diet and exercise?',
+      'answer'   => 'Yes. These medicines are licensed as an adjunct to a reduced-calorie diet and increased physical activity &mdash; they are not a replacement for either. The medicine helps make those changes more achievable, and we provide dietary and lifestyle advice as part of your monthly reviews.' ],
     [ 'question' => 'What is the difference between Mounjaro and Wegovy?',
-      'answer'   => 'Both are weekly self-injections that reduce appetite, but they work differently. Mounjaro (tirzepatide) targets two hormones &mdash; GIP and GLP-1 &mdash; and tends to produce greater weight loss (up to 22.5% in trials). Wegovy (semaglutide) targets GLP-1 only and has a longer clinical track record. Our pharmacists will recommend the right option based on your health history and goals.' ],
+      'answer'   => 'Both are weekly self-injections that reduce appetite, but they work differently. Mounjaro (tirzepatide) acts on two hormone receptors, GIP and GLP-1. Wegovy (semaglutide) acts on GLP-1 only and has a longer clinical track record. Which is appropriate for you &mdash; if either is &mdash; depends on your health history, other medicines and how you tolerate treatment. Your pharmacist will discuss this with you.' ],
     [ 'question' => 'Do I need a GP referral?',
-      'answer'   => 'No. Our GPhC-registered pharmacists are independent prescribers who can assess your suitability and issue a prescription directly &mdash; without a GP referral or NHS waiting list. You can book, consult and start treatment all on the same day.' ],
+      'answer'   => 'No. Our GPhC-registered pharmacist prescribers can assess your suitability and, where clinically appropriate, issue a prescription directly &mdash; without a GP referral or NHS waiting list. With your consent we will also keep your GP informed.' ],
     [ 'question' => 'How much weight can I expect to lose?',
-      'answer'   => 'Clinical trials show that patients typically lose 10&ndash;20% of their body weight over 12 months. Results vary by individual and depend on consistent use, diet, activity and adherence to the programme. Most patients notice a meaningful reduction in appetite and begin losing weight within the first 4&ndash;8 weeks.' ],
+      'answer'   => 'We cannot predict individual results. In clinical trials, average weight loss over roughly a year ranged from about 15% with semaglutide to up to 22.5% with the maximum dose of tirzepatide. Those are averages across trial populations, not a guarantee &mdash; some people lose more, some lose less, and some do not respond. Results depend on consistent use alongside diet and activity changes.' ],
     [ 'question' => 'What are the common side effects?',
-      'answer'   => 'The most common side effects are nausea, constipation, diarrhoea and reduced appetite, particularly in the first few weeks as your body adjusts to the medication. These are usually mild and temporary. Our pharmacists provide detailed advice on managing side effects and can adjust your dose if needed.' ],
+      'answer'   => 'The most common side effects are nausea, vomiting, diarrhoea, constipation and reduced appetite, particularly in the first few weeks and after each dose increase. These are usually mild and settle. Less common but more serious effects include pancreatitis and gallbladder problems &mdash; we will explain the warning signs to look out for. Always read the patient information leaflet that comes with your medicine, and tell us about any side effects you experience.' ],
     [ 'question' => 'How much does the programme cost?',
-      'answer'   => 'Your initial consultation is completely free. Monthly treatment costs start from &pound;140 and include your medication, the prescribing consultation and ongoing pharmacist support. Pricing varies by medication and dose. We will provide a full cost breakdown at your free consultation before you commit to anything.' ],
+      'answer'   => 'Your initial consultation is completely free, with no obligation. Treatment costs vary depending on the medicine and dose prescribed, and include your medication, the prescribing consultation and ongoing pharmacist support. We will give you a full cost breakdown at your consultation before you decide whether to go ahead.' ],
     [ 'question' => 'Can I use weight loss injections if I have type 2 diabetes?',
-      'answer'   => 'Yes, and GLP-1 medications can be particularly beneficial for people with type 2 diabetes, as they also improve blood sugar control. However, your pharmacist will review your current medications and medical history carefully to ensure safety and appropriate dosing, particularly if you are taking insulin or sulphonylureas.' ],
+      'answer'   => 'Possibly, but it needs careful assessment. GLP-1 medicines can affect blood sugar control, so your pharmacist will review your current medicines and medical history thoroughly &mdash; particularly if you take insulin or sulphonylureas, where doses may need adjusting to reduce the risk of hypoglycaemia. We will coordinate with your GP or diabetes team where appropriate.' ],
     [ 'question' => 'What happens when I reach my goal weight?',
-      'answer'   => 'When you reach your goal weight, our pharmacists will work with you on a structured exit plan to help maintain your results. This may involve a gradual dose reduction, lifestyle coaching and dietary advice. Our goal is to give you the tools to maintain a healthy weight long after completing the programme.' ],
+      'answer'   => 'We will work with you on a structured plan to help maintain your progress, which may involve a gradual dose reduction alongside lifestyle and dietary advice. Weight regain after stopping is common, so we will talk openly with you about what to expect and how to plan for it.' ],
 ];
 
 // S5 Benefits — client-editable (Weight Loss → Benefits / Steps / Why). Card icons stay in code, by position.
 $benefits_raw = function_exists( 'get_field' ) ? get_field( 'wl_benefits' ) : null;
 $benefits     = ! empty( $benefits_raw ) ? $benefits_raw : [
-    [ 'image' => 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop', 'title' => 'Significant weight loss',        'desc' => '10&ndash;20% of body weight lost over 12 months, with most patients seeing results within the first 4 weeks.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop', 'title' => 'Improved blood sugar control',  'desc' => 'GLP-1 medications improve insulin sensitivity, helping to prevent or manage type 2 diabetes alongside weight loss.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop', 'title' => 'More energy, less fatigue',      'desc' => 'Patients consistently report better energy levels, improved sleep quality and greater motivation for exercise.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop', 'title' => 'Reduced cardiovascular risk',   'desc' => 'Lower blood pressure, improved cholesterol levels and reduced strain on your heart as you reach a healthier weight.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop', 'title' => 'Better mental wellbeing',       'desc' => 'Improved self-confidence, reduced anxiety around food and a greater sense of control over your health and body.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop', 'title' => 'Reduced joint pain',           'desc' => 'Less weight means less pressure on knees, hips and ankles &mdash; many patients report significantly reduced joint pain within months.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop', 'title' => 'Gradual weight loss',           'desc' => 'In clinical trials, average weight loss over roughly a year ranged from about 15% to 22.5% depending on the medicine and dose. Results vary considerably, and not everyone responds.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop', 'title' => 'Blood sugar control',           'desc' => 'GLP-1 medicines can affect insulin sensitivity and may support blood sugar control. Your pharmacist will advise what this means for you, particularly if you already take diabetes medication.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop', 'title' => 'Energy and sleep',              'desc' => 'Many patients tell us they notice better energy levels, improved sleep and more motivation to be active as their weight reduces.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop', 'title' => 'Wider health markers',          'desc' => 'Reaching a healthier weight can help with blood pressure and cholesterol. We monitor these at your monthly reviews and refer you to your GP where appropriate.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop', 'title' => 'Feeling more in control',       'desc' => 'Many patients describe feeling calmer around food and more in control of their eating &mdash; often the change they value most.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop', 'title' => 'Less pressure on joints',       'desc' => 'Carrying less weight means less load on knees, hips and ankles. Some patients report this makes everyday movement more comfortable.' ],
 ];
 $benefit_icons = [
     '<path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>',
@@ -137,10 +143,10 @@ $benefit_icons = [
 // S6 Steps — client-editable. Numbers + alternating colours stay in code, by position.
 $steps_raw = function_exists( 'get_field' ) ? get_field( 'wl_steps' ) : null;
 $steps     = ! empty( $steps_raw ) ? $steps_raw : [
-    [ 'title' => 'Free consultation', 'desc' => 'Book a same-day appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, BMI and health goals to recommend the right treatment.' ],
-    [ 'title' => 'Same-day prescription &amp; injection training', 'desc' => 'If eligible, your prescription is issued the same day. We show you exactly how to self-administer your weekly injection safely and confidently.' ],
-    [ 'title' => 'Monthly check-ins &amp; dose adjustments', 'desc' => 'Return monthly for weight monitoring, blood pressure checks and dose titration. We adjust your medication as needed to maximise results and minimise side effects.' ],
-    [ 'title' => 'Reach your goal &amp; maintain results', 'desc' => 'At your goal weight, we guide you through a structured exit plan to help you maintain your results long-term, with lifestyle advice and ongoing support.' ],
+    [ 'title' => 'Free consultation &amp; assessment', 'desc' => 'Book an appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, medication, measured BMI and health goals to decide whether treatment is appropriate.' ],
+    [ 'title' => 'Assessment outcome', 'desc' => 'If treatment is clinically appropriate, your prescription can be issued the same day and we will show you how to self-administer your weekly injection safely. If it is not suitable, we will explain why and talk through the alternatives.' ],
+    [ 'title' => 'Monthly reviews &amp; dose adjustments', 'desc' => 'Return monthly for weight monitoring, blood pressure checks and dose titration. We adjust your medication as needed and review how you are tolerating it.' ],
+    [ 'title' => 'Maintaining your progress', 'desc' => 'We work with you on a structured plan to help maintain your progress, with lifestyle and dietary advice alongside ongoing pharmacist support.' ],
 ];
 $step_styles = [
     [ 'card' => 'bg-blue-50 hover:bg-blue-100', 'num' => 'background-color:#1a73e9;' ],
@@ -151,11 +157,11 @@ $step_styles = [
 $why_cards_raw = function_exists( 'get_field' ) ? get_field( 'wl_why_cards' ) : null;
 $why_cards     = ! empty( $why_cards_raw ) ? $why_cards_raw : [
     [ 'title' => 'GPhC-Registered',           'desc' => 'All prescribers are General Pharmaceutical Council registered. Your safety and clinical standards are never compromised.' ],
-    [ 'title' => 'Same-Day Prescriptions',    'desc' => 'No waiting lists, no GP referrals. Book a free consultation online and start your weight loss programme the same day.' ],
+    [ 'title' => 'Same-Day Assessments',      'desc' => 'No waiting lists and no GP referral. Book a free consultation online and be assessed the same day &mdash; treatment follows only where it is clinically appropriate.' ],
     [ 'title' => 'Face-to-Face Care',         'desc' => "Unlike online services, our pharmacists see you in person every month &mdash; monitoring progress, adjusting doses and answering your questions." ],
-    [ 'title' => '4 Hampshire Locations',     'desc' => 'Emsworth, Havant and Rowlands Castle &mdash; with free parking. Always a convenient branch near you.' ],
+    [ 'title' => '4 Hampshire Locations',     'desc' => 'Bosmere and Davies in Havant, plus Emsworth and Rowlands Castle &mdash; with free parking. Always a convenient branch near you.' ],
     [ 'title' => 'MHRA-Approved Medications', 'desc' => 'We only prescribe UK-licensed, MHRA-approved medications. No compounded or unregulated products &mdash; ever.' ],
-    [ 'title' => '10,000+ Patients Served',   'desc' => 'Over a decade serving Hampshire communities. Our 4.9-star rating reflects the care and trust we build with every patient.' ],
+    [ 'title' => 'Rooted in Hampshire',       'desc' => 'A local independent pharmacy group serving Hampshire communities, with care built on long-term relationships rather than one-off transactions.' ],
 ];
 $why_icons = [
     '<path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
@@ -324,10 +330,10 @@ $why_icons = [
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 
-      <!-- Card 1: Patients Treated -->
+      <!-- Card 1: MHRA-approved medicines only -->
       <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="1">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">10,000+</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Patients Treated</div>
+        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">MHRA</div>
+        <div class="text-sm text-blue-100 font-medium font-jost">Approved Medicines Only</div>
         <div class="mt-3 flex justify-center">
           <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
@@ -335,10 +341,10 @@ $why_icons = [
         </div>
       </div>
 
-      <!-- Card 2: Body Weight Lost -->
+      <!-- Card 2: Monthly face-to-face reviews -->
       <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="2">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">10–20%</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Body Weight Lost</div>
+        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">Monthly</div>
+        <div class="text-sm text-blue-100 font-medium font-jost">Face-to-Face Reviews</div>
         <div class="mt-3 flex justify-center">
           <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/>
@@ -411,8 +417,8 @@ $why_icons = [
     <!-- Animated chart -->
     <figure class="yf-reveal sci-chart-wrap mb-6">
       <svg class="sci-chart" viewBox="0 0 860 400" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sci-chart-title sci-chart-desc">
-        <title id="sci-chart-title">Body weight change over 12 months: diet alone vs GLP-1 medication</title>
-        <desc id="sci-chart-desc">Line chart: traditional dieting stays near 100% starting weight with yo-yo oscillation; GLP-1 medication descends smoothly to ~83% by 12 months.</desc>
+        <title id="sci-chart-title">Mean body weight change over 68 weeks in the STEP-1 trial: placebo plus lifestyle versus semaglutide plus lifestyle</title>
+        <desc id="sci-chart-desc">Line chart of mean body weight as a percentage of starting weight. The placebo plus lifestyle group stays near 100 percent; the semaglutide plus lifestyle group descends to about 85 percent by week 68.</desc>
 
         <!-- Y-axis label (horizontal, no rotation) -->
         <text x="10" y="34" class="sci-axis-note">Body weight (% of start)</text>
@@ -430,11 +436,11 @@ $why_icons = [
         <!-- X-axis baseline + month labels -->
         <line class="sci-axis-line" x1="90" y1="320" x2="800" y2="320"/>
         <text x="90"  y="340" class="sci-axis-label" text-anchor="middle">0</text>
-        <text x="267" y="340" class="sci-axis-label" text-anchor="middle">3</text>
-        <text x="445" y="340" class="sci-axis-label" text-anchor="middle">6</text>
-        <text x="623" y="340" class="sci-axis-label" text-anchor="middle">9</text>
-        <text x="800" y="340" class="sci-axis-label" text-anchor="middle">12</text>
-        <text x="445" y="365" class="sci-axis-note"  text-anchor="middle">Months on programme</text>
+        <text x="267" y="340" class="sci-axis-label" text-anchor="middle">17</text>
+        <text x="445" y="340" class="sci-axis-label" text-anchor="middle">34</text>
+        <text x="623" y="340" class="sci-axis-label" text-anchor="middle">51</text>
+        <text x="800" y="340" class="sci-axis-label" text-anchor="middle">68</text>
+        <text x="445" y="365" class="sci-axis-note"  text-anchor="middle">Weeks (STEP-1 trial duration)</text>
 
         <!-- DIET curve: explicit cubic bezier — controlled to never cross y=50 (100% line) -->
         <path class="sci-curve sci-curve--diet"
@@ -455,15 +461,15 @@ $why_icons = [
         <!-- Diet endpoint -->
         <g class="sci-endpoint">
           <circle class="sci-endpoint-dot-diet" cx="800" cy="84" r="4"/>
-          <text x="660" y="67"  class="sci-endpoint-label"    text-anchor="end">Diet alone</text>
-          <text x="660" y="83" class="sci-endpoint-sublabel" text-anchor="end">≈ −2% after 12 months</text>
+          <text x="660" y="67"  class="sci-endpoint-label"    text-anchor="end">Placebo + lifestyle</text>
+          <text x="660" y="83" class="sci-endpoint-sublabel" text-anchor="end">−2.4% mean at week 68</text>
         </g>
 
         <!-- GLP-1 endpoint -->
         <g class="sci-endpoint sci-endpoint--glp1">
           <circle class="sci-endpoint-dot-glp1" cx="800" cy="284" r="5"/>
-          <text x="658" y="310"  class="sci-endpoint-label"    text-anchor="end">GLP-1 medication</text>
-          <text x="658" y="326" class="sci-endpoint-sublabel" text-anchor="end">≈ −17% after 12 months</text>
+          <text x="658" y="310"  class="sci-endpoint-label"    text-anchor="end">Semaglutide + lifestyle</text>
+          <text x="658" y="326" class="sci-endpoint-sublabel" text-anchor="end">−14.9% mean at week 68</text>
         </g>
       </svg>
 
@@ -957,7 +963,7 @@ $why_icons = [
     <!-- Heading -->
     <div class="yf-reveal mb-6">
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-jost">Start your weight loss journey today</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost">Book your free consultation at your nearest Hampshire branch. Same-day prescriptions. No waiting lists. Real results.</p>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost">Book your free consultation at your nearest Hampshire branch. Same-day assessments, no waiting lists, and honest advice about whether treatment is right for you.</p>
     </div>
 
     <!-- Checklist -->
@@ -965,7 +971,7 @@ $why_icons = [
       <?php
       $points = [
         'Free consultation &mdash; no obligation',
-        'Same-day prescription if eligible',
+        'Same-day assessment, prescription if clinically appropriate',
         'Monthly face-to-face check-ins',
         'MHRA-approved medications only',
         'GPhC-registered prescribers',
@@ -995,7 +1001,7 @@ $why_icons = [
       </div>
       <div class="flex items-center gap-2 font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
-        <span><strong class="text-white">10,000+</strong> patients served</span>
+        <span><strong class="text-white">4</strong> Hampshire branches</span>
       </div>
       <div class="flex items-center gap-2 font-jost">
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1003,6 +1009,70 @@ $why_icons = [
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ============================================================
+     IMPORTANT SAFETY INFORMATION — required before the disclaimer strip
+     ============================================================ -->
+<section class="bg-white border-t border-gray-200 py-12 md:py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-6 md:p-8">
+      <div class="flex items-start gap-4 mb-5">
+        <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-amber-900 font-jost leading-tight">Important safety information</h2>
+          <p class="text-amber-800 text-sm font-jost mt-1">Please read before booking a consultation.</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 text-slate-700 text-sm md:text-[15px] leading-relaxed font-jost">
+        <p>Mounjaro&reg; (tirzepatide) and Wegovy&reg; (semaglutide) are <strong>prescription-only medicines</strong>, licensed as an <strong>adjunct to a reduced-calorie diet and increased physical activity</strong>. They are not a replacement for either, and they are not suitable for everyone.</p>
+
+        <div>
+          <p class="font-semibold text-slate-900 mb-2">These medicines are not suitable if you:</p>
+          <ul class="space-y-1.5 pl-1">
+            <?php foreach ( [
+              'are pregnant, breastfeeding or trying to conceive',
+              'have a personal or family history of medullary thyroid carcinoma',
+              'have multiple endocrine neoplasia syndrome type 2 (MEN2)',
+              'have had a serious allergic reaction to tirzepatide, semaglutide or any ingredient in these medicines',
+            ] as $wl_contra ) : ?>
+            <li class="flex items-start gap-2.5">
+              <span class="text-amber-600 font-bold flex-shrink-0 mt-0.5">&times;</span>
+              <span><?php echo esc_html( $wl_contra ); ?></span>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold text-slate-900 mb-2">Tell your pharmacist before treatment if you:</p>
+          <ul class="space-y-1.5 pl-1">
+            <?php foreach ( [
+              'have ever had pancreatitis, gallbladder disease or diabetic retinopathy',
+              'have severe kidney, liver or gastrointestinal problems',
+              'have or have had an eating disorder',
+              'take insulin, sulphonylureas or any other diabetes medication',
+              'take any other prescription or over-the-counter medicines',
+            ] as $wl_caution ) : ?>
+            <li class="flex items-start gap-2.5">
+              <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span><?php echo esc_html( $wl_caution ); ?></span>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+
+        <p><strong class="text-slate-900">Side effects.</strong> The most common are nausea, vomiting, diarrhoea, constipation and reduced appetite, usually in the first few weeks and after dose increases. Less common but serious side effects include pancreatitis and gallbladder problems. Seek urgent medical advice if you develop severe or persistent stomach pain.</p>
+
+        <p><strong class="text-slate-900">Always read the patient information leaflet</strong> supplied with your medicine. Suspected side effects can be reported through the MHRA Yellow Card scheme at <a href="https://yellowcard.mhra.gov.uk" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">yellowcard.mhra.gov.uk</a>.</p>
+
+        <p>Treatment is prescribed only following a clinical assessment by a GPhC-registered pharmacist prescriber, and only where it is clinically appropriate. Our pharmacists may advise that these medicines are not right for you.</p>
+      </div>
+    </div>
   </div>
 </section>
 
