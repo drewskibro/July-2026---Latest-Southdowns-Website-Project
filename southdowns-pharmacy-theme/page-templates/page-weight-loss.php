@@ -274,7 +274,7 @@ $why_icons = [
   <!-- Desktop: 2-column split matching homepage hero -->
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
       <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
         <div class="badge-rule w-10 h-px bg-white/30"></div>
         <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
@@ -309,7 +309,7 @@ $why_icons = [
 
     <!-- Badge images straddling the centre divider -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:8%;transform:translateX(-50%);">
-      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.26]" />
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-same-day.webp' ); ?>" alt="Same Day Appointments" class="w-[150px] h-[150px] object-contain drop-shadow-lg scale-[1.26]" />
     </div>
     <?php
     /*
@@ -320,19 +320,19 @@ $why_icons = [
      */
     ?>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;top:50%;transform:translate(-50%,-50%);">
-      <div class="w-[170px] h-[170px] rounded-full flex flex-col items-center justify-center text-center px-4 drop-shadow-lg"
+      <div class="w-[150px] h-[150px] rounded-full flex flex-col items-center justify-center text-center px-5 drop-shadow-lg"
            style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 55%,#3b82f6 100%);box-shadow:0 0 0 3px rgba(29,78,216,0.45),0 0 0 6px rgba(255,255,255,0.55),0 8px 24px rgba(15,23,42,0.28);"
            role="img" aria-label="GPhC registered pharmacist prescribers">
-        <svg class="w-[26px] h-[26px] text-blue-100 mb-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg class="w-[22px] h-[22px] text-blue-100 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
         </svg>
-        <span class="text-white font-extrabold leading-none font-jost" style="font-size:29px;letter-spacing:0.01em;">GPhC</span>
-        <span class="text-white font-bold leading-tight font-jost mt-0.5" style="font-size:13px;letter-spacing:0.08em;">REGISTERED</span>
-        <span class="text-blue-100 font-semibold leading-tight font-jost mt-1" style="font-size:12px;">Pharmacist Prescribers</span>
+        <span class="text-white font-extrabold leading-none font-jost" style="font-size:25px;letter-spacing:0.01em;">GPhC</span>
+        <span class="text-white font-bold leading-tight font-jost mt-0.5" style="font-size:11px;letter-spacing:0.07em;">REGISTERED</span>
+        <span class="text-blue-100 font-semibold font-jost mt-1 block mx-auto" style="font-size:9.5px;line-height:1.15;max-width:88px;">Pharmacist Prescribers</span>
       </div>
     </div>
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:8%;transform:translateX(-50%);">
-      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[170px] h-[170px] object-contain drop-shadow-lg scale-[1.13]" />
+      <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/img/roundel-5-star.webp' ); ?>" alt="5-Star Service" class="w-[150px] h-[150px] object-contain drop-shadow-lg scale-[1.13]" />
     </div>
   </div>
 
