@@ -116,6 +116,7 @@ add_action( 'acf/init', function () {
 					[ 'key' => 'field_home_art_cat', 'label' => 'Category', 'name' => 'category', 'type' => 'text' ],
 					[ 'key' => 'field_home_art_title', 'label' => 'Title', 'name' => 'title', 'type' => 'text' ],
 					[ 'key' => 'field_home_art_excerpt', 'label' => 'Excerpt', 'name' => 'excerpt', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
+					[ 'key' => 'field_home_art_url', 'label' => 'Article URL', 'name' => 'url', 'type' => 'text', 'instructions' => 'Link to the article, e.g. /understanding-blood-test-results/. Leave empty to link to the blog index.' ],
 				],
 			],
 
@@ -202,9 +203,9 @@ function home_repeater_defaults(): array {
 			[ 'value' => '10,000+', 'label' => 'Happy Patients' ],
 		],
 		'home_articles' => [
-			[ 'image' => false, 'category' => 'Weight Loss', 'title' => 'Mounjaro vs Wegovy: What the Clinical Trials Actually Show', 'excerpt' => '"My GP mentioned Wegovy. But my friend lost loads of weight on Mounjaro. Are they the same thing? Should I ask for the other one?...' ],
-			[ 'image' => false, 'category' => 'Weight Loss', 'title' => 'Mounjaro Side Effects: What to Expect at Your Monthly Review', 'excerpt' => "How Southdowns Pharmacy's face-to-face clinical support helps patients across Hampshire manage their weight loss journey with confidence..." ],
-			[ 'image' => false, 'category' => 'Weight Loss', 'title' => "Why Most Hampshire Patients Wish They'd Started Mounjaro Sooner", 'excerpt' => 'The weight loss treatment that makes people say "I should have started this sooner" — now available across Hampshire...' ],
+			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Thyroid Function Testing in Hampshire', 'excerpt' => 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Davies Pharmacy, Havant...', 'url' => '/thyroid-test-hampshire/' ],
+			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Understanding Your Blood Test Results', 'excerpt' => 'What do all those numbers and abbreviations actually mean? A plain-English guide to reading your results and knowing what to do next...', 'url' => '/understanding-blood-test-results/' ],
+			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Type 2 Diabetes Screening: Should You Get Tested?', 'excerpt' => 'Type 2 diabetes often develops with no obvious symptoms. A simple screening check can tell you your risk — no GP referral needed...', 'url' => '/diabetes-blood-test-hampshire/' ],
 		],
 		'home_vaccines' => [
 			[ 'name' => 'Yellow Fever', 'url' => '' ],
