@@ -110,6 +110,24 @@ function sp_field( string $field_name, $fallback = '' ) {
  * @param array  $map         [ default_key => acf_sub_field_name ].
  * @return array
  */
+/**
+ * Is an ACF value empty for overlay purposes?
+ *
+ * ACF returns different "nothing here" values by field type — notably an image
+ * field with return_format 'url' returns boolean false, not null or ''. Treating
+ * false as a real value lets it overwrite a hardcoded default, which renders as
+ * src="" (this is what blanked the home-page product images).
+ *
+ * Note: ACF true_false fields return 1/0 as integers, so a genuine unchecked
+ * boolean is 0 and is NOT caught here — only literal false is.
+ *
+ * @param mixed $val Value returned by get_sub_field().
+ * @return bool
+ */
+function sp_is_empty_acf_value( $val ): bool {
+    return $val === null || $val === '' || $val === false || ( is_array( $val ) && empty( $val ) );
+}
+
 function sp_rows( string $field_name, array $defaults, array $map ): array {
     if ( ! function_exists( 'have_rows' ) || ! have_rows( $field_name ) ) {
         return $defaults;
@@ -121,7 +139,7 @@ function sp_rows( string $field_name, array $defaults, array $map ): array {
         $base = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
         foreach ( $map as $key => $sub ) {
             $val = get_sub_field( $sub );
-            if ( $val !== null && $val !== '' ) {
+            if ( ! sp_is_empty_acf_value( $val ) ) {
                 $base[ $key ] = $val;
             }
         }
@@ -148,7 +166,7 @@ function sp_list( string $field_name, array $defaults, string $sub = 'text' ): a
     while ( have_rows( $field_name ) ) {
         the_row();
         $val = get_sub_field( $sub );
-        if ( $val !== null && $val !== '' ) {
+        if ( ! sp_is_empty_acf_value( $val ) ) {
             $items[] = $val;
         }
     }
