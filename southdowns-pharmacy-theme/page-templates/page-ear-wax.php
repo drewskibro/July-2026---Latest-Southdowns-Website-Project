@@ -179,35 +179,84 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
 
 
 <!-- ============================================================
-     S1b: PRE-APPOINTMENT NOTICE — Soften ear wax first (amber callout)
+     S1b: BEFORE YOU BOOK — Soften ear wax first
+     Amber-accented, built in the page's own section language:
+     premium eyebrow + display headline + 4/8 split, gradient stat
+     panel left, numbered prep steps right, caveat banner beneath.
      ============================================================ -->
-<section class="relative bg-amber-50 border-t border-amber-200 py-8 md:py-10" id="before-you-book" aria-labelledby="ew-prep-heading">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-white rounded-2xl shadow-lg p-5 md:p-8" style="border:1px solid #fde68a;border-left:6px solid #f59e0b;">
-      <div class="flex flex-col sm:flex-row items-start gap-4 md:gap-5">
-        <!-- Icon: droplet -->
-        <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-        </div>
-        <div class="flex-1 min-w-0">
-          <h2 id="ew-prep-heading" class="text-2xl md:text-3xl font-bold text-amber-900 mb-3 font-jost" style="line-height:1.2;">Before You Book: Please Soften Your Ear Wax First</h2>
+<?php
+$prep_steps = [
+    'Apply <strong class="font-semibold text-slate-800">2&ndash;3 drops</strong> of olive oil or sodium bicarbonate ear drops into the affected ear(s), <strong class="font-semibold text-slate-800">twice a day</strong>',
+    'Start <strong class="font-semibold text-slate-800">at least 48 hours</strong> before your appointment &mdash; 3 days is even better',
+    'Continue right up to <strong class="font-semibold text-slate-800">the morning of your visit</strong>',
+    'Available <strong class="font-semibold text-slate-800">over the counter</strong> at any of our Hampshire pharmacies, or ask our Emsworth team for advice',
+];
+?>
+<section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]" id="before-you-book" aria-labelledby="ew-prep-heading">
+  <div class="absolute top-0 left-0 w-96 h-96 bg-amber-100/30 rounded-full -translate-x-1/3 -translate-y-1/3 blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-80 h-80 bg-amber-200/20 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
 
-          <p class="text-base md:text-lg font-bold text-slate-900 leading-relaxed mb-4 font-jost">You must use olive oil or sodium bicarbonate ear drops for at least 48 hours before your appointment.</p>
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <p class="text-base text-gray-700 leading-relaxed mb-4 font-jost">Softening the wax in advance gives our clinicians the best chance of removing it fully in a single visit. If your ear wax is hard, compacted, or hasn&rsquo;t been softened, we may not be able to complete your treatment on the day, and our no-refund policy will still apply.</p>
+    <!-- Section header -->
+    <div class="text-center mb-12 md:mb-14">
+      <div class="premium-badge flex items-center justify-center gap-4 mb-6">
+        <div class="badge-rule w-10 h-px" style="background:rgba(217,119,6,0.35);"></div>
+        <span class="badge-text text-amber-700 text-sm font-normal tracking-[0.15em] uppercase font-jost">Before You Book</span>
+        <div class="badge-rule w-10 h-px" style="background:rgba(217,119,6,0.35);"></div>
+      </div>
+      <h2 id="ew-prep-heading" class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 font-jost leading-tight">Please Soften Your Ear Wax First</h2>
+      <p class="text-lg md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-jost">Softening the wax in advance gives our clinicians the best chance of removing it fully in a single visit. If your ear wax is hard, compacted, or hasn&rsquo;t been softened, we may not be able to complete your treatment on the day, and our no-refund policy will still apply.</p>
+    </div>
 
-          <p class="text-base font-bold text-slate-900 mb-2 font-jost">How to prepare:</p>
-          <ul class="text-base text-gray-700 leading-relaxed mb-4 space-y-2 font-jost" style="list-style:disc;padding-left:1.25rem;">
-            <li>Apply 2&ndash;3 drops of olive oil or sodium bicarbonate ear drops into the affected ear(s), twice a day</li>
-            <li>Start at least 48 hours before your appointment &mdash; 3 days is even better</li>
-            <li>Continue right up to the morning of your visit</li>
-            <li>Available over the counter at any of our Hampshire pharmacies, or ask our Emsworth team for advice</li>
-          </ul>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-          <p class="text-base text-gray-700 leading-relaxed font-jost">If you haven&rsquo;t been able to soften your ear wax for the full 48 hours, we may still be able to treat you &mdash; but a follow-up appointment may be needed if the wax is too hard to remove safely on the day.</p>
+      <!-- Left: the 48-hour requirement, as a gradient anchor panel -->
+      <div class="lg:col-span-4 ew-reveal" data-delay="1">
+        <div class="h-full rounded-2xl text-white p-8 flex flex-col" style="background:linear-gradient(135deg,#92400e 0%,#b45309 45%,#d97706 100%);box-shadow:0 20px 40px rgba(180,83,9,0.22);">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-6" style="background:rgba(255,255,255,0.18);" aria-hidden="true">
+            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+          </div>
+          <div class="font-bold font-jost" style="font-size:76px;line-height:0.9;letter-spacing:-0.02em;">48</div>
+          <div class="text-sm font-semibold uppercase tracking-[0.15em] font-jost mt-3" style="color:rgba(255,255,255,0.75);">Hours minimum</div>
+          <div class="mt-6 mb-6" style="height:1px;background:rgba(255,255,255,0.22);"></div>
+          <p class="text-lg font-semibold leading-snug font-jost">You must use olive oil or sodium bicarbonate ear drops for at least 48 hours before your appointment.</p>
         </div>
       </div>
+
+      <!-- Right: how to prepare -->
+      <div class="lg:col-span-8 ew-reveal" data-delay="2">
+        <div class="h-full bg-white rounded-2xl border border-amber-100 shadow-sm p-6 md:p-8">
+          <h3 class="text-2xl font-bold text-slate-800 mb-8 font-jost">How to prepare:</h3>
+          <div class="space-y-6">
+            <?php foreach ( $prep_steps as $i => $prep_step ) :
+              $n       = $i + 1;
+              $is_last = ( $i === count( $prep_steps ) - 1 );
+            ?>
+            <div class="flex gap-5 group">
+              <div class="flex-shrink-0 <?php echo $is_last ? '' : 'flex flex-col items-center'; ?>">
+                <div class="w-12 h-12 text-white rounded-full flex items-center justify-center font-bold text-base font-jost group-hover:scale-110 transition-transform" style="background:linear-gradient(135deg,#f59e0b,#b45309);box-shadow:0 8px 18px rgba(180,83,9,0.25);"><?php echo (int) $n; ?></div>
+                <?php if ( ! $is_last ) : ?><div class="w-0.5 flex-1 mt-3 min-h-[32px]" style="background:linear-gradient(to bottom,rgba(217,119,6,0.35),transparent);"></div><?php endif; ?>
+              </div>
+              <p class="text-base md:text-lg text-gray-600 leading-relaxed font-jost <?php echo $is_last ? '' : 'pb-2'; ?>" style="padding-top:10px;"><?php echo wp_kses_post( $prep_step ); ?></p>
+            </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Caveat banner -->
+    <div class="mt-8 ew-reveal" data-delay="3">
+      <div class="rounded-2xl bg-white p-6 md:p-8 shadow-sm flex flex-col sm:flex-row items-start gap-5" style="border:1px solid #fde68a;border-left:5px solid #d97706;">
+        <div class="w-11 h-11 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <p class="text-base md:text-lg text-gray-600 leading-relaxed font-jost">If you haven&rsquo;t been able to soften your ear wax for the full 48 hours, we may still be able to treat you &mdash; but a follow-up appointment may be needed if the wax is too hard to remove safely on the day.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
