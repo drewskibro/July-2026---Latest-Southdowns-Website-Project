@@ -179,6 +179,40 @@ $hero_roundel_3_alt = get_field( 'ew_hero_roundel_3_alt' ) ?: '5-Star Rated';
 
 
 <!-- ============================================================
+     S1b: PRE-APPOINTMENT NOTICE — Soften ear wax first (amber callout)
+     ============================================================ -->
+<section class="relative bg-amber-50 border-t border-amber-200 py-8 md:py-10" id="before-you-book" aria-labelledby="ew-prep-heading">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-2xl shadow-lg p-5 md:p-8" style="border:1px solid #fde68a;border-left:6px solid #f59e0b;">
+      <div class="flex flex-col sm:flex-row items-start gap-4 md:gap-5">
+        <!-- Icon: droplet -->
+        <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h2 id="ew-prep-heading" class="text-2xl md:text-3xl font-bold text-amber-900 mb-3 font-jost" style="line-height:1.2;">Before You Book: Please Soften Your Ear Wax First</h2>
+
+          <p class="text-base md:text-lg font-bold text-slate-900 leading-relaxed mb-4 font-jost">You must use olive oil or sodium bicarbonate ear drops for at least 48 hours before your appointment.</p>
+
+          <p class="text-base text-gray-700 leading-relaxed mb-4 font-jost">Softening the wax in advance gives our clinicians the best chance of removing it fully in a single visit. If your ear wax is hard, compacted, or hasn&rsquo;t been softened, we may not be able to complete your treatment on the day, and our no-refund policy will still apply.</p>
+
+          <p class="text-base font-bold text-slate-900 mb-2 font-jost">How to prepare:</p>
+          <ul class="text-base text-gray-700 leading-relaxed mb-4 space-y-2 font-jost" style="list-style:disc;padding-left:1.25rem;">
+            <li>Apply 2&ndash;3 drops of olive oil or sodium bicarbonate ear drops into the affected ear(s), twice a day</li>
+            <li>Start at least 48 hours before your appointment &mdash; 3 days is even better</li>
+            <li>Continue right up to the morning of your visit</li>
+            <li>Available over the counter at any of our Hampshire pharmacies, or ask our Emsworth team for advice</li>
+          </ul>
+
+          <p class="text-base text-gray-700 leading-relaxed font-jost">If you haven&rsquo;t been able to soften your ear wax for the full 48 hours, we may still be able to treat you &mdash; but a follow-up appointment may be needed if the wax is too hard to remove safely on the day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      S2: KEY STATS — Light gradient, 4 white stat cards
      ============================================================ -->
 <?php

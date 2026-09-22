@@ -568,17 +568,19 @@ $testimonials = sp_rows( 'home_testimonials', [
     <div class="text-center mb-12 md:mb-16">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-white/15"></div>
-        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_prod_eyebrow', 'Premium Collection' ); ?></span>
+        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_prod_eyebrow', 'Our Services' ); ?></span>
       </div>
-      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost"><?php echo sp_field( 'home_prod_heading', 'Our Premium Products' ); ?></h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_prod_intro', 'Discover our exclusive range of premium healthcare products, crafted with excellence.' ); ?></p>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 font-jost"><?php echo sp_field( 'home_prod_heading', 'Popular Pharmacy Services' ); ?></h2>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-jost"><?php echo sp_field( 'home_prod_intro', 'Pharmacist-led healthcare services across our four Hampshire branches &mdash; no GP referral needed, with same-day appointments available.' ); ?></p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
       <?php
       $products = sp_rows( 'home_products', [
-        ['PREMIUM',     'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/product-ear-wax.webp', 'Ear Wax Removal'],
-        ['BEST SELLER', 'B12 Injections',  'Energy boost vitamin therapy to support your wellness journey',            home_url('/b12-injections/'), get_template_directory_uri() . '/assets/img/product-b12.webp', 'B12 Injections'],
-        ['EXCLUSIVE',   'Travel Health',   'Complete vaccination packages for your next adventure',                    home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/product-travel.webp', 'Travel Health'],
+        // Badges are factual service credentials, not retail labels ("Best Seller"
+        // / "Exclusive" framed clinical services as consumer products).
+        ['SAME-DAY AVAILABLE', 'Ear Wax Removal', 'Professional microsuction service for safe and effective ear cleaning',    home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/product-ear-wax.webp', 'Ear Wax Removal'],
+        ['NO GP REFERRAL',     'B12 Injections',  'Pharmacist-administered vitamin B12 injections at your local branch',      home_url('/b12-injections/'), get_template_directory_uri() . '/assets/img/product-b12.webp', 'B12 Injections'],
+        ['NaTHNaC CENTRE',     'Travel Health',   'Destination-specific vaccines and travel health advice',                   home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/product-travel.webp', 'Travel Health'],
       ], [ 0 => 'badge', 1 => 'title', 2 => 'desc', 3 => 'url', 4 => 'image' ] );
       foreach ( $products as $p ) : ?>
       <a href="<?php echo esc_url( $p[3] ); ?>" class="group block relative">
@@ -600,7 +602,7 @@ $testimonials = sp_rows( 'home_testimonials', [
         <div class="flex-shrink-0 w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <p class="text-white text-lg leading-relaxed"><strong class="font-bold">Product not listed?</strong> <span class="text-blue-100">Don't worry, we can provide a wide range of healthcare products and services.</span> <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="text-white font-bold hover:text-blue-200 transition-colors underline decoration-2 underline-offset-4">Contact us</a> <span class="text-blue-100">for more information.</span></p>
+        <p class="text-white text-lg leading-relaxed"><strong class="font-bold">Looking for something else?</strong> <span class="text-blue-100">We offer a wide range of NHS and private healthcare services across our Hampshire branches.</span> <a href="<?php echo esc_url( home_url( '/book-appointment/' ) ); ?>" class="text-white font-bold hover:text-blue-200 transition-colors underline decoration-2 underline-offset-4">Contact us</a> <span class="text-blue-100">for more information.</span></p>
       </div>
     </div>
   </div>
