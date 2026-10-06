@@ -376,27 +376,18 @@ function sp_branch_order(): array {
  * @return array[] each: [ year, title, org, logo ] (logo = full URL)
  */
 /**
- * Which badge an awards repeater row should show: 'finalist', 'winner' or ''.
+ * Which badge an awards repeater row should show: 'finalist' or 'winner'.
  *
  * Must be called inside an sp_awards the_row() loop.
  *
- * "Shortlisted only" always wins over "Winner", so a row with both ticked can
- * never claim an award it did not win.
- *
- * The winner flag is treated as ON when it has never been saved (null). Rows
- * stored before this field existed would otherwise come back empty and lose
- * their badge, and an entry in an awards list is a win unless marked otherwise.
- * An explicit 0 from an unticked toggle is still respected.
+ * Deliberately derived from the one "Shortlisted only" flag rather than a
+ * separate winner toggle. An entry in an awards list is either won or
+ * shortlisted, so a second flag could only ever disagree with this one, and a
+ * winner toggle would read as empty on rows saved before it existed, silently
+ * dropping the badge from every award already in the list.
  */
 function sp_award_badge(): string {
-    if ( get_sub_field( 'finalist' ) ) {
-        return 'finalist';
-    }
-    $winner = get_sub_field( 'winner' );
-    if ( $winner === null || $winner ) {
-        return 'winner';
-    }
-    return '';
+    return get_sub_field( 'finalist' ) ? 'finalist' : 'winner';
 }
 
 function sp_awards(): array {
