@@ -42,7 +42,7 @@ add_action( 'acf/init', function () {
 						'label'         => 'Shortlisted only (not won)',
 						'name'          => 'finalist',
 						'type'          => 'true_false',
-						'instructions'  => 'Tick this if the pharmacy was shortlisted for this award rather than winning it. A "Finalist" label is then shown on the card. Untick it if they go on to win.',
+						'instructions'  => 'Leave this off for an award that was won: the card shows a blue "Winner" badge. Tick it if the pharmacy was shortlisted rather than winning, and the card shows an amber "Finalist" badge instead. Untick it if they go on to win.',
 						'ui'            => 1,
 						'default_value' => 0,
 					],

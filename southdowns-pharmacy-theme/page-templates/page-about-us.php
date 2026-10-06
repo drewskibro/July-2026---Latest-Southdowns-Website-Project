@@ -118,16 +118,24 @@ $ab_inside_img    = $ab_uploads . 'ACE75A44-0B10-4C2F-9FF5-501A17F21482_1_105_c-
           ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-1 lg:max-w-none'
           : '';
       ?>
-      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
+      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink h-full flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
         <div class="h-16 md:h-20 flex items-center justify-center mb-4">
           <img src="<?php echo esc_url( $aw['logo'] ); ?>" alt="<?php echo esc_attr( $aw['org'] . ' logo' ); ?>" class="max-h-full max-w-[150px] w-auto object-contain" loading="lazy" />
         </div>
         <div class="text-3xl font-bold text-blue-700 font-jost mb-1.5"><?php echo esc_html( $aw['year'] ); ?></div>
-        <?php if ( ! empty( $aw['finalist'] ) ) : ?>
-        <span class="inline-flex items-center justify-center px-3 py-1 mb-2 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Finalist</span>
-        <?php endif; ?>
+        <?php
+        // Fixed-height slot so cards stay aligned whether or not a badge is set.
+        $badge = $aw['badge'] ?? '';
+        ?>
+        <div class="h-7 flex items-center justify-center mb-2">
+          <?php if ( $badge === 'finalist' ) : ?>
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Finalist</span>
+          <?php elseif ( $badge === 'winner' ) : ?>
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wide font-jost">Winner</span>
+          <?php endif; ?>
+        </div>
         <h3 class="text-base font-semibold text-slate-800 font-jost leading-snug mb-2"><?php echo esc_html( $aw['title'] ); ?></h3>
-        <p class="text-sm text-slate-500 font-jost"><?php echo esc_html( $aw['org'] ); ?></p>
+        <p class="mt-auto text-sm text-slate-500 font-jost"><?php echo esc_html( $aw['org'] ); ?></p>
       </div>
       <?php endforeach; ?>
     </div>

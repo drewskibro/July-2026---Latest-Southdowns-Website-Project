@@ -375,16 +375,32 @@ function sp_branch_order(): array {
  *
  * @return array[] each: [ year, title, org, logo ] (logo = full URL)
  */
+/**
+ * Which badge an awards repeater row should show: 'finalist' or 'winner'.
+ *
+ * Must be called inside an sp_awards the_row() loop.
+ *
+ * Deliberately derived from the one "Shortlisted only" flag rather than a
+ * separate winner toggle. An entry in an awards list is either won or
+ * shortlisted, so a second flag could only ever disagree with this one, and a
+ * winner toggle would read as empty on rows saved before it existed, silently
+ * dropping the badge from every award already in the list.
+ */
+function sp_award_badge(): string {
+    return get_sub_field( 'finalist' ) ? 'finalist' : 'winner';
+}
+
 function sp_awards(): array {
     $logo_base = wp_upload_dir()['baseurl'] . '/2026/05/';
     $defaults = [
-        // 2026 is a shortlisting, not a win — 'finalist' renders a "Finalist" label on the card.
+        // 'badge' drives the label on the card: 'winner' (blue) or 'finalist' (amber).
+        // 2026 is a shortlisting, not a win.
         // Logo: reuses the existing Pharmacy Business Awards file. Upload the 2026-branded
         // version under Pharmacy Settings → Awards → Logo to show the correct year artwork.
-        [ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',          'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'finalist' => true ],
-        [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png', 'finalist' => false ],
-        [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'finalist' => false ],
-        [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png', 'finalist' => false ],
+        [ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',          'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'badge' => 'finalist' ],
+        [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png', 'badge' => 'winner' ],
+        [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'badge' => 'winner' ],
+        [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png', 'badge' => 'winner' ],
     ];
 
     if ( ! function_exists( 'have_rows' ) || ! have_rows( 'sp_awards', 'option' ) ) {
@@ -421,9 +437,7 @@ function sp_awards(): array {
             'title' => ( $title !== '' && $title !== null ) ? $title : ( $base['title'] ?? '' ),
             'org'   => ( $org !== '' && $org !== null )     ? $org   : ( $base['org']   ?? '' ),
             'logo'  => $logo ?: ( $base['logo'] ?? '' ),
-            // Shortlisted rather than won. Explicit cast: an unticked ACF true_false
-            // returns 0/'' and must not fall through to the default row's value.
-            'finalist' => (bool) get_sub_field( 'finalist' ),
+            'badge' => sp_award_badge(),
         ];
         $i++;
     }
