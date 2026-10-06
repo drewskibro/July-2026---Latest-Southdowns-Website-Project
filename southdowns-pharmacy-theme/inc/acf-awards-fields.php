@@ -38,11 +38,20 @@ add_action( 'acf/init', function () {
 					[ 'key' => 'field_sp_award_title', 'label' => 'Award Title', 'name' => 'title', 'type' => 'text' ],
 					[ 'key' => 'field_sp_award_org', 'label' => 'Awarding Body', 'name' => 'organisation', 'type' => 'text' ],
 					[
+						'key'           => 'field_sp_award_winner',
+						'label'         => 'Show "Winner" badge',
+						'name'          => 'winner',
+						'type'          => 'true_false',
+						'instructions'  => 'Tick this to show a blue "Winner" badge on the card. Ignored if "Shortlisted only" below is also ticked.',
+						'ui'            => 1,
+						'default_value' => 1,
+					],
+					[
 						'key'           => 'field_sp_award_finalist',
 						'label'         => 'Shortlisted only (not won)',
 						'name'          => 'finalist',
 						'type'          => 'true_false',
-						'instructions'  => 'Tick this if the pharmacy was shortlisted for this award rather than winning it. A "Finalist" label is then shown on the card. Untick it if they go on to win.',
+						'instructions'  => 'Tick this if the pharmacy was shortlisted for this award rather than winning it. An amber "Finalist" badge is shown instead of the Winner badge. Untick it if they go on to win.',
 						'ui'            => 1,
 						'default_value' => 0,
 					],
@@ -63,9 +72,9 @@ add_filter( 'acf/load_value/name=sp_awards', function ( $value, $post_id, $field
 		return $value;
 	}
 	return [
-		[ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',           'organisation' => 'Pharmacy Business Awards',    'finalist' => 1, 'logo' => false ],
-		[ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'organisation' => 'Independent Pharmacy Awards', 'finalist' => 0, 'logo' => false ],
-		[ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'organisation' => 'Pharmacy Business Awards',    'finalist' => 0, 'logo' => false ],
-		[ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'organisation' => 'Chemist and Druggist Awards', 'finalist' => 0, 'logo' => false ],
+		[ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',           'organisation' => 'Pharmacy Business Awards',    'winner' => 0, 'finalist' => 1, 'logo' => false ],
+		[ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'organisation' => 'Independent Pharmacy Awards', 'winner' => 1, 'finalist' => 0, 'logo' => false ],
+		[ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'organisation' => 'Pharmacy Business Awards',    'winner' => 1, 'finalist' => 0, 'logo' => false ],
+		[ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'organisation' => 'Chemist and Druggist Awards', 'winner' => 1, 'finalist' => 0, 'logo' => false ],
 	];
 }, 10, 3 );
