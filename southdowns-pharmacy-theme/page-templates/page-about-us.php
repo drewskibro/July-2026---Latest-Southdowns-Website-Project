@@ -123,6 +123,9 @@ $ab_inside_img    = $ab_uploads . 'ACE75A44-0B10-4C2F-9FF5-501A17F21482_1_105_c-
           <img src="<?php echo esc_url( $aw['logo'] ); ?>" alt="<?php echo esc_attr( $aw['org'] . ' logo' ); ?>" class="max-h-full max-w-[150px] w-auto object-contain" loading="lazy" />
         </div>
         <div class="text-3xl font-bold text-blue-700 font-jost mb-1.5"><?php echo esc_html( $aw['year'] ); ?></div>
+        <?php if ( ! empty( $aw['finalist'] ) ) : ?>
+        <span class="inline-flex items-center justify-center px-3 py-1 mb-2 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Finalist</span>
+        <?php endif; ?>
         <h3 class="text-base font-semibold text-slate-800 font-jost leading-snug mb-2"><?php echo esc_html( $aw['title'] ); ?></h3>
         <p class="text-sm text-slate-500 font-jost"><?php echo esc_html( $aw['org'] ); ?></p>
       </div>

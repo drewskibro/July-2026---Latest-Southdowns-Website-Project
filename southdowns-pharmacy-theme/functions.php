@@ -378,10 +378,13 @@ function sp_branch_order(): array {
 function sp_awards(): array {
     $logo_base = wp_upload_dir()['baseurl'] . '/2026/05/';
     $defaults = [
-        [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png' ],
-        [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png' ],
-        [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png' ],
-        [ 'year' => '2017', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '2.png' ],
+        // 2026 is a shortlisting, not a win — 'finalist' renders a "Finalist" label on the card.
+        // Logo: reuses the existing Pharmacy Business Awards file. Upload the 2026-branded
+        // version under Pharmacy Settings → Awards → Logo to show the correct year artwork.
+        [ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',          'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'finalist' => true ],
+        [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png', 'finalist' => false ],
+        [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'finalist' => false ],
+        [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png', 'finalist' => false ],
     ];
 
     if ( ! function_exists( 'have_rows' ) || ! have_rows( 'sp_awards', 'option' ) ) {
@@ -392,16 +395,35 @@ function sp_awards(): array {
     $i = 0;
     while ( have_rows( 'sp_awards', 'option' ) ) {
         the_row();
-        $base  = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
         $year  = get_sub_field( 'year' );
         $title = get_sub_field( 'title' );
         $org   = get_sub_field( 'organisation' );
         $logo  = get_sub_field( 'logo' ); // image field, return_format = url
+
+        // Fall back to the default row for the SAME YEAR rather than the same
+        // position: the defaults get reordered when awards are added, and a
+        // positional match would hand a saved row another award's logo.
+        $base = null;
+        if ( $year !== '' && $year !== null ) {
+            foreach ( $defaults as $d ) {
+                if ( (string) $d['year'] === (string) $year ) {
+                    $base = $d;
+                    break;
+                }
+            }
+        }
+        if ( $base === null ) {
+            $base = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
+        }
+
         $rows[] = [
             'year'  => ( $year !== '' && $year !== null )   ? $year  : ( $base['year']  ?? '' ),
             'title' => ( $title !== '' && $title !== null ) ? $title : ( $base['title'] ?? '' ),
             'org'   => ( $org !== '' && $org !== null )     ? $org   : ( $base['org']   ?? '' ),
             'logo'  => $logo ?: ( $base['logo'] ?? '' ),
+            // Shortlisted rather than won. Explicit cast: an unticked ACF true_false
+            // returns 0/'' and must not fall through to the default row's value.
+            'finalist' => (bool) get_sub_field( 'finalist' ),
         ];
         $i++;
     }
