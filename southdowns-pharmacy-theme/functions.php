@@ -393,14 +393,15 @@ function sp_award_badge(): string {
 function sp_awards(): array {
     $logo_base = wp_upload_dir()['baseurl'] . '/2026/05/';
     $defaults = [
-        // 'badge' drives the label on the card: 'winner' (blue) or 'finalist' (amber).
-        // 2026 is a shortlisting, not a win.
+        // 'badge' drives the label on the card: 'winner' (blue) or 'finalist' (amber, shown as "Runner Up").
+        // 2026 was runner up, not a win. 2017 kept at the client's request: all awards stay on the wall.
         // Logo: reuses the existing Pharmacy Business Awards file. Upload the 2026-branded
         // version under Pharmacy Settings → Awards → Logo to show the correct year artwork.
         [ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',          'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'badge' => 'finalist' ],
         [ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'org' => 'Independent Pharmacy Awards', 'logo' => $logo_base . '3.png', 'badge' => 'winner' ],
         [ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '1.png', 'badge' => 'winner' ],
         [ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'org' => 'Chemist and Druggist Awards', 'logo' => $logo_base . '4.png', 'badge' => 'winner' ],
+        [ 'year' => '2017', 'title' => 'UK Community Pharmacist of the Year',     'org' => 'Pharmacy Business Awards',    'logo' => $logo_base . '2.png', 'badge' => 'winner' ],
     ];
 
     if ( ! function_exists( 'have_rows' ) || ! have_rows( 'sp_awards', 'option' ) ) {
