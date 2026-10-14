@@ -39,10 +39,10 @@ add_action( 'acf/init', function () {
 					[ 'key' => 'field_sp_award_org', 'label' => 'Awarding Body', 'name' => 'organisation', 'type' => 'text' ],
 					[
 						'key'           => 'field_sp_award_finalist',
-						'label'         => 'Shortlisted only (not won)',
+						'label'         => 'Runner up (not won)',
 						'name'          => 'finalist',
 						'type'          => 'true_false',
-						'instructions'  => 'Leave this off for an award that was won: the card shows a blue "Winner" badge. Tick it if the pharmacy was shortlisted rather than winning, and the card shows an amber "Finalist" badge instead. Untick it if they go on to win.',
+						'instructions'  => 'Leave this off for an award that was won: the card shows a blue "Winner" badge. Tick it if the pharmacy was runner up or shortlisted rather than winning, and the card shows an amber "Runner Up" badge instead. Untick it if they go on to win.',
 						'ui'            => 1,
 						'default_value' => 0,
 					],
@@ -67,5 +67,6 @@ add_filter( 'acf/load_value/name=sp_awards', function ( $value, $post_id, $field
 		[ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'organisation' => 'Independent Pharmacy Awards', 'finalist' => 0, 'logo' => false ],
 		[ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'organisation' => 'Pharmacy Business Awards',    'finalist' => 0, 'logo' => false ],
 		[ 'year' => '2022', 'title' => 'UK Pharmacy Team of the Year',            'organisation' => 'Chemist and Druggist Awards', 'finalist' => 0, 'logo' => false ],
+		[ 'year' => '2017', 'title' => 'UK Community Pharmacist of the Year',     'organisation' => 'Pharmacy Business Awards',    'finalist' => 0, 'logo' => false ],
 	];
 }, 10, 3 );

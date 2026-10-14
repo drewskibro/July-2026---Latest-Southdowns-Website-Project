@@ -218,7 +218,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       </h2>
     </div>
 
-    <div id="awards-track" class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory awards-no-scrollbar sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0">
+    <div id="awards-track" class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory awards-no-scrollbar sm:grid-cols-2 lg:grid-cols-5 gap-5 md:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0">
       <?php
       // Awards are edited globally under Pharmacy Settings → Awards (sp_awards()).
       $awards = sp_awards();
@@ -240,7 +240,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         ?>
         <div class="h-7 flex items-center justify-center mb-2">
           <?php if ( $badge === 'finalist' ) : ?>
-          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Finalist</span>
+          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Runner Up</span>
           <?php elseif ( $badge === 'winner' ) : ?>
           <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wide font-jost">Winner</span>
           <?php endif; ?>
