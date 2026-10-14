@@ -27,7 +27,7 @@ function sp_pricing_defaults(): array {
 	return [
 		[
 			'name'        => 'NHS Pharmacy First',
-			'description' => 'Free NHS consultations for seven common conditions — no GP appointment needed.',
+			'description' => 'Free NHS consultations for seven common conditions — no GP appointment needed. Standard NHS prescription charges apply to any medicines supplied, unless you are exempt.',
 			'services'    => [
 				[ 'name' => 'Earache',               'duration' => '5min', 'price' => '£0.00' ],
 				[ 'name' => 'Impetigo',              'duration' => '5min', 'price' => '£0.00' ],

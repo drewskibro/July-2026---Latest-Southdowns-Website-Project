@@ -84,7 +84,7 @@ $svc_groups = [
         'blurb'   => 'Free NHS care on your doorstep — treatment and prescriptions without the wait.',
         'tile'    => 'bg-indigo-50 text-indigo-600',
         'services' => [
-            [ 'name' => 'Pharmacy First', 'url' => '/pharmacy-first/', 'desc' => 'Free NHS assessment and treatment for seven common conditions.', 'nhs' => true, 'price' => '',
+            [ 'name' => 'Pharmacy First', 'url' => '/pharmacy-first/', 'desc' => 'Free NHS consultation for seven common conditions. Standard prescription charges apply to medicines.', 'nhs' => true, 'price' => '',
               'icon' => '<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 12 0v-4"/><circle cx="20" cy="10" r="2"/>' ],
             [ 'name' => 'NHS Prescriptions', 'url' => '/nhs-prescriptions/', 'desc' => 'Nominate your branch for repeat prescriptions, reminders & family ordering.', 'nhs' => true, 'price' => '',
               'icon' => '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 14l2 2 4-4"/>' ],
@@ -107,7 +107,7 @@ if ( empty( $svc_faqs ) ) {
         [ 'q' => 'Do I need an appointment to use your services?',
           'a' => 'It depends on the service. Free NHS services like blood pressure checks and Pharmacy First are walk-in during opening hours. Travel health, weight loss and ear wax removal are usually booked in advance so we can give you dedicated pharmacist time — though same-day appointments are often available.' ],
         [ 'q' => 'Which of your services are free on the NHS?',
-          'a' => 'Blood pressure checks, Pharmacy First (treatment for seven common conditions), NHS repeat prescriptions and — for eligible patients — the seasonal COVID-19 vaccination are all free on the NHS. Travel vaccinations, weight loss programmes, ear wax removal and private COVID-19 vaccination are private services.' ],
+          'a' => 'Blood pressure checks, Pharmacy First consultations (for seven common conditions), our NHS repeat prescription service and — for eligible patients — the seasonal COVID-19 vaccination are all provided on the NHS. The standard NHS prescription charge applies to medicines unless you are exempt. Travel vaccinations, weight loss programmes, ear wax removal and private COVID-19 vaccination are private services.' ],
         [ 'q' => 'Do I need a GP referral?',
           'a' => 'No. Every service we offer is accessible directly — you do not need a GP referral for travel health, weight loss, ear wax removal, Pharmacy First or any of our vaccinations. Just book in or walk in.' ],
         [ 'q' => 'Do all four branches offer every service?',
@@ -410,7 +410,7 @@ if ( empty( $svc_faqs ) ) {
         <?php
         $svc_price_snapshot = [
             [ 'name' => 'Blood Pressure Checks', 'price' => 'Free', 'note' => 'NHS service' ],
-            [ 'name' => 'Pharmacy First',        'price' => 'Free', 'note' => 'NHS service' ],
+            [ 'name' => 'Pharmacy First',        'price' => 'Free consultation', 'note' => 'Prescription charges may apply' ],
             [ 'name' => 'Ear Wax Removal',       'price' => '£50', 'note' => 'one ear · £60 both' ],
             [ 'name' => 'Private COVID-19 Vaccine', 'price' => 'from £89.50', 'note' => 'no eligibility criteria' ],
             [ 'name' => 'Weight Loss',           'price' => 'Free', 'note' => 'initial consultation' ],

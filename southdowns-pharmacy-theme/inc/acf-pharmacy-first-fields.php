@@ -28,8 +28,8 @@ add_action( 'acf/init', function () {
 			// ── Hero ──
 			[ 'key' => 'field_pf_tab_hero', 'label' => 'Hero', 'name' => '', 'type' => 'tab' ],
 			[ 'key' => 'field_pf_hero_badge', 'label' => 'Badge', 'name' => 'pf_hero_badge', 'type' => 'text', 'default_value' => 'NHS Pharmacy First &middot; Hampshire' ],
-			[ 'key' => 'field_pf_hero_heading', 'label' => 'Heading', 'name' => 'pf_hero_heading', 'type' => 'text', 'default_value' => 'Free NHS Treatment &mdash; No GP Appointment Needed' ],
-			[ 'key' => 'field_pf_hero_subtext', 'label' => 'Sub-text', 'name' => 'pf_hero_subtext', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions &mdash; completely free of charge. No referral, no waiting weeks for a GP. Walk in or book online and get treated the same day.' ],
+			[ 'key' => 'field_pf_hero_heading', 'label' => 'Heading', 'name' => 'pf_hero_heading', 'type' => 'text', 'default_value' => 'Free NHS Consultation &mdash; No GP Appointment Needed' ],
+			[ 'key' => 'field_pf_hero_subtext', 'label' => 'Sub-text', 'name' => 'pf_hero_subtext', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions with no GP appointment needed. The consultation is free, and the standard NHS prescription charge applies to any medicine supplied unless you normally get free prescriptions. Walk in or book online and get treated the same day.' ],
 			[ 'key' => 'field_pf_hero_btn', 'label' => 'Button Label', 'name' => 'pf_hero_btn', 'type' => 'text', 'default_value' => 'Book a Pharmacy First Appointment' ],
 			[ 'key' => 'field_pf_hero_image', 'label' => 'Hero Image', 'name' => 'pf_hero_image', 'type' => 'image', 'return_format' => 'url', 'preview_size' => 'medium' ],
 
@@ -45,8 +45,8 @@ add_action( 'acf/init', function () {
 
 			// ── Conditions ──
 			[ 'key' => 'field_pf_tab_cond', 'label' => 'Conditions', 'name' => '', 'type' => 'tab' ],
-			[ 'key' => 'field_pf_cond_heading', 'label' => 'Heading', 'name' => 'pf_cond_heading', 'type' => 'text', 'default_value' => 'Seven Common Conditions. Treated Free. Today.' ],
-			[ 'key' => 'field_pf_cond_intro', 'label' => 'Intro', 'name' => 'pf_cond_intro', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'Our GPhC-registered pharmacists can assess, diagnose and treat the following conditions under the NHS Pharmacy First scheme &mdash; with medication supplied free of charge where clinically appropriate.' ],
+			[ 'key' => 'field_pf_cond_heading', 'label' => 'Heading', 'name' => 'pf_cond_heading', 'type' => 'text', 'default_value' => 'Seven Common Conditions. Treated Today.' ],
+			[ 'key' => 'field_pf_cond_intro', 'label' => 'Intro', 'name' => 'pf_cond_intro', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'Our GPhC-registered pharmacists can assess, diagnose and treat the following conditions under the NHS Pharmacy First scheme, supplying medication where clinically appropriate. The consultation is free; the standard NHS prescription charge applies to any medicine supplied unless you normally get free prescriptions.' ],
 			[
 				'key' => 'field_pf_conditions', 'label' => 'Conditions', 'name' => 'pf_conditions', 'type' => 'repeater', 'layout' => 'block', 'button_label' => 'Add Condition',
 				'sub_fields' => [
@@ -56,13 +56,13 @@ add_action( 'acf/init', function () {
 					[ 'key' => 'field_pf_cond_desc', 'label' => 'Description', 'name' => 'desc', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '' ],
 				],
 			],
-			[ 'key' => 'field_pf_freenote_heading', 'label' => 'Free-note Heading', 'name' => 'pf_freenote_heading', 'type' => 'text', 'default_value' => 'Completely free &mdash; including prescription medicines' ],
-			[ 'key' => 'field_pf_freenote_body', 'label' => 'Free-note Body', 'name' => 'pf_freenote_body', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'Under NHS Pharmacy First you pay nothing &mdash; not even a prescription charge &mdash; for any treatment provided under the scheme, including antibiotics and antivirals.' ],
+			[ 'key' => 'field_pf_freenote_heading', 'label' => 'Free-note Heading', 'name' => 'pf_freenote_heading', 'type' => 'text', 'default_value' => 'Free consultation &mdash; standard prescription charges apply' ],
+			[ 'key' => 'field_pf_freenote_body', 'label' => 'Free-note Body', 'name' => 'pf_freenote_body', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'The Pharmacy First consultation is free on the NHS. If our pharmacist supplies a medicine, such as an antibiotic or antiviral, the standard NHS prescription charge applies for each item, unless you normally get free prescriptions.' ],
 			[ 'key' => 'field_pf_freenote_btn', 'label' => 'Free-note Button', 'name' => 'pf_freenote_btn', 'type' => 'text', 'default_value' => 'Book Today' ],
 
 			// ── How It Works ──
 			[ 'key' => 'field_pf_tab_how', 'label' => 'How It Works', 'name' => '', 'type' => 'tab' ],
-			[ 'key' => 'field_pf_how_heading', 'label' => 'Heading', 'name' => 'pf_how_heading', 'type' => 'text', 'default_value' => 'Three Steps to Free NHS Treatment' ],
+			[ 'key' => 'field_pf_how_heading', 'label' => 'Heading', 'name' => 'pf_how_heading', 'type' => 'text', 'default_value' => 'Three Steps to NHS Treatment' ],
 			[ 'key' => 'field_pf_how_intro', 'label' => 'Intro', 'name' => 'pf_how_intro', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'No referral, no red tape. Expert care when you need it, at any of our 4 Hampshire locations.' ],
 			[
 				'key' => 'field_pf_steps', 'label' => 'Steps', 'name' => 'pf_steps', 'type' => 'repeater', 'layout' => 'block', 'button_label' => 'Add Step',
@@ -112,7 +112,7 @@ add_action( 'acf/init', function () {
 			// ── Final CTA ──
 			[ 'key' => 'field_pf_tab_cta', 'label' => 'Final CTA', 'name' => '', 'type' => 'tab' ],
 			[ 'key' => 'field_pf_cta_heading', 'label' => 'Heading', 'name' => 'pf_cta_heading', 'type' => 'text', 'default_value' => 'Don&apos;t Wait Weeks for a GP. Get Treated Today.' ],
-			[ 'key' => 'field_pf_cta_subtext', 'label' => 'Sub-text', 'name' => 'pf_cta_subtext', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'All four Southdowns Pharmacy locations offer NHS Pharmacy First &mdash; walk in during opening hours or book your slot online. Free treatment, expert pharmacists, no appointment needed.' ],
+			[ 'key' => 'field_pf_cta_subtext', 'label' => 'Sub-text', 'name' => 'pf_cta_subtext', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'All four Southdowns Pharmacy locations offer NHS Pharmacy First &mdash; walk in during opening hours or book your slot online. Free consultation, expert pharmacists, no appointment needed.' ],
 			[ 'key' => 'field_pf_cta_btn', 'label' => 'Button Label', 'name' => 'pf_cta_btn', 'type' => 'text', 'default_value' => 'Book a Pharmacy First Appointment' ],
 			[
 				'key' => 'field_pf_cta_pills', 'label' => 'Badge Pills', 'name' => 'pf_cta_pills', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Add Pill',
@@ -125,7 +125,7 @@ add_action( 'acf/init', function () {
 					[ 'key' => 'field_pf_cta_stat_label', 'label' => 'Label', 'name' => 'label', 'type' => 'text' ],
 				],
 			],
-			[ 'key' => 'field_pf_disclaimer', 'label' => 'Disclaimer', 'name' => 'pf_disclaimer', 'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'default_value' => 'This service is provided under the NHS Pharmacy First scheme. Treatment is subject to clinical assessment by our GPhC-registered pharmacists. Not all presentations will meet the criteria for NHS-funded treatment. If you are unsure whether your condition qualifies, please walk in or call your nearest branch. Information is accurate as of April 2026.' ],
+			[ 'key' => 'field_pf_disclaimer', 'label' => 'Disclaimer', 'name' => 'pf_disclaimer', 'type' => 'textarea', 'rows' => 4, 'new_lines' => '', 'default_value' => 'This service is provided under the NHS Pharmacy First scheme. Treatment is subject to clinical assessment by our GPhC-registered pharmacists. Not all presentations will meet the criteria for NHS-funded treatment. The consultation is free; standard NHS prescription charges apply to any medicines supplied, unless you are exempt. If you are unsure whether your condition qualifies, please walk in or call your nearest branch. Information is accurate as of April 2026.' ],
 		],
 	] );
 
@@ -138,7 +138,7 @@ function pf_repeater_defaults(): array {
 	return [
 		'pf_stats' => [
 			[ 'value' => '7', 'label' => 'Conditions Treated' ],
-			[ 'value' => 'FREE', 'label' => 'NHS Funded' ],
+			[ 'value' => 'FREE', 'label' => 'NHS Consultation' ],
 			[ 'value' => 'No', 'label' => 'GP Appointment' ],
 			[ 'value' => 'Same', 'label' => 'Day Treatment' ],
 		],
@@ -154,18 +154,18 @@ function pf_repeater_defaults(): array {
 		'pf_steps' => [
 			[ 'title' => 'Walk In or Book Online',          'desc' => 'Visit any of our four Hampshire locations during opening hours, or book a convenient slot online. No GP referral needed.' ],
 			[ 'title' => 'Private Pharmacist Consultation', 'desc' => 'One of our trained pharmacists will see you in a private consultation room, asking about your symptoms, medical history and current medications, following NHS clinical guidelines throughout.' ],
-			[ 'title' => 'Walk Out Treated',                'desc' => 'If your condition meets the NHS Pharmacy First criteria, you&apos;ll receive appropriate treatment on the spot &mdash; including prescription-only medicines such as antibiotics or antivirals where clinically indicated. Completely free of charge.' ],
+			[ 'title' => 'Walk Out Treated',                'desc' => 'If your condition meets the NHS Pharmacy First criteria, you&apos;ll receive appropriate treatment on the spot &mdash; including prescription-only medicines such as antibiotics or antivirals where clinically indicated. The standard NHS prescription charge applies to medicines unless you normally get free prescriptions.' ],
 		],
 		'pf_checklist' => [
 			[ 'text' => 'Registered with any GP in England' ],
 			[ 'text' => 'Ages 1+ for most conditions' ],
 			[ 'text' => 'Women aged 16&ndash;64 for uncomplicated UTI' ],
 			[ 'text' => 'No appointment needed &mdash; walk in welcome' ],
-			[ 'text' => 'Completely free of charge' ],
+			[ 'text' => 'Free NHS consultation' ],
 			[ 'text' => 'Same-day treatment available' ],
 		],
 		'pf_faqs' => [
-			[ 'num' => '01', 'question' => 'Is it really free?', 'answer' => 'Yes. NHS Pharmacy First is fully funded by the NHS. You pay nothing &mdash; not even a prescription charge &mdash; for any treatment provided under the scheme, including prescription-only medicines like antibiotics or antivirals.' ],
+			[ 'num' => '01', 'question' => 'Do I have to pay?', 'answer' => 'The Pharmacy First consultation is free on the NHS. If our pharmacist supplies a medicine, such as an antibiotic or antiviral, the standard NHS prescription charge applies for each item, unless you normally get free prescriptions. Our team can check this with you at your appointment.' ],
 			[ 'num' => '02', 'question' => 'Do I need to see my GP first?', 'answer' => 'No. That&apos;s the whole point of the service. Our pharmacists are trained to assess and treat these conditions independently. Simply walk in or book online.' ],
 			[ 'num' => '03', 'question' => 'What conditions can you treat?', 'answer' => 'Sinusitis (12+), Sore Throat (5+), Earache (1&ndash;17), Infected Insect Bite (1+), Impetigo (1+), Shingles (18+), and Uncomplicated UTI (women 16&ndash;64).' ],
 			[ 'num' => '04', 'question' => 'Do I need to be registered with a specific GP?', 'answer' => 'No. You just need to be registered with any GP in England. You don&apos;t need to be registered locally in Hampshire or with a specific practice.' ],
@@ -182,7 +182,7 @@ function pf_repeater_defaults(): array {
 		],
 		'pf_cta_stats' => [
 			[ 'value' => '7', 'label' => 'Conditions Covered' ],
-			[ 'value' => 'FREE', 'label' => 'NHS Funded' ],
+			[ 'value' => 'FREE', 'label' => 'NHS Consultation' ],
 			[ 'value' => 'Same Day', 'label' => 'Treatment Available' ],
 			[ 'value' => '4', 'label' => 'Hampshire Locations' ],
 		],
