@@ -118,7 +118,7 @@ $ab_inside_img    = $ab_uploads . 'ACE75A44-0B10-4C2F-9FF5-501A17F21482_1_105_c-
           ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-1 lg:max-w-none'
           : '';
       ?>
-      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink h-full flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
+      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
         <div class="h-16 md:h-20 flex items-center justify-center mb-4">
           <img src="<?php echo esc_url( $aw['logo'] ); ?>" alt="<?php echo esc_attr( $aw['org'] . ' logo' ); ?>" class="max-h-full max-w-[150px] w-auto object-contain" loading="lazy" />
         </div>

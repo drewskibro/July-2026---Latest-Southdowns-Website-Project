@@ -36,6 +36,8 @@
 
 /* Hero (mobile): keep text legible over the slide background images */
 .hero-legible { text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
+/* ...but not on solid white buttons: a dark shadow behind blue-on-white text reads as blur. */
+.hero-legible .bg-white { text-shadow: none; }
 
 /* Hero typography — add .hero-type to a hero <section>.
    The panel blue #196bdc gives white text 5.0:1, clearing WCAG AA (4.5:1).
