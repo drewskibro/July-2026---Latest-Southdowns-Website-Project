@@ -167,7 +167,7 @@ $why_icons = [
 <!-- ============================================================
      S1: HERO — Matches homepage 2-column layout exactly
      ============================================================ -->
-<section class="relative w-full min-h-[560px] lg:min-h-[660px] overflow-hidden">
+<section class="hero-type relative w-full min-h-[560px] lg:min-h-[660px] overflow-hidden">
 
   <!-- Mobile: full-width image with overlay -->
   <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');"></div>
@@ -187,7 +187,7 @@ $why_icons = [
       </a>
       <a href="#faqs" class="inline-flex items-center gap-2 text-white text-sm font-medium border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
     </div>
-    <div class="flex flex-wrap gap-4 text-white/90 text-xs font-jost">
+    <div class="hero-note flex flex-wrap gap-4 text-white text-xs font-medium font-jost">
       <span>&#10003; GPhC Registered</span>
       <span>&#10003; No GP Referral</span>
       <span>&#10003; Face-to-Face Support</span>
@@ -197,7 +197,7 @@ $why_icons = [
   <!-- Desktop: 2-column split matching homepage hero -->
   <div class="hidden md:flex">
     <!-- Left: solid blue panel -->
-    <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
+    <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#196bdc;">
       <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
         <div class="badge-rule w-10 h-px bg-white/30"></div>
         <span class="badge-text text-white/80 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo $hero_badge; ?></span>
@@ -211,7 +211,7 @@ $why_icons = [
         </a>
         <a href="#faqs" class="inline-flex items-center gap-2 text-white text-base font-medium border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
       </div>
-      <div class="flex flex-wrap gap-5 text-white text-sm font-jost">
+      <div class="hero-features flex flex-wrap gap-5 text-white text-sm font-semibold font-jost">
         <span class="flex items-center gap-1.5">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           GPhC Registered

@@ -21,7 +21,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
 <!-- ============================================================
      HERO SLIDER
      ============================================================ -->
-<section class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px] overflow-hidden" id="hero-slider">
+<section class="hero-type relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px] overflow-hidden" id="hero-slider">
   <div class="relative w-full min-h-[560px] md:min-h-[560px] lg:min-h-[660px]">
 
     <!-- Slide 1: Travel Vaccines -->
@@ -36,15 +36,15 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s1_heading', '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s1_subtext', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ); ?></p>
         <div class="mb-4">
-          <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
+          <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
             Book Appointment
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
-        <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Same day appointments typically available—book early to avoid disappointment.</p>
+        <p class="hero-note text-white text-sm font-medium leading-relaxed font-jost">Same day appointments typically available—book early to avoid disappointment.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center pl-12 lg:pl-16 pr-24 lg:pr-36 py-12" style="background-color:#196bdc;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">4 Hampshire Locations &middot; Same-Day Appointments</span>
@@ -52,12 +52,12 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
           <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s1_heading', '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments' ); ?></h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s1_subtext', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ); ?></p>
           <div class="mb-6">
-            <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
+            <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
               Book Appointment
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+          <div class="hero-features flex flex-wrap gap-x-6 gap-y-2 text-white text-sm font-semibold font-jost">
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> All Vaccines in Stock</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Same-Day Available</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Expert Pharmacists</span>
@@ -88,14 +88,14 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
         <div class="mb-4">
-          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
+          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#196bdc;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">GPhC Registered &middot; Clinically Supervised</span>
@@ -103,12 +103,12 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
           <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
           <div class="mb-6">
-            <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
+            <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
               Learn More
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+          <div class="hero-features flex flex-wrap gap-x-6 gap-y-2 text-white text-sm font-semibold font-jost">
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Monthly Check-ins</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
           </div>
@@ -129,15 +129,15 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s3_heading', '<span class="serif-accent">Comprehensive</span> blood testing' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s3_subtext', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' ); ?></p>
         <div class="mb-4">
-          <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
+          <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
             Book Blood Test
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
-        <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Results typically available within 24-48 hours.</p>
+        <p class="hero-note text-white text-sm font-medium leading-relaxed font-jost">Results typically available within 24-48 hours.</p>
       </div>
       <div class="hidden md:flex">
-        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
+        <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#196bdc;">
           <div class="premium-badge flex items-center justify-start gap-4 mb-6 self-start">
             <div class="badge-rule w-10 h-px bg-white/30"></div>
             <span class="badge-text text-white/80 text-sm font-normal tracking-[0.15em] uppercase font-jost">Results in 24&ndash;48 Hours &middot; 4 Locations</span>
@@ -145,12 +145,12 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
           <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s3_heading', '<span class="serif-accent">Comprehensive</span> blood testing' ); ?></h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s3_subtext', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' ); ?></p>
           <div class="mb-6">
-            <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
+            <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
               Book Blood Test
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
           </div>
-          <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
+          <div class="hero-features flex flex-wrap gap-x-6 gap-y-2 text-white text-sm font-semibold font-jost">
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Same-Day Available</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 24&ndash;48hr Results</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> B12 &amp; Full Screening</span>
