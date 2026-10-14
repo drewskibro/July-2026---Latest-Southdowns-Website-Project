@@ -20,7 +20,7 @@ $cv_programme_intro = sp_field( 'cv_nhs_programme_intro', 'For Spring 2026, the 
 $cv_elig_eyebrow    = sp_field( 'cv_nhs_elig_eyebrow',    'Spring 2026 Eligibility' );
 $cv_elig_headline   = sp_field( 'cv_nhs_elig_headline',   'Are You Eligible for a Free NHS COVID Vaccine?' );
 $cv_elig_subhead    = sp_field( 'cv_nhs_elig_subhead',    'The Spring 2026 programme is targeted at those at highest risk. Check whether you qualify below.' );
-$cv_promo_body      = sp_field( 'cv_nhs_promo_body',      'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>&pound;92.50 per dose</strong> &mdash; ideal for those who want to stay protected but fall outside the current NHS cohorts.' );
+$cv_promo_body      = sp_field( 'cv_nhs_promo_body',      'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>&pound;89.50 per dose</strong> &mdash; ideal for those who want to stay protected but fall outside the current NHS cohorts.' );
 $cv_locations_eyebrow  = sp_field( 'cv_nhs_locations_eyebrow',  '4 Locations Across Hampshire' );
 $cv_locations_headline = sp_field( 'cv_nhs_locations_headline', 'Book at Your Nearest Hampshire Branch' );
 $cv_locations_subhead  = sp_field( 'cv_nhs_locations_subhead',  'Free NHS COVID-19 vaccinations available at all four Southdowns Pharmacy locations.' );
@@ -83,7 +83,7 @@ $cv_faqs = ! empty( $cv_faqs_raw ) ? $cv_faqs_raw : [
     [ 'question' => 'Which vaccine will I receive?', 'answer' => 'Vaccine availability varies by season. Our team will confirm which vaccine you will receive at the time of booking or at your appointment.' ],
     [ 'question' => 'How long does the appointment take?', 'answer' => 'The vaccination itself takes only a few minutes. We ask patients to remain for a short observation period afterwards &mdash; typically 10 to 15 minutes in total.' ],
     [ 'question' => 'Can I bring someone with me?', 'answer' => 'Yes. You are welcome to bring a family member or carer. Please let our team know in advance if you require any assistance.' ],
-    [ 'question' => 'I was eligible last season but don&apos;t see myself in the current list &mdash; what should I do?', 'answer' => 'The eligibility criteria changed for Spring 2026. If you are no longer included in the NHS cohorts, you may wish to consider our private vaccination service at &pound;92.50. Speak to our pharmacist for personalised advice.' ],
+    [ 'question' => 'I was eligible last season but don&apos;t see myself in the current list &mdash; what should I do?', 'answer' => 'The eligibility criteria changed for Spring 2026. If you are no longer included in the NHS cohorts, you may wish to consider our private vaccination service at &pound;89.50. Speak to our pharmacist for personalised advice.' ],
     [ 'question' => 'Is the vaccine safe for immunosuppressed patients?', 'answer' => 'Yes. Immunosuppressed individuals are actually a priority group for the NHS programme, as they are at higher risk of serious illness. Please bring details of your condition or treatment to your appointment so our pharmacist can advise appropriately.' ],
 ];
 ?>

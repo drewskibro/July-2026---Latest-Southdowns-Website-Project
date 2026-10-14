@@ -191,8 +191,8 @@ add_action( 'acf/init', function () {
                 'name'         => 'cv_nhs_promo_body',
                 'type'         => 'textarea',
                 'rows'         => 4,
-                'instructions' => 'Body text in the "Not Eligible?" section. May reference the private price (currently £92.50). Basic HTML allowed.',
-                'placeholder'  => 'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>£92.50 per dose</strong> — ideal for those who want to stay protected but fall outside the current NHS cohorts.',
+                'instructions' => 'Body text in the "Not Eligible?" section. May reference the private price (currently £89.50). Basic HTML allowed.',
+                'placeholder'  => 'If you don\'t currently meet the NHS eligibility criteria for Spring 2026, you can still protect yourself with our private COVID-19 vaccination service. We offer the latest Pfizer COVID-19 vaccine privately for <strong>£89.50 per dose</strong> — ideal for those who want to stay protected but fall outside the current NHS cohorts.',
             ],
             [
                 'key'         => 'field_cv_nhs_final_cta_headline',
@@ -322,7 +322,7 @@ add_action( 'acf/init', function () {
                 'name'         => 'cv_priv_price',
                 'type'         => 'text',
                 'instructions' => 'Single source of truth — appears on the pricing card, "Book Now" button, Why-Southdowns inclusion line, final CTA badges and trust row.',
-                'placeholder'  => '£92.50',
+                'placeholder'  => '£89.50',
             ],
             [
                 'key'          => 'field_cv_priv_price_label',

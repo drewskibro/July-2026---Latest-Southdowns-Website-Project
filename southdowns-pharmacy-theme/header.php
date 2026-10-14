@@ -96,13 +96,21 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.063 2.522-.187 3.756-.249 2.502-2.13 4.477-4.62 4.79a48.108 48.108 0 01-8.386 0c-2.49-.313-4.371-2.288-4.62-4.79A48.196 48.196 0 013 12c0-1.267.063-2.522.187-3.756.249-2.502 2.13-4.477 4.62-4.79a48.108 48.108 0 018.386 0c2.49.313 4.371 2.288 4.62 4.79.124 1.234.187 2.49.187 3.756z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Yellow Fever</span><span class="mega-dd-link-desc">NATHNAC certified centre</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>" class="mega-dd-link">
-                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25c-3.5 4.5-6 7.875-6 11.25a6 6 0 0012 0c0-3.375-2.5-6.75-6-11.25z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Tests</span><span class="mega-dd-link-desc">Results within 24–48 hours</span></div>
+                    <a href="<?php echo esc_url( home_url( '/travel-vaccinations/#destinations' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Destination Guides</span><span class="mega-dd-link-desc">Africa, Asia, Caribbean &amp; more</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/pricing/#travel-vaccinations' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Travel Prices</span><span class="mega-dd-link-desc">Full travel vaccine price list</span></div>
                     </a>
                   </div>
                   <div class="mega-dd-section">
-                    <div class="mega-dd-title">Specialist Care</div>
+                    <div class="mega-dd-title">Private Clinics</div>
+                    <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Management</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
+                    </a>
                     <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396.234-.847 1.058-1.354 1.938-1.354H6.75z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">Ear Wax Removal</span><span class="mega-dd-link-desc">Professional microsuction</span></div>
@@ -111,16 +119,24 @@ $destinations = [
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></div>
                       <div class="mega-dd-link-content"><span class="mega-dd-link-name">B12 Injections</span><span class="mega-dd-link-desc">Energy-boosting vitamin B12 jabs</span></div>
                     </a>
-                    <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="mega-dd-link">
-                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Management</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
+                    <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2.25c-3.5 4.5-6 7.875-6 11.25a6 6 0 0012 0c0-3.375-2.5-6.75-6-11.25z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Blood Tests</span><span class="mega-dd-link-desc">Results within 24–48 hours</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/flu-vaccinations/#private-flu' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.249-8.25-3.286z"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Private Flu Jab</span><span class="mega-dd-link-desc">Quick seasonal jab, no NHS criteria</span></div>
+                    </a>
+                    <a href="<?php echo esc_url( home_url( '/private-covid/' ) ); ?>" class="mega-dd-link">
+                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Private COVID Vaccine</span><span class="mega-dd-link-desc">Seasonal protection, no eligibility criteria</span></div>
                     </a>
                   </div>
                   <div class="mega-dd-section">
                     <div class="mega-dd-title">NHS Services</div>
                     <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.249-8.25-3.286z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Flu Vaccinations</span><span class="mega-dd-link-desc">NHS &amp; private flu jabs</span></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">NHS Flu Vaccination</span><span class="mega-dd-link-desc">Free flu jabs for eligible patients</span></div>
                     </a>
                     <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h4l2-6 4 12 2-6h6"/></svg></div>
@@ -280,11 +296,15 @@ $destinations = [
         <div class="mob-dd-sub">
           <a href="<?php echo esc_url( home_url( '/travel-vaccinations/' ) ); ?>">Travel Vaccinations</a>
           <a href="<?php echo esc_url( home_url( '/yellow-fever/' ) ); ?>">Yellow Fever</a>
-          <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
+          <a href="<?php echo esc_url( home_url( '/travel-vaccinations/#destinations' ) ); ?>">Destination Guides</a>
+          <a href="<?php echo esc_url( home_url( '/pricing/#travel-vaccinations' ) ); ?>">Travel Prices</a>
+          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>">Weight Management</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>
           <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>">B12 Injections</a>
-          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>">Weight Management</a>
-          <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>">Flu Vaccinations</a>
+          <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
+          <a href="<?php echo esc_url( home_url( '/flu-vaccinations/#private-flu' ) ); ?>">Private Flu Jab</a>
+          <a href="<?php echo esc_url( home_url( '/private-covid/' ) ); ?>">Private COVID Vaccine</a>
+          <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>">NHS Flu Vaccination</a>
           <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>">Blood Pressure Checks</a>
           <a href="<?php echo esc_url( home_url( '/contraception-services/' ) ); ?>">Contraception Services</a>
           <a href="<?php echo esc_url( home_url( '/nhs-covid/' ) ); ?>">NHS COVID Vaccination</a>

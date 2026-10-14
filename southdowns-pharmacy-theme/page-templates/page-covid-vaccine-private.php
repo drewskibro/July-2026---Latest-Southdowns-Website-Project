@@ -14,7 +14,7 @@ $cvp_hero_badge     = sp_field( 'cv_priv_hero_badge',    'Private COVID-19 Vacci
 $cvp_hero_headline  = sp_field( 'cv_priv_hero_headline', 'Private COVID-19 Vaccine in Hampshire &mdash; Available Today' );
 $cvp_hero_body      = sp_field( 'cv_priv_hero_body',     'Not eligible for the NHS COVID-19 vaccine this season? Southdowns Pharmacy offers private COVID-19 vaccination using the latest Pfizer vaccine &mdash; no eligibility criteria, no waiting list, no GP referral needed. Walk in or book online at any of our four Hampshire locations.' );
 $cvp_hero_image     = ( function_exists( 'get_field' ) ? get_field( 'cv_priv_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop';
-$cvp_price          = sp_field( 'cv_priv_price',         '£92.50' );
+$cvp_price          = sp_field( 'cv_priv_price',         '£89.50' );
 $cvp_price_label    = sp_field( 'cv_priv_price_label',   'per person · all-inclusive' );
 $cvp_final_headline = sp_field( 'cv_priv_final_cta_headline', 'Stay Protected.<br>Book Your Private<br>COVID-19 Vaccine Today.' );
 $cvp_final_body     = sp_field( 'cv_priv_final_cta_body',     'No waiting lists. No eligibility criteria. Just the Pfizer vaccine, administered by our expert team — at a time that suits you.' );
