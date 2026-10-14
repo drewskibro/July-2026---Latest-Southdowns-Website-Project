@@ -86,7 +86,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
         <h1 class="text-white text-3xl font-semibold tracking-tight leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
         <p class="text-white text-base font-normal leading-relaxed mb-5 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
         <div class="mb-4">
-          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
+          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-sm font-medium bg-transparent border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
@@ -101,7 +101,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
           <h1 class="text-white text-4xl lg:text-[50px] font-semibold tracking-tight leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'home_s2_heading', 'Medical <span class="serif-accent">weight loss</span> programme' ); ?></h1>
           <p class="text-white text-lg lg:text-xl font-normal leading-relaxed mb-6 font-jost"><?php echo sp_field( 'home_s2_subtext', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ); ?></p>
           <div class="mb-6">
-            <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
+            <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 text-white text-base font-medium bg-transparent border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">
               Learn More
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -304,7 +304,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6">
       <?php
       $treatments = [
-        ['Weight Loss',       home_url('/weight-loss/'),    get_template_directory_uri() . '/assets/img/treatment-weight-loss.webp', 'Weight loss treatment at Southdowns Pharmacy'],
+        ['Weight Loss',       home_url('/weight-management/'),    get_template_directory_uri() . '/assets/img/treatment-weight-loss.webp', 'Weight loss treatment at Southdowns Pharmacy'],
         ['Travel Health',     home_url('/travel-vaccinations/'),  get_template_directory_uri() . '/assets/img/treatment-travel.webp', 'Travel health vaccinations at Southdowns Pharmacy'],
         ['Ear Wax Removal',   home_url('/ear-wax-removal/'),        get_template_directory_uri() . '/assets/img/treatment-ear-wax.webp', 'Ear wax removal service at Southdowns Pharmacy'],
       ];

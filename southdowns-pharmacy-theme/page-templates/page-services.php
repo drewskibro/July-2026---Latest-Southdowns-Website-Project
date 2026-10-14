@@ -68,7 +68,7 @@ $svc_groups = [
         'blurb'   => 'Everyday health services delivered by GPhC-registered pharmacists close to home.',
         'tile'    => 'bg-emerald-50 text-emerald-600',
         'services' => [
-            [ 'name' => 'Weight Loss', 'url' => '/weight-loss/', 'desc' => 'Clinically supervised Mounjaro & Wegovy programmes — no GP referral.', 'nhs' => false, 'price' => 'Free consultation',
+            [ 'name' => 'Weight Loss', 'url' => '/weight-management/', 'desc' => 'Clinically supervised Mounjaro & Wegovy programmes — no GP referral.', 'nhs' => false, 'price' => 'Free consultation',
               'icon' => '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' ],
             [ 'name' => 'Wegovy Pill', 'url' => '/wegovy-pill/', 'desc' => 'The MHRA-approved oral semaglutide — a needle-free alternative to the weekly jab.', 'nhs' => false, 'price' => 'from £128.50',
               'icon' => '<path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/>' ],
@@ -307,7 +307,7 @@ if ( empty( $svc_faqs ) ) {
         </div>
 
         <div class="flex flex-wrap gap-4">
-          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
+          <a href="<?php echo esc_url( home_url( '/weight-management/' ) ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
             Explore Weight Loss
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>

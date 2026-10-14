@@ -457,6 +457,31 @@ function sp_awards(): array {
 }
 
 
+/**
+ * /weight-loss/ has moved to /weight-management/.
+ *
+ * Without this, WordPress's own 404 guessing sends /weight-loss/ to the first
+ * post whose slug starts with "weight-loss" — an old 2024 blog post. Runs
+ * before redirect_canonical (priority 10) so it wins over that guess.
+ *
+ * Only fires once the Weight Management page is actually published, so the
+ * order in which the code is deployed and the page is published can't send
+ * visitors to an empty or unpublished page.
+ */
+add_action( 'template_redirect', function () {
+    $path = trim( (string) wp_parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+    if ( 'weight-loss' !== $path ) {
+        return;
+    }
+    $target = get_page_by_path( 'weight-management' );
+    if ( ! $target || 'publish' !== get_post_status( $target ) ) {
+        return;
+    }
+    wp_safe_redirect( get_permalink( $target ), 301, 'Southdowns theme' );
+    exit;
+}, 1 );
+
+
 // ============================================================
 // ASSET ENQUEUING
 // ============================================================
