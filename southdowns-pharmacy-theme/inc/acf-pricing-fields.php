@@ -43,7 +43,7 @@ function sp_pricing_defaults(): array {
 			'description' => 'Free on the NHS for eligible patients, or book privately.',
 			'services'    => [
 				[ 'name' => 'NHS Flu Vaccination',     'duration' => '5min', 'price' => '£0.00' ],
-				[ 'name' => 'Private Flu Vaccination', 'duration' => '5min', 'price' => '£22.00' ],
+				[ 'name' => 'Private Flu Vaccination', 'duration' => '5min', 'price' => '£27.50' ],
 			],
 		],
 		[

@@ -11,48 +11,14 @@ $booking_url = sp_booking_url();
 
 $hero_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop';
 $hero_headline  = sp_field( 'wl_hero_headline',  'Clinically supervised weight loss at your local Hampshire pharmacy' );
-$hero_body      = sp_field( 'wl_hero_body',      'Prescription weight management with Mounjaro or Wegovy, assessed and monitored face-to-face by our GPhC-registered pharmacists. Treatment is prescribed only where clinically appropriate following a full assessment. No GP referral needed.' );
-$hero_badge     = sp_field( 'wl_hero_badge_text', 'Medical Weight Loss &middot; Hampshire' );
+$hero_body      = sp_field( 'wl_hero_body',      'A supervised weight management programme led by our GPhC-registered pharmacists, with a face-to-face assessment and monthly in-person reviews at four local Hampshire branches. Start with a free consultation &mdash; no GP referral needed.' );
+$hero_badge     = sp_field( 'wl_hero_badge_text', 'Weight Management &middot; Hampshire' );
 
-$science_eyebrow      = sp_field( 'wl_science_eyebrow',      'Clinical Evidence' );
-$science_headline     = sp_field( 'wl_science_headline',     'What the clinical evidence shows' );
-$science_subhead      = sp_field( 'wl_science_subhead',      'In randomised trials, GLP-1 receptor agonists produced greater average weight loss than lifestyle intervention alone. Individual results vary, and these medicines are licensed as an adjunct to a reduced-calorie diet and increased physical activity.' );
-$science_citation     = sp_field( 'wl_science_citation',     'STEP-1 trial (Wilding et al., <em>N Engl J Med</em> 2021): mean weight change over 68 weeks was &minus;14.9% with semaglutide 2.4mg versus &minus;2.4% with placebo. <strong>Both groups received the same lifestyle intervention.</strong> Trial averages are not a prediction of individual results.' );
-$science_quote        = sp_field( 'wl_science_quote',        'Patients on GLP-1 therapy often describe something dieting never gave them &mdash; relief from the constant thinking about food, which many find easier to sustain.' );
-$science_quote_author = sp_field( 'wl_science_quote_author', 'Alex Chen, MPharm' );
-$science_quote_role   = sp_field( 'wl_science_quote_role',   'Lead Pharmacist, Southdowns Pharmacy' );
-
-// Costs are confirmed at consultation rather than advertised alongside efficacy
-// information. Leave these empty to keep that convention.
-$mounjaro_price = sp_field( 'wl_mounjaro_price', '' );
-$wegovy_price   = sp_field( 'wl_wegovy_price',   '' );
-
-// Treatments (S4)
-$treatments_eyebrow     = sp_field( 'wl_treatments_eyebrow',     'Prescription Treatments' );
-$treatments_headline    = sp_field( 'wl_treatments_headline',    'The medicines we prescribe' );
-$treatments_subhead     = sp_field( 'wl_treatments_subhead',     'Our GPhC-registered pharmacists prescribe two UK-licensed GLP-1 medicines. Which one is appropriate &mdash; if either is &mdash; depends on your health profile and is decided at your assessment.' );
-$treatments_cta_label   = sp_field( 'wl_treatments_cta_label',   'Book Free Consultation' );
-$treatments_eligibility = sp_field( 'wl_treatments_eligibility', '<strong>Eligibility:</strong> You must have a BMI of 30 or above, or 27+ with a weight-related health condition such as type 2 diabetes or hypertension. These medicines are not suitable for everyone &mdash; our pharmacists will assess your suitability, and may advise that treatment is not appropriate for you. Costs are confirmed at your free consultation.' );
-
-$mounjaro_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_mounjaro_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80&auto=format&fit=crop';
-$mounjaro_image_alt = sp_field( 'wl_mounjaro_image_alt', 'Mounjaro weight loss injection' );
-$mounjaro_badge     = sp_field( 'wl_mounjaro_badge',     '' );
-$mounjaro_name      = sp_field( 'wl_mounjaro_name',      'Mounjaro&reg;' );
-$mounjaro_subtitle  = sp_field( 'wl_mounjaro_subtitle',  'Tirzepatide &middot; GIP &amp; GLP-1 receptor agonist' );
-$mounjaro_body      = sp_field( 'wl_mounjaro_body',      'Tirzepatide acts on two gut hormone receptors (GIP and GLP-1), which reduces appetite. In the SURMOUNT-1 trial, participants taking the maximum 15mg dose lost an average of up to 22.5% of body weight over 72 weeks. Trial averages are not a prediction of individual results.' );
-$mounjaro_bullets_raw = sp_field( 'wl_mounjaro_bullets', "Weekly self-injection, starting at 2.5mg and titrated gradually\nReduces appetite and affects insulin sensitivity\nUK-licensed for BMI &ge;30, or &ge;27 with a weight-related condition\nPrescribed only where clinically appropriate following assessment" );
-$mounjaro_bullets   = array_values( array_filter( array_map( 'trim', preg_split( "/\r\n|\r|\n/", (string) $mounjaro_bullets_raw ) ) ) );
-if ( $mounjaro_price ) { $mounjaro_bullets[] = $mounjaro_price; }
-
-$wegovy_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_wegovy_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&q=80&auto=format&fit=crop';
-$wegovy_image_alt = sp_field( 'wl_wegovy_image_alt', 'Wegovy weight loss injection' );
-$wegovy_badge     = sp_field( 'wl_wegovy_badge',     '' );
-$wegovy_name      = sp_field( 'wl_wegovy_name',      'Wegovy&reg;' );
-$wegovy_subtitle  = sp_field( 'wl_wegovy_subtitle',  'Semaglutide &middot; GLP-1 receptor agonist' );
-$wegovy_body      = sp_field( 'wl_wegovy_body',      'Semaglutide mimics the natural GLP-1 hormone to reduce appetite, and has a long clinical track record. In the STEP-1 trial, participants taking 2.4mg lost an average of 14.9% of body weight over 68 weeks, compared with 2.4% on placebo. Trial averages are not a prediction of individual results.' );
-$wegovy_bullets_raw = sp_field( 'wl_wegovy_bullets', "Weekly self-injection, starting at 0.25mg and titrated gradually\nMimics the natural GLP-1 hormone to reduce appetite\nUK-licensed for BMI &ge;30, or &ge;27 with a weight-related condition\nPrescribed only where clinically appropriate following assessment" );
-$wegovy_bullets   = array_values( array_filter( array_map( 'trim', preg_split( "/\r\n|\r|\n/", (string) $wegovy_bullets_raw ) ) ) );
-if ( $wegovy_price ) { $wegovy_bullets[] = $wegovy_price; }
+// The former S3 (clinical evidence chart) and S4 (named medicine cards)
+// sections were removed: a weight management page may promote the
+// consultation-led service but not a prescription-only medicine, directly
+// or by implication (CAP AdviceOnline, "Weight control: Prescription-only
+// medicines"). Do not reintroduce medicine names, classes or trial figures.
 
 // Testimonials (S7)
 $testimonials_eyebrow  = sp_field( 'wl_testimonials_eyebrow',  'Patient Stories' );
@@ -83,7 +49,7 @@ $testimonials_trust_icons = [
 
 // FAQ (S10)
 $faq_eyebrow   = sp_field( 'wl_faq_eyebrow',   'FAQs' );
-$faq_headline  = sp_field( 'wl_faq_headline',  'Common questions about medical weight loss' );
+$faq_headline  = sp_field( 'wl_faq_headline',  'Common questions about weight management' );
 $faq_intro     = sp_field( 'wl_faq_intro',     'Everything you need to know before starting. Can&rsquo;t find your answer? Ask us at your free consultation.' );
 $faq_cta_label = sp_field( 'wl_faq_cta_label', 'Book Free Consultation' );
 
@@ -96,36 +62,34 @@ $faq_stats     = ! empty( $faq_stats_raw ) ? $faq_stats_raw : [
 
 $faq_items_raw = function_exists( 'get_field' ) ? get_field( 'wl_faq_items' ) : null;
 $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
-    [ 'question' => 'Am I eligible for weight loss injections?',
-      'answer'   => 'You may be eligible if you have a BMI of 30 or above, or a BMI of 27 or above alongside a weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol or sleep apnoea. Meeting the BMI criteria does not automatically mean treatment is suitable &mdash; our pharmacists carry out a full assessment of your medical history and current medicines, and may advise that these medicines are not appropriate for you.' ],
-    [ 'question' => 'Who should not take these medicines?',
-      'answer'   => 'These medicines are not suitable for everyone. They should not be used if you are pregnant, breastfeeding or trying to conceive, or if you have a personal or family history of medullary thyroid carcinoma or multiple endocrine neoplasia type 2. Tell your pharmacist if you have ever had pancreatitis, gallbladder disease, severe kidney or liver problems, diabetic retinopathy, or an eating disorder. Always tell us about every medicine you take, including insulin and sulphonylureas.' ],
-    [ 'question' => 'Do I still need to diet and exercise?',
-      'answer'   => 'Yes. These medicines are licensed as an adjunct to a reduced-calorie diet and increased physical activity &mdash; they are not a replacement for either. The medicine helps make those changes more achievable, and we provide dietary and lifestyle advice as part of your monthly reviews.' ],
-    [ 'question' => 'What is the difference between Mounjaro and Wegovy?',
-      'answer'   => 'Both are weekly self-injections that reduce appetite, but they work differently. Mounjaro (tirzepatide) acts on two hormone receptors, GIP and GLP-1. Wegovy (semaglutide) acts on GLP-1 only and has a longer clinical track record. Which is appropriate for you &mdash; if either is &mdash; depends on your health history, other medicines and how you tolerate treatment. Your pharmacist will discuss this with you.' ],
+    [ 'question' => 'Am I eligible?',
+      'answer'   => 'The programme is for adults with a BMI of 30 or above, or a BMI of 27 or above alongside a weight-related health condition such as type 2 diabetes, high blood pressure, high cholesterol or sleep apnoea. Meeting these criteria does not automatically mean the programme is right for you &mdash; your pharmacist will carry out a full assessment of your medical history and current medicines, and will tell you honestly if it is not suitable.' ],
+    [ 'question' => 'Is the programme suitable for everyone?',
+      'answer'   => 'No. It is not suitable if you are pregnant, breastfeeding or trying to conceive, and some medical conditions and medicines mean it may not be appropriate. Your pharmacist will review your full medical history and every medicine you take, including anything bought over the counter, before agreeing a plan with you.' ],
+    [ 'question' => 'Do I still need to change my diet and activity?',
+      'answer'   => 'Yes. Healthy eating and regular activity are the foundation of every plan. Your pharmacist will give you practical dietary and lifestyle advice, and review your progress with you at each monthly visit.' ],
     [ 'question' => 'Do I need a GP referral?',
-      'answer'   => 'No. Our GPhC-registered pharmacist prescribers can assess your suitability and, where clinically appropriate, issue a prescription directly &mdash; without a GP referral or NHS waiting list. With your consent we will also keep your GP informed.' ],
-    [ 'question' => 'How much weight can I expect to lose?',
-      'answer'   => 'We cannot predict individual results. In clinical trials, average weight loss over roughly a year ranged from about 15% with semaglutide to up to 22.5% with the maximum dose of tirzepatide. Those are averages across trial populations, not a guarantee &mdash; some people lose more, some lose less, and some do not respond. Results depend on consistent use alongside diet and activity changes.' ],
-    [ 'question' => 'What are the common side effects?',
-      'answer'   => 'The most common side effects are nausea, vomiting, diarrhoea, constipation and reduced appetite, particularly in the first few weeks and after each dose increase. These are usually mild and settle. Less common but more serious effects include pancreatitis and gallbladder problems &mdash; we will explain the warning signs to look out for. Always read the patient information leaflet that comes with your medicine, and tell us about any side effects you experience.' ],
+      'answer'   => 'No. You can book a free consultation directly with our pharmacists &mdash; no GP referral and no NHS waiting list. With your consent we will keep your GP informed.' ],
+    [ 'question' => 'How much weight will I lose?',
+      'answer'   => 'Everyone is different, so we do not make promises about how much you will lose or how quickly. Your pharmacist will agree realistic, safe goals with you and track your progress at your monthly reviews.' ],
+    [ 'question' => 'What happens at my monthly reviews?',
+      'answer'   => 'Each month you see a pharmacist in person at your chosen branch. We check your weight and blood pressure, talk through how you are getting on, and adjust your plan where needed.' ],
     [ 'question' => 'How much does the programme cost?',
-      'answer'   => 'Your initial consultation is completely free, with no obligation. Treatment costs vary depending on the medicine and dose prescribed, and include your medication, the prescribing consultation and ongoing pharmacist support. We will give you a full cost breakdown at your consultation before you decide whether to go ahead.' ],
-    [ 'question' => 'Can I use weight loss injections if I have type 2 diabetes?',
-      'answer'   => 'Possibly, but it needs careful assessment. GLP-1 medicines can affect blood sugar control, so your pharmacist will review your current medicines and medical history thoroughly &mdash; particularly if you take insulin or sulphonylureas, where doses may need adjusting to reduce the risk of hypoglycaemia. We will coordinate with your GP or diabetes team where appropriate.' ],
+      'answer'   => 'Your first consultation is free, with no obligation. Costs depend on the plan agreed with your pharmacist, and we give you a full breakdown at your consultation before you decide whether to go ahead.' ],
+    [ 'question' => 'Can I join if I have type 2 diabetes?',
+      'answer'   => 'Possibly, but it needs careful assessment. Your pharmacist will review your diabetes care and current medicines thoroughly, particularly if you take insulin or other diabetes medication, and we will coordinate with your GP or diabetes team where appropriate.' ],
     [ 'question' => 'What happens when I reach my goal weight?',
-      'answer'   => 'We will work with you on a structured plan to help maintain your progress, which may involve a gradual dose reduction alongside lifestyle and dietary advice. Weight regain after stopping is common, so we will talk openly with you about what to expect and how to plan for it.' ],
+      'answer'   => 'We will work with you on a structured plan to help you maintain your progress, with ongoing lifestyle and dietary advice. Keeping weight off can be harder than losing it, so we talk openly about what to expect and how to plan for it.' ],
 ];
 
 // S5 Benefits — client-editable (Weight Loss → Benefits / Steps / Why). Card icons stay in code, by position.
 $benefits_raw = function_exists( 'get_field' ) ? get_field( 'wl_benefits' ) : null;
 $benefits     = ! empty( $benefits_raw ) ? $benefits_raw : [
-    [ 'image' => 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop', 'title' => 'Gradual weight loss',           'desc' => 'In clinical trials, average weight loss over roughly a year ranged from about 15% to 22.5% depending on the medicine and dose. Results vary considerably, and not everyone responds.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop', 'title' => 'Blood sugar control',           'desc' => 'GLP-1 medicines can affect insulin sensitivity and may support blood sugar control. Your pharmacist will advise what this means for you, particularly if you already take diabetes medication.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop', 'title' => 'Gradual weight loss',           'desc' => 'A supervised plan aims for steady, sustainable progress at a pace that is safe for you. Results vary from person to person.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=600&q=80&auto=format&fit=crop', 'title' => 'Blood sugar control',           'desc' => 'Losing excess weight can improve blood sugar control. If you already take diabetes medication, your pharmacist will review it with you.' ],
     [ 'image' => 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80&auto=format&fit=crop', 'title' => 'Energy and sleep',              'desc' => 'Many patients tell us they notice better energy levels, improved sleep and more motivation to be active as their weight reduces.' ],
     [ 'image' => 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80&auto=format&fit=crop', 'title' => 'Wider health markers',          'desc' => 'Reaching a healthier weight can help with blood pressure and cholesterol. We monitor these at your monthly reviews and refer you to your GP where appropriate.' ],
-    [ 'image' => 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop', 'title' => 'Feeling more in control',       'desc' => 'Many patients describe feeling calmer around food and more in control of their eating &mdash; often the change they value most.' ],
+    [ 'image' => 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80&auto=format&fit=crop', 'title' => 'Confidence and wellbeing',      'desc' => 'Many patients describe feeling more confident and positive as they make progress &mdash; often the change they value most.' ],
     [ 'image' => 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&auto=format&fit=crop', 'title' => 'Less pressure on joints',       'desc' => 'Carrying less weight means less load on knees, hips and ankles. Some patients report this makes everyday movement more comfortable.' ],
 ];
 $benefit_icons = [
@@ -141,8 +105,8 @@ $benefit_icons = [
 $steps_raw = function_exists( 'get_field' ) ? get_field( 'wl_steps' ) : null;
 $steps     = ! empty( $steps_raw ) ? $steps_raw : [
     [ 'title' => 'Free consultation &amp; assessment', 'desc' => 'Book an appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, medication, measured BMI and health goals to decide whether treatment is appropriate.' ],
-    [ 'title' => 'Assessment outcome', 'desc' => 'If treatment is clinically appropriate, your prescription can be issued the same day and we will show you how to self-administer your weekly injection safely. If it is not suitable, we will explain why and talk through the alternatives.' ],
-    [ 'title' => 'Monthly reviews &amp; dose adjustments', 'desc' => 'Return monthly for weight monitoring, blood pressure checks and dose titration. We adjust your medication as needed and review how you are tolerating it.' ],
+    [ 'title' => 'Your personalised plan', 'desc' => 'If the programme is right for you, your pharmacist will set up a personalised plan and explain exactly what happens next. If it is not suitable, we will explain why and talk through the alternatives.' ],
+    [ 'title' => 'Monthly face-to-face reviews', 'desc' => 'Return each month for weight and blood pressure checks and a review of how your plan is going, with changes made where needed.' ],
     [ 'title' => 'Maintaining your progress', 'desc' => 'We work with you on a structured plan to help maintain your progress, with lifestyle and dietary advice alongside ongoing pharmacist support.' ],
 ];
 $step_styles = [
@@ -153,11 +117,11 @@ $step_styles = [
 // S9 Why Southdowns — client-editable. Card icons stay in code, by position.
 $why_cards_raw = function_exists( 'get_field' ) ? get_field( 'wl_why_cards' ) : null;
 $why_cards     = ! empty( $why_cards_raw ) ? $why_cards_raw : [
-    [ 'title' => 'GPhC-Registered',           'desc' => 'All prescribers are General Pharmaceutical Council registered. Your safety and clinical standards are never compromised.' ],
+    [ 'title' => 'GPhC-Registered',           'desc' => 'All our pharmacists are registered with the General Pharmaceutical Council. Your safety and clinical standards are never compromised.' ],
     [ 'title' => 'Same-Day Assessments',      'desc' => 'No waiting lists and no GP referral. Book a free consultation online and be assessed the same day &mdash; treatment follows only where it is clinically appropriate.' ],
-    [ 'title' => 'Face-to-Face Care',         'desc' => "Unlike online services, our pharmacists see you in person every month &mdash; monitoring progress, adjusting doses and answering your questions." ],
+    [ 'title' => 'Face-to-Face Care',         'desc' => "Unlike online services, our pharmacists see you in person every month &mdash; monitoring your progress, reviewing your plan and answering your questions." ],
     [ 'title' => '4 Hampshire Locations',     'desc' => 'Bosmere and Davies in Havant, plus Emsworth and Rowlands Castle &mdash; with free parking. Always a convenient branch near you.' ],
-    [ 'title' => 'MHRA-Approved Medications', 'desc' => 'We only prescribe UK-licensed, MHRA-approved medications. No compounded or unregulated products &mdash; ever.' ],
+    [ 'title' => 'Honest Clinical Advice',    'desc' => 'If the programme is not right for you, we will tell you and talk through the alternatives. No pressure and no hard sell.' ],
     [ 'title' => 'Rooted in Hampshire',       'desc' => 'A local independent pharmacy group serving Hampshire communities, with care built on long-term relationships rather than one-off transactions.' ],
 ];
 $why_icons = [
@@ -188,44 +152,6 @@ $why_icons = [
 
   .yf-step:hover .yf-step-num { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(59,130,246,0.15); }
   .yf-step-num { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-
-  /* S3 — Clinical Evidence section — layered blue/navy palette with depth */
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap');
-
-  .sci-section { background: linear-gradient(160deg, #0f172a 0%, #1e3a8a 55%, #1d4ed8 100%); position: relative; overflow: hidden; }
-  .sci-section-inner { position: relative; z-index: 10; }
-  .sci-headline { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-weight: 500; font-variation-settings: 'opsz' 96; letter-spacing: -0.015em; color: #ffffff; line-height: 1.08; }
-  .sci-subhead { font-family: 'Jost', sans-serif; color: rgba(219,234,254,0.85); font-weight: 300; }
-  .sci-footnote { font-family: 'Jost', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.78); font-weight: 400; letter-spacing: 0.01em; }
-  .sci-footnote em { font-family: 'Fraunces', Georgia, serif; font-style: italic; }
-
-  /* Chart */
-  .sci-chart-wrap { position: relative; }
-  .sci-chart { width: 100%; height: auto; display: block; font-family: 'Jost', sans-serif; }
-  .sci-axis-line { stroke: rgba(255,255,255,0.15); stroke-width: 1; }
-  .sci-grid-line { stroke: rgba(255,255,255,0.08); stroke-width: 1; stroke-dasharray: 4 4; }
-  .sci-axis-label { fill: rgba(255,255,255,0.78); font-size: 12px; font-weight: 400; }
-  .sci-axis-note { fill: rgba(255,255,255,0.7); font-size: 11.5px; font-weight: 400; letter-spacing: 0.02em; }
-
-  .sci-curve { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1); }
-  .sci-curve--diet { stroke: rgba(255,255,255,0.35); stroke-width: 2; transition-delay: 0.2s; }
-  .sci-curve--glp1 { stroke: #60a5fa; stroke-width: 3; transition-delay: 0.6s; }
-  .yf-reveal.visible .sci-curve { stroke-dashoffset: 0; }
-
-  .sci-endpoint { opacity: 0; transition: opacity 0.5s ease; transition-delay: 2.5s; }
-  .sci-endpoint--glp1 { transition-delay: 2.9s; }
-  .yf-reveal.visible .sci-endpoint { opacity: 1; }
-  .sci-endpoint-dot-diet { fill: rgba(255,255,255,0.45); }
-  .sci-endpoint-dot-glp1 { fill: #60a5fa; }
-  .sci-endpoint-label { font-size: 12.5px; font-weight: 600; fill: #ffffff; }
-  .sci-endpoint-sublabel { font-size: 11px; font-weight: 400; fill: rgba(255,255,255,0.65); }
-
-  /* Pullquote */
-  .sci-quote { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400; font-variation-settings: 'opsz' 48; color: #ffffff; letter-spacing: -0.005em; line-height: 1.35; }
-  .sci-quote-mark { font-family: 'Fraunces', Georgia, serif; color: #93c5fd; line-height: 0.5; }
-  .sci-quote-author { font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: #ffffff; font-weight: 600; }
-  .sci-quote-role { font-family: 'Jost', sans-serif; font-size: 0.85rem; color: rgba(219,234,254,0.75); font-weight: 300; }
-  .sci-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(147,197,253,0.3) 50%, transparent); }
 
   /* FAQ — native <details> accordion */
   .wl-faq-item { border: 1px solid #e5e7eb; border-radius: 1rem; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
@@ -259,7 +185,7 @@ $why_icons = [
         Book Free Consultation
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
-      <a href="#treatments" class="inline-flex items-center gap-2 text-white text-sm font-medium border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
+      <a href="#faqs" class="inline-flex items-center gap-2 text-white text-sm font-medium border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
     </div>
     <div class="flex flex-wrap gap-4 text-white/90 text-xs font-jost">
       <span>&#10003; GPhC Registered</span>
@@ -283,7 +209,7 @@ $why_icons = [
           Book Free Consultation
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-        <a href="#treatments" class="inline-flex items-center gap-2 text-white text-base font-medium border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
+        <a href="#faqs" class="inline-flex items-center gap-2 text-white text-base font-medium border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
       </div>
       <div class="flex flex-wrap gap-5 text-white text-sm font-jost">
         <span class="flex items-center gap-1.5">
@@ -344,10 +270,10 @@ $why_icons = [
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 
-      <!-- Card 1: MHRA-approved medicines only -->
+      <!-- Card 1: Free initial consultation -->
       <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="1">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">MHRA</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Approved Medicines Only</div>
+        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">Free</div>
+        <div class="text-sm text-blue-100 font-medium font-jost">Initial Consultation</div>
         <div class="mt-3 flex justify-center">
           <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
@@ -406,214 +332,6 @@ $why_icons = [
 
 
 <!-- ============================================================
-     S3: THE SCIENCE — Brand-white bg, animated clinical chart, pharmacist pullquote
-     ============================================================ -->
-<section class="sci-section py-20 md:py-28 lg:py-32">
-  <!-- Ambient radial glows -->
-  <div class="absolute top-0 left-1/4 w-[480px] h-[480px] rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(59,130,246,0.22) 0%, transparent 70%);"></div>
-  <div class="absolute bottom-0 right-1/4 w-96 h-96 rounded-full pointer-events-none" style="background: radial-gradient(circle, rgba(96,165,250,0.18) 0%, transparent 70%);"></div>
-  <div class="absolute top-1/2 left-0 w-72 h-72 rounded-full pointer-events-none -translate-y-1/2" style="background: radial-gradient(circle, rgba(30,58,138,0.35) 0%, transparent 70%);"></div>
-  <!-- Dot pattern -->
-  <div class="absolute inset-0 pointer-events-none dot-pattern"></div>
-
-  <div class="sci-section-inner max-w-5xl mx-auto px-6 sm:px-8 lg:px-8">
-
-    <!-- Header — brand pill eyebrow -->
-    <div class="yf-reveal text-center mb-14 md:mb-20">
-      <div class="premium-badge flex items-center justify-center gap-4 mb-5">
-        <div class="badge-rule w-10 h-px bg-white/15"></div>
-        <span class="badge-text text-white/70 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $science_eyebrow ); ?></span>
-      </div>
-      <h2 class="sci-headline text-4xl sm:text-5xl md:text-[56px] lg:text-[62px] mb-6 max-w-3xl mx-auto"><?php echo $science_headline; ?></h2>
-      <p class="sci-subhead text-base md:text-lg max-w-xl mx-auto leading-relaxed"><?php echo $science_subhead; ?></p>
-    </div>
-
-    <!-- Animated chart -->
-    <figure class="yf-reveal sci-chart-wrap mb-6">
-      <svg class="sci-chart" viewBox="0 0 860 400" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="sci-chart-title sci-chart-desc">
-        <title id="sci-chart-title">Mean body weight change over 68 weeks in the STEP-1 trial: placebo plus lifestyle versus semaglutide plus lifestyle</title>
-        <desc id="sci-chart-desc">Line chart of mean body weight as a percentage of starting weight. The placebo plus lifestyle group stays near 100 percent; the semaglutide plus lifestyle group descends to about 85 percent by week 68.</desc>
-
-        <!-- Y-axis label (horizontal, no rotation) -->
-        <text x="10" y="34" class="sci-axis-note">Body weight (% of start)</text>
-
-        <!-- Horizontal grid lines -->
-        <line class="sci-grid-line" x1="90" y1="50"  x2="800" y2="50"/>
-        <line class="sci-grid-line" x1="90" y1="155" x2="800" y2="155"/>
-        <line class="sci-grid-line" x1="90" y1="260" x2="800" y2="260"/>
-
-        <!-- Y-axis labels -->
-        <text x="82" y="54"  class="sci-axis-label" text-anchor="end">100%</text>
-        <text x="82" y="159" class="sci-axis-label" text-anchor="end">90%</text>
-        <text x="82" y="264" class="sci-axis-label" text-anchor="end">80%</text>
-
-        <!-- X-axis baseline + month labels -->
-        <line class="sci-axis-line" x1="90" y1="320" x2="800" y2="320"/>
-        <text x="90"  y="340" class="sci-axis-label" text-anchor="middle">0</text>
-        <text x="267" y="340" class="sci-axis-label" text-anchor="middle">17</text>
-        <text x="445" y="340" class="sci-axis-label" text-anchor="middle">34</text>
-        <text x="623" y="340" class="sci-axis-label" text-anchor="middle">51</text>
-        <text x="800" y="340" class="sci-axis-label" text-anchor="middle">68</text>
-        <text x="445" y="365" class="sci-axis-note"  text-anchor="middle">Weeks (STEP-1 trial duration)</text>
-
-        <!-- DIET curve: explicit cubic bezier — controlled to never cross y=50 (100% line) -->
-        <path class="sci-curve sci-curve--diet"
-              pathLength="1"
-              d="M 90 50
-                 C 130 50, 165 100, 205 104
-                 C 242 108, 285 62, 320 66
-                 C 358 70, 398 118, 435 122
-                 C 472 126, 515 72, 552 76
-                 C 592 80, 632 110, 668 108
-                 C 706 106, 762 82, 800 84"/>
-
-        <!-- GLP-1 curve: smooth S-curve descent with plateau -->
-        <path class="sci-curve sci-curve--glp1"
-              pathLength="1"
-              d="M 90 50 C 210 56, 250 168, 445 218 C 640 264, 760 280, 800 284"/>
-
-        <!-- Diet endpoint -->
-        <g class="sci-endpoint">
-          <circle class="sci-endpoint-dot-diet" cx="800" cy="84" r="4"/>
-          <text x="660" y="67"  class="sci-endpoint-label"    text-anchor="end">Placebo + lifestyle</text>
-          <text x="660" y="83" class="sci-endpoint-sublabel" text-anchor="end">−2.4% mean at week 68</text>
-        </g>
-
-        <!-- GLP-1 endpoint -->
-        <g class="sci-endpoint sci-endpoint--glp1">
-          <circle class="sci-endpoint-dot-glp1" cx="800" cy="284" r="5"/>
-          <text x="658" y="310"  class="sci-endpoint-label"    text-anchor="end">Semaglutide + lifestyle</text>
-          <text x="658" y="326" class="sci-endpoint-sublabel" text-anchor="end">−14.9% mean at week 68</text>
-        </g>
-      </svg>
-
-      <figcaption class="sci-footnote text-center mt-4 max-w-2xl mx-auto"><?php echo $science_citation; ?></figcaption>
-    </figure>
-
-    <!-- Brand-toned divider -->
-    <div class="sci-divider my-14 md:my-20 max-w-xs mx-auto"></div>
-
-    <!-- Pharmacist pullquote -->
-    <figure class="yf-reveal text-center max-w-3xl mx-auto">
-      <div class="sci-quote-mark text-6xl md:text-7xl mb-2" aria-hidden="true">&ldquo;</div>
-      <blockquote class="sci-quote text-2xl md:text-3xl lg:text-[34px] mb-10 px-2">
-        <?php echo $science_quote; ?>
-      </blockquote>
-      <figcaption>
-        <div class="sci-quote-author mb-1"><?php echo esc_html( $science_quote_author ); ?></div>
-        <div class="sci-quote-role"><?php echo esc_html( $science_quote_role ); ?></div>
-      </figcaption>
-    </figure>
-
-  </div>
-</section>
-
-
-<!-- ============================================================
-     S4: TREATMENTS — White bg, Mounjaro + Wegovy side-by-side cards
-     ============================================================ -->
-<section id="treatments" class="py-16 md:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-    <!-- Heading -->
-    <div class="text-center mb-12 md:mb-16 yf-reveal">
-      <div class="premium-badge flex items-center justify-center gap-4 mb-4">
-        <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo esc_html( $treatments_eyebrow ); ?></span>
-      </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost"><?php echo esc_html( $treatments_headline ); ?></h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost"><?php echo $treatments_subhead; ?></p>
-    </div>
-
-    <!-- Treatment cards -->
-    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-
-      <?php
-      $treatment_cards = [
-          [
-              'image'       => $mounjaro_image,
-              'image_alt'   => $mounjaro_image_alt,
-              'badge'       => $mounjaro_badge,
-              'badge_class' => 'bg-blue-600',
-              'name'        => $mounjaro_name,
-              'subtitle'    => $mounjaro_subtitle,
-              'body'        => $mounjaro_body,
-              'bullets'     => $mounjaro_bullets,
-              'delay'       => 1,
-          ],
-          [
-              'image'       => $wegovy_image,
-              'image_alt'   => $wegovy_image_alt,
-              'badge'       => $wegovy_badge,
-              'badge_class' => 'bg-teal-600',
-              'name'        => $wegovy_name,
-              'subtitle'    => $wegovy_subtitle,
-              'body'        => $wegovy_body,
-              'bullets'     => $wegovy_bullets,
-              'delay'       => 2,
-          ],
-      ];
-      foreach ( $treatment_cards as $card ) : ?>
-      <div class="yf-reveal yf-card-lift bg-white rounded-3xl overflow-hidden border border-gray-200 shadow-md" data-delay="<?php echo (int) $card['delay']; ?>">
-        <div class="relative h-56 overflow-hidden">
-          <?php if ( $card['image'] ) : ?>
-          <img src="<?php echo esc_url( $card['image'] ); ?>" alt="<?php echo esc_attr( $card['image_alt'] ); ?>" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-          <?php endif; ?>
-          <div class="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent"></div>
-          <?php if ( $card['badge'] ) : ?>
-          <div class="absolute bottom-4 left-5">
-            <span class="<?php echo esc_attr( $card['badge_class'] ); ?> text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide"><?php echo esc_html( $card['badge'] ); ?></span>
-          </div>
-          <?php endif; ?>
-        </div>
-        <div class="p-7">
-          <?php if ( $card['name'] ) : ?>
-          <h3 class="text-2xl font-bold text-gray-900 mb-1 font-jost"><?php echo $card['name']; ?></h3>
-          <?php endif; ?>
-          <?php if ( $card['subtitle'] ) : ?>
-          <p class="text-sm text-blue-600 font-medium mb-4 font-jost"><?php echo $card['subtitle']; ?></p>
-          <?php endif; ?>
-          <?php if ( $card['body'] ) : ?>
-          <p class="text-gray-600 mb-5 font-jost leading-relaxed"><?php echo $card['body']; ?></p>
-          <?php endif; ?>
-          <?php if ( ! empty( $card['bullets'] ) ) : ?>
-          <ul class="space-y-2.5 mb-6">
-            <?php foreach ( $card['bullets'] as $bullet ) : ?>
-            <li class="flex items-start gap-2.5 text-sm text-gray-700 font-jost">
-              <svg class="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              <span><?php echo $bullet; ?></span>
-            </li>
-            <?php endforeach; ?>
-          </ul>
-          <?php endif; ?>
-          <?php if ( $treatments_cta_label ) : ?>
-          <a href="<?php echo esc_url( $booking_url ); ?>" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition-colors font-jost">
-            <?php echo esc_html( $treatments_cta_label ); ?>
-          </a>
-          <?php endif; ?>
-        </div>
-      </div>
-      <?php endforeach; ?>
-
-    </div>
-
-    <?php if ( $treatments_eligibility ) : ?>
-    <!-- Eligibility note -->
-    <div class="mt-10 text-center yf-reveal">
-      <div class="inline-flex items-start gap-3 bg-blue-50 border border-blue-100 rounded-2xl px-6 py-4 max-w-2xl text-left">
-        <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-        </svg>
-        <p class="text-sm text-blue-800 font-jost"><?php echo $treatments_eligibility; ?></p>
-      </div>
-    </div>
-    <?php endif; ?>
-
-  </div>
-</section>
-
-
-<!-- ============================================================
      S5: OUTCOMES & BENEFITS — Light gradient, 6 result photo cards
      ============================================================ -->
 <section class="py-16 md:py-24" style="background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%);">
@@ -623,7 +341,7 @@ $why_icons = [
     <div class="text-center mb-12 md:mb-16 yf-reveal">
       <div class="premium-badge flex items-center justify-center gap-4 mb-4">
         <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Real Results</span>
+        <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">What to Expect</span>
       </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">What you can expect from your programme</h2>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Beyond the number on the scales, patients report wide-ranging improvements to their health and quality of life.</p>
@@ -843,7 +561,7 @@ $why_icons = [
       </div>
       <div class="flex-1 text-center md:text-left">
         <p class="text-white text-lg font-semibold mb-1 font-jost">No GP referral needed</p>
-        <p class="text-blue-100 text-base font-jost">Walk in or book online. Our pharmacists can prescribe Mounjaro or Wegovy directly &mdash; same day, no waiting lists.</p>
+        <p class="text-blue-100 text-base font-jost">Walk in or book online. Our pharmacists will assess you in person and talk you through your options &mdash; no GP referral and no waiting lists.</p>
       </div>
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm font-jost flex-shrink-0">
         Book Free Consultation
@@ -973,7 +691,7 @@ $why_icons = [
       </span>
       <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        MHRA-Approved Meds
+        Free Consultation
       </span>
     </div>
 
@@ -988,10 +706,10 @@ $why_icons = [
       <?php
       $points = [
         'Free consultation &mdash; no obligation',
-        'Same-day assessment, prescription if clinically appropriate',
+        'Same-day assessments available',
         'Monthly face-to-face check-ins',
-        'MHRA-approved medications only',
-        'GPhC-registered prescribers',
+        'Honest advice, no pressure',
+        'GPhC-registered pharmacists',
         'No GP referral needed',
       ];
       foreach ( $points as $point ) : ?>
@@ -1040,54 +758,17 @@ $why_icons = [
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <div>
-          <h2 class="text-xl md:text-2xl font-bold text-amber-900 font-jost leading-tight">Important safety information</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-amber-900 font-jost leading-tight">Important information</h2>
           <p class="text-amber-800 text-sm font-jost mt-1">Please read before booking a consultation.</p>
         </div>
       </div>
 
       <div class="space-y-4 text-slate-700 text-sm md:text-[15px] leading-relaxed font-jost">
-        <p>Mounjaro&reg; (tirzepatide) and Wegovy&reg; (semaglutide) are <strong>prescription-only medicines</strong>, licensed as an <strong>adjunct to a reduced-calorie diet and increased physical activity</strong>. They are not a replacement for either, and they are not suitable for everyone.</p>
+        <p>Our weight management programme is <strong>not suitable for everyone</strong>, including if you are pregnant, breastfeeding or trying to conceive. Whether it is right for you is decided only after a <strong>face-to-face clinical assessment</strong> by a GPhC-registered pharmacist, taking into account your full medical history and every medicine you take.</p>
 
-        <div>
-          <p class="font-semibold text-slate-900 mb-2">These medicines are not suitable if you:</p>
-          <ul class="space-y-1.5 pl-1">
-            <?php foreach ( [
-              'are pregnant, breastfeeding or trying to conceive',
-              'have a personal or family history of medullary thyroid carcinoma',
-              'have multiple endocrine neoplasia syndrome type 2 (MEN2)',
-              'have had a serious allergic reaction to tirzepatide, semaglutide or any ingredient in these medicines',
-            ] as $wl_contra ) : ?>
-            <li class="flex items-start gap-2.5">
-              <span class="text-amber-600 font-bold flex-shrink-0 mt-0.5">&times;</span>
-              <span><?php echo esc_html( $wl_contra ); ?></span>
-            </li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
+        <p>Any plan is used <strong>alongside a reduced-calorie diet and increased physical activity</strong>, not instead of them. Your pharmacist will explain the benefits, risks and possible side effects of anything recommended for you, and you should always read the information leaflet supplied with any medicine.</p>
 
-        <div>
-          <p class="font-semibold text-slate-900 mb-2">Tell your pharmacist before treatment if you:</p>
-          <ul class="space-y-1.5 pl-1">
-            <?php foreach ( [
-              'have ever had pancreatitis, gallbladder disease or diabetic retinopathy',
-              'have severe kidney, liver or gastrointestinal problems',
-              'have or have had an eating disorder',
-              'take insulin, sulphonylureas or any other diabetes medication',
-              'take any other prescription or over-the-counter medicines',
-            ] as $wl_caution ) : ?>
-            <li class="flex items-start gap-2.5">
-              <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span><?php echo esc_html( $wl_caution ); ?></span>
-            </li>
-            <?php endforeach; ?>
-          </ul>
-        </div>
-
-        <p><strong class="text-slate-900">Side effects.</strong> The most common are nausea, vomiting, diarrhoea, constipation and reduced appetite, usually in the first few weeks and after dose increases. Less common but serious side effects include pancreatitis and gallbladder problems. Seek urgent medical advice if you develop severe or persistent stomach pain.</p>
-
-        <p><strong class="text-slate-900">Always read the patient information leaflet</strong> supplied with your medicine. Suspected side effects can be reported through the MHRA Yellow Card scheme at <a href="https://yellowcard.mhra.gov.uk" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">yellowcard.mhra.gov.uk</a>.</p>
-
-        <p>Treatment is prescribed only following a clinical assessment by a GPhC-registered pharmacist prescriber, and only where it is clinically appropriate. Our pharmacists may advise that these medicines are not right for you.</p>
+        <p>Suspected side effects to any medicine can be reported through the MHRA Yellow Card scheme at <a href="https://yellowcard.mhra.gov.uk" target="_blank" rel="noopener" class="text-blue-700 font-semibold hover:underline">yellowcard.mhra.gov.uk</a>.</p>
       </div>
     </div>
   </div>
@@ -1097,7 +778,7 @@ $why_icons = [
 <div class="bg-gray-50 border-t border-gray-200 py-6">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <p class="text-xs text-gray-500 text-center leading-relaxed font-jost max-w-4xl mx-auto">
-      <strong>Medical disclaimer:</strong> The information on this page is for general information only and does not constitute medical advice. Mounjaro&reg; (tirzepatide) and Wegovy&reg; (semaglutide) are prescription-only medicines. Eligibility is subject to a clinical assessment by a GPhC-registered pharmacist prescriber. Results may vary. Individual weight loss outcomes depend on a number of factors including adherence to the treatment plan, lifestyle and pre-existing medical conditions. Always consult a healthcare professional before starting any new medication.
+      <strong>Medical disclaimer:</strong> The information on this page is for general information only and does not constitute medical advice. Suitability for our weight management programme is subject to a clinical assessment by a GPhC-registered pharmacist. Individual results vary and depend on many factors, including following your plan, lifestyle and existing medical conditions. Always consult a healthcare professional before starting any new treatment.
     </p>
   </div>
 </div>

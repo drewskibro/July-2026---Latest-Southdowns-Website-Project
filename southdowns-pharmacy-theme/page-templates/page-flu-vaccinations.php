@@ -23,7 +23,7 @@ $fv_hero_body     = sp_field( 'fv_hero_body',     'Private flu jabs and NHS flu 
 
 // ── Stats bar ──────────────────────────────────────────────────────────────
 $fv_stats = sp_rows( 'fv_stats', [
-    [ 'value' => '£20',       'label' => 'Private Flu Jab',      'caption' => 'Seasonal introductory offer' ],
+    [ 'value' => '£27.50',    'label' => 'Private Flu Jab',      'caption' => 'No NHS eligibility needed' ],
     [ 'value' => 'Same Day',  'label' => 'Appointments',         'caption' => 'No GP referral needed' ],
     [ 'value' => 'Free',      'label' => 'NHS Vaccinations',     'caption' => 'For eligible patients' ],
     [ 'value' => '4',         'label' => 'Hampshire Locations',  'caption' => 'Book at your nearest branch' ],
@@ -279,9 +279,9 @@ $fv_steps = sp_rows( 'fv_steps', [
       <div class="fv-reveal rounded-3xl p-8 md:p-10 text-white relative overflow-hidden flex flex-col justify-center" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
         <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full translate-x-1/3 -translate-y-1/3"></div>
         <div class="relative z-10">
-          <span class="inline-block bg-amber-400 text-blue-900 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide mb-5 font-jost"><?php echo sp_field( 'fv_priv_offer', 'Seasonal Introductory Offer' ); ?></span>
+          <span class="inline-block bg-amber-400 text-blue-900 text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide mb-5 font-jost"><?php echo sp_field( 'fv_priv_offer', 'No Eligibility Criteria' ); ?></span>
           <div class="flex items-end gap-2 mb-3">
-            <span class="text-6xl md:text-7xl font-bold font-jost"><?php echo sp_field( 'fv_priv_price', '£20' ); ?></span>
+            <span class="text-6xl md:text-7xl font-bold font-jost"><?php echo sp_field( 'fv_priv_price', '£27.50' ); ?></span>
             <span class="text-blue-100 text-lg mb-3 font-jost"><?php echo sp_field( 'fv_priv_price_suffix', 'per private flu jab' ); ?></span>
           </div>
           <p class="text-blue-100 text-lg leading-relaxed mb-7 font-jost"><?php echo sp_field( 'fv_priv_body', 'Don&rsquo;t qualify for a free NHS vaccination? Our convenient private flu jab service gives adults fast, reliable protection against seasonal flu &mdash; no appointment marathon, no GP referral.' ); ?></p>
@@ -453,7 +453,7 @@ $fv_steps = sp_rows( 'fv_steps', [
         ['<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>', '4 Hampshire Locations'],
         ['<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>', 'Same-Day Appointments'],
         ['<polyline points="20 6 9 17 4 12"/>', 'NHS &amp; Private Jabs'],
-        ['<path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>', '£20 Private Flu Jab'],
+        ['<path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/>', '£27.50 Private Flu Jab'],
       ], [ 1 => 'text' ] );
       foreach ( $fv_pills as $pill ) : ?>
       <div class="flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-medium px-4 py-2 rounded-full border border-white/20 font-jost">

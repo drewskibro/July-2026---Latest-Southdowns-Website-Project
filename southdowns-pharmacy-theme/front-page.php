@@ -12,7 +12,9 @@ $stars = str_repeat( $star_svg, 5 );
 
 // Hero slide background images — editable via Home Page Content → Hero Slider
 $s1_img = sp_field( 'home_s1_image', get_template_directory_uri() . '/assets/img/hero-travel.webp' );
-$s2_img = sp_field( 'home_s2_image', get_template_directory_uri() . '/assets/img/hero-weight-loss.webp' );
+// Cropped from the previous slide image, which had an "Average 15-20kg weight
+// loss" badge baked into the photo. Do not reintroduce outcome claims in imagery.
+$s2_img = sp_field( 'home_s2_image', get_template_directory_uri() . '/assets/img/hero-weight-management.webp' );
 $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img/hero-blood-test.webp' );
 ?>
 
@@ -76,7 +78,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
 
     <!-- Slide 2: Weight Loss -->
     <div class="hero-slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0 z-0" data-slide="1">
-      <div class="md:hidden absolute inset-0 bg-cover bg-center" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');"></div>
+      <div class="md:hidden absolute inset-0 bg-cover" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');background-position:85% center;"></div>
       <div class="md:hidden absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/85 to-blue-900/30"></div>
       <div class="md:hidden absolute inset-0 flex flex-col justify-end px-6 pt-8 pb-20 z-10 hero-legible">
         <div class="premium-badge flex items-center justify-start gap-4 mb-4 self-start">
