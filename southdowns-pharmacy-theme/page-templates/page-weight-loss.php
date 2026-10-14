@@ -59,15 +59,12 @@ $testimonials_eyebrow  = sp_field( 'wl_testimonials_eyebrow',  'Patient Stories'
 $testimonials_headline = sp_field( 'wl_testimonials_headline', 'Real patients, real results' );
 $testimonials_subhead  = sp_field( 'wl_testimonials_subhead',  'What Hampshire patients say about the care they receive on our weight management programme. Individual results vary.' );
 
+// No placeholder reviews. The section renders only when real, consented patient
+// reviews are entered in the editor (wl_testimonials_reviews). The previous
+// defaults were sample copy naming prescription-only medicines with weight-loss
+// figures, which cannot appear on a public page.
 $testimonials_reviews_raw = function_exists( 'get_field' ) ? get_field( 'wl_testimonials_reviews' ) : null;
-$testimonials_reviews     = ! empty( $testimonials_reviews_raw ) ? $testimonials_reviews_raw : [
-    [ 'quote' => 'I&rsquo;ve tried every diet going over the years. With Mounjaro I lost 18kg in 6 months. The Southdowns team have been brilliant &mdash; so knowledgeable and supportive throughout.', 'initials' => 'SH', 'name' => 'Sarah H.',  'location' => 'Waterlooville' ],
-    [ 'quote' => 'My GP had a 3-month wait. I walked into Southdowns pharmacy, had a consultation the same day and started Wegovy that afternoon. 14kg down in 5 months &mdash; absolutely life-changing.',  'initials' => 'MT', 'name' => 'Mark T.',   'location' => 'Portsmouth'    ],
-    [ 'quote' => 'I was sceptical at first but the pharmacist explained everything so clearly. My blood sugar is now normal for the first time in years and I&rsquo;ve lost nearly 3 stone. Highly recommend.', 'initials' => 'LR', 'name' => 'Linda R.',  'location' => 'Havant'        ],
-    [ 'quote' => 'The monthly check-ins are what make this different from online services. Having a real pharmacist monitor my progress and adjust my dose has made all the difference. Down 22kg and counting.', 'initials' => 'DJ', 'name' => 'David J.',  'location' => 'Southsea'      ],
-    [ 'quote' => 'I&rsquo;d heard horror stories about side effects but mine were minimal. The pharmacist gave me clear advice on managing them. 11kg lost in 3 months and my joints feel amazing.',          'initials' => 'JB', 'name' => 'Julie B.',  'location' => 'Waterlooville' ],
-    [ 'quote' => 'Fantastic service from start to finish. No judgement, just professional support. I feel like a completely different person. The team at Portsmouth are wonderful.',                          'initials' => 'RC', 'name' => 'Rachel C.', 'location' => 'Portsmouth'    ],
-];
+$testimonials_reviews     = ! empty( $testimonials_reviews_raw ) ? $testimonials_reviews_raw : [];
 
 $testimonials_trust_raw = function_exists( 'get_field' ) ? get_field( 'wl_testimonials_trust' ) : null;
 $testimonials_trust     = ! empty( $testimonials_trust_raw ) ? $testimonials_trust_raw : [
@@ -725,7 +722,9 @@ $why_icons = [
 
 <!-- ============================================================
      S7: TESTIMONIALS — Blue gradient, 6 glassmorphism review cards
+     Hidden until real reviews are entered (see $testimonials_reviews).
      ============================================================ -->
+<?php if ( ! empty( $testimonials_reviews ) ) : ?>
 <section class="relative py-16 md:py-24 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);">
   <div class="absolute inset-0 yf-shimmer pointer-events-none"></div>
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -786,6 +785,7 @@ $why_icons = [
 
   </div>
 </section>
+<?php endif; ?>
 
 
 <!-- ============================================================
