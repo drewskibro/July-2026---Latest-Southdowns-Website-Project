@@ -37,6 +37,18 @@
 /* Hero (mobile): keep text legible over the slide background images */
 .hero-legible { text-shadow: 0 1px 3px rgba(0,0,0,0.55); }
 
+/* Hero typography — add .hero-type to a hero <section>.
+   The panel blue #196bdc gives white text 5.0:1, clearing WCAG AA (4.5:1).
+   The previous #1a73e9 gave 4.49:1, and the 80–90% white used for the small
+   eyebrow and feature text dropped that to 3.4–3.9:1. */
+.hero-type .badge-text    { color: #fff; font-weight: 600; letter-spacing: 0.12em; }
+.hero-type .badge-rule    { background-color: rgba(255, 255, 255, 0.6); }
+.hero-type .hero-features { color: #fff; font-weight: 600; font-size: 15px; }
+.hero-type .hero-note     { color: #fff; font-weight: 500; }
+@media (max-width: 767px) {
+  .hero-type .badge-text  { font-size: 13px; }
+}
+
 /* Destination card hover (travel health) */
 .dest-card:hover .dest-overlay { opacity: 1; }
 .dest-card:hover img { transform: scale(1.08); }
