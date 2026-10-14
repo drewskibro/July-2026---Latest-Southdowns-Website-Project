@@ -136,12 +136,23 @@ function sp_rows( string $field_name, array $defaults, array $map ): array {
     $i = 0;
     while ( have_rows( $field_name ) ) {
         the_row();
-        $base = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
+        $has_default = isset( $defaults[ $i ] );
+        $base        = $defaults[ $i ] ?? ( ! empty( $defaults ) ? end( $defaults ) : [] );
+        $filled      = false;
         foreach ( $map as $key => $sub ) {
             $val = get_sub_field( $sub );
             if ( ! sp_is_empty_acf_value( $val ) ) {
                 $base[ $key ] = $val;
+                $filled       = true;
             }
+        }
+        // A saved row with nothing in it, beyond the end of the defaults, has
+        // nothing to show. Without this it renders as a copy of the last default,
+        // so trimming a default (e.g. removing a testimonial) would duplicate
+        // whichever one is now last.
+        if ( ! $has_default && ! $filled ) {
+            $i++;
+            continue;
         }
         $rows[] = $base;
         $i++;

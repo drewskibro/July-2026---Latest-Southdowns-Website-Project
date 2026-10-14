@@ -91,7 +91,6 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
-        <p class="text-white/90 text-sm font-normal leading-relaxed font-jost">Average 15-20kg weight loss with monthly check-ins included.</p>
       </div>
       <div class="hidden md:flex">
         <div class="w-1/2 min-h-[560px] lg:min-h-[660px] flex flex-col justify-center px-12 lg:px-16 py-12" style="background-color:#1a73e9;">
@@ -108,7 +107,6 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
             </a>
           </div>
           <div class="flex flex-wrap gap-x-6 gap-y-2 text-white/90 text-sm font-medium font-jost">
-            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> GLP-1 Treatments</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Monthly Check-ins</span>
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
           </div>
@@ -429,7 +427,6 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       <?php
 $testimonials = sp_rows( 'home_testimonials', [
         ['SJ', 'Sarah Johnson',   'Emsworth Branch',         '"Excellent service from start to finish. The pharmacist was incredibly knowledgeable about travel vaccines and made me feel completely at ease. Same day appointment was a lifesaver!"'],
-        ['MT', 'Michael Thompson','Rowlands Castle Branch',  '"The weight loss programme has been life-changing. Professional, supportive, and results-driven. I\'ve lost 18kg in 4 months with their expert guidance."'],
         ['EP', 'Emma Patel',      'Davies Pharmacy, Havant', '"Quick, efficient blood testing service. Results came back within 24 hours and the staff explained everything clearly. Highly recommend for anyone needing health checks."'],
         ['DW', 'David Williams',  'Emsworth Branch',         '"Fantastic ear wax removal service. Painless procedure and immediate relief. The practitioner was gentle and professional throughout. Worth every penny."'],
         ['RC', 'Rachel Chen',     'Bosmere Pharmacy, Havant','"As a frequent traveller, I rely on Southdowns for all my travel health needs. Yellow fever certification was processed immediately. Couldn\'t ask for better service."'],

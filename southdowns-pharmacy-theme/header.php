@@ -113,11 +113,7 @@ $destinations = [
                     </a>
                     <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>" class="mega-dd-link">
                       <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Loss</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
-                    </a>
-                    <a href="<?php echo esc_url( home_url( '/wegovy-pill/' ) ); ?>" class="mega-dd-link">
-                      <div class="mega-dd-link-icon"><svg viewBox="0 0 24 24" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7ZM8.5 8.5l7 7"/></svg></div>
-                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Wegovy Pill</span><span class="mega-dd-link-desc">Needle-free oral weight loss</span></div>
+                      <div class="mega-dd-link-content"><span class="mega-dd-link-name">Weight Management</span><span class="mega-dd-link-desc">Clinically supervised programmes</span></div>
                     </a>
                   </div>
                   <div class="mega-dd-section">
@@ -153,8 +149,8 @@ $destinations = [
                   </div>
                   <div class="mega-dd-featured">
                     <div class="mega-dd-featured-badge">Most Popular</div>
-                    <h5>Medical Weight Loss</h5>
-                    <p>GLP-1 treatments supplied same day from our Hampshire pharmacies.</p>
+                    <h5>Weight Management</h5>
+                    <p>Face-to-face support from pharmacist prescribers at our four Hampshire branches.</p>
                     <div class="mega-dd-featured-trust">
                       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> GPhC-registered pharmacists</span>
                       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Free initial consultation</span>
@@ -287,7 +283,7 @@ $destinations = [
           <a href="<?php echo esc_url( home_url( '/blood-tests/' ) ); ?>">Blood Tests</a>
           <a href="<?php echo esc_url( home_url( '/ear-wax-removal/' ) ); ?>">Ear Wax Removal</a>
           <a href="<?php echo esc_url( home_url( '/b12-injections/' ) ); ?>">B12 Injections</a>
-          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>">Weight Loss</a>
+          <a href="<?php echo esc_url( home_url( '/weight-loss/' ) ); ?>">Weight Management</a>
           <a href="<?php echo esc_url( home_url( '/flu-vaccinations/' ) ); ?>">Flu Vaccinations</a>
           <a href="<?php echo esc_url( home_url( '/blood-pressure-checks/' ) ); ?>">Blood Pressure Checks</a>
           <a href="<?php echo esc_url( home_url( '/contraception-services/' ) ); ?>">Contraception Services</a>
