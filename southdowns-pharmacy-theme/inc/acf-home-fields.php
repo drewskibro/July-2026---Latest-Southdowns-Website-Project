@@ -28,7 +28,7 @@ add_action( 'acf/init', function () {
 	$hero_fields = array_merge(
 		[ [ 'key' => 'field_home_tab_hero', 'label' => 'Hero Slider', 'name' => '', 'type' => 'tab' ], [ 'key' => 'field_home_hero_note', 'label' => 'Hero note', 'name' => '', 'type' => 'message', 'message' => 'Edit each slide\'s main heading, sub-text and background image below. The small badge, feature ticks and button labels are fixed in the design.' ] ],
 		$slide( 1, '<span class="serif-accent">Same-day</span> travel vaccine &amp; blood test appointments', 'Book your vaccine or blood test appointment today online or call our friendly team for advice and more information.' ),
-		$slide( 2, 'Medical <span class="serif-accent">weight loss</span> programme', 'Achieve your weight loss goals with our clinically supervised programme. GPhC registered pharmacists providing safe, effective treatments.' ),
+		$slide( 2, 'Medical <span class="serif-accent">weight loss</span> programme', 'Achieve your weight loss goals with our clinically supervised programme, with face-to-face support from GPhC-registered pharmacists at four local branches.' ),
 		$slide( 3, '<span class="serif-accent">Comprehensive</span> blood testing', 'Same day blood test appointments available across 4 Hampshire locations. Vitamin B12 deficiency testing and full health screening.' )
 	);
 

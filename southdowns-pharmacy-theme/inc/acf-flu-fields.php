@@ -56,8 +56,8 @@ add_action( 'acf/init', function () {
 			[ 'key' => 'field_fv_cond_note', 'label' => 'Note Box', 'name' => 'fv_cond_note', 'type' => 'textarea', 'rows' => 2, 'new_lines' => '', 'default_value' => 'Eligibility criteria for the NHS flu vaccine may change based on NHS guidance. If you&rsquo;re unsure whether you qualify, our pharmacists will happily check for you &mdash; just ask in branch or when you book.' ],
 
 			[ 'key' => 'field_fv_tab_priv', 'label' => 'Private Flu Jab', 'name' => '', 'type' => 'tab' ],
-			[ 'key' => 'field_fv_priv_offer', 'label' => 'Offer Label', 'name' => 'fv_priv_offer', 'type' => 'text', 'default_value' => 'Seasonal Introductory Offer' ],
-			[ 'key' => 'field_fv_priv_price', 'label' => 'Price', 'name' => 'fv_priv_price', 'type' => 'text', 'default_value' => '£20' ],
+			[ 'key' => 'field_fv_priv_offer', 'label' => 'Offer Label', 'name' => 'fv_priv_offer', 'type' => 'text', 'default_value' => 'No Eligibility Criteria', 'instructions' => 'Only describe this as an offer or discount if it genuinely is one, with a higher normal price that has actually been charged.' ],
+			[ 'key' => 'field_fv_priv_price', 'label' => 'Price', 'name' => 'fv_priv_price', 'type' => 'text', 'default_value' => '£27.50' ],
 			[ 'key' => 'field_fv_priv_price_suffix', 'label' => 'Price Suffix', 'name' => 'fv_priv_price_suffix', 'type' => 'text', 'default_value' => 'per private flu jab' ],
 			[ 'key' => 'field_fv_priv_body', 'label' => 'Card Body', 'name' => 'fv_priv_body', 'type' => 'textarea', 'rows' => 3, 'new_lines' => '', 'default_value' => 'Don&rsquo;t qualify for a free NHS vaccination? Our convenient private flu jab service gives adults fast, reliable protection against seasonal flu &mdash; no appointment marathon, no GP referral.' ],
 			[ 'key' => 'field_fv_priv_points', 'label' => 'Card Points', 'name' => 'fv_priv_points', 'type' => 'repeater', 'layout' => 'table', 'button_label' => 'Add Point', 'sub_fields' => [ [ 'key' => 'field_fv_priv_point_text', 'label' => 'Point', 'name' => 'text', 'type' => 'text' ] ] ],
@@ -95,7 +95,7 @@ add_action( 'acf/init', function () {
 function fv_repeater_defaults(): array {
 	return [
 		'fv_stats' => [
-			[ 'value' => '£20', 'label' => 'Private Flu Jab', 'caption' => 'Seasonal introductory offer' ],
+			[ 'value' => '£27.50', 'label' => 'Private Flu Jab', 'caption' => 'No NHS eligibility needed' ],
 			[ 'value' => 'Same Day', 'label' => 'Appointments', 'caption' => 'No GP referral needed' ],
 			[ 'value' => 'Free', 'label' => 'NHS Vaccinations', 'caption' => 'For eligible patients' ],
 			[ 'value' => '4', 'label' => 'Hampshire Locations', 'caption' => 'Book at your nearest branch' ],
@@ -129,7 +129,7 @@ function fv_repeater_defaults(): array {
 			[ 'image' => 'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?w=600&h=400&fit=crop', 'title' => 'Vaccinated in Minutes', 'body' => 'Your flu jab is administered by a trained pharmacist. You&rsquo;re protected and back to your day in no time — no fuss, no long waits.' ],
 		],
 		'fv_pills' => [
-			[ 'text' => 'GPhC Registered' ], [ 'text' => '4 Hampshire Locations' ], [ 'text' => 'Same-Day Appointments' ], [ 'text' => 'NHS &amp; Private Jabs' ], [ 'text' => '£20 Private Flu Jab' ],
+			[ 'text' => 'GPhC Registered' ], [ 'text' => '4 Hampshire Locations' ], [ 'text' => 'Same-Day Appointments' ], [ 'text' => 'NHS &amp; Private Jabs' ], [ 'text' => '£27.50 Private Flu Jab' ],
 		],
 	];
 }
