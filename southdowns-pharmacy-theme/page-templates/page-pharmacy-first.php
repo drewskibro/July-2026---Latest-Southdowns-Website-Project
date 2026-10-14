@@ -60,8 +60,8 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
       <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span></span>
       <?php echo sp_field( 'pf_hero_badge', 'NHS Pharmacy First &middot; Hampshire' ); ?>
     </div>
-    <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'pf_hero_heading', 'Free NHS Treatment &mdash; No GP Appointment Needed' ); ?></h1>
-    <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo sp_field( 'pf_hero_subtext', 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions &mdash; completely free of charge. No referral, no waiting weeks for a GP. Walk in or book online and get treated the same day.' ); ?></p>
+    <h1 class="text-white text-3xl font-semibold leading-tight mb-4 font-jost" style="line-height:1.2;"><?php echo sp_field( 'pf_hero_heading', 'Free NHS Consultation &mdash; No GP Appointment Needed' ); ?></h1>
+    <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo sp_field( 'pf_hero_subtext', 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions with no GP appointment needed. The consultation is free, and the standard NHS prescription charge applies to any medicine supplied unless you normally get free prescriptions. Walk in or book online and get treated the same day.' ); ?></p>
     <div class="flex flex-wrap gap-3 mb-4">
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full shadow-lg font-jost">
         <?php echo sp_field( 'pf_hero_btn', 'Book a Pharmacy First Appointment' ); ?>
@@ -69,7 +69,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
       </a>
     </div>
     <div class="flex flex-wrap gap-4 text-white/90 text-xs font-jost">
-      <span>&#10003; Free NHS Treatment</span>
+      <span>&#10003; Free NHS Consultation</span>
       <span>&#10003; No GP Referral</span>
       <span>&#10003; Same Day</span>
     </div>
@@ -83,8 +83,8 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
         <span class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400"></span></span>
         <?php echo sp_field( 'pf_hero_badge', 'NHS Pharmacy First &middot; Hampshire' ); ?>
       </div>
-      <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'pf_hero_heading', 'Free NHS Treatment &mdash; No GP Appointment Needed' ); ?></h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo sp_field( 'pf_hero_subtext', 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions &mdash; completely free of charge. No referral, no waiting weeks for a GP. Walk in or book online and get treated the same day.' ); ?></p>
+      <h1 class="text-white text-4xl lg:text-[50px] font-semibold leading-tight mb-6 font-jost" style="line-height:1.1;"><?php echo sp_field( 'pf_hero_heading', 'Free NHS Consultation &mdash; No GP Appointment Needed' ); ?></h1>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo sp_field( 'pf_hero_subtext', 'Under the NHS Pharmacy First scheme, our pharmacists at Southdowns Pharmacy can assess and treat seven common conditions with no GP appointment needed. The consultation is free, and the standard NHS prescription charge applies to any medicine supplied unless you normally get free prescriptions. Walk in or book online and get treated the same day.' ); ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           <?php echo sp_field( 'pf_hero_btn', 'Book a Pharmacy First Appointment' ); ?>
@@ -102,7 +102,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
         </span>
         <span class="flex items-center gap-1.5">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          NHS Funded &mdash; Free
+          Free NHS Consultation
         </span>
         <span class="flex items-center gap-1.5">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
@@ -132,7 +132,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
       <?php
       $pf_stats = sp_rows( 'pf_stats', [
         [ '7', 'Conditions Treated' ],
-        [ 'FREE', 'NHS Funded' ],
+        [ 'FREE', 'NHS Consultation' ],
         [ 'No', 'GP Appointment' ],
         [ 'Same', 'Day Treatment' ],
       ], [ 0 => 'value', 1 => 'label' ] );
@@ -161,8 +161,8 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
         <span class="uppercase tracking-wider text-xs font-semibold">NHS Pharmacy First</span>
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost"><?php echo sp_field( 'pf_cond_heading', 'Seven Common Conditions. Treated Free. Today.' ); ?></h2>
-      <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost"><?php echo sp_field( 'pf_cond_intro', 'Our GPhC-registered pharmacists can assess, diagnose and treat the following conditions under the NHS Pharmacy First scheme &mdash; with medication supplied free of charge where clinically appropriate.' ); ?></p>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 font-jost"><?php echo sp_field( 'pf_cond_heading', 'Seven Common Conditions. Treated Today.' ); ?></h2>
+      <p class="text-lg text-gray-500 max-w-3xl mx-auto font-jost"><?php echo sp_field( 'pf_cond_intro', 'Our GPhC-registered pharmacists can assess, diagnose and treat the following conditions under the NHS Pharmacy First scheme, supplying medication where clinically appropriate. The consultation is free; the standard NHS prescription charge applies to any medicine supplied unless you normally get free prescriptions.' ); ?></p>
     </div>
 
     <?php
@@ -198,8 +198,8 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
         </div>
       </div>
       <div class="flex-1 text-center md:text-left">
-        <p class="text-white text-lg font-semibold mb-1 font-jost"><?php echo sp_field( 'pf_freenote_heading', 'Completely free &mdash; including prescription medicines' ); ?></p>
-        <p class="text-blue-100 text-base font-jost"><?php echo sp_field( 'pf_freenote_body', 'Under NHS Pharmacy First you pay nothing &mdash; not even a prescription charge &mdash; for any treatment provided under the scheme, including antibiotics and antivirals.' ); ?></p>
+        <p class="text-white text-lg font-semibold mb-1 font-jost"><?php echo sp_field( 'pf_freenote_heading', 'Free consultation &mdash; standard prescription charges apply' ); ?></p>
+        <p class="text-blue-100 text-base font-jost"><?php echo sp_field( 'pf_freenote_body', 'The Pharmacy First consultation is free on the NHS. If our pharmacist supplies a medicine, such as an antibiotic or antiviral, the standard NHS prescription charge applies for each item, unless you normally get free prescriptions.' ); ?></p>
       </div>
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm font-jost flex-shrink-0">
         <?php echo sp_field( 'pf_freenote_btn', 'Book Today' ); ?>
@@ -224,7 +224,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         <span class="uppercase tracking-wider text-xs font-semibold">How It Works</span>
       </div>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'pf_how_heading', 'Three Steps to Free NHS Treatment' ); ?></h2>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-jost"><?php echo sp_field( 'pf_how_heading', 'Three Steps to NHS Treatment' ); ?></h2>
       <p class="text-lg text-blue-100 max-w-3xl mx-auto font-jost"><?php echo sp_field( 'pf_how_intro', 'No referral, no red tape. Expert care when you need it, at any of our 4 Hampshire locations.' ); ?></p>
     </div>
 
@@ -234,7 +234,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
       $pf_steps = sp_rows( 'pf_steps', [
         [ 'Walk In or Book Online', 'Visit any of our four Hampshire locations during opening hours, or book a convenient slot online. No GP referral needed.' ],
         [ 'Private Pharmacist Consultation', 'One of our trained pharmacists will see you in a private consultation room, asking about your symptoms, medical history and current medications, following NHS clinical guidelines throughout.' ],
-        [ 'Walk Out Treated', 'If your condition meets the NHS Pharmacy First criteria, you&apos;ll receive appropriate treatment on the spot &mdash; including prescription-only medicines such as antibiotics or antivirals where clinically indicated. Completely free of charge.' ],
+        [ 'Walk Out Treated', 'If your condition meets the NHS Pharmacy First criteria, you&apos;ll receive appropriate treatment on the spot &mdash; including prescription-only medicines such as antibiotics or antivirals where clinically indicated. The standard NHS prescription charge applies to medicines unless you normally get free prescriptions.' ],
       ], [ 0 => 'title', 1 => 'desc' ] );
       foreach ( $pf_steps as $pf_sti => $step ) : ?>
       <div class="yf-step bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300" data-delay="<?php echo $pf_sti + 1; ?>">
@@ -296,7 +296,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
             'Ages 1+ for most conditions',
             'Women aged 16&ndash;64 for uncomplicated UTI',
             'No appointment needed &mdash; walk in welcome',
-            'Completely free of charge',
+            'Free NHS consultation',
             'Same-day treatment available',
           ] );
           foreach ( $checklist as $item ) : ?>
@@ -426,7 +426,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             Book Pharmacy First
           </a>
-          <p class="text-gray-400 text-sm text-center font-jost">Free NHS service &middot; No GP referral needed</p>
+          <p class="text-gray-400 text-sm text-center font-jost">Free NHS consultation &middot; No GP referral needed</p>
         </div>
       </div>
 
@@ -436,7 +436,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
 
           <?php
           $faqs = sp_rows( 'pf_faqs', [
-            [ '01', 'Is it really free?', 'Yes. NHS Pharmacy First is fully funded by the NHS. You pay nothing &mdash; not even a prescription charge &mdash; for any treatment provided under the scheme, including prescription-only medicines like antibiotics or antivirals.' ],
+            [ '01', 'Do I have to pay?', 'The Pharmacy First consultation is free on the NHS. If our pharmacist supplies a medicine, such as an antibiotic or antiviral, the standard NHS prescription charge applies for each item, unless you normally get free prescriptions. Our team can check this with you at your appointment.' ],
             [ '02', 'Do I need to see my GP first?', 'No. That&apos;s the whole point of the service. Our pharmacists are trained to assess and treat these conditions independently. Simply walk in or book online.' ],
             [ '03', 'What conditions can you treat?', 'Sinusitis (12+), Sore Throat (5+), Earache (1&ndash;17), Infected Insect Bite (1+), Impetigo (1+), Shingles (18+), and Uncomplicated UTI (women 16&ndash;64).' ],
             [ '04', 'Do I need to be registered with a specific GP?', 'No. You just need to be registered with any GP in England. You don&apos;t need to be registered locally in Hampshire or with a specific practice.' ],
@@ -484,7 +484,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
 
     <div class="yf-reveal mb-8">
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-jost"><?php echo sp_field( 'pf_cta_heading', 'Don&apos;t Wait Weeks for a GP. Get Treated Today.' ); ?></h2>
-      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-10 font-jost"><?php echo sp_field( 'pf_cta_subtext', 'All four Southdowns Pharmacy locations offer NHS Pharmacy First &mdash; walk in during opening hours or book your slot online. Free treatment, expert pharmacists, no appointment needed.' ); ?></p>
+      <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-10 font-jost"><?php echo sp_field( 'pf_cta_subtext', 'All four Southdowns Pharmacy locations offer NHS Pharmacy First &mdash; walk in during opening hours or book your slot online. Free consultation, expert pharmacists, no appointment needed.' ); ?></p>
     </div>
 
     <!-- CTA buttons -->
@@ -500,7 +500,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
       <?php
       $pf_cta_stats = sp_rows( 'pf_cta_stats', [
         [ '7', 'Conditions Covered' ],
-        [ 'FREE', 'NHS Funded' ],
+        [ 'FREE', 'NHS Consultation' ],
         [ 'Same Day', 'Treatment Available' ],
         [ '4', 'Hampshire Locations' ],
       ], [ 0 => 'value', 1 => 'label' ] );
@@ -520,7 +520,7 @@ $pf_hero_img = sp_field( 'pf_hero_image', 'https://images.unsplash.com/photo-157
 <!-- Medical disclaimer strip -->
 <div class="bg-gray-100 border-t border-gray-200 py-6">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <p class="text-gray-400 text-xs leading-relaxed text-center font-jost"><?php echo sp_field( 'pf_disclaimer', 'This service is provided under the NHS Pharmacy First scheme. Treatment is subject to clinical assessment by our GPhC-registered pharmacists. Not all presentations will meet the criteria for NHS-funded treatment. If you are unsure whether your condition qualifies, please walk in or call your nearest branch. Information is accurate as of April 2026.' ); ?></p>
+    <p class="text-gray-400 text-xs leading-relaxed text-center font-jost"><?php echo sp_field( 'pf_disclaimer', 'This service is provided under the NHS Pharmacy First scheme. Treatment is subject to clinical assessment by our GPhC-registered pharmacists. Not all presentations will meet the criteria for NHS-funded treatment. The consultation is free; standard NHS prescription charges apply to any medicines supplied, unless you are exempt. If you are unsure whether your condition qualifies, please walk in or call your nearest branch. Information is accurate as of April 2026.' ); ?></p>
   </div>
 </div>
 
