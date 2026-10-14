@@ -42,9 +42,9 @@ $svc_groups = [
         'blurb'   => "Hampshire's dedicated travel clinic — destination-specific vaccine plans and expert advice, no GP referral needed.",
         'tile'    => 'bg-blue-50 text-blue-600',
         'services' => [
-            [ 'name' => 'Travel Health', 'url' => '/travel-health/', 'desc' => 'Expert vaccine advice and same-day appointments for any destination.', 'nhs' => false, 'price' => '',
+            [ 'name' => 'Travel Health', 'url' => '/travel-vaccinations/', 'desc' => 'Expert vaccine advice and same-day appointments for any destination.', 'nhs' => false, 'price' => '',
               'icon' => '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>' ],
-            [ 'name' => 'Thailand Travel Vaccines', 'url' => '/destinations/thailand/', 'desc' => 'All essential vaccines and expert advice for your trip to Thailand.', 'nhs' => false, 'price' => '',
+            [ 'name' => 'Thailand Travel Vaccines', 'url' => '/thailand-travel-vaccinations/', 'desc' => 'All essential vaccines and expert advice for your trip to Thailand.', 'nhs' => false, 'price' => '',
               'icon' => '<path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>' ],
             [ 'name' => 'Yellow Fever', 'url' => '/yellow-fever/', 'desc' => 'NATHNAC-certified centre — vaccine plus your lifelong ICVP certificate.', 'nhs' => false, 'price' => '',
               'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
@@ -56,9 +56,9 @@ $svc_groups = [
         'blurb'   => 'NHS and private COVID-19 vaccination at all four branches — walk in or book ahead.',
         'tile'    => 'bg-teal-50 text-teal-600',
         'services' => [
-            [ 'name' => 'NHS COVID-19 Vaccine', 'url' => '/covid-19-vaccine/', 'desc' => 'Free seasonal COVID-19 vaccination for eligible NHS patients.', 'nhs' => true, 'price' => '',
+            [ 'name' => 'NHS COVID-19 Vaccine', 'url' => '/nhs-covid/', 'desc' => 'Free seasonal COVID-19 vaccination for eligible NHS patients.', 'nhs' => true, 'price' => '',
               'icon' => '<path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/>' ],
-            [ 'name' => 'Private COVID-19 Vaccine', 'url' => '/covid-vaccine-private/', 'desc' => 'Private Pfizer vaccination with no eligibility criteria or waiting list.', 'nhs' => false, 'price' => 'from £89.50',
+            [ 'name' => 'Private COVID-19 Vaccine', 'url' => '/private-covid/', 'desc' => 'Private Pfizer vaccination with no eligibility criteria or waiting list.', 'nhs' => false, 'price' => 'from £89.50',
               'icon' => '<path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/>' ],
         ],
     ],

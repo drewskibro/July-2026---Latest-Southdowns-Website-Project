@@ -165,17 +165,28 @@ $pr_pills = sp_list( 'pr_hero_pills', [ 'NHS &amp; Private Services', '4 Hampshi
   var tabs   = document.querySelectorAll('.pr-tab');
   var panels = document.querySelectorAll('.pr-panel');
   if ( ! tabs.length ) { return; }
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var cat = tab.getAttribute('data-cat');
-      tabs.forEach(function (t) {
-        t.setAttribute('aria-selected', t.getAttribute('data-cat') === cat ? 'true' : 'false');
-      });
-      panels.forEach(function (p) {
-        p.classList.toggle('hidden', p.getAttribute('data-panel') !== cat);
-      });
+  function activate(cat) {
+    tabs.forEach(function (t) {
+      t.setAttribute('aria-selected', t.getAttribute('data-cat') === cat ? 'true' : 'false');
     });
+    panels.forEach(function (p) {
+      p.classList.toggle('hidden', p.getAttribute('data-panel') !== cat);
+    });
+  }
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activate(tab.getAttribute('data-cat')); });
   });
+  // Deep links: /pricing/#travel-vaccinations opens that category and scrolls to the tabs.
+  function fromHash() {
+    var cat = decodeURIComponent(window.location.hash.replace(/^#(prpanel-)?/, ''));
+    var tab = cat && document.querySelector('.pr-tab[data-cat="' + cat.replace(/"/g, '') + '"]');
+    if ( ! tab ) { return; }
+    activate(cat);
+    var strip = document.querySelector('.pr-tabs');
+    if ( strip ) { window.scrollTo({ top: strip.getBoundingClientRect().top + window.pageYOffset - 120, behavior: 'smooth' }); }
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
 })();
 </script>
 
