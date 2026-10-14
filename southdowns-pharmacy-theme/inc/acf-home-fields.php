@@ -191,7 +191,6 @@ function home_repeater_defaults(): array {
 		],
 		'home_testimonials' => [
 			[ 'initials' => 'SJ', 'name' => 'Sarah Johnson',    'location' => 'Emsworth Branch',          'quote' => '"Excellent service from start to finish. The pharmacist was incredibly knowledgeable about travel vaccines and made me feel completely at ease. Same day appointment was a lifesaver!"' ],
-			[ 'initials' => 'MT', 'name' => 'Michael Thompson', 'location' => 'Rowlands Castle Branch',   'quote' => '"The weight loss programme has been life-changing. Professional, supportive, and results-driven. I\'ve lost 18kg in 4 months with their expert guidance."' ],
 			[ 'initials' => 'EP', 'name' => 'Emma Patel',       'location' => 'Davies Pharmacy, Havant',  'quote' => '"Quick, efficient blood testing service. Results came back within 24 hours and the staff explained everything clearly. Highly recommend for anyone needing health checks."' ],
 			[ 'initials' => 'DW', 'name' => 'David Williams',   'location' => 'Emsworth Branch',          'quote' => '"Fantastic ear wax removal service. Painless procedure and immediate relief. The practitioner was gentle and professional throughout. Worth every penny."' ],
 			[ 'initials' => 'RC', 'name' => 'Rachel Chen',      'location' => 'Bosmere Pharmacy, Havant', 'quote' => '"As a frequent traveller, I rely on Southdowns for all my travel health needs. Yellow fever certification was processed immediately. Couldn\'t ask for better service."' ],
