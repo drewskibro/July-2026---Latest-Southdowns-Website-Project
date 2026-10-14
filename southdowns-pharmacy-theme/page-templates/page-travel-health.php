@@ -931,15 +931,16 @@ $th_service_icons = [
       <?php endforeach; ?>
     </div>
 
-    <!-- Trust indicators -->
-    <div class="flex flex-wrap justify-center gap-6 text-blue-200/80 text-xs font-jost">
-      <span>&#9733; 4.9/5 Patient Rating</span>
-      <span>&middot;</span>
-      <span>1,000+ Travellers Protected</span>
-      <span>&middot;</span>
-      <span>GPhC Registered</span>
-      <span>&middot;</span>
-      <span>NHS Yellow Fever Centre &middot; Bosmere, Havant</span>
+    <!-- Trust indicators. The frosted bar keeps small white text above 5:1 even
+         over the lightest part of the gradient; without it, white alone drops
+         to ~3.4:1 there. Yellow fever is a private NaTHNaC service, not NHS. -->
+    <div class="flex justify-center">
+      <div class="inline-flex flex-wrap justify-center items-center gap-x-8 gap-y-2 px-6 py-3 rounded-2xl text-white text-sm font-semibold font-jost border border-white/20" style="background:rgba(15,23,42,0.28);">
+        <span>&#9733; 4.9/5 Patient Rating</span>
+        <span>1,000+ Travellers Protected</span>
+        <span>GPhC Registered</span>
+        <span>NaTHNaC Yellow Fever Centre &middot; Bosmere, Havant</span>
+      </div>
     </div>
   </div>
 </section>
@@ -947,7 +948,7 @@ $th_service_icons = [
 <!-- Medical disclaimer -->
 <div class="bg-slate-50 border-t border-slate-200 py-6">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <p class="text-xs text-gray-400 leading-relaxed font-jost"><strong>Medical disclaimer:</strong> The information on this page is for general guidance only and does not replace professional medical advice. Travel health recommendations vary depending on your individual medical history, destination, and activities. Always consult a qualified healthcare professional before travelling. Southdowns Pharmacy pharmacists are registered with the General Pharmaceutical Council (GPhC).</p>
+    <p class="text-sm text-slate-600 leading-relaxed font-jost"><strong class="text-slate-700">Medical disclaimer:</strong> The information on this page is for general guidance only and does not replace professional medical advice. Travel health recommendations vary depending on your individual medical history, destination, and activities. Always consult a qualified healthcare professional before travelling. Southdowns Pharmacy pharmacists are registered with the General Pharmaceutical Council (GPhC).</p>
   </div>
 </div>
 
