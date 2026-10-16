@@ -184,7 +184,7 @@ add_action( 'acf/init', function () {
                 'label'       => 'CTA Button Label',
                 'name'        => 'wl_faq_cta_label',
                 'type'        => 'text',
-                'placeholder' => 'Book Free Consultation',
+                'placeholder' => 'Book a Consultation',
                 'instructions' => 'Button beneath the sidebar stat tiles. Links to the global booking URL.',
             ],
             [

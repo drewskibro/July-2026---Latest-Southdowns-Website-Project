@@ -7,11 +7,11 @@
 get_header();
 $booking_url = sp_booking_url();
 // No phone number is shown on this page by design — enquiries route through the
-// free consultation booking so that clinical questions are answered in person.
+// consultation booking so that clinical questions are answered in person.
 
 $hero_image     = ( function_exists( 'get_field' ) ? get_field( 'wl_hero_image' ) : '' ) ?: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop';
 $hero_headline  = sp_field( 'wl_hero_headline',  'Clinically supervised weight loss at your local Hampshire pharmacy' );
-$hero_body      = sp_field( 'wl_hero_body',      'A supervised weight management programme led by our GPhC-registered pharmacists, with a face-to-face assessment and monthly in-person reviews at four local Hampshire branches. Start with a free consultation &mdash; no GP referral needed.' );
+$hero_body      = sp_field( 'wl_hero_body',      'A supervised weight management programme led by our GPhC-registered pharmacists, with a face-to-face assessment and monthly in-person reviews at four local Hampshire branches. Start with a face-to-face consultation &mdash; no GP referral needed.' );
 $hero_badge     = sp_field( 'wl_hero_badge_text', 'Weight Management &middot; Hampshire' );
 
 // The former S3 (clinical evidence chart) and S4 (named medicine cards)
@@ -50,8 +50,8 @@ $testimonials_trust_icons = [
 // FAQ (S10)
 $faq_eyebrow   = sp_field( 'wl_faq_eyebrow',   'FAQs' );
 $faq_headline  = sp_field( 'wl_faq_headline',  'Common questions about weight management' );
-$faq_intro     = sp_field( 'wl_faq_intro',     'Everything you need to know before starting. Can&rsquo;t find your answer? Ask us at your free consultation.' );
-$faq_cta_label = sp_field( 'wl_faq_cta_label', 'Book Free Consultation' );
+$faq_intro     = sp_field( 'wl_faq_intro',     'Everything you need to know before starting. Can&rsquo;t find your answer? Ask us at your consultation.' );
+$faq_cta_label = sp_field( 'wl_faq_cta_label', 'Book a Consultation' );
 
 $faq_stats_raw = function_exists( 'get_field' ) ? get_field( 'wl_faq_stats' ) : null;
 $faq_stats     = ! empty( $faq_stats_raw ) ? $faq_stats_raw : [
@@ -69,13 +69,13 @@ $faq_items     = ! empty( $faq_items_raw ) ? $faq_items_raw : [
     [ 'question' => 'Do I still need to change my diet and activity?',
       'answer'   => 'Yes. Healthy eating and regular activity are the foundation of every plan. Your pharmacist will give you practical dietary and lifestyle advice, and review your progress with you at each monthly visit.' ],
     [ 'question' => 'Do I need a GP referral?',
-      'answer'   => 'No. You can book a free consultation directly with our pharmacists &mdash; no GP referral and no NHS waiting list. With your consent we will keep your GP informed.' ],
+      'answer'   => 'No. You can book a consultation directly with our pharmacists &mdash; no GP referral and no NHS waiting list. With your consent we will keep your GP informed.' ],
     [ 'question' => 'How much weight will I lose?',
       'answer'   => 'Everyone is different, so we do not make promises about how much you will lose or how quickly. Your pharmacist will agree realistic, safe goals with you and track your progress at your monthly reviews.' ],
     [ 'question' => 'What happens at my monthly reviews?',
       'answer'   => 'Each month you see a pharmacist in person at your chosen branch. We check your weight and blood pressure, talk through how you are getting on, and adjust your plan where needed.' ],
     [ 'question' => 'How much does the programme cost?',
-      'answer'   => 'Your first consultation is free, with no obligation. Costs depend on the plan agreed with your pharmacist, and we give you a full breakdown at your consultation before you decide whether to go ahead.' ],
+      'answer'   => 'The initial consultation is &pound;20, with no obligation to go ahead. Costs depend on the plan agreed with your pharmacist, and we give you a full breakdown at your consultation before you decide whether to go ahead.' ],
     [ 'question' => 'Can I join if I have type 2 diabetes?',
       'answer'   => 'Possibly, but it needs careful assessment. Your pharmacist will review your diabetes care and current medicines thoroughly, particularly if you take insulin or other diabetes medication, and we will coordinate with your GP or diabetes team where appropriate.' ],
     [ 'question' => 'What happens when I reach my goal weight?',
@@ -104,7 +104,7 @@ $benefit_icons = [
 // S6 Steps — client-editable. Numbers + alternating colours stay in code, by position.
 $steps_raw = function_exists( 'get_field' ) ? get_field( 'wl_steps' ) : null;
 $steps     = ! empty( $steps_raw ) ? $steps_raw : [
-    [ 'title' => 'Free consultation &amp; assessment', 'desc' => 'Book an appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, medication, measured BMI and health goals to decide whether treatment is appropriate.' ],
+    [ 'title' => 'Consultation &amp; assessment', 'desc' => 'Book an appointment at your nearest Southdowns branch. Our pharmacist reviews your medical history, medication, measured BMI and health goals to decide whether treatment is appropriate.' ],
     [ 'title' => 'Your personalised plan', 'desc' => 'If the programme is right for you, your pharmacist will set up a personalised plan and explain exactly what happens next. If it is not suitable, we will explain why and talk through the alternatives.' ],
     [ 'title' => 'Monthly face-to-face reviews', 'desc' => 'Return each month for weight and blood pressure checks and a review of how your plan is going, with changes made where needed.' ],
     [ 'title' => 'Maintaining your progress', 'desc' => 'We work with you on a structured plan to help maintain your progress, with lifestyle and dietary advice alongside ongoing pharmacist support.' ],
@@ -118,7 +118,7 @@ $step_styles = [
 $why_cards_raw = function_exists( 'get_field' ) ? get_field( 'wl_why_cards' ) : null;
 $why_cards     = ! empty( $why_cards_raw ) ? $why_cards_raw : [
     [ 'title' => 'GPhC-Registered',           'desc' => 'All our pharmacists are registered with the General Pharmaceutical Council. Your safety and clinical standards are never compromised.' ],
-    [ 'title' => 'Same-Day Assessments',      'desc' => 'No waiting lists and no GP referral. Book a free consultation online and be assessed the same day &mdash; treatment follows only where it is clinically appropriate.' ],
+    [ 'title' => 'Same-Day Assessments',      'desc' => 'No waiting lists and no GP referral. Book a consultation online and be assessed the same day &mdash; treatment follows only where it is clinically appropriate.' ],
     [ 'title' => 'Face-to-Face Care',         'desc' => "Unlike online services, our pharmacists see you in person every month &mdash; monitoring your progress, reviewing your plan and answering your questions." ],
     [ 'title' => '4 Hampshire Locations',     'desc' => 'Bosmere and Davies in Havant, plus Emsworth and Rowlands Castle &mdash; with free parking. Always a convenient branch near you.' ],
     [ 'title' => 'Honest Clinical Advice',    'desc' => 'If the programme is not right for you, we will tell you and talk through the alternatives. No pressure and no hard sell.' ],
@@ -182,7 +182,7 @@ $why_icons = [
     <p class="text-white text-base leading-relaxed mb-5 font-jost"><?php echo $hero_body; ?></p>
     <div class="flex flex-wrap gap-3 mb-4">
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-sm font-semibold px-5 py-2.5 rounded-full">
-        Book Free Consultation
+        Book a Consultation
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
       <a href="#faqs" class="inline-flex items-center gap-2 text-white text-sm font-medium border-2 border-white/40 px-5 py-2.5 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
@@ -206,7 +206,7 @@ $why_icons = [
       <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost"><?php echo $hero_body; ?></p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
-          Book Free Consultation
+          Book a Consultation
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
         <a href="#faqs" class="inline-flex items-center gap-2 text-white text-base font-medium border-2 border-white/30 px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-jost">Check Eligibility</a>
@@ -270,10 +270,10 @@ $why_icons = [
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
 
-      <!-- Card 1: Free initial consultation -->
+      <!-- Card 1: No GP referral needed -->
       <div class="yf-reveal yf-card-lift bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 md:p-6 text-center" data-delay="1">
-        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">Free</div>
-        <div class="text-sm text-blue-100 font-medium font-jost">Initial Consultation</div>
+        <div class="text-3xl md:text-4xl font-bold text-white mb-1 font-jost">No GP</div>
+        <div class="text-sm text-blue-100 font-medium font-jost">Referral Needed</div>
         <div class="mt-3 flex justify-center">
           <svg class="w-6 h-6 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/>
@@ -384,7 +384,7 @@ $why_icons = [
         <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Your Journey</span>
       </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">How our programme works</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">From your first free consultation to reaching your goal weight, we're with you at every step.</p>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">From your first consultation to reaching your goal weight, we're with you at every step.</p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -427,7 +427,7 @@ $why_icons = [
 
         <div class="yf-reveal pt-2" data-delay="5">
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-full transition-colors font-jost shadow-lg shadow-blue-500/20">
-            Book Your Free Consultation
+            Book Your Consultation
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
         </div>
@@ -564,7 +564,7 @@ $why_icons = [
         <p class="text-blue-100 text-base font-jost">Walk in or book online. Our pharmacists will assess you in person and talk you through your options &mdash; no GP referral and no waiting lists.</p>
       </div>
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg text-sm font-jost flex-shrink-0">
-        Book Free Consultation
+        Book a Consultation
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
     </div>
@@ -691,21 +691,21 @@ $why_icons = [
       </span>
       <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-4 py-2 rounded-full border border-white/20">
         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Free Consultation
+        Monthly Reviews
       </span>
     </div>
 
     <!-- Heading -->
     <div class="yf-reveal mb-6">
       <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 font-jost">Start your weight loss journey today</h2>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost">Book your free consultation at your nearest Hampshire branch. Same-day assessments, no waiting lists, and honest advice about whether treatment is right for you.</p>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto font-jost">Book your consultation at your nearest Hampshire branch. Same-day assessments, no waiting lists, and honest advice about whether treatment is right for you.</p>
     </div>
 
     <!-- Checklist -->
     <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2 max-w-xl mx-auto mb-10 text-left yf-reveal" data-delay="1">
       <?php
       $points = [
-        'Free consultation &mdash; no obligation',
+        'Initial consultation &mdash; no obligation',
         'Same-day assessments available',
         'Monthly face-to-face check-ins',
         'Honest advice, no pressure',
@@ -723,7 +723,7 @@ $why_icons = [
     <!-- CTA buttons -->
     <div class="flex flex-wrap justify-center gap-4 yf-reveal" data-delay="2">
       <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-8 py-4 rounded-full hover:bg-blue-50 transition-colors shadow-xl text-base font-jost">
-        Book Free Consultation
+        Book a Consultation
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
     </div>
