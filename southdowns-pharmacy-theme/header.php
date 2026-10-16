@@ -169,10 +169,10 @@ $destinations = [
                     <p>Face-to-face support from pharmacist prescribers at our four Hampshire branches.</p>
                     <div class="mega-dd-featured-trust">
                       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> GPhC-registered pharmacists</span>
-                      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Free initial consultation</span>
+                      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Monthly face-to-face reviews</span>
                       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> No GP referral needed</span>
                     </div>
-                    <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="mega-dd-featured-btn">Book Free Consultation
+                    <a href="<?php echo esc_url( sp_booking_url() ); ?>" class="mega-dd-featured-btn">Book a Consultation
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"/></svg>
                     </a>
                   </div>

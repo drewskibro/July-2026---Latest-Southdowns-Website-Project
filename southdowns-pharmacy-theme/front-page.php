@@ -110,7 +110,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
           </div>
           <div class="hero-features flex flex-wrap gap-x-6 gap-y-2 text-white text-sm font-semibold font-jost">
             <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Monthly Check-ins</span>
-            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Free Consultation</span>
+            <span class="flex items-center gap-1.5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> No GP Referral</span>
           </div>
         </div>
         <div class="w-1/2 min-h-[560px] lg:min-h-[660px] bg-cover" style="background-image:url('<?php echo esc_url( $s2_img ); ?>');background-position:85% center;"></div>

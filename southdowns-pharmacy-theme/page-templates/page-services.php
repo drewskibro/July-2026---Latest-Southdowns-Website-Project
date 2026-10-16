@@ -68,7 +68,7 @@ $svc_groups = [
         'blurb'   => 'Everyday health services delivered by GPhC-registered pharmacists close to home.',
         'tile'    => 'bg-emerald-50 text-emerald-600',
         'services' => [
-            [ 'name' => 'Weight Loss', 'url' => '/weight-management/', 'desc' => 'Clinically supervised Mounjaro & Wegovy programmes — no GP referral.', 'nhs' => false, 'price' => 'Free consultation',
+            [ 'name' => 'Weight Loss', 'url' => '/weight-management/', 'desc' => 'Clinically supervised Mounjaro & Wegovy programmes — no GP referral.', 'nhs' => false, 'price' => '£20 consultation',
               'icon' => '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' ],
             [ 'name' => 'Wegovy Pill', 'url' => '/wegovy-pill/', 'desc' => 'The MHRA-approved oral semaglutide — a needle-free alternative to the weekly jab.', 'nhs' => false, 'price' => 'from £128.50',
               'icon' => '<path d="M10.5 20.5 3.5 13.5a4.95 4.95 0 0 1 7-7l7 7a4.95 4.95 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/>' ],
@@ -288,13 +288,13 @@ if ( empty( $svc_faqs ) ) {
           <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Medical Weight Loss</span>
         </div>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-5 font-jost">Reach a Healthier Weight, <span class="serif-accent text-blue-700">Supported Every Step</span></h2>
-        <p class="text-lg text-slate-600 mb-6 leading-relaxed font-jost">Clinically supervised Mounjaro and Wegovy programmes from local, GPhC-registered pharmacists &mdash; with no GP referral and a free initial consultation. Supplied the same day from our Hampshire pharmacies.</p>
+        <p class="text-lg text-slate-600 mb-6 leading-relaxed font-jost">Clinically supervised Mounjaro and Wegovy programmes from local, GPhC-registered pharmacists &mdash; with no GP referral and a face-to-face initial consultation. Supplied the same day from our Hampshire pharmacies.</p>
 
         <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
           <?php
           $svc_wl_points = [
               'GLP-1 treatments (Mounjaro &amp; Wegovy)',
-              'Free initial consultation',
+              'Face-to-face initial consultation',
               'No GP referral needed',
               'Ongoing pharmacist support',
           ];
@@ -312,7 +312,7 @@ if ( empty( $svc_faqs ) ) {
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
           <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 text-blue-700 font-semibold border-2 border-blue-200 px-7 py-3.5 rounded-full hover:bg-blue-50 transition-colors font-jost">
-            Book Free Consultation
+            Book a Consultation
           </a>
         </div>
       </div>
@@ -413,7 +413,7 @@ if ( empty( $svc_faqs ) ) {
             [ 'name' => 'Pharmacy First',        'price' => 'Free consultation', 'note' => 'Prescription charges may apply' ],
             [ 'name' => 'Ear Wax Removal',       'price' => '£50', 'note' => 'one ear · £60 both' ],
             [ 'name' => 'Private COVID-19 Vaccine', 'price' => 'from £89.50', 'note' => 'no eligibility criteria' ],
-            [ 'name' => 'Weight Loss',           'price' => 'Free', 'note' => 'initial consultation' ],
+            [ 'name' => 'Weight Loss',           'price' => '£20', 'note' => 'initial consultation' ],
             [ 'name' => 'Travel Vaccinations',   'price' => 'Varies', 'note' => 'by destination — see full list' ],
         ];
         foreach ( $svc_price_snapshot as $row ) : ?>
