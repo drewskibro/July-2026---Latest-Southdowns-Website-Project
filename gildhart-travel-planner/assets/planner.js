@@ -231,6 +231,114 @@
     choose(c, { scroll: true });
   });
 
+  /* ---- the live line: NaTHNaC's latest outbreak notices, read daily -------
+     The site reads NaTHNaC's outbreak notices once a day; this says when, by
+     the visitor's own clock (the page may come from a cache a day old, so the
+     server never writes "today"), and lists the latest by date, disease and
+     country, never their words. "Live", and the pulse, only while the last
+     reading is under LIVE_HOURS old: a daily reading through a day-long page
+     cache is at most two days old, and a reader that has stopped is never
+     called live. The server leaves the moment out altogether once the
+     reading is too old to show (30 days), and then nothing is drawn. */
+  var LIVE_HOURS = 50;
+  var liveEl = root.querySelector('[data-gtp-live]');
+  var alerts = root.querySelector('[data-gtp-alerts]');
+  var readAt = cfg.reader ? new Date(cfg.reader) : null;
+  if (readAt && isNaN(readAt.getTime())) { readAt = null; }
+  var latest = (cfg.latest || []).filter(function (n) { return n && n.places && n.places.length; });
+
+  function ukParts(d) {
+    try {
+      var o = {};
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/London', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: '2-digit', hourCycle: 'h23' })
+        .formatToParts(d).forEach(function (x) { o[x.type] = x.value; });
+      return { y: +o.year, m: +o.month, d: +o.day, h: (+o.hour) % 24, min: o.minute };
+    } catch (e) {
+      return { y: d.getFullYear(), m: d.getMonth() + 1, d: d.getDate(), h: d.getHours(), min: String(d.getMinutes()).padStart(2, '0') };
+    }
+  }
+  function clockText(x) { return ((x.h % 12) || 12) + (x.min === '00' ? '' : ':' + x.min) + (x.h < 12 ? 'am' : 'pm'); }
+  function whenRead() {
+    if (!readAt) { return null; }
+    var now = new Date(), hours = Math.max(0, (now - readAt) / 3600000);
+    var a = ukParts(readAt), b = ukParts(now);
+    var apart = Math.round((Date.UTC(b.y, b.m - 1, b.d) - Date.UTC(a.y, a.m - 1, a.d)) / 86400000);
+    var words = apart <= 0 ? 'today at ' + clockText(a) : apart === 1 ? 'yesterday at ' + clockText(a) : a.d + ' ' + MONTHS[a.m - 1];
+    return { live: hours <= LIVE_HOURS, words: words };
+  }
+  function daysAgo(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    if (!m) { return Infinity; }
+    return Math.round((today() - new Date(+m[1], +m[2] - 1, +m[3])) / 86400000);
+  }
+  function shortDay(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ''));
+    return m ? parseInt(m[3], 10) + ' ' + MONTHS[parseInt(m[2], 10) - 1].slice(0, 3) : '';
+  }
+  var reading = whenRead();
+
+  function drawLive() {
+    if (!liveEl) { return; }
+    if (!reading || !latest.length) { liveEl.hidden = true; return; }
+    liveEl.innerHTML = '';
+    if (reading.live) { liveEl.setAttribute('data-gtp-on', ''); } else { liveEl.removeAttribute('data-gtp-on'); }
+    liveEl.appendChild(el('p', { 'class': 'gtp__live-head', 'data-gtp-live-head': '' }, [
+      el('span', { 'class': 'gtp__live-dot', 'aria-hidden': 'true' }),
+      el('strong', { 'class': 'gtp__live-word', text: reading.live ? 'Live' : 'Outbreak notices' }),
+      el('span', { text: (reading.live ? 'Outbreak notices from NaTHNaC, checked ' : 'from NaTHNaC, last checked ') + reading.words })
+    ]));
+    var ul = el('ul', { 'class': 'gtp__live-list', 'aria-label': 'Latest outbreak notices' });
+    latest.slice(0, 3).forEach(function (n) {
+      var target = null;
+      n.places.some(function (pl) { if (bySlug[pl.slug] && bySlug[pl.slug].planner) { target = bySlug[pl.slug]; return true; } return false; });
+      var kids = [
+        el('span', { 'class': 'gtp__live-disease', text: n.disease }),
+        el('span', { 'class': 'gtp__live-where', text: n.places.map(function (pl) { return pl.name; }).join(', ') }),
+        el('time', { datetime: n.date, text: shortDay(n.date) })
+      ];
+      var chip = target
+        ? el('button', { type: 'button', 'class': 'gtp__live-chip', 'data-gtp-live-pick': target.slug }, kids)
+        : el('span', { 'class': 'gtp__live-chip' }, kids);
+      if (target) { chip.addEventListener('click', function () { input.value = target.name; choose(target, { scroll: true }); }); }
+      ul.appendChild(el('li', null, [chip]));
+    });
+    liveEl.appendChild(ul);
+    var recent = {};
+    (cfg.notices || []).forEach(function (n) { if (daysAgo(n.date) <= 30) { recent[n.slug] = true; } });
+    var count = Object.keys(recent).length;
+    if (count) {
+      liveEl.appendChild(el('p', { 'class': 'gtp__live-more', 'data-gtp-live-count': '', text: 'Notices for ' + count + (count === 1 ? ' country' : ' countries') + ' in the last 30 days. Choose a country to see its own.' }));
+    }
+    liveEl.hidden = false;
+  }
+  drawLive();
+
+  /* The same notices on the map: a dot on each country with one in the last
+     30 days, its ring pulsing while the reading is live. A desktop only: on a
+     smaller screen the map is texture behind the words. Drawn once the page
+     has settled, from the map file the planner loads anyway. */
+  function drawAlerts() {
+    if (!alerts || !reading || !mapData || !mapData.countries) { return; }
+    alerts.innerHTML = '';
+    var seen = {}, i = 0;
+    (cfg.notices || []).forEach(function (n) {
+      if (seen[n.slug] || daysAgo(n.date) > 30) { return; }
+      seen[n.slug] = true;
+      var pt = mapData.countries[n.slug];
+      if (!pt) { return; }
+      alerts.appendChild(el('circle', { 'class': 'gtp__alert-ring', cx: pt.x, cy: pt.y, r: 4, style: 'animation-delay:' + ((i * 0.37) % 2.6).toFixed(2) + 's' }));
+      alerts.appendChild(el('circle', { 'class': 'gtp__alert', cx: pt.x, cy: pt.y, r: 3, 'data-gtp-alert': n.slug }));
+      i++;
+    });
+    if (world) { if (reading.live) { world.setAttribute('data-gtp-alerts-live', ''); } else { world.removeAttribute('data-gtp-alerts-live'); } }
+  }
+  if (alerts && reading && (cfg.notices || []).length && window.matchMedia && window.matchMedia('(min-width: 1024px)').matches) {
+    window.setTimeout(function () {
+      if (mapData) { drawAlerts(); return; }
+      getJSON(base + 'map.json').then(function (m) { mapData = mapData || m; drawAlerts(); }).catch(function () {});
+    }, 900);
+  }
+
   /* On a phone the card's way out is pinned to the foot of the window, and
      anything else fixed there (a chat button) would sit on it. While it is,
      the page is told: <html data-gtp-pinned> and --gtp-pinned-height, the
@@ -487,15 +595,23 @@
       facts.appendChild(el('li', { 'data-gtp-fact': 'yf-centre' }, [glyph('centre'), el('span', { text: cfg.yf })]));
     }
     if (d.malaria && d.malaria.line) { facts.appendChild(el('li', { 'data-gtp-fact': 'malaria' }, [glyph('malaria'), el('span', { text: d.malaria.line })])); }
-    /* The outbreak notices for this country: the disease and the day, never the notice's words. */
+    /* The outbreak notices for this country: the disease and the day, never the notice's words.
+       While the reading is live and one is from the last 30 days, it leads the facts with the live
+       dot and when it was checked; one from the last 14 days says "New". */
     var mine = (cfg.notices || []).filter(function (n) { return n.slug === c.slug; });
     if (mine.length) {
       var seen = {};
-      var named = mine.filter(function (n) { var k = n.disease.toLowerCase(); if (seen[k]) { return false; } seen[k] = true; return true; })
-        .map(function (n) { return n.disease + ' (' + n.day + ')'; });
-      var span = el('span', { text: 'Outbreak notices from NaTHNaC: ' + named.join(', ') + '. We go through them at your consultation. ' });
+      var named = mine.filter(function (n) { var k = n.disease.toLowerCase(); if (seen[k]) { return false; } seen[k] = true; return true; });
+      var lead = reading && reading.live && named.some(function (n) { return daysAgo(n.date) <= 30; });
+      var fresh = named.some(function (n) { return daysAgo(n.date) <= 14; });
+      var span = el('span', null, [
+        lead ? el('strong', { 'class': 'gtp__fact-live', 'data-gtp-fact-live': '' }, ['Live', fresh ? ' ' : null, fresh ? el('span', { 'class': 'gtp__fact-new', text: 'New' }) : null]) : null,
+        (lead ? ' ' : '') + 'Outbreak notices from NaTHNaC' + (lead ? ', checked ' + reading.words : '') + ': '
+          + named.map(function (n) { return n.disease + ' (' + n.day + ')'; }).join(', ') + '. We go through them at your consultation. '
+      ]);
       if (d.source) { span.appendChild(el('a', { href: d.source, target: '_blank', rel: 'noopener noreferrer', text: 'Read them on TravelHealthPro' })); }
-      facts.appendChild(el('li', { 'data-gtp-fact': 'notices' }, [glyph('notices'), span]));
+      var li = el('li', { 'data-gtp-fact': 'notices', 'data-gtp-fact-lead': lead ? '' : null }, [lead ? el('span', { 'class': 'gtp__live-dot gtp__fact-dot', 'aria-hidden': 'true' }) : glyph('notices'), span]);
+      if (lead && facts.firstChild) { facts.insertBefore(li, facts.firstChild); } else { facts.appendChild(li); }
     }
 
     var act = actions(c);

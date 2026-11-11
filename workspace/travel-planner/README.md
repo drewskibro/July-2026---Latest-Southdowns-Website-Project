@@ -7,7 +7,7 @@ source, tests, guidance pipeline and the Claude skill that runs it live there.
 What this repository carries:
 
 - `gildhart-travel-planner/` at the root: **a released copy** of the plugin
-  (1.1.0), which the deploy puts in `wp-content/plugins/`. **Do not edit it
+  (1.2.0), which the deploy puts in `wp-content/plugins/`. **Do not edit it
   here.** A fix is made in the product repository, released, and copied in
   with its `tools/sync-client.py`, which refuses to overwrite a copy that was
   changed here.

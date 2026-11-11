@@ -18,6 +18,11 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-11] — Travel Planner 1.2.0 (the live notices line)
+- `gildhart-travel-planner/` is release 1.2.0 of Gildhart-pharmodigital/gildhart-travel-planner, copied with its `tools/sync-client.py` (5 files changed; not edited here).
+- New on the travel page: under the planner's box, "LIVE · Outbreak notices from NaTHNaC, checked today at …" with a gentle pulse while the daily reading is fresh, the three latest notices (each opens its country), dots on the desktop map, and a live notice leading a country's card. Still for reduced motion; not drawn when the reading is over 30 days old.
+- `node workspace/travel-planner/theme-check.js` passes (5 checks, 5 planted faults caught).
+
 ### [2026-11-11] — Travel Planner moves to its own repository
 - The plugin's source, tests and guidance pipeline now live in `Gildhart-pharmodigital/gildhart-travel-planner` (private); removed from `workspace/travel-planner/` here.
 - `gildhart-travel-planner/` stays as a released copy (1.1.0), identical to the product's; never edit it here (`tools/sync-client.py` there refuses to overwrite a changed copy).
