@@ -1,7 +1,7 @@
 {
  "slug": "kenya",
  "name": "Kenya",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/kenya",
  "vaccines": {
   "most": [
@@ -44,6 +44,10 @@
     "note": "Worth considering for longer stays with local people, and required for Hajj and Umrah pilgrims."
    },
    {
+    "id": "polio",
+    "note": "Proof of polio vaccination can be asked for on arrival or departure. Check your booster is within ten years."
+   },
+   {
     "id": "rabies",
     "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
    },
@@ -53,7 +57,7 @@
    },
    {
     "id": "yellow-fever",
-    "note": "There's yellow fever in parts of Kenya. The vaccine protects you, and the certificate is required for entry in some cases."
+    "note": "There's a risk of yellow fever in parts of Kenya. The vaccine protects you, and a certificate can be asked for at the border."
    }
   ]
  },

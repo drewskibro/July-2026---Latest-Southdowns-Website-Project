@@ -1,7 +1,7 @@
 {
  "slug": "sudan",
  "name": "Sudan",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/sudan",
  "vaccines": {
   "most": [
@@ -57,7 +57,7 @@
    },
    {
     "id": "yellow-fever",
-    "note": "There's yellow fever in parts of Sudan. The vaccine protects you, and the certificate is required for entry in some cases."
+    "note": "There's a risk of yellow fever in parts of Sudan. The vaccine protects you; no certificate is asked for on entry."
    }
   ]
  },

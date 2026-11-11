@@ -29,6 +29,66 @@ change only when a country does.
 import argparse, datetime, json, os, re, sys
 
 
+# Other names for a place, for the search box only. TravelHealthPro files each
+# country under one name ("DRC", "USA", "Korea, South") and some places under
+# their country (Bali is their Indonesia page); a traveller types the name they
+# know. Each is another name for the same page, never a different place, and
+# the card that opens is headed with TravelHealthPro's own name.
+AKA = {
+    "democratic-republic-of-the-congo": ["Democratic Republic of the Congo", "DR Congo", "Congo (Kinshasa)"],
+    "congo": ["Republic of the Congo", "Congo (Brazzaville)"],
+    "indonesia": ["Bali"],
+    "usa": ["United States of America", "United States", "America"],
+    "united-kingdom": ["UK", "Great Britain"],
+    "united-arab-emirates": ["UAE", "Dubai", "Abu Dhabi"],
+    "north-macedonia": ["North Macedonia"],
+    "south-korea": ["South Korea"],
+    "north-korea": ["North Korea"],
+    "turkey": ["Türkiye"],
+    "czechia": ["Czech Republic"],
+    "eswatini": ["Swaziland"],
+    "cote-divoire": ["Ivory Coast"],
+    "the-gambia": ["The Gambia"],
+    "bahamas": ["The Bahamas"],
+    "netherlands": ["Holland"],
+    "tanzania": ["Zanzibar"],
+    "cape-verde": ["Cabo Verde"],
+    "macao-china": ["Macau"],
+    "st-lucia": ["Saint Lucia"],
+    "st-kitts-and-nevis": ["Saint Kitts and Nevis"],
+    "st-vincent-and-the-grenadines": ["Saint Vincent and the Grenadines"],
+    "canary-islands-spain": ["Tenerife", "Lanzarote", "Gran Canaria", "Fuerteventura"],
+    "balearic-islands-spain": ["Majorca", "Mallorca", "Ibiza", "Menorca"],
+}
+
+
+def yellow_fever_note(country, yf):
+    """The yellow fever card's line, from the facts read for this country:
+    where the risk is, and whether a certificate is asked for. One sentence
+    used to fit every country, and said a certificate "is required for entry
+    in some cases" of a country that asks for none. A fact that was not read
+    is not written about."""
+    where = {"all": f"throughout {country}", "parts": f"in parts of {country}", "low": f"in parts of {country}"}.get(yf.get("scope"), f"in {country}")
+    s = f"There's a risk of yellow fever {where}. The vaccine protects you"
+    if yf.get("certificate_required") is True:
+        return s + ", and a certificate can be asked for at the border."
+    if yf.get("certificate_required") is False:
+        return s + "; no certificate is asked for on entry."
+    return s + "."
+
+
+def certificate_words(country, yf, lines):
+    """The pipeline's certificate sentences, with one gap closed: a country
+    with yellow fever that asks for no certificate, where how far the risk
+    reaches was not read, said only "No yellow fever certificate is needed."
+    beside a card recommending the vaccine."""
+    if yf.get("certificate_required") is False and yf.get("risk_in_country") and not yf.get("scope"):
+        bare = "No yellow fever certificate is needed."
+        full = f"No yellow fever certificate is needed to enter {country}, but there's a risk of yellow fever there, so the vaccine may be recommended."
+        return [full if line == bare else line for line in lines]
+    return lines
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--pipeline", required=True, help="the content system directory holding thp.py and build.py")
@@ -61,16 +121,21 @@ def main():
     used, rows, written, fetched = {}, [], 0, []
     for c in index["countries"]:
         row = {"name": c["name"], "slug": c["slug"]}
+        if c["slug"] in AKA:
+            row["aka"] = AKA[c["slug"]]
         sp = os.path.join(snaps, c["slug"] + ".json")
         if os.path.exists(sp):
             snap = json.load(open(sp, encoding="utf-8"))
             card = build.planner_from_snapshot(snap, vaccines, rules, today)
+            yf = thp.facts(snap)["yellow_fever"]
             tiers = {}
             for tier in ("most", "some"):
                 tiers[tier] = []
                 for v in card["vaccines"].get(tier, []):
-                    tiers[tier].append({"id": v["id"], "note": v["note"]})
+                    note = yellow_fever_note(card["name"], yf) if v["id"] == "yellow-fever" else v["note"]
+                    tiers[tier].append({"id": v["id"], "note": note})
                     used.setdefault(v["id"], vaccines[v["id"]])
+            card["certificates"] = certificate_words(card["name"], yf, card["certificates"])
             page = {
                 "slug": card["slug"], "name": card["name"], "checked": card["checked"],
                 "source": snap.get("url") or ("https://travelhealthpro.org.uk/countries/" + card["slug"]),
@@ -101,7 +166,7 @@ def main():
     }, open(os.path.join(out, "pack.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 
     # What must never be in a pack: a price, a pharmacy, a prescription-only brand.
-    faults = []
+    faults = [f"another name for {slug}, which is not in their list" for slug in AKA if slug not in {r["slug"] for r in rows}]
     for root, _, files in os.walk(out):
         if os.path.basename(root) == "outlines":
             continue

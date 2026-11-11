@@ -21,6 +21,25 @@ fs.mkdirSync(OUT, { recursive: true });
       await p.waitForSelector('[data-gtp-card="trip"][data-gtp-in]');
       await p.waitForTimeout(700);
       await (await p.$('[data-gtp]')).screenshot({ path: `${OUT}/planner-${slug}-${name}.png` });
+      /* A phone shows a screen at a time, with the way out pinned to its foot: the whole section in one
+         picture draws that bar once, wherever the first screen ended, so take the screens as well. */
+      if (w < 700 && slug === 'thailand') {
+        await p.evaluate(() => document.querySelector('[data-gtp-result]').scrollIntoView({ block: 'start' }));
+        await p.waitForTimeout(300);
+        await p.screenshot({ path: `${OUT}/planner-${slug}-${name}-screen-1.png` });
+        await p.evaluate(() => document.querySelector('[data-gtp-deck], .gtp__deck').scrollIntoView({ block: 'center' }));
+        await p.waitForTimeout(300);
+        await p.screenshot({ path: `${OUT}/planner-${slug}-${name}-screen-2.png` });
+        await p.evaluate(() => window.scrollTo(0, 0));
+      }
+    }
+    if (w >= 700) {
+      /* The two screens in wp-admin, in the harness's plain page: the markup is the plugin's, the styling is not WordPress's. */
+      await p.goto(`${BASE}/ctl.php?be=admin`);
+      for (const page of ['gtp-settings', 'gtp-notices']) {
+        await p.goto(`${BASE}/admin.php?page=${page}`, { waitUntil: 'networkidle' });
+        await p.screenshot({ path: `${OUT}/admin-${page}.png`, fullPage: true });
+      }
     }
     await ctx.close();
   }

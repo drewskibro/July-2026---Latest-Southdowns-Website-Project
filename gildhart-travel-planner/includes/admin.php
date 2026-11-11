@@ -178,8 +178,8 @@ function gtp_admin_settings_page() {
 							<option value="not" <?php selected( $row['status'], 'not' ); ?>>don't give it</option>
 							<option value="ask" <?php selected( $row['status'], 'ask' ); ?>>ask us</option>
 						</select></td>
-						<td><input name="gtp[vaccines][<?php echo esc_attr( $id ); ?>][price]" value="<?php echo esc_attr( null === $row['price'] ? '' : $row['price'] ); ?>" size="8" inputmode="decimal"></td>
-						<td><input name="gtp[vaccines][<?php echo esc_attr( $id ); ?>][child_price]" value="<?php echo esc_attr( null === $row['child_price'] ? '' : $row['child_price'] ); ?>" size="8" inputmode="decimal"></td>
+						<td><input name="gtp[vaccines][<?php echo esc_attr( $id ); ?>][price]" value="<?php echo esc_attr( gtp_price_field( $row['price'] ) ); ?>" size="8" inputmode="decimal"></td>
+						<td><input name="gtp[vaccines][<?php echo esc_attr( $id ); ?>][child_price]" value="<?php echo esc_attr( gtp_price_field( $row['child_price'] ) ); ?>" size="8" inputmode="decimal"></td>
 						<td><input class="regular-text" name="gtp[vaccines][<?php echo esc_attr( $id ); ?>][note]" value="<?php echo esc_attr( $row['note'] ); ?>"></td>
 					</tr>
 				<?php endforeach; ?>

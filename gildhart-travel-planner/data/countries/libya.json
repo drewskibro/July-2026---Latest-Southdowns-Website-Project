@@ -1,7 +1,7 @@
 {
  "slug": "libya",
  "name": "Libya",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/libya",
  "vaccines": {
   "most": [
@@ -22,6 +22,10 @@
    {
     "id": "measles-mmr",
     "note": "Make sure you've had two doses of MMR. Measles is common in Libya, and a UK adult who missed a dose can catch it."
+   },
+   {
+    "id": "polio",
+    "note": "Proof of polio vaccination can be asked for on arrival or departure. Check your booster is within ten years."
    },
    {
     "id": "rabies",

@@ -1,7 +1,7 @@
 {
  "slug": "uganda",
  "name": "Uganda",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/uganda",
  "vaccines": {
   "most": [
@@ -19,7 +19,7 @@
    },
    {
     "id": "yellow-fever",
-    "note": "There's yellow fever in parts of Uganda. The vaccine protects you, and the certificate is required for entry in some cases."
+    "note": "There's a risk of yellow fever in Uganda. The vaccine protects you; no certificate is asked for on entry."
    }
   ],
   "some": [
@@ -48,6 +48,10 @@
     "note": "Worth considering for longer stays with local people, and required for Hajj and Umrah pilgrims."
    },
    {
+    "id": "polio",
+    "note": "Proof of polio vaccination can be asked for on arrival or departure. Check your booster is within ten years."
+   },
+   {
     "id": "rabies",
     "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
    },
@@ -59,7 +63,7 @@
  },
  "also_listed": [],
  "certificates": [
-  "A yellow fever certificate is asked for from travellers aged 1 year and over on arrival."
+  "No yellow fever certificate is needed to enter Uganda, but there's a risk of yellow fever there, so the vaccine may be recommended."
  ],
  "malaria": {
   "line": "Malaria is present in parts of Uganda, and tablets are advised for some areas. Which areas, and whether you need them, is settled at your consultation.",

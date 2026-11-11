@@ -177,6 +177,11 @@ function gtp_money( $n ) {
 	return '£' . number_format( $n, floor( $n ) == $n ? 0 : 2 );
 }
 
+/** A price as its box on the settings screen shows it: "56", "98.50", or empty. */
+function gtp_price_field( $n ) {
+	return ( null === $n || '' === $n ) ? '' : ltrim( gtp_money( $n ), '£' );
+}
+
 /**
  * Whether this visitor sees the planner. Switched off, it is a preview: the
  * people who can edit the site see it, with a line saying nobody else can,

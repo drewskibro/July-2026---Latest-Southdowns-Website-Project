@@ -51,7 +51,7 @@ function gtp_notices_state() {
 	$s = get_option( GTP_NOTICES_OPTION, array() );
 	$s = is_array( $s ) ? $s : array();
 	return array_merge( array(
-		'items'   => array(),   // key => date, disease, country, slug, regions, url
+		'items'   => array(),   // key => date, disease, country, slug, regions, url (and group, when NaTHNaC files one notice under several countries)
 		'manual'  => array(),   // id  => the same, added by a person
 		'hidden'  => array(),   // keys a person has taken off
 		'seen'    => array(),   // keys already emailed or first read
@@ -103,6 +103,35 @@ function gtp_notices_parse( $html ) {
 		if ( ! $d ) { continue; }
 		if ( ! preg_match( '~<div class="outbreak_country">(.*?)</div>~s', $head, $cm ) ) { continue; }
 		if ( ! preg_match( '~<a\s[^>]*href="([^"]*)"[^>]*>(.*?)</a>~s', $cm[1], $am ) ) { continue; }
+		$date = $d->format( 'Y-m-d' );
+		if ( '' === trim( $am[1] ) ) {
+			/* A notice filed under several countries ("in France ex DRC"): their
+			   list opens from a button with no address and names each country
+			   with its page. It is kept once for each country it names, so each
+			   one's card has it, and the button's own label is never a country. */
+			$named = array();
+			if ( preg_match_all( '~<a\s[^>]*href="(https://travelhealthpro\.org\.uk/countries/([a-z0-9-]+))/?"[^>]*>(.*?)</a>~s', $cm[1], $lm, PREG_SET_ORDER ) ) {
+				foreach ( $lm as $l ) {
+					$name = trim( html_entity_decode( wp_strip_all_tags( $l[3] ), ENT_QUOTES, 'UTF-8' ) );
+					if ( '' !== $name && strlen( $name ) <= 60 ) { $named[ $l[2] ] = array( 'name' => $name, 'url' => $l[1] ); }
+				}
+			}
+			ksort( $named );
+			$group = $date . '|' . strtolower( $disease ) . '|' . implode( '+', array_keys( $named ) );
+			foreach ( $named as $slug => $c ) {
+				$items[ $date . '|' . strtolower( $disease ) . '|' . $slug ] = array(
+					'date'    => $date,
+					'disease' => $disease,
+					'country' => $c['name'],
+					'slug'    => (string) $slug,
+					'regions' => array(),
+					'url'     => $c['url'],
+					'group'   => $group,
+				);
+			}
+			continue;
+		}
+		/* "Thailand +": the plus opens the regions it names. */
 		$country = trim( preg_replace( '~\s*\+\s*$~', '', html_entity_decode( wp_strip_all_tags( $am[2] ), ENT_QUOTES, 'UTF-8' ) ) );
 		if ( '' === $country ) { continue; }
 		/* Only TravelHealthPro's own country page is linked or matched to a card. */
@@ -119,7 +148,6 @@ function gtp_notices_parse( $html ) {
 				if ( '' !== $r && strlen( $r ) <= 60 ) { $regions[] = $r; }
 			}
 		}
-		$date          = $d->format( 'Y-m-d' );
 		$key           = $date . '|' . strtolower( $disease ) . '|' . ( $slug ? $slug : strtolower( $country ) );
 		$items[ $key ] = array(
 			'date'    => $date,
@@ -144,8 +172,39 @@ function gtp_day( $iso ) {
 	return $t ? gmdate( 'j F Y', $t ) : (string) $iso;
 }
 
-/** "Dengue in Brazil (Bahia)" */
+/**
+ * Notices as a reader meets them: one row a notice. A notice NaTHNaC files
+ * under several countries is kept once for each (so each country's card has
+ * it) and read as one row naming them all, in `places`.
+ */
+function gtp_notices_rows( $items ) {
+	$out = array();
+	$at  = array();
+	foreach ( (array) $items as $n ) {
+		$g     = (string) ( $n['group'] ?? '' );
+		$place = array( 'name' => (string) $n['country'], 'url' => (string) $n['url'] );
+		if ( '' !== $g && isset( $at[ $g ] ) ) {
+			$out[ $at[ $g ] ]['places'][] = $place;
+			continue;
+		}
+		if ( '' !== $g ) { $at[ $g ] = count( $out ); }
+		$n['places'] = array( $place );
+		$out[]       = $n;
+	}
+	return $out;
+}
+
+/**
+ * "Dengue in Brazil (Bahia)". A notice filed under several countries says
+ * where a case was found and where it came from, and only NaTHNaC's own
+ * words say which is which, so it is named with its countries and no "in":
+ * "Ebola disease (DRC, France)".
+ */
 function gtp_notice_words( $n ) {
+	$places = (array) ( $n['places'] ?? array() );
+	if ( count( $places ) > 1 ) {
+		return $n['disease'] . ' (' . implode( ', ', array_column( $places, 'name' ) ) . ')';
+	}
 	$where = (string) $n['country'];
 	if ( ! empty( $n['regions'] ) ) { $where .= ' (' . implode( ', ', (array) $n['regions'] ) . ')'; }
 	return $n['disease'] . ' in ' . $where;
@@ -202,6 +261,7 @@ function gtp_notices_read( $force = false ) {
 	if ( $first ) { return 'first read'; }
 	if ( ! $new ) { return 'read'; }
 
+	$new  = gtp_notices_rows( $new );
 	$mode = (string) gtp_setting( 'alerts', 'ours' );
 	$tell = array();
 	foreach ( $new as $n ) {
@@ -210,7 +270,8 @@ function gtp_notices_read( $force = false ) {
 	if ( ! $tell ) { return 'read, ' . count( $new ) . ' new'; }
 	$lines = array();
 	foreach ( $tell as $n ) {
-		$lines[] = '- ' . gtp_notice_words( $n ) . ', ' . gtp_day( $n['date'] ) . ( $n['url'] ? ': ' . $n['url'] : '' );
+		$urls    = array_filter( array_column( $n['places'], 'url' ) );
+		$lines[] = '- ' . gtp_notice_words( $n ) . ', ' . gtp_day( $n['date'] ) . ( $urls ? ': ' . implode( ' ', $urls ) : '' );
 	}
 	wp_mail(
 		gtp_notices_alert_to(),
@@ -319,7 +380,7 @@ add_action( 'init', 'gtp_notices_schedule' );
 function gtp_notices_shortcode( $atts = array() ) {
 	if ( ! gtp_visible() ) { return ''; }
 	$a    = shortcode_atts( array( 'count' => 6, 'diseases' => 'all', 'heading' => 'Latest outbreak notices' ), $atts, 'travel_notices' );
-	$rows = gtp_notices_current();
+	$rows = gtp_notices_rows( gtp_notices_current() );
 	if ( 'ours' === $a['diseases'] ) {
 		$rows = array_values( array_filter( $rows, function ( $n ) { return gtp_is_ours( $n['disease'] ); } ) );
 	}
@@ -337,13 +398,18 @@ function gtp_notices_shortcode( $atts = array() ) {
 				<li class="gtp__notice" data-gtp-notice="<?php echo esc_attr( $n['key'] ); ?>">
 					<time class="gtp__notice-date" datetime="<?php echo esc_attr( $n['date'] ); ?>"><?php echo esc_html( gtp_day( $n['date'] ) ); ?></time>
 					<span class="gtp__notice-words">
-						<strong><?php echo esc_html( $n['disease'] ); ?></strong>
-						<?php if ( $n['url'] ) : ?>
-							in <a href="<?php echo esc_url( $n['url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $n['country'] ); ?></a><?php
-						else : ?>
-							in <?php echo esc_html( $n['country'] ); ?><?php
-						endif;
-						if ( ! empty( $n['regions'] ) ) { echo esc_html( ' (' . implode( ', ', (array) $n['regions'] ) . ')' ); } ?>
+						<strong><?php echo esc_html( $n['disease'] ); ?></strong><?php
+						/* One country: "in Brazil (Bahia)". Several: the countries NaTHNaC names, and no "in". */
+						$several = count( $n['places'] ) > 1;
+						echo $several ? ': ' : ' in ';
+						foreach ( $n['places'] as $i => $place ) {
+							echo $i ? ', ' : '';
+							if ( $place['url'] ) : ?><a href="<?php echo esc_url( $place['url'] ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $place['name'] ); ?></a><?php
+							else :
+								echo esc_html( $place['name'] );
+							endif;
+						}
+						if ( ! $several && ! empty( $n['regions'] ) ) { echo esc_html( ' (' . implode( ', ', (array) $n['regions'] ) . ')' ); } ?>
 					</span>
 				</li>
 				<?php endforeach; ?>

@@ -98,6 +98,9 @@
   {
    "name": "Bahamas",
    "slug": "bahamas",
+   "aka": [
+    "The Bahamas"
+   ],
    "planner": true
   },
   {
@@ -108,11 +111,12 @@
   {
    "name": "Balearic Islands (Spain)",
    "slug": "balearic-islands-spain",
-   "planner": true
-  },
-  {
-   "name": "Bali (Indonesia)",
-   "slug": "indonesia",
+   "aka": [
+    "Majorca",
+    "Mallorca",
+    "Ibiza",
+    "Menorca"
+   ],
    "planner": true
   },
   {
@@ -238,11 +242,20 @@
   {
    "name": "Canary Islands (Spain)",
    "slug": "canary-islands-spain",
+   "aka": [
+    "Tenerife",
+    "Lanzarote",
+    "Gran Canaria",
+    "Fuerteventura"
+   ],
    "planner": true
   },
   {
    "name": "Cape Verde",
    "slug": "cape-verde",
+   "aka": [
+    "Cabo Verde"
+   ],
    "planner": true
   },
   {
@@ -293,6 +306,9 @@
   {
    "name": "China (Macao)",
    "slug": "macao-china",
+   "aka": [
+    "Macau"
+   ],
    "planner": true
   },
   {
@@ -313,6 +329,10 @@
   {
    "name": "Congo",
    "slug": "congo",
+   "aka": [
+    "Republic of the Congo",
+    "Congo (Brazzaville)"
+   ],
    "planner": true
   },
   {
@@ -353,16 +373,17 @@
   {
    "name": "Czechia",
    "slug": "czechia",
+   "aka": [
+    "Czech Republic"
+   ],
    "planner": true
   },
   {
    "name": "Côte d'Ivoire",
    "slug": "cote-divoire",
-   "planner": true
-  },
-  {
-   "name": "Democratic Republic of the Congo",
-   "slug": "democratic-republic-of-the-congo",
+   "aka": [
+    "Ivory Coast"
+   ],
    "planner": true
   },
   {
@@ -388,6 +409,16 @@
   {
    "name": "Dominican Republic",
    "slug": "dominican-republic",
+   "planner": true
+  },
+  {
+   "name": "DRC",
+   "slug": "democratic-republic-of-the-congo",
+   "aka": [
+    "Democratic Republic of the Congo",
+    "DR Congo",
+    "Congo (Kinshasa)"
+   ],
    "planner": true
   },
   {
@@ -433,6 +464,9 @@
   {
    "name": "Eswatini",
    "slug": "eswatini",
+   "aka": [
+    "Swaziland"
+   ],
    "planner": true
   },
   {
@@ -478,6 +512,9 @@
   {
    "name": "Gambia",
    "slug": "the-gambia",
+   "aka": [
+    "The Gambia"
+   ],
    "planner": true
   },
   {
@@ -581,6 +618,14 @@
    "planner": true
   },
   {
+   "name": "Indonesia",
+   "slug": "indonesia",
+   "aka": [
+    "Bali"
+   ],
+   "planner": true
+  },
+  {
    "name": "Iran",
    "slug": "iran",
    "planner": true
@@ -648,11 +693,17 @@
   {
    "name": "Korea, North",
    "slug": "north-korea",
+   "aka": [
+    "North Korea"
+   ],
    "planner": true
   },
   {
    "name": "Korea, South",
    "slug": "south-korea",
+   "aka": [
+    "South Korea"
+   ],
    "planner": true
   },
   {
@@ -723,6 +774,9 @@
   {
    "name": "Macedonia",
    "slug": "north-macedonia",
+   "aka": [
+    "North Macedonia"
+   ],
    "planner": true
   },
   {
@@ -853,6 +907,9 @@
   {
    "name": "Netherlands",
    "slug": "netherlands",
+   "aka": [
+    "Holland"
+   ],
    "planner": true
   },
   {
@@ -1113,11 +1170,17 @@
   {
    "name": "St Kitts and Nevis",
    "slug": "st-kitts-and-nevis",
+   "aka": [
+    "Saint Kitts and Nevis"
+   ],
    "planner": true
   },
   {
    "name": "St Lucia",
    "slug": "st-lucia",
+   "aka": [
+    "Saint Lucia"
+   ],
    "planner": true
   },
   {
@@ -1133,6 +1196,9 @@
   {
    "name": "St Vincent and the Grenadines",
    "slug": "st-vincent-and-the-grenadines",
+   "aka": [
+    "Saint Vincent and the Grenadines"
+   ],
    "planner": true
   },
   {
@@ -1178,6 +1244,9 @@
   {
    "name": "Tanzania",
    "slug": "tanzania",
+   "aka": [
+    "Zanzibar"
+   ],
    "planner": true
   },
   {
@@ -1213,6 +1282,9 @@
   {
    "name": "Turkey",
    "slug": "turkey",
+   "aka": [
+    "Türkiye"
+   ],
    "planner": true
   },
   {
@@ -1243,11 +1315,20 @@
   {
    "name": "United Arab Emirates",
    "slug": "united-arab-emirates",
+   "aka": [
+    "UAE",
+    "Dubai",
+    "Abu Dhabi"
+   ],
    "planner": true
   },
   {
    "name": "United Kingdom",
    "slug": "united-kingdom",
+   "aka": [
+    "UK",
+    "Great Britain"
+   ],
    "planner": true
   },
   {
@@ -1263,6 +1344,11 @@
   {
    "name": "USA",
    "slug": "usa",
+   "aka": [
+    "United States of America",
+    "United States",
+    "America"
+   ],
    "planner": true
   },
   {
@@ -1307,7 +1393,8 @@
   },
   {
    "name": "Zimbabwe",
-   "slug": "zimbabwe"
+   "slug": "zimbabwe",
+   "planner": true
   }
  ]
 }

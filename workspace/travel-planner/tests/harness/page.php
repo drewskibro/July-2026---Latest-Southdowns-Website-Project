@@ -4,14 +4,14 @@
  * type, the planner where the template puts it (above the destinations) and
  * a stand-in for the booking section the cards lead to.
  *   ?bare=1     no theme stylesheet at all: the planner on a site it knows nothing of
- *   ?notices=1  the [travel_notices] list as well
+ *   ?notices=1  the [travel_notices] list as well (six of them; ?notices=20 for twenty)
  *   ?book=...   the shortcode's own booking link
  */
 require __DIR__ . '/wp.php';
 $bare    = ! empty( $_GET['bare'] );
 $book    = isset( $_GET['book'] ) ? ' book="' . preg_replace( '/["\]]/', '', (string) $_GET['book'] ) . '"' : ' book="#book"';
 $planner = do_shortcode( '[travel_planner' . $book . ']' );
-$notices = ! empty( $_GET['notices'] ) ? do_shortcode( '[travel_notices count="6"]' ) : '';
+$notices = ! empty( $_GET['notices'] ) ? do_shortcode( '[travel_notices count="' . max( 1, (int) $_GET['notices'] > 1 ? (int) $_GET['notices'] : 6 ) . '"]' ) : '';
 ?><!doctype html>
 <html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Travel health (harness)</title>

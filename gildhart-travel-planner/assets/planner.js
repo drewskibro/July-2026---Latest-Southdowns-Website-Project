@@ -139,17 +139,25 @@
 
   /* ---- matching ---------------------------------------------------------- */
 
+  /* TravelHealthPro files a place under one name ("DRC", "USA") and some places
+     under their country (Bali is their Indonesia page). The pack carries the
+     other names a traveller types, and a match on one says which it was. */
+  var akaHit = {};
   function matches(q) {
     q = fold(q);
+    akaHit = {};
     if (!q) { return []; }
-    var starts = [], words = [], within = [];
+    var starts = [], words = [], other = [], within = [];
+    function begins(text) { text = fold(text); return text.indexOf(q) === 0 || text.split(/[\s-]/).some(function (w) { return w.indexOf(q) === 0; }); }
     countries.forEach(function (c) {
       var name = fold(c.name);
-      if (name.indexOf(q) === 0) { starts.push(c); }
-      else if (name.split(/[\s-]/).some(function (w) { return w.indexOf(q) === 0; })) { words.push(c); }
-      else if (name.indexOf(q) >= 0) { within.push(c); }
+      if (name.indexOf(q) === 0) { starts.push(c); return; }
+      if (name.split(/[\s-]/).some(function (w) { return w.indexOf(q) === 0; })) { words.push(c); return; }
+      var aka = (c.aka || []).filter(begins)[0];
+      if (aka) { akaHit[c.slug] = aka; other.push(c); return; }
+      if (name.indexOf(q) >= 0) { within.push(c); }
     });
-    return starts.concat(words, within).slice(0, 8);
+    return starts.concat(words, other, within).slice(0, 8);
   }
 
   /* ---- the listbox -------------------------------------------------------- */
@@ -183,7 +191,7 @@
     }
     shown.forEach(function (c, i) {
       var li = el('li', { 'class': 'gtp__option', role: 'option', id: uid + '-opt-' + i, 'aria-selected': 'false', 'data-slug': c.slug }, [
-        el('span', { 'class': 'gtp__option-name', text: c.name }),
+        el('span', { 'class': 'gtp__option-name' }, [c.name, akaHit[c.slug] ? el('span', { 'class': 'gtp__option-aka', 'data-gtp-aka': '', text: akaHit[c.slug] }) : null]),
         c.url ? el('span', { 'class': 'gtp__option-tag', text: 'Guide' }) : null
       ]);
       li.addEventListener('mousedown', function (e) { e.preventDefault(); });

@@ -1,7 +1,7 @@
 {
  "slug": "democratic-republic-of-the-congo",
  "name": "Democratic Republic of the Congo",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/democratic-republic-of-the-congo",
  "vaccines": {
   "most": [
@@ -19,7 +19,7 @@
    },
    {
     "id": "yellow-fever",
-    "note": "There's yellow fever in parts of Democratic Republic of the Congo. The vaccine protects you, and the certificate is required for entry in some cases."
+    "note": "There's a risk of yellow fever in Democratic Republic of the Congo. The vaccine protects you, and a certificate can be asked for at the border."
    }
   ],
   "some": [

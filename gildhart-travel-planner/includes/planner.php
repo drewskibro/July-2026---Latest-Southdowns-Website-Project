@@ -64,6 +64,8 @@ function gtp_planner_config( $book ) {
 		if ( empty( $c['name'] ) || empty( $c['slug'] ) ) { continue; }
 		$row = array( 'name' => (string) $c['name'], 'slug' => (string) $c['slug'] );
 		if ( ! empty( $c['planner'] ) ) { $row['planner'] = true; }
+		/* Other names the box answers to: "Bali" for their Indonesia page, "United States" for their USA. */
+		if ( ! empty( $c['aka'] ) && is_array( $c['aka'] ) ) { $row['aka'] = array_values( array_map( 'strval', $c['aka'] ) ); }
 		$url = gtp_guide_url( $row['slug'] );
 		if ( '' !== $url ) { $row['url'] = $url; }
 		$countries[] = $row;

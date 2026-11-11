@@ -87,6 +87,24 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     ok([...used].every(id => cat[id] && cat[id].name && cat[id].doses >= 1), `every vaccine a card names is in the catalogue with its doses (${used.size})`);
     ok(/^\d{4}-\d{2}-\d{2}$/.test(meta.read.oldest) && /Open Government Licence v3\.0/.test(meta.licence), `the pack says when it was read (${meta.read.oldest}) and carries the licence line`);
     ok(Object.keys(SITE.vaccines).every(id => cat[id]) && Object.keys(cat).every(id => SITE.vaccines[id]), 'the site\'s file says something of every vaccine the cards name, and nothing of any other');
+    /* A card never says two things about the yellow fever certificate: the vaccine's line follows the
+       country's own certificate fact. Uganda asked for none from October 2026, and one sentence for every
+       country went on saying a certificate "is required for entry in some cases". */
+    const clash = []; let yfCards = 0;
+    for (const f of files) {
+      const d = readJson(path.join(PACK, 'countries', f));
+      const yf = [...d.vaccines.most, ...d.vaccines.some].find(v => v.id === 'yellow-fever');
+      if (!yf) continue;
+      yfCards++;
+      const none = d.certificates.some(l => /^No yellow fever certificate/.test(l)), asked = d.certificates.some(l => /^A yellow fever certificate (is|can be) asked for/.test(l));
+      if (/required for entry in some cases/.test(yf.note)) clash.push(`${d.slug}: the old sentence`);
+      if (none && !/no certificate is asked for on entry/.test(yf.note)) clash.push(`${d.slug}: none asked for, and the vaccine's line does not say so`);
+      if (asked && !/a certificate can be asked for at the border/.test(yf.note)) clash.push(`${d.slug}: one asked for, and the vaccine's line does not say so`);
+      if (none && asked) clash.push(`${d.slug}: both`);
+    }
+    ok(yfCards >= 40 && !clash.length, `the yellow fever line on a card agrees with that country's certificate fact (${yfCards} cards; ${clash.slice(0, 3).join('; ') || 'none disagree'})`);
+    const aka = index.filter(c => c.aka);
+    ok(aka.length >= 20 && aka.every(c => Array.isArray(c.aka) && c.aka.length && c.aka.every(a => typeof a === 'string' && a && !index.some(o => o.name === a))) , `other names for a place are for the box only, and none is another place's own name (${aka.length})`);
   }
 
   // ---- the settings, the map point, who sees it -------------------------------
@@ -144,6 +162,14 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     ok(await p.locator('[data-gtp-route] path').count() === 2 && !(await p.locator('[data-gtp-pin]').getAttribute('hidden') !== null), 'the route is drawn from the pharmacy to the country');
     await p.waitForSelector('[data-gtp-media][data-gtp-outline] path');
     ok(true, 'the country is drawn from its outline');
+
+    /* The names a traveller types: TravelHealthPro files Bali under Indonesia, and calls two countries "DRC" and "USA". */
+    const offered = async text => { await input.fill(''); await input.type(text); return p.locator('[data-gtp-list] [role="option"]').evaluateAll(o => o.map(x => ({ slug: x.getAttribute('data-slug'), aka: (x.querySelector('[data-gtp-aka]') || { textContent: '' }).textContent }))); };
+    const bali = await offered('bali'), congo = await offered('congo'), states = await offered('united states'), dem = await offered('democratic rep');
+    ok(bali.length === 1 && bali[0].slug === 'indonesia' && bali[0].aka === 'Bali', `"Bali" finds Indonesia, and says why (${JSON.stringify(bali[0] || null)})`);
+    ok(congo.some(o => o.slug === 'congo' && !o.aka) && congo.some(o => o.slug === 'democratic-republic-of-the-congo' && /Congo/.test(o.aka)) && dem.some(o => o.slug === 'democratic-republic-of-the-congo'), '"Congo" offers both countries of that name, though one is filed as "DRC"');
+    ok(states.some(o => o.slug === 'usa' && o.aka === 'United States of America'), '"United States" finds the country they file as "USA"');
+    await input.fill(''); await input.press('Escape');
 
     /* Every card, on four countries that between them name every vaccine. */
     const seen = {};
@@ -203,9 +229,11 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     const late = await p.locator('[data-gtp-row="typhoid"] [data-gtp-start]').textContent();
     ok(/^Needs 2 weeks before you travel, so ask us what.s still possible\.$/.test(late) && await p.locator('[data-gtp-row="typhoid"][data-gtp-late]').count() === 1, `a course that no longer fits says so and ends at us (${late})`);
 
-    /* A country with no card ends at the booking too. */
+    /* A country whose card cannot be had (not read into the pack, or its file not answering) ends at the booking too. */
+    await p.route('**/data/countries/zimbabwe.json', r => r.fulfill({ status: 404, body: '' }));
     await pick(p, 'zimbab');
-    ok(await p.locator('[data-gtp-card="consult"]').count() === 1 && await p.locator('[data-gtp-book]').getAttribute('href') === '#book' && await p.locator('[data-gtp-row]').count() === 0, 'a country not read into the pack is answered with the consultation');
+    ok(await p.locator('[data-gtp-card="consult"]').count() === 1 && await p.locator('[data-gtp-book]').getAttribute('href') === '#book' && await p.locator('[data-gtp-row]').count() === 0, 'a country whose card cannot be had is answered with the consultation');
+    await p.unroute('**/data/countries/zimbabwe.json');
     /* A country with no guide and no phone set: the booking alone. */
     await pick(p, 'austri');
     ok(await p.locator('[data-gtp-actions] a').count() === 1 && await p.locator('[data-gtp-guide]').count() === 0 && await p.locator('[data-gtp-call]').count() === 0, 'no guide and no phone: the booking alone, never a dead link');
@@ -239,7 +267,15 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     d = await w.ctl({ do: 'read' });
     ok(d.read === 'first read' && d.mail.length === 0 && /period=6&coun=All&dis=All$/.test(d.asked[0]), `the first reading takes the last six months and emails nobody (${d.read})`);
     const items = Object.values(d.state.items);
-    ok(items.length > 100 && items.every(n => JSON.stringify(Object.keys(n).sort()) === JSON.stringify(['country', 'date', 'disease', 'regions', 'slug', 'url'])), `each notice kept is its date, disease, country, regions and address, and nothing else (${items.length})`);
+    const KEYS = JSON.stringify(['country', 'date', 'disease', 'regions', 'slug', 'url']);
+    ok(items.length > 100 && items.every(n => JSON.stringify(Object.keys(n).filter(k => k !== 'group').sort()) === KEYS), `each notice kept is its date, disease, country, regions and address, and nothing else (${items.length})`);
+    /* A notice NaTHNaC files under several countries opens from a button, "View Countries +": it is kept
+       once for each country it names, never as a country called by the button's label. */
+    const several = items.filter(n => n.group);
+    const ebola = several.filter(n => n.date === '2026-11-06' && n.disease === 'Ebola disease').map(n => n.slug).sort();
+    ok(!items.some(n => /view countries/i.test(n.country)) && items.every(n => n.slug !== '' || !n.group), 'no notice is kept under their button\'s label as a country');
+    ok(several.length >= 10 && new Set(several.map(n => n.group)).size >= 4 && several.every(n => n.url === `https://travelhealthpro.org.uk/countries/${n.slug}` && n.regions.length === 0 && n.group.split('|')[2].split('+').includes(n.slug))
+      && JSON.stringify(ebola) === JSON.stringify(['democratic-republic-of-the-congo', 'united-kingdom']), `a notice for several countries is kept once for each it names (${several.length} from ${new Set(several.map(n => n.group)).size} notices)`);
     ok(!/words are NaTHNaC|As of|a total of/.test(JSON.stringify(d.state)), 'none of a notice\'s words or figures is kept');
     ok(items.every(n => /^\d{4}-\d{2}-\d{2}$/.test(n.date) && n.disease && n.country && (n.url === '' || n.url === `https://travelhealthpro.org.uk/countries/${n.slug}`)) && !items.some(n => /Nowhere|Old thing/.test(n.country + n.disease)), 'every address is TravelHealthPro\'s own country page, and an earlier update under a notice is not read as one');
     ok(items.every(n => n.date >= '2026-07-14') && d.current.every(n => n.date >= '2026-08-13') && d.current.length < items.length, `kept for 120 days, current for 90 (${items.length} kept, ${d.current.length} current)`);
@@ -381,6 +417,18 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     ok(rows.length === 6 && rows.every((r, i) => i === 0 || rows[i - 1].date >= r.date) && rows.every(r => / in /.test(r.text) && (r.href === '' || /^https:\/\/travelhealthpro\.org\.uk\/countries\//.test(r.href))), `the list: six notices, newest first, each to TravelHealthPro's page (${rows[0] && rows[0].text})`);
     const src = await p.locator('.gtp__notices-source').innerText();
     ok(/NaTHNaC/.test(src) && /read on 11 November 2026/.test(src) && /Open Government Licence/.test(src), 'it says whose notices they are, when they were read and under what licence');
+    /* A notice for several countries is one row naming each, linked to each one's page, and says no "in":
+       which country the case was found in and which it came from is in NaTHNaC's words alone. */
+    await p.goto(`${BASE}/page.php?notices=20`, { waitUntil: 'networkidle' });
+    const many = await p.locator('[data-gtp-notices] [data-gtp-notice]').evaluateAll(l => l.map(x => ({ date: x.querySelector('time').getAttribute('datetime'), text: x.querySelector('.gtp__notice-words').innerText.replace(/\s+/g, ' ').trim(), hrefs: [...x.querySelectorAll('a')].map(a => a.href) })));
+    const eb = many.filter(r => r.date === '2026-11-06' && /^Ebola disease/.test(r.text));
+    ok(eb.length === 1 && eb[0].text === 'Ebola disease: DRC, United Kingdom' && JSON.stringify(eb[0].hrefs) === JSON.stringify(['https://travelhealthpro.org.uk/countries/democratic-republic-of-the-congo', 'https://travelhealthpro.org.uk/countries/united-kingdom'])
+      && !many.some(r => /view countries/i.test(r.text)), `a notice for several countries is one row naming each (${eb[0] && eb[0].text})`);
+    /* And it is on each of those countries' cards. */
+    await p.goto(`${BASE}/page.php?going=nigeria`, { waitUntil: 'networkidle' });
+    await p.waitForSelector('[data-gtp-card][data-gtp-in]');
+    const ng = await p.locator('[data-gtp-fact="notices"]').innerText();
+    ok(/Ebola disease \(21 October 2026\)/.test(ng) && await p.locator('[data-gtp-fact="notices"] a').getAttribute('href') === 'https://travelhealthpro.org.uk/countries/nigeria', `and it is on each of those countries' cards (Nigeria: ${ng.replace(/\s+/g, ' ').slice(0, 80)})`);
     await p.close(); await w.ctx.close();
   }
 

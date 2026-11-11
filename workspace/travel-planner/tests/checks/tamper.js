@@ -15,6 +15,9 @@ const FAULTS = [
   ['a brand name in the pack', 'data/countries/kenya.json', '"note": "Spread by daytime-biting mosquitoes, and bite', '"note": "Qdenga. Spread by daytime-biting mosquitoes, and bite', /brand name/],
   ['a guide that is a draft is linked', 'includes/planner.php', "if ( ! $id || 'publish' !== get_post_status( $id ) ) { return ''; }", "", /a guide that is a draft is neither offered nor linked/],
   ['an unreadable page is emailed every day', 'includes/notices.php', "if ( $told ) { return 'unreadable'; }", "", /the next failure is not emailed again/],
+  ['a notice for several countries is kept under their button\'s label', 'includes/notices.php', "if ( '' === trim( $am[1] ) ) {", "if ( false ) {", /no notice is kept under their button's label/],
+  ['a card says two things about the yellow fever certificate', 'data/countries/uganda.json', "The vaccine protects you; no certificate is asked for on entry.", "The vaccine protects you, and the certificate is required for entry in some cases.", /agrees with that country's certificate fact/],
+  ['the box does not answer to a place\'s other name', 'assets/planner.js', "var aka = (c.aka || []).filter(begins)[0];", "var aka = null;", /"Bali" finds Indonesia/],
 ];
 let caught = 0;
 for (const [name, file, from, to, line] of FAULTS) {

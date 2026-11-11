@@ -16,9 +16,9 @@ destinations.
 ```
 cd workspace/travel-planner/tests
 ./serve.sh                 # the harness: the plugin without WordPress, port 8911
-node checks/planner.js     # 128 checks; exits 1 on any failure
-node checks/tamper.js      # breaks 8 rules on purpose; each must be caught
-node checks/shots.js out/  # screenshots, for a person to look at
+node checks/planner.js     # 137 checks; exits 1 on any failure
+node checks/tamper.js      # breaks 11 rules on purpose; each must be caught
+node checks/shots.js out/  # screenshots, for a person to look at (a phone's screens and the two wp-admin screens too)
 ```
 
 The harness (`tests/harness/`) stands in for WordPress, and
@@ -41,7 +41,21 @@ The snapshots hold TravelHealthPro's own text, and this repository is public,
 so they stay outside it: only the pack, which is facts in our own words, is
 committed. Read the diff before committing: a country whose recommended
 vaccines changed is a clinical change, and a person should see it. Then bump
-the plugin's version and deploy.
+the plugin's version and deploy. A page that drops its connection is asked for
+once more; a page their server refuses is not.
+
+Between the reading of 8 October 2026 and that of 11 November, four things
+changed in 262 countries: Zimbabwe's page could be read (it had no card);
+polio joined "some travellers" for Kenya, Libya and Uganda; and Uganda stopped
+asking for a yellow fever certificate. That last one is why the yellow fever
+line on a card is now written from each country's own certificate fact
+(`yellow_fever_note()` in `build_pack.py`), and the checks hold every card to
+it.
+
+`AKA` in `build_pack.py` is the other names the box answers to. TravelHealthPro
+files a place under one name ("DRC", "USA", "Korea, South") and some places
+under their country (Bali is their Indonesia page); a traveller types the name
+they know. Add a name there, never in `data/countries.json`.
 
 `data/map.json` and `data/outlines/` are drawn from Natural Earth by the same
 content system (`planner_map.py`) and change only when a country does.

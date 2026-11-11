@@ -1,7 +1,7 @@
 {
  "slug": "central-african-republic",
  "name": "Central African Republic",
- "checked": "2026-10-08",
+ "checked": "2026-11-11",
  "source": "https://travelhealthpro.org.uk/countries/central-african-republic",
  "vaccines": {
   "most": [
@@ -19,7 +19,7 @@
    },
    {
     "id": "yellow-fever",
-    "note": "There's yellow fever in parts of Central African Republic. The vaccine protects you, and the certificate is required for entry in some cases."
+    "note": "There's a risk of yellow fever throughout Central African Republic. The vaccine protects you, and a certificate can be asked for at the border."
    }
   ],
   "some": [
