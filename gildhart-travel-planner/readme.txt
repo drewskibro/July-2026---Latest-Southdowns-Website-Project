@@ -1,7 +1,7 @@
 === Travel Planner by Gildhart ===
 Requires at least: 6.0
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 
 "Where are you going?" for a pharmacy's travel clinic.
@@ -37,6 +37,14 @@ until someone saves the settings screen.
   page cannot be read, one email says so, the last reading stays with its
   date, and after 30 days it is no longer shown. Travel Planner > Notices
   lets a person read now, add a notice by hand, or take one off.
+* The live line: under the box, the planner says when the notices were last
+  read ("Live: outbreak notices from NaTHNaC, checked today at 6:40am", by the
+  visitor's own clock) and lists the latest three, each opening its country;
+  on a desktop the map marks every country with a notice in the last 30 days.
+  The dot pulses, gently, only while the last reading is under 50 hours old
+  (a daily reading through a day-long page cache); older, it says "last
+  checked" and nothing moves; after 30 days it is not drawn at all. Nothing
+  moves for a visitor who has asked for reduced motion.
 * The page cache: the prices and the notices are in the page's HTML, so a
   host that caches pages is told to clear them when the settings change,
   when the notices on show change, and once for a new version. On Kinsta

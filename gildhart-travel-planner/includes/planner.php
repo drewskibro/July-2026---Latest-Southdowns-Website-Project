@@ -70,10 +70,20 @@ function gtp_planner_config( $book ) {
 		if ( '' !== $url ) { $row['url'] = $url; }
 		$countries[] = $row;
 	}
+	$current = gtp_notices_current();
 	$notices = array();
-	foreach ( gtp_notices_current() as $n ) {
+	foreach ( $current as $n ) {
 		if ( '' === (string) $n['slug'] ) { continue; }
 		$notices[] = array( 'date' => $n['date'], 'day' => gtp_day( $n['date'] ), 'disease' => $n['disease'], 'slug' => $n['slug'] );
+	}
+	/* The latest notices for the stage, one a notice (a notice filed under several countries is one): date, disease, places. */
+	$latest = array();
+	foreach ( array_slice( gtp_notices_rows( $current ), 0, 8 ) as $n ) {
+		$places = array();
+		foreach ( (array) $n['places'] as $i => $place ) {
+			$places[] = array( 'name' => (string) $place['name'], 'slug' => (string) ( $i ? preg_replace( '~^.*/countries/([a-z0-9-]+)/?$~', '$1', (string) $place['url'] ) : $n['slug'] ) );
+		}
+		$latest[] = array( 'date' => $n['date'], 'disease' => $n['disease'], 'places' => $places );
 	}
 	$pack = gtp_pack();
 	return array(
@@ -87,7 +97,26 @@ function gtp_planner_config( $book ) {
 		'yf'           => gtp_setting( 'yf_centre' ) ? (string) gtp_setting( 'yf_line' ) : '',
 		'consultation' => (string) gtp_setting( 'consultation_line' ),
 		'licence'      => (string) ( $pack['licence'] ?? '' ),
+		'latest'       => $latest,
+		'reader'       => gtp_reader_for_page(),
+		'guidance'     => (string) ( $pack['read']['oldest'] ?? '' ),
 	);
+}
+
+/**
+ * When the notices were last read, for the page's "live" line: the moment as
+ * an ISO time, so the visitor's own clock says how long ago it was (a page
+ * can be served from a cache for a day, and "today" written here would be
+ * wrong tomorrow). Empty while the automatic notices are not on show: a
+ * reader that has not read, or has not read for GTP_NOTICES_STALE days, is
+ * never called live.
+ */
+function gtp_reader_for_page() {
+	$state = gtp_notices_state();
+	if ( '' === $state['read'] || ! gtp_notices_fresh( $state ) ) { return ''; }
+	$tz = function_exists( 'wp_timezone' ) ? wp_timezone() : new DateTimeZone( 'UTC' );
+	$at = DateTimeImmutable::createFromFormat( '!Y-m-d H:i', (string) $state['read'], $tz );
+	return $at ? $at->format( DATE_ATOM ) : '';
 }
 
 function gtp_planner_shortcode( $atts = array() ) {
@@ -131,6 +160,7 @@ function gtp_planner_shortcode( $atts = array() ) {
 			<svg class="gtp__world" viewBox="0 0 <?php echo (int) $map['frame']['width']; ?> <?php echo (int) $map['frame']['height']; ?>"
 				preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false" data-gtp-world>
 				<path class="gtp__land" d="<?php echo esc_attr( $map['land'] ); ?>"/>
+				<g data-gtp-alerts></g>
 				<g data-gtp-route></g>
 				<?php if ( $home ) : ?>
 				<circle class="gtp__home" cx="<?php echo (float) $home['x']; ?>" cy="<?php echo (float) $home['y']; ?>" r="5"
@@ -166,6 +196,9 @@ function gtp_planner_shortcode( $atts = array() ) {
 					<?php endforeach; ?>
 				</nav>
 				<?php endif; ?>
+
+				<?php /* The live line: the latest outbreak notices and when they were read, drawn by the script from the visitor's own clock. */ ?>
+				<div class="gtp__live" data-gtp-live hidden></div>
 
 				<noscript>
 					<p class="gtp__noscript">

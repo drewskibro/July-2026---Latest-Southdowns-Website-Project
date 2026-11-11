@@ -76,6 +76,36 @@
 .gtp .gtp__option-aka { margin-left: 10px; color: #5b6673; font-size: 15px; }
 .gtp .gtp__option-tag { flex: none; color: var(--gtp-dark); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 .gtp .gtp__none { margin: 0; padding: 12px 14px; color: var(--gtp-soft); font-size: 16px; line-height: 1.45; }
+/* The live line: when NaTHNaC's notices were last read, and the latest of them.
+   The dot pulses only while the reading is live ([data-gtp-on]); a slow,
+   soft ring in the pin's colour, never red, and still for reduced motion. */
+.gtp .gtp__live { max-width: 640px; margin: 24px 0 0; }
+.gtp .gtp__live-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0; color: rgba(255, 255, 255, 0.92); font-size: 16px; line-height: 1.45; }
+.gtp .gtp__live-word { color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.105em; text-transform: uppercase; }
+.gtp .gtp__live-dot { position: relative; display: inline-block; flex: none; width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.55); }
+.gtp .gtp__live[data-gtp-on] .gtp__live-dot,
+.gtp .gtp__fact-dot { background: var(--gtp-pin); }
+.gtp .gtp__live[data-gtp-on] .gtp__live-dot::after,
+.gtp .gtp__fact-dot::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--gtp-pin); animation: gtp-pulse 2.4s ease-out infinite; }
+@keyframes gtp-pulse { 0% { transform: scale(1); opacity: 0.75; } 70%, 100% { transform: scale(3); opacity: 0; } }
+.gtp .gtp__live-list { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 12px 0 0; padding: 0; list-style: none; }
+.gtp .gtp__live-list li { margin: 0; padding: 0; }
+.gtp .gtp__live-chip { display: inline-flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; margin: 0; padding: 8px 14px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 14px; background: rgba(255, 255, 255, 0.1); color: #fff; font: inherit; font-size: 15px; line-height: 1.35; text-align: left; }
+.gtp button.gtp__live-chip { cursor: pointer; transition: background-color 0.25s ease, border-color 0.25s ease; }
+.gtp button.gtp__live-chip:hover,
+.gtp button.gtp__live-chip:focus-visible { background: rgba(255, 255, 255, 0.2); border-color: rgba(255, 255, 255, 0.65); }
+.gtp .gtp__live-disease { font-weight: 700; }
+.gtp .gtp__live-chip time { color: rgba(255, 255, 255, 0.78); font-size: 13px; }
+.gtp .gtp__live-more { margin: 10px 0 0; color: rgba(255, 255, 255, 0.8); font-size: 14px; line-height: 1.45; }
+/* The same notices on the map, a white dot a country (the pin's colour is the pharmacy's and the trip's); the ring pulses while live. */
+.gtp .gtp__alert { fill: #fff; opacity: 0.85; }
+.gtp .gtp__alert-ring { fill: none; stroke: #fff; stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.gtp .gtp__world[data-gtp-alerts-live] .gtp__alert-ring { animation: gtp-ring 2.6s ease-out infinite; }
+@keyframes gtp-ring { 0% { transform: scale(1); opacity: 0.85; } 100% { transform: scale(3.4); opacity: 0; } }
+/* On the card, a live notice leads the facts. */
+.gtp .gtp__facts li[data-gtp-fact-lead] .gtp__fact-dot { margin: 7px 5px 0 4px; }
+.gtp .gtp__fact-live { margin-right: 2px; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.105em; text-transform: uppercase; }
+.gtp .gtp__fact-new { display: inline-block; margin-left: 4px; padding: 2px 8px; border-radius: 999px; background: var(--gtp-pin); color: var(--gtp-dark); font-size: 13px; letter-spacing: 0.06em; }
 .gtp .gtp__quick { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin: 18px 0 0; }
 .gtp .gtp__quick-label { margin-right: 4px; color: rgba(255, 255, 255, 0.78); font-size: 13px; font-weight: 700; letter-spacing: 0.105em; text-transform: uppercase; }
 .gtp .gtp__quick-link { display: inline-block; padding: 9px 16px; border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 999px; color: #fff; font-size: 16px; font-weight: 600; line-height: 1.2; text-decoration: none; transition: background-color 0.25s ease, border-color 0.25s ease; }
@@ -203,6 +233,8 @@
   .gtp .gtp__figures { gap: 14px; }
 }
 @media (max-width: 1023px) {
+  /* Below a desktop the map is texture behind the words: no notice dots on it. */
+  .gtp [data-gtp-alerts] { display: none; }
   /* Below a desktop the map sits behind the words, so the top of the stage is
      near-solid and the map shows through around the box and below it. */
   .gtp .gtp__stage::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, var(--gtp-dark) 0%, var(--gtp-dark) 30%, transparent 100%); opacity: 0.9; pointer-events: none; }
@@ -220,6 +252,7 @@
   /* Behind the words the map is only texture: a pin and a route on it read as a stray mark under the box. */
   .gtp .gtp__pin,
   .gtp [data-gtp-route] { display: none; }
+  .gtp .gtp__live { order: 5; margin-top: 22px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gtp .gtp__card { opacity: 1; transform: none; transition: none; }
@@ -228,4 +261,8 @@
   .gtp .gtp__world[data-gtp-lit] .gtp__comet { animation: none; opacity: 0; }
   .gtp .gtp__world[data-gtp-lit] .gtp__pin { animation: none; }
   .gtp .gtp__button, .gtp .gtp__quick-link { transition: none; }
+  .gtp .gtp__live[data-gtp-on] .gtp__live-dot::after,
+  .gtp .gtp__fact-dot::after { animation: none; opacity: 0; }
+  .gtp .gtp__world[data-gtp-alerts-live] .gtp__alert-ring { animation: none; opacity: 0; }
+  .gtp button.gtp__live-chip { transition: none; }
 }
