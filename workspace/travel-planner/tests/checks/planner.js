@@ -25,7 +25,16 @@
      the last good reading with its date, and stops showing it after 30 days;
    - a person can add a notice, take one off, read now and pause the reader;
    - it holds on a phone, on a site with no stylesheet of its own, and from
-     the keyboard. */
+     the keyboard;
+   - on a phone the pinned booking bar tells the page its height, and the
+     theme lifts the chat button clear of both its buttons; the map's pin and
+     route are not drawn behind the box;
+   - a card anywhere on the page can open its country in the planner;
+   - the travel page leads a phone to the planner from its hero, puts the
+     planner straight after the hero, and does not ask "where?" twice;
+   - the page cache is cleared when the settings change, when the notices on
+     show change (and not when they do not), and once for a new version,
+     through Kinsta's own call when the site is on Kinsta. */
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -470,6 +479,143 @@ const BRANDS = ['qdenga', 'ixiaro', 'dukoral', 'vaxchora', 'vivotif', 'typhim', 
     const m = await p.evaluate(() => { const s = document.querySelector('[data-gtp-side]').getBoundingClientRect(), b = document.querySelector('.gtp__body').getBoundingClientRect(); return { sideTop: s.top, sideH: s.height, bodyLeft: b.left, sideRight: s.right, bodyH: b.height }; });
     ok(Math.abs(m.sideTop) < 2 && m.sideRight <= m.bodyLeft + 1 && m.bodyH > m.sideH, `on a desktop the outline and the facts stay in view beside the vaccines (side at ${Math.round(m.sideTop)}px after 600px of scroll)`);
     await p.close(); await w.ctx.close();
+  }
+
+
+  // ---- a phone: the pinned bar, and a chat button at the foot of the window ------
+  {
+    const covered = async (p) => p.evaluate(() => {
+      const bar = document.querySelector('[data-gtp-actions]'), out = [];
+      for (const a of bar.querySelectorAll('a')) {
+        const r = a.getBoundingClientRect();
+        /* Points inside the pill, its rounded ends included: a corner of its box is not the button. */
+        const cy = (r.top + r.bottom) / 2, cx = (r.left + r.right) / 2, e = r.height / 2;
+        for (const [x, y] of [[r.left + e, cy], [r.right - e, cy], [r.right - 4, cy], [cx, r.top + 3], [cx, r.bottom - 3], [r.right - e, r.top + 3], [r.right - e, r.bottom - 3]]) {
+          const hit = document.elementFromPoint(x, y);
+          if (!hit || !a.contains(hit)) out.push(`${a.textContent.trim().slice(0, 12)} at ${Math.round(x)},${Math.round(y)}: ${hit ? (hit.id || hit.className || hit.tagName) : 'nothing'}`);
+        }
+      }
+      return out;
+    });
+    const state = p => p.evaluate(() => {
+      const bar = document.querySelector('[data-gtp-actions]').getBoundingClientRect(), l = document.getElementById('ai-chat-launcher');
+      return { pinned: document.documentElement.hasAttribute('data-gtp-pinned'), h: document.documentElement.style.getPropertyValue('--gtp-pinned-height'),
+        clear: Math.ceil(innerHeight - bar.top), barTop: bar.top, launcherBottom: l ? l.getBoundingClientRect().bottom : null, vh: innerHeight };
+    });
+    for (const kind of ['circle', 'pill']) {
+      const w = await world('pin-' + kind, 'visitor', { w: 390, h: 844 });
+      await w.ctl({ do: 'read' });
+      await w.enable();
+      const p = await w.page(`/page.php?going=kenya&launcher=${kind}`);
+      await p.waitForSelector('[data-gtp-card="trip"][data-gtp-in]');
+      /* The card's top at the window's: the bar's own place is a screen further down, so it is pinned. */
+      await p.evaluate(() => document.querySelector('[data-gtp-card]').scrollIntoView({ block: 'start' }));
+      await p.waitForTimeout(250);
+      const s = await state(p), c = await covered(p);
+      if (kind === 'circle') ok(s.pinned && parseInt(s.h, 10) === s.clear && s.clear >= 80, `on a phone the pinned bar tells the page so, and how far it reaches up the window (${s.h || 'nothing'}; the bar's top is ${s.clear}px up)`);
+      ok(!c.length && s.launcherBottom <= s.barTop - 4, `a chat button ${kind === 'pill' ? 'with its label open' : 'at the foot of a phone'} covers neither button of the pinned bar (${c.slice(0, 2).join('; ') || 'nothing covered'}; button ends ${Math.round(s.barTop - s.launcherBottom)}px above the bar)`);
+      if (kind === 'circle') {
+        await p.evaluate(() => scrollTo(0, 0));
+        await p.waitForTimeout(250);
+        const top = await state(p);
+        ok(!top.pinned && !top.h && Math.round(top.vh - top.launcherBottom) === 16, `with the bar back in its place the page is told nothing, and the chat button is back at the foot (${Math.round(top.vh - top.launcherBottom)}px up)`);
+        await p.evaluate(() => document.querySelector('[data-gtp-card]').scrollIntoView({ block: 'start' }));
+        await p.waitForTimeout(250);
+        const m = await p.evaluate(() => [...document.querySelectorAll('[data-gtp-pin], [data-gtp-route]')].map(e => ({ d: getComputedStyle(e).display, w: e.getBoundingClientRect().width })));
+        ok(m.length === 2 && m.every(x => x.d === 'none' && x.w === 0), `on a phone the map behind the box draws no pin and no route (${JSON.stringify(m)})`);
+      }
+      ok(!p.errs.length, `the pinned bar on a phone (${kind}): no script errors`);
+      await p.close(); await w.ctx.close();
+    }
+    const w = await world('pin-desk');
+    await w.ctl({ do: 'read' });
+    await w.enable();
+    const p = await w.page('/page.php?going=kenya&launcher=pill&dest=1');
+    await p.waitForSelector('[data-gtp-card="trip"][data-gtp-in]');
+    await p.evaluate(() => document.querySelector('[data-gtp-actions]').scrollIntoView({ block: 'end' }));
+    await p.waitForTimeout(250);
+    const s = await state(p);
+    const pinVis = await p.evaluate(() => [...document.querySelectorAll('[data-gtp-pin], [data-gtp-route] path')].every(e => getComputedStyle(e).display !== 'none' && e.getBoundingClientRect().width > 0));
+    ok(!s.pinned && !s.h && pinVis, `on a desktop the bar is in its place and says nothing, and the map still draws the pin and the route`);
+
+    /* A card outside the planner (the theme's destinations) opens its country in place. */
+    await p.evaluate(() => { window.__stay = 1; });
+    await p.click('[data-h-dest]');
+    await p.waitForFunction(() => { const n = document.querySelector('.gtp__name'); return n && n.textContent === 'Thailand'; });
+    ok(await p.evaluate(() => window.__stay === 1) && /[?&]going=thailand/.test(p.url()), 'a card elsewhere on the page marked data-gtp-pick opens its country in the planner, in place');
+    await p.close(); await w.ctx.close();
+  }
+
+  // ---- the travel page's template: the way to the planner ------------------------
+  {
+    const tpl = fs.readFileSync(path.join(ROOT, 'southdowns-pharmacy-theme', 'page-templates', 'page-travel-health.php'), 'utf8');
+    const phoneHero = (tpl.split('<!-- Mobile: full-width image with overlay -->')[1] || '').split('<!-- Desktop:')[0];
+    ok(/data-th-check/.test(phoneHero) && /'#trip-planner'/.test(phoneHero) && /Check What Vaccines You Need/.test(phoneHero), 'the phone\'s hero has "Check What Vaccines You Need", leading to the planner');
+    const at = s => tpl.indexOf(s);
+    const order = [at("echo $th_s2_html . $th_s3_html;"), at('echo $th_planner;'), at('S4: POPULAR DESTINATIONS'), at('echo $th_s3_html . $th_s2_html;'), at('S5: COMPREHENSIVE SERVICES')];
+    ok(order.every(i => i > 0) && order.every((v, i) => !i || v > order[i - 1]) && at('S1: HERO') < at('ob_start()') && /if \( '' === \$th_planner \) \{\s*echo \$th_s2_html \. \$th_s3_html;[\s\S]*?\} else \{[\s\S]*?echo \$th_planner;/.test(tpl),
+      'with the planner on the page it comes straight after the hero, the destinations under it, then why-us and the stats; without it the old order stands');
+    const intro = (tpl.split('data-th-dest-intro')[1] || '').split('<?php else : ?>')[0];
+    ok(intro && !/where/i.test(intro.replace(/<[^>]+>/g, ' ')) && /Popular destinations/.test(intro), 'under the planner the destinations do not ask "where?" again: they are its popular destinations');
+    ok(/data-gtp-pick="<\?php echo esc_attr\( \$d_slug \); \?>"/.test(tpl), 'and each destination card opens its country in the planner');
+  }
+
+  // ---- the page cache: cleared when what is shown changes, and only then ----------
+  {
+    const w = await world('cache', 'admin');
+    await w.ctl({ 'set[__kinsta]': [] });
+    let d = await w.ctl();
+    const n = () => d.purged.length;
+    const s0 = d.settings;
+    await w.ctl({ option: 'gtp_settings', value: Object.assign({}, s0, { enabled: true }) });
+    d = await w.ctl();
+    ok(n() === 1 && d.purged[0] === 'settings' && JSON.stringify(d.kinsta) === '[true]', `saving the settings clears the page cache, through Kinsta's own call, forced (${JSON.stringify(d.purged)}; Kinsta ${JSON.stringify(d.kinsta)})`);
+    await w.ctl({ option: 'gtp_settings', value: Object.assign({}, s0, { enabled: true }) });
+    d = await w.ctl();
+    ok(n() === 1, `saving them again unchanged clears nothing (${n()} clearings)`);
+    const s1 = Object.assign({}, d.settings); s1.vaccines = Object.assign({}, s1.vaccines, { 'hepatitis-a': Object.assign({}, s1.vaccines['hepatitis-a'], { price: 58 }) });
+    await w.ctl({ option: 'gtp_settings', value: s1 });
+    d = await w.ctl();
+    ok(n() === 2 && d.purged[1] === 'settings', `a changed price clears it (${n()} clearings)`);
+
+    await w.ctl({ do: 'read' });
+    d = await w.ctl();
+    const afterFirst = n();
+    ok(afterFirst === 3 && d.purged[2] === 'notices' && d.current.length > 0, `a reading that puts notices on the page clears it (${d.current.length} on show)`);
+    await w.ctl({ do: 'read', 'set[__now]': '2026-11-11 18:00' });
+    d = await w.ctl();
+    ok(n() === afterFirst, `a second reading that day, the same notices on show, clears nothing (${n()} clearings)`);
+    await w.ctl({ do: 'read', 'set[__feed]': 'next' });
+    d = await w.ctl();
+    ok(n() === afterFirst + 1 && d.purged[n() - 1] === 'notices', `a reading with a new notice in it clears it (${n()} clearings)`);
+    const key = d.current[0].key, before = n();
+    const r = await w.ctx.request.post(`${BASE}/admin-post.php`, { form: { action: 'gtp_notices_toggle', _wpnonce: 'nonce-gtp_notices_toggle', key, hide: '1' }, maxRedirects: 0 });
+    d = await w.ctl();
+    ok(r.status() === 302 && n() === before + 1 && !d.current.some(x => x.key === key), `taking a notice off by hand clears it (${n() - before} clearing)`);
+    await w.ctl({ option: 'gtp_settings', value: Object.assign({}, d.settings, { reader_paused: true }) });
+    d = await w.ctl();
+    const paused = n();
+    await w.ctl({ do: 'daily', 'set[__now]': '2027-01-20 12:00' });
+    d = await w.ctl();
+    ok(d.current.length === 0 && n() === paused + 1 && d.purged[n() - 1] === 'notices', `with the reader paused, the daily run still sees the last reading go stale, and clears it (${d.current.length} on show, ${n() - paused} clearing)`);
+    await w.ctl({ do: 'daily' });
+    d = await w.ctl();
+    ok(n() === paused + 1, 'and the next day, nothing having changed, clears nothing');
+    await w.ctl({ do: 'init' });
+    d = await w.ctl();
+    const v = n();
+    await w.ctl({ do: 'init' });
+    d = await w.ctl();
+    ok(d.purged[v - 1] === 'version' && n() === v, `a new version of the plugin clears it once, on its first run (${JSON.stringify(d.purged.slice(-2))})`);
+    await w.ctx.close();
+
+    const o = await world('cache-elsewhere', 'admin');
+    let e = await o.ctl();
+    await o.ctl({ option: 'gtp_settings', value: Object.assign({}, e.settings, { enabled: true }) });
+    e = await o.ctl();
+    const pg = await o.page();
+    ok(e.purged.length === 1 && e.kinsta === null && !pg.errs.length && await pg.locator('[data-gtp-box]').isVisible(), `on a host that is not Kinsta the same action fires, and the planner works (${JSON.stringify(e.purged)})`);
+    await pg.close(); await o.ctx.close();
   }
 
   await b.close();

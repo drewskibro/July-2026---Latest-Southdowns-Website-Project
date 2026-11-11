@@ -6,4 +6,6 @@
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) { exit; }
 delete_option( 'gtp_settings' );
 delete_option( 'gtp_notices' );
+delete_option( 'gtp_notices_shown' );
+delete_option( 'gtp_version_seen' );
 wp_clear_scheduled_hook( 'gtp_read_notices' );

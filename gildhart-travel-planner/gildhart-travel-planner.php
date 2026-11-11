@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Travel Planner by Gildhart
  * Description:       "Where are you going?" for a pharmacy's travel clinic: any country, the vaccines the guidance lists for it, what each costs a dose here, how far ahead to book, and the day's outbreak notices. Every answer ends at a booking.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Gildhart
@@ -38,13 +38,14 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'GTP_VERSION', '1.0.0' );
+define( 'GTP_VERSION', '1.1.0' );
 define( 'GTP_FILE', __FILE__ );
 define( 'GTP_DIR', __DIR__ );
 
 require_once GTP_DIR . '/includes/settings.php';
 require_once GTP_DIR . '/includes/data.php';
 require_once GTP_DIR . '/includes/notices.php';
+require_once GTP_DIR . '/includes/cache.php';
 require_once GTP_DIR . '/includes/planner.php';
 require_once GTP_DIR . '/includes/admin.php';
 

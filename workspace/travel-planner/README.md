@@ -16,8 +16,8 @@ destinations.
 ```
 cd workspace/travel-planner/tests
 ./serve.sh                 # the harness: the plugin without WordPress, port 8911
-node checks/planner.js     # 137 checks; exits 1 on any failure
-node checks/tamper.js      # breaks 11 rules on purpose; each must be caught
+node checks/planner.js     # 161 checks; exits 1 on any failure
+node checks/tamper.js      # breaks 21 rules on purpose; each must be caught
 node checks/shots.js out/  # screenshots, for a person to look at (a phone's screens and the two wp-admin screens too)
 ```
 
@@ -59,6 +59,26 @@ they know. Add a name there, never in `data/countries.json`.
 
 `data/map.json` and `data/outlines/` are drawn from Natural Earth by the same
 content system (`planner_map.py`) and change only when a country does.
+
+## The page cache
+
+The prices and the day's notices are in the page's HTML, so a host's page
+cache would serve yesterday's. `includes/cache.php` clears it when the
+settings change, when the notices on show change (a fingerprint, so a reading
+that changes nothing clears nothing; the daily run also catches a reading
+going stale), and once for a new version. It fires `gtp_purge_pages` for any
+host or caching plugin, and on Kinsta calls the must-use plugin's own
+`$kinsta_cache->kinsta_cache_purge->purge_complete_caches( true )` (read in
+kinsta-mu-plugins 3.7.0). The harness stands in for both (`__kinsta`).
+
+## The theme's side
+
+On a phone the card's booking bar is pinned to the foot of the window; while
+it is, `<html data-gtp-pinned>` and `--gtp-pinned-height` say so, and
+Southdowns' `assets/css/global.css` lifts the chat button by that much. Any
+element with `data-gtp-pick="<slug>"` opens that country in the planner, which
+is how the travel page's destination cards work. Both are generic; nothing
+Southdowns-specific is in the plugin.
 
 ## Another pharmacy
 

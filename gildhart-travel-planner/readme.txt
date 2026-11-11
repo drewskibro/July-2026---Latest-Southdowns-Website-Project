@@ -1,7 +1,7 @@
 === Travel Planner by Gildhart ===
 Requires at least: 6.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 
 "Where are you going?" for a pharmacy's travel clinic.
@@ -37,9 +37,24 @@ until someone saves the settings screen.
   page cannot be read, one email says so, the last reading stays with its
   date, and after 30 days it is no longer shown. Travel Planner > Notices
   lets a person read now, add a notice by hand, or take one off.
+* The page cache: the prices and the notices are in the page's HTML, so a
+  host that caches pages is told to clear them when the settings change,
+  when the notices on show change, and once for a new version. On Kinsta
+  this is Kinsta's own call; any other host or caching plugin can answer the
+  gtp_purge_pages action.
 * What the guidance says about each country ships with the plugin and is
   dated on every card. It changes only with a new version of the plugin, so
   a recommendation never moves on a site without a person having looked.
+
+== For a theme ==
+
+* On a phone the trip card's booking bar is pinned to the foot of the window.
+  While it is, <html> carries data-gtp-pinned and --gtp-pinned-height (from
+  the window's bottom edge to the bar's top), so a theme can lift its own
+  floating things (a chat button) clear of it.
+* Anything on the page marked data-gtp-pick="<country slug>" (a destination
+  card, say) opens that country in the planner in place. Make it a link to
+  ?going=<slug> and it still works without the script.
 
 == The rules it keeps ==
 

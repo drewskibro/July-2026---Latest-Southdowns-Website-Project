@@ -6,6 +6,10 @@
  *   ?bare=1     no theme stylesheet at all: the planner on a site it knows nothing of
  *   ?notices=1  the [travel_notices] list as well (six of them; ?notices=20 for twenty)
  *   ?book=...   the shortcode's own booking link
+ *   ?dest=1     a destination card outside the planner, as the theme's are (data-gtp-pick)
+ *   ?launcher=1 a stand-in for the site's chat button, fixed at the bottom right as
+ *               the real one is (a shadow root, :host at 16px + --lift on a phone);
+ *               ?launcher=pill with its label open
  */
 require __DIR__ . '/wp.php';
 $bare    = ! empty( $_GET['bare'] );
@@ -27,9 +31,21 @@ $notices = ! empty( $_GET['notices'] ) ? do_shortcode( '[travel_notices count="'
 <a data-hero-check href="<?php echo '' !== $planner ? '#trip-planner' : '#vaccines'; ?>" style="display:inline-block;border:2px solid #fff;border-radius:999px;padding:12px 24px;color:#fff;text-decoration:none;font-weight:600">Check What Vaccines You Need</a></div></section>
 <section id="why-us" style="background:#fff;padding:64px 24px"><div style="max-width:1280px;margin:0 auto"><h2 style="font-size:40px;font-weight:700;margin:0">Why choose us</h2><p>Stand-in for the section above the planner.</p></div></section>
 <?php echo $planner; // the plugin's own output ?>
-<section id="destinations" style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 50%,#3b82f6 100%);color:#fff;padding:64px 24px"><div style="max-width:1280px;margin:0 auto"><h2 style="font-size:40px;font-weight:700;margin:0">Popular Travel Destinations</h2><p>Stand-in for the destinations section.</p></div></section>
+<section id="destinations" style="background:linear-gradient(135deg,#1e3a8a 0%,#1d4ed8 50%,#3b82f6 100%);color:#fff;padding:64px 24px"><div style="max-width:1280px;margin:0 auto"><h2 style="font-size:40px;font-weight:700;margin:0">Popular Travel Destinations</h2><p>Stand-in for the destinations section.</p><?php if ( ! empty( $_GET['dest'] ) ) : ?><a data-h-dest href="?going=thailand#trip-planner" data-gtp-pick="thailand" style="color:#fff">Thailand</a><?php endif; ?></div></section>
 <?php echo $notices; ?>
 <section id="vaccines" style="background:#fff;padding:64px 24px"><div style="max-width:1280px;margin:0 auto"><h2 style="font-size:32px;margin:0">Vaccines</h2></div></section>
 <section id="book" style="background:#fdf9f6;padding:64px 24px;min-height:700px"><div style="max-width:1280px;margin:0 auto"><h2 style="font-size:40px;font-weight:700;margin:0">Book Your Travel Appointment</h2><p>Stand-in for the booking calendar.</p></div></section>
+<?php if ( ! empty( $_GET['launcher'] ) ) : ?>
+<div id="ai-chat-launcher" data-h-launcher="<?php echo esc_attr( 'pill' === $_GET['launcher'] ? 'pill' : 'circle' ); ?>"></div>
+<script>
+(function () {
+  var host = document.getElementById('ai-chat-launcher'), pill = host.getAttribute('data-h-launcher') === 'pill';
+  var root = host.attachShadow({ mode: 'open' });
+  root.innerHTML = '<style>:host{position:fixed;z-index:2147482500;right:24px;bottom:calc(24px + var(--lift,0px))}'
+    + '@media (max-width:768px){:host{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px) + var(--lift,0px))}}'
+    + '.btn{display:block;height:62px;width:' + (pill ? 280 : 62) + 'px;border-radius:999px;background:#1E3A8A}</style><div class="btn" data-h-btn></div>';
+})();
+</script>
+<?php endif; ?>
 <?php h_scripts(); ?>
 </body></html>

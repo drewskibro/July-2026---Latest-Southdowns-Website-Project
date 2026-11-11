@@ -373,3 +373,13 @@ html { font-size: 17px; }
 .amelia-v2-booking .am-fs__init-item__content:has(a.am-fs__init-item__info-name) {
     display: none !important;
 }
+
+/* Travel Planner: on a phone the trip card's booking bar is pinned to the foot
+   of the window, and the chat button (#ai-chat-launcher, bottom right) sat on
+   its second button. While the bar is pinned the plugin sets
+   <html data-gtp-pinned> and --gtp-pinned-height (window bottom to the bar's
+   top); the button's own --lift then carries it 8px clear above the bar, with
+   its usual easing. */
+html[data-gtp-pinned] #ai-chat-launcher {
+    --lift: calc(var(--gtp-pinned-height, 0px) - 8px);
+}

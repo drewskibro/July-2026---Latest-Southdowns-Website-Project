@@ -18,6 +18,12 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-11] — Travel Planner 1.1.0: phone fixes and the page cache (theme 1.0.3)
+- Phone: the pinned booking bar sets `<html data-gtp-pinned>` + `--gtp-pinned-height` (`assets/planner.js`); `southdowns-pharmacy-theme/assets/css/global.css` lifts `#ai-chat-launcher` (an inline Voiceflow script, not in this repo) above it. Pin and route hidden on a phone (`planner.css`).
+- `page-templates/page-travel-health.php`: phone hero gets "Check What Vaccines You Need"; with the planner on, order is hero, planner, destinations, why-us, stats (alternation kept); S4 is "Popular destinations" and its cards open the country via `data-gtp-pick` (now page-wide).
+- `includes/cache.php`: clears the page cache on a settings change, a change in the notices on show, and a new version; `gtp_purge_pages` action, plus Kinsta's `purge_complete_caches( true )` when present.
+- Checks 161 (`checks/planner.js`), 21 of 21 planted faults (`checks/tamper.js`); harness now fires option hooks like WordPress, and has Kinsta and chat-button stand-ins.
+
 ### [2026-11-11] — Travel Planner: fresh guidance, several-country notices, other names
 - Data pack rebuilt from TravelHealthPro as read on 11 Nov (262 cards; was 8 Oct). Changes: Zimbabwe gains a card, polio joins "some travellers" for Kenya, Libya and Uganda, Uganda asks for no yellow fever certificate.
 - `workspace/travel-planner/build_pack.py`: the yellow fever line on a card is written from that country's certificate fact (`yellow_fever_note()`), and `AKA` gives the box other names ("Bali", "United States", "Democratic Republic of the Congo").
