@@ -1,0 +1,1313 @@
+{
+ "countries": [
+  {
+   "name": "Afghanistan",
+   "slug": "afghanistan",
+   "planner": true
+  },
+  {
+   "name": "Albania",
+   "slug": "albania",
+   "planner": true
+  },
+  {
+   "name": "Algeria",
+   "slug": "algeria",
+   "planner": true
+  },
+  {
+   "name": "American Samoa, Guam, Northern Mariana Islands",
+   "slug": "american-samoa-guam-northern-mariana-islands",
+   "planner": true
+  },
+  {
+   "name": "Andaman and Nicobar Islands (India)",
+   "slug": "andaman-and-nicobar-islands-india",
+   "planner": true
+  },
+  {
+   "name": "Andorra",
+   "slug": "andorra",
+   "planner": true
+  },
+  {
+   "name": "Angola",
+   "slug": "angola",
+   "planner": true
+  },
+  {
+   "name": "Anguilla",
+   "slug": "anguilla",
+   "planner": true
+  },
+  {
+   "name": "Antarctica",
+   "slug": "antarctica",
+   "planner": true
+  },
+  {
+   "name": "Antigua and Barbuda",
+   "slug": "antigua-and-barbuda",
+   "planner": true
+  },
+  {
+   "name": "Argentina",
+   "slug": "argentina",
+   "planner": true
+  },
+  {
+   "name": "Armenia",
+   "slug": "armenia",
+   "planner": true
+  },
+  {
+   "name": "Aruba- Caribbean Islands (Netherlands)",
+   "slug": "aruba--caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Ascension, St Helena, Tristan da Cunha",
+   "slug": "ascension-st-helena-tristan-da-cunha",
+   "planner": true
+  },
+  {
+   "name": "Australia",
+   "slug": "australia",
+   "planner": true
+  },
+  {
+   "name": "Australia (Christmas Island)",
+   "slug": "christmas-island-australia",
+   "planner": true
+  },
+  {
+   "name": "Austria",
+   "slug": "austria",
+   "planner": true
+  },
+  {
+   "name": "Azerbaijan",
+   "slug": "azerbaijan",
+   "planner": true
+  },
+  {
+   "name": "Azores (Portugal)",
+   "slug": "azores-portugal",
+   "planner": true
+  },
+  {
+   "name": "Bahamas",
+   "slug": "bahamas",
+   "planner": true
+  },
+  {
+   "name": "Bahrain",
+   "slug": "bahrain",
+   "planner": true
+  },
+  {
+   "name": "Balearic Islands (Spain)",
+   "slug": "balearic-islands-spain",
+   "planner": true
+  },
+  {
+   "name": "Bali (Indonesia)",
+   "slug": "indonesia",
+   "planner": true
+  },
+  {
+   "name": "Bangladesh",
+   "slug": "bangladesh",
+   "planner": true
+  },
+  {
+   "name": "Barbados",
+   "slug": "barbados",
+   "planner": true
+  },
+  {
+   "name": "Belarus",
+   "slug": "belarus",
+   "planner": true
+  },
+  {
+   "name": "Belgium",
+   "slug": "belgium",
+   "planner": true
+  },
+  {
+   "name": "Belize",
+   "slug": "belize",
+   "planner": true
+  },
+  {
+   "name": "Benin",
+   "slug": "benin",
+   "planner": true
+  },
+  {
+   "name": "Bermuda",
+   "slug": "bermuda",
+   "planner": true
+  },
+  {
+   "name": "Bhutan",
+   "slug": "bhutan",
+   "planner": true
+  },
+  {
+   "name": "Bolivia",
+   "slug": "bolivia",
+   "planner": true
+  },
+  {
+   "name": "Bonaire- Caribbean Islands (Netherlands)",
+   "slug": "bonaire--caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Borneo (Indonesia)",
+   "slug": "borneo-indonesia",
+   "planner": true
+  },
+  {
+   "name": "Borneo (Malaysia)",
+   "slug": "borneo-malaysia",
+   "planner": true
+  },
+  {
+   "name": "Bosnia and Herzegovina",
+   "slug": "bosnia-and-herzegovina",
+   "planner": true
+  },
+  {
+   "name": "Botswana",
+   "slug": "botswana",
+   "planner": true
+  },
+  {
+   "name": "Brazil",
+   "slug": "brazil",
+   "planner": true
+  },
+  {
+   "name": "British Virgin Islands",
+   "slug": "british-virgin-islands",
+   "planner": true
+  },
+  {
+   "name": "Brunei",
+   "slug": "brunei",
+   "planner": true
+  },
+  {
+   "name": "Bulgaria",
+   "slug": "bulgaria",
+   "planner": true
+  },
+  {
+   "name": "Burkina Faso",
+   "slug": "burkina-faso",
+   "planner": true
+  },
+  {
+   "name": "Burma (Myanmar)",
+   "slug": "myanmar-burma",
+   "planner": true
+  },
+  {
+   "name": "Burundi",
+   "slug": "burundi",
+   "planner": true
+  },
+  {
+   "name": "Cambodia",
+   "slug": "cambodia",
+   "planner": true
+  },
+  {
+   "name": "Cameroon",
+   "slug": "cameroon",
+   "planner": true
+  },
+  {
+   "name": "Canada",
+   "slug": "canada",
+   "planner": true
+  },
+  {
+   "name": "Canary Islands (Spain)",
+   "slug": "canary-islands-spain",
+   "planner": true
+  },
+  {
+   "name": "Cape Verde",
+   "slug": "cape-verde",
+   "planner": true
+  },
+  {
+   "name": "Caribbean Islands (France)",
+   "slug": "caribbean-islands-france",
+   "planner": true
+  },
+  {
+   "name": "Caribbean Islands (Netherlands)",
+   "slug": "caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Cayman Islands",
+   "slug": "cayman-islands",
+   "planner": true
+  },
+  {
+   "name": "Central African Republic",
+   "slug": "central-african-republic",
+   "planner": true
+  },
+  {
+   "name": "Chad",
+   "slug": "chad",
+   "planner": true
+  },
+  {
+   "name": "Chile",
+   "slug": "chile",
+   "planner": true
+  },
+  {
+   "name": "Chile (Easter Island)",
+   "slug": "easter-island-chile",
+   "planner": true
+  },
+  {
+   "name": "China",
+   "slug": "china",
+   "planner": true
+  },
+  {
+   "name": "China (Hong Kong)",
+   "slug": "hong-kong-china",
+   "planner": true
+  },
+  {
+   "name": "China (Macao)",
+   "slug": "macao-china",
+   "planner": true
+  },
+  {
+   "name": "China (Tibet)",
+   "slug": "tibet-china",
+   "planner": true
+  },
+  {
+   "name": "Colombia",
+   "slug": "colombia",
+   "planner": true
+  },
+  {
+   "name": "Comoros",
+   "slug": "comoros",
+   "planner": true
+  },
+  {
+   "name": "Congo",
+   "slug": "congo",
+   "planner": true
+  },
+  {
+   "name": "Cook Islands, Niue, Tokelau",
+   "slug": "cook-islands-niue-tokelau",
+   "planner": true
+  },
+  {
+   "name": "Corsica (France)",
+   "slug": "corsica-france",
+   "planner": true
+  },
+  {
+   "name": "Costa Rica",
+   "slug": "costa-rica",
+   "planner": true
+  },
+  {
+   "name": "Croatia",
+   "slug": "croatia",
+   "planner": true
+  },
+  {
+   "name": "Cuba",
+   "slug": "cuba",
+   "planner": true
+  },
+  {
+   "name": "Curaçao- Caribbean Islands (Netherlands)",
+   "slug": "curaao-caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Cyprus",
+   "slug": "cyprus",
+   "planner": true
+  },
+  {
+   "name": "Czechia",
+   "slug": "czechia",
+   "planner": true
+  },
+  {
+   "name": "Côte d'Ivoire",
+   "slug": "cote-divoire",
+   "planner": true
+  },
+  {
+   "name": "Democratic Republic of the Congo",
+   "slug": "democratic-republic-of-the-congo",
+   "planner": true
+  },
+  {
+   "name": "Denmark",
+   "slug": "denmark",
+   "planner": true
+  },
+  {
+   "name": "Denmark (Faroe Islands)",
+   "slug": "faroe-islands-denmark",
+   "planner": true
+  },
+  {
+   "name": "Djibouti",
+   "slug": "djibouti",
+   "planner": true
+  },
+  {
+   "name": "Dominica",
+   "slug": "dominica",
+   "planner": true
+  },
+  {
+   "name": "Dominican Republic",
+   "slug": "dominican-republic",
+   "planner": true
+  },
+  {
+   "name": "East Timor (Timor-Leste)",
+   "slug": "timor-leste",
+   "planner": true
+  },
+  {
+   "name": "Ecuador",
+   "slug": "ecuador",
+   "planner": true
+  },
+  {
+   "name": "Ecuador (Galapagos)",
+   "slug": "galapagos-ecuador",
+   "planner": true
+  },
+  {
+   "name": "Egypt",
+   "slug": "egypt",
+   "planner": true
+  },
+  {
+   "name": "El Salvador",
+   "slug": "el-salvador",
+   "planner": true
+  },
+  {
+   "name": "Equatorial Guinea",
+   "slug": "equatorial-guinea",
+   "planner": true
+  },
+  {
+   "name": "Eritrea",
+   "slug": "eritrea",
+   "planner": true
+  },
+  {
+   "name": "Estonia",
+   "slug": "estonia",
+   "planner": true
+  },
+  {
+   "name": "Eswatini",
+   "slug": "eswatini",
+   "planner": true
+  },
+  {
+   "name": "Ethiopia",
+   "slug": "ethiopia",
+   "planner": true
+  },
+  {
+   "name": "Falkland Islands",
+   "slug": "falkland-islands",
+   "planner": true
+  },
+  {
+   "name": "Fiji",
+   "slug": "fiji",
+   "planner": true
+  },
+  {
+   "name": "Finland",
+   "slug": "finland",
+   "planner": true
+  },
+  {
+   "name": "France",
+   "slug": "france",
+   "planner": true
+  },
+  {
+   "name": "French Guiana",
+   "slug": "french-guiana",
+   "planner": true
+  },
+  {
+   "name": "French Polynesia",
+   "slug": "french-polynesia",
+   "planner": true
+  },
+  {
+   "name": "Gabon",
+   "slug": "gabon",
+   "planner": true
+  },
+  {
+   "name": "Gambia",
+   "slug": "the-gambia",
+   "planner": true
+  },
+  {
+   "name": "Georgia",
+   "slug": "georgia",
+   "planner": true
+  },
+  {
+   "name": "Germany",
+   "slug": "germany",
+   "planner": true
+  },
+  {
+   "name": "Ghana",
+   "slug": "ghana",
+   "planner": true
+  },
+  {
+   "name": "Gibraltar",
+   "slug": "gibraltar",
+   "planner": true
+  },
+  {
+   "name": "Gozo (Malta)",
+   "slug": "gozo-malta",
+   "planner": true
+  },
+  {
+   "name": "Greece",
+   "slug": "greece",
+   "planner": true
+  },
+  {
+   "name": "Greenland",
+   "slug": "greenland",
+   "planner": true
+  },
+  {
+   "name": "Grenada",
+   "slug": "grenada",
+   "planner": true
+  },
+  {
+   "name": "Guadeloupe- Caribbean Islands (France)",
+   "slug": "guadeloupe--caribbean-islands-france",
+   "planner": true
+  },
+  {
+   "name": "Guam, American Samoa, Northern Mariana Islands",
+   "slug": "guam-american-samoa-northern-mariana-islands",
+   "planner": true
+  },
+  {
+   "name": "Guatemala",
+   "slug": "guatemala",
+   "planner": true
+  },
+  {
+   "name": "Guinea",
+   "slug": "guinea",
+   "planner": true
+  },
+  {
+   "name": "Guinea-Bissau",
+   "slug": "guinea-bissau",
+   "planner": true
+  },
+  {
+   "name": "Guyana",
+   "slug": "guyana",
+   "planner": true
+  },
+  {
+   "name": "Haiti",
+   "slug": "haiti",
+   "planner": true
+  },
+  {
+   "name": "Hawaii (USA)",
+   "slug": "hawaii-usa",
+   "planner": true
+  },
+  {
+   "name": "Honduras",
+   "slug": "honduras",
+   "planner": true
+  },
+  {
+   "name": "Hungary",
+   "slug": "hungary",
+   "planner": true
+  },
+  {
+   "name": "Iceland",
+   "slug": "iceland",
+   "planner": true
+  },
+  {
+   "name": "India",
+   "slug": "india",
+   "planner": true
+  },
+  {
+   "name": "Iran",
+   "slug": "iran",
+   "planner": true
+  },
+  {
+   "name": "Iraq",
+   "slug": "iraq",
+   "planner": true
+  },
+  {
+   "name": "Ireland",
+   "slug": "ireland",
+   "planner": true
+  },
+  {
+   "name": "Israel",
+   "slug": "israel",
+   "planner": true
+  },
+  {
+   "name": "Italy",
+   "slug": "italy",
+   "planner": true
+  },
+  {
+   "name": "Jamaica",
+   "slug": "jamaica",
+   "planner": true
+  },
+  {
+   "name": "Japan",
+   "slug": "japan",
+   "planner": true
+  },
+  {
+   "name": "Java (Indonesia)",
+   "slug": "java-indonesia",
+   "planner": true
+  },
+  {
+   "name": "Jordan",
+   "slug": "jordan",
+   "planner": true
+  },
+  {
+   "name": "Kazakhstan",
+   "slug": "kazakhstan",
+   "planner": true
+  },
+  {
+   "name": "Kenya",
+   "slug": "kenya",
+   "planner": true
+  },
+  {
+   "name": "Kiribati",
+   "slug": "kiribati",
+   "planner": true
+  },
+  {
+   "name": "Komodo (Indonesia)",
+   "slug": "komodo-indonesia",
+   "planner": true
+  },
+  {
+   "name": "Korea, North",
+   "slug": "north-korea",
+   "planner": true
+  },
+  {
+   "name": "Korea, South",
+   "slug": "south-korea",
+   "planner": true
+  },
+  {
+   "name": "Kosovo",
+   "slug": "kosovo",
+   "planner": true
+  },
+  {
+   "name": "Kuwait",
+   "slug": "kuwait",
+   "planner": true
+  },
+  {
+   "name": "Kyrgyzstan",
+   "slug": "kyrgyzstan",
+   "planner": true
+  },
+  {
+   "name": "Laos",
+   "slug": "laos",
+   "planner": true
+  },
+  {
+   "name": "Latvia",
+   "slug": "latvia",
+   "planner": true
+  },
+  {
+   "name": "Lebanon",
+   "slug": "lebanon",
+   "planner": true
+  },
+  {
+   "name": "Lesotho",
+   "slug": "lesotho",
+   "planner": true
+  },
+  {
+   "name": "Liberia",
+   "slug": "liberia",
+   "planner": true
+  },
+  {
+   "name": "Libya",
+   "slug": "libya",
+   "planner": true
+  },
+  {
+   "name": "Liechtenstein",
+   "slug": "liechtenstein",
+   "planner": true
+  },
+  {
+   "name": "Lithuania",
+   "slug": "lithuania",
+   "planner": true
+  },
+  {
+   "name": "Lombok (Indonesia)",
+   "slug": "lombok-indonesia",
+   "planner": true
+  },
+  {
+   "name": "Luxembourg",
+   "slug": "luxembourg",
+   "planner": true
+  },
+  {
+   "name": "Macedonia",
+   "slug": "north-macedonia",
+   "planner": true
+  },
+  {
+   "name": "Madagascar",
+   "slug": "madagascar",
+   "planner": true
+  },
+  {
+   "name": "Madeira (Portugal)",
+   "slug": "madeira-portugal",
+   "planner": true
+  },
+  {
+   "name": "Malawi",
+   "slug": "malawi",
+   "planner": true
+  },
+  {
+   "name": "Malaysia",
+   "slug": "malaysia",
+   "planner": true
+  },
+  {
+   "name": "Maldives",
+   "slug": "maldives",
+   "planner": true
+  },
+  {
+   "name": "Mali",
+   "slug": "mali",
+   "planner": true
+  },
+  {
+   "name": "Malta",
+   "slug": "malta",
+   "planner": true
+  },
+  {
+   "name": "Margarita Island (Venezuela)",
+   "slug": "venezuela",
+   "planner": true
+  },
+  {
+   "name": "Marshall Islands",
+   "slug": "marshall-islands",
+   "planner": true
+  },
+  {
+   "name": "Martinique",
+   "slug": "martinique",
+   "planner": true
+  },
+  {
+   "name": "Mauritania",
+   "slug": "mauritania",
+   "planner": true
+  },
+  {
+   "name": "Mauritius",
+   "slug": "mauritius",
+   "planner": true
+  },
+  {
+   "name": "Mayotte",
+   "slug": "mayotte",
+   "planner": true
+  },
+  {
+   "name": "Mexico",
+   "slug": "mexico",
+   "planner": true
+  },
+  {
+   "name": "Micronesia",
+   "slug": "micronesia",
+   "planner": true
+  },
+  {
+   "name": "Moldova",
+   "slug": "moldova",
+   "planner": true
+  },
+  {
+   "name": "Monaco",
+   "slug": "monaco",
+   "planner": true
+  },
+  {
+   "name": "Mongolia",
+   "slug": "mongolia",
+   "planner": true
+  },
+  {
+   "name": "Montenegro",
+   "slug": "montenegro",
+   "planner": true
+  },
+  {
+   "name": "Montserrat",
+   "slug": "montserrat",
+   "planner": true
+  },
+  {
+   "name": "Morocco",
+   "slug": "morocco",
+   "planner": true
+  },
+  {
+   "name": "Mozambique",
+   "slug": "mozambique",
+   "planner": true
+  },
+  {
+   "name": "Namibia",
+   "slug": "namibia",
+   "planner": true
+  },
+  {
+   "name": "Nauru",
+   "slug": "nauru",
+   "planner": true
+  },
+  {
+   "name": "Nepal",
+   "slug": "nepal",
+   "planner": true
+  },
+  {
+   "name": "Netherlands",
+   "slug": "netherlands",
+   "planner": true
+  },
+  {
+   "name": "New Caledonia",
+   "slug": "new-caledonia",
+   "planner": true
+  },
+  {
+   "name": "New Zealand",
+   "slug": "new-zealand",
+   "planner": true
+  },
+  {
+   "name": "Nicaragua",
+   "slug": "nicaragua",
+   "planner": true
+  },
+  {
+   "name": "Niger",
+   "slug": "niger",
+   "planner": true
+  },
+  {
+   "name": "Nigeria",
+   "slug": "nigeria",
+   "planner": true
+  },
+  {
+   "name": "Niue, Cook Islands, Tokelau",
+   "slug": "niue-cook-islands-tokelau",
+   "planner": true
+  },
+  {
+   "name": "Northern Mariana Islands, American Samoa, Guam",
+   "slug": "northern-mariana-islands-american-samoa-guam",
+   "planner": true
+  },
+  {
+   "name": "Norway",
+   "slug": "norway",
+   "planner": true
+  },
+  {
+   "name": "Norway (Svalbard and Jan Mayen)",
+   "slug": "svalbard-and-jan-mayen-norway",
+   "planner": true
+  },
+  {
+   "name": "Oman",
+   "slug": "oman",
+   "planner": true
+  },
+  {
+   "name": "Pakistan",
+   "slug": "pakistan",
+   "planner": true
+  },
+  {
+   "name": "Palau",
+   "slug": "palau",
+   "planner": true
+  },
+  {
+   "name": "Palestine",
+   "slug": "palestine",
+   "planner": true
+  },
+  {
+   "name": "Panama",
+   "slug": "panama",
+   "planner": true
+  },
+  {
+   "name": "Papua New Guinea",
+   "slug": "papua-new-guinea",
+   "planner": true
+  },
+  {
+   "name": "Paraguay",
+   "slug": "paraguay",
+   "planner": true
+  },
+  {
+   "name": "Peru",
+   "slug": "peru",
+   "planner": true
+  },
+  {
+   "name": "Philippines",
+   "slug": "philippines",
+   "planner": true
+  },
+  {
+   "name": "Pitcairn Islands",
+   "slug": "pitcairn-islands",
+   "planner": true
+  },
+  {
+   "name": "Poland",
+   "slug": "poland",
+   "planner": true
+  },
+  {
+   "name": "Portugal",
+   "slug": "portugal",
+   "planner": true
+  },
+  {
+   "name": "Puerto Rico",
+   "slug": "puerto-rico",
+   "planner": true
+  },
+  {
+   "name": "Qatar",
+   "slug": "qatar",
+   "planner": true
+  },
+  {
+   "name": "Romania",
+   "slug": "romania",
+   "planner": true
+  },
+  {
+   "name": "Russia",
+   "slug": "russia",
+   "planner": true
+  },
+  {
+   "name": "Rwanda",
+   "slug": "rwanda",
+   "planner": true
+  },
+  {
+   "name": "Réunion",
+   "slug": "reunion",
+   "planner": true
+  },
+  {
+   "name": "Saba- Caribbean Islands (Netherlands)",
+   "slug": "saba--caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Samoa",
+   "slug": "samoa",
+   "planner": true
+  },
+  {
+   "name": "San Marino",
+   "slug": "san-marino",
+   "planner": true
+  },
+  {
+   "name": "Sao Tome and Principe",
+   "slug": "sao-tome-and-principe",
+   "planner": true
+  },
+  {
+   "name": "Sardinia (Italy)",
+   "slug": "sardinia-italy",
+   "planner": true
+  },
+  {
+   "name": "Saudi Arabia",
+   "slug": "saudi-arabia",
+   "planner": true
+  },
+  {
+   "name": "Senegal",
+   "slug": "senegal",
+   "planner": true
+  },
+  {
+   "name": "Serbia",
+   "slug": "serbia",
+   "planner": true
+  },
+  {
+   "name": "Seychelles",
+   "slug": "seychelles",
+   "planner": true
+  },
+  {
+   "name": "Sicily (Italy)",
+   "slug": "sicily-italy",
+   "planner": true
+  },
+  {
+   "name": "Sierra Leone",
+   "slug": "sierra-leone",
+   "planner": true
+  },
+  {
+   "name": "Singapore",
+   "slug": "singapore",
+   "planner": true
+  },
+  {
+   "name": "Sint Eustatius- Caribbean Islands (Netherlands)",
+   "slug": "sint-eustatius--caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Sint Maarten- Caribbean Islands (Netherlands)",
+   "slug": "sint-maarten--caribbean-islands-netherlands",
+   "planner": true
+  },
+  {
+   "name": "Slovakia",
+   "slug": "slovakia",
+   "planner": true
+  },
+  {
+   "name": "Slovenia",
+   "slug": "slovenia",
+   "planner": true
+  },
+  {
+   "name": "Solomon Islands",
+   "slug": "solomon-islands",
+   "planner": true
+  },
+  {
+   "name": "Somalia",
+   "slug": "somalia",
+   "planner": true
+  },
+  {
+   "name": "South Africa",
+   "slug": "south-africa",
+   "planner": true
+  },
+  {
+   "name": "South Sudan",
+   "slug": "south-sudan",
+   "planner": true
+  },
+  {
+   "name": "Spain",
+   "slug": "spain",
+   "planner": true
+  },
+  {
+   "name": "Sri Lanka",
+   "slug": "sri-lanka",
+   "planner": true
+  },
+  {
+   "name": "St Barthélemy- Caribbean Islands (France)",
+   "slug": "st-barthlemy-caribbean-islands-france",
+   "planner": true
+  },
+  {
+   "name": "St Helena, Ascension, Tristan da Cunha",
+   "slug": "st-helena-ascension-tristan-da-cunha",
+   "planner": true
+  },
+  {
+   "name": "St Kitts and Nevis",
+   "slug": "st-kitts-and-nevis",
+   "planner": true
+  },
+  {
+   "name": "St Lucia",
+   "slug": "st-lucia",
+   "planner": true
+  },
+  {
+   "name": "St Martin- Caribbean Islands (France)",
+   "slug": "st-martin--caribbean-islands-france",
+   "planner": true
+  },
+  {
+   "name": "St Pierre and Miquelon",
+   "slug": "st-pierre-and-miquelon",
+   "planner": true
+  },
+  {
+   "name": "St Vincent and the Grenadines",
+   "slug": "st-vincent-and-the-grenadines",
+   "planner": true
+  },
+  {
+   "name": "Sudan",
+   "slug": "sudan",
+   "planner": true
+  },
+  {
+   "name": "Sumatra (Indonesia)",
+   "slug": "sumatra-indonesia",
+   "planner": true
+  },
+  {
+   "name": "Suriname",
+   "slug": "suriname",
+   "planner": true
+  },
+  {
+   "name": "Sweden",
+   "slug": "sweden",
+   "planner": true
+  },
+  {
+   "name": "Switzerland",
+   "slug": "switzerland",
+   "planner": true
+  },
+  {
+   "name": "Syria",
+   "slug": "syria",
+   "planner": true
+  },
+  {
+   "name": "Taiwan",
+   "slug": "taiwan",
+   "planner": true
+  },
+  {
+   "name": "Tajikistan",
+   "slug": "tajikistan",
+   "planner": true
+  },
+  {
+   "name": "Tanzania",
+   "slug": "tanzania",
+   "planner": true
+  },
+  {
+   "name": "Thailand",
+   "slug": "thailand",
+   "planner": true
+  },
+  {
+   "name": "Togo",
+   "slug": "togo",
+   "planner": true
+  },
+  {
+   "name": "Tokelau, Cook Islands, Niue",
+   "slug": "tokelau-cook-islands-niue",
+   "planner": true
+  },
+  {
+   "name": "Tonga",
+   "slug": "tonga",
+   "planner": true
+  },
+  {
+   "name": "Trinidad and Tobago",
+   "slug": "trinidad-and-tobago",
+   "planner": true
+  },
+  {
+   "name": "Tunisia",
+   "slug": "tunisia",
+   "planner": true
+  },
+  {
+   "name": "Turkey",
+   "slug": "turkey",
+   "planner": true
+  },
+  {
+   "name": "Turkmenistan",
+   "slug": "turkmenistan",
+   "planner": true
+  },
+  {
+   "name": "Turks and Caicos Islands",
+   "slug": "turks-and-caicos-islands",
+   "planner": true
+  },
+  {
+   "name": "Tuvalu",
+   "slug": "tuvalu",
+   "planner": true
+  },
+  {
+   "name": "Uganda",
+   "slug": "uganda",
+   "planner": true
+  },
+  {
+   "name": "Ukraine",
+   "slug": "ukraine",
+   "planner": true
+  },
+  {
+   "name": "United Arab Emirates",
+   "slug": "united-arab-emirates",
+   "planner": true
+  },
+  {
+   "name": "United Kingdom",
+   "slug": "united-kingdom",
+   "planner": true
+  },
+  {
+   "name": "Uruguay",
+   "slug": "uruguay",
+   "planner": true
+  },
+  {
+   "name": "US Virgin Islands",
+   "slug": "us-virgin-islands",
+   "planner": true
+  },
+  {
+   "name": "USA",
+   "slug": "usa",
+   "planner": true
+  },
+  {
+   "name": "Uzbekistan",
+   "slug": "uzbekistan",
+   "planner": true
+  },
+  {
+   "name": "Vanuatu",
+   "slug": "vanuatu",
+   "planner": true
+  },
+  {
+   "name": "Vietnam",
+   "slug": "vietnam",
+   "planner": true
+  },
+  {
+   "name": "Wake Island",
+   "slug": "wake-island",
+   "planner": true
+  },
+  {
+   "name": "Wallis and Futuna",
+   "slug": "wallis-and-futuna",
+   "planner": true
+  },
+  {
+   "name": "Western Sahara",
+   "slug": "western-sahara",
+   "planner": true
+  },
+  {
+   "name": "Yemen",
+   "slug": "yemen",
+   "planner": true
+  },
+  {
+   "name": "Zambia",
+   "slug": "zambia",
+   "planner": true
+  },
+  {
+   "name": "Zimbabwe",
+   "slug": "zimbabwe"
+  }
+ ]
+}

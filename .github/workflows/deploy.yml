@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'southdowns-pharmacy-theme/**'
+      - 'gildhart-travel-planner/**'
   workflow_dispatch:
 
 jobs:
@@ -24,6 +25,22 @@ jobs:
           password: ${{ secrets.KINSTA_PASSWORD }}
           source: "southdowns-pharmacy-theme"
           target: "/www/southdownspharmacygroup_597/public/wp-content/themes/"
+          overwrite: true
+          use_insecure_cipher: true
+          timeout: 120s
+
+      # The Travel Planner plugin (gildhart-travel-planner/), beside the theme.
+      # Copying it does nothing by itself: it is switched on once in wp-admin
+      # (Plugins), and shows nothing to the public until its own setting says so.
+      - name: Deploy Travel Planner plugin via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.KINSTA_HOST }}
+          port: ${{ secrets.KINSTA_PORT }}
+          username: ${{ secrets.KINSTA_USERNAME }}
+          password: ${{ secrets.KINSTA_PASSWORD }}
+          source: "gildhart-travel-planner"
+          target: "/www/southdownspharmacygroup_597/public/wp-content/plugins/"
           overwrite: true
           use_insecure_cipher: true
           timeout: 120s

@@ -1,0 +1,28 @@
+{
+ "slug": "balearic-islands-spain",
+ "name": "Spain",
+ "checked": "2026-10-08",
+ "source": "https://travelhealthpro.org.uk/countries/balearic-islands-spain",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Spain.",
+  "tablets": false
+ }
+}

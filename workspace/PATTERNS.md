@@ -51,3 +51,12 @@ CRITICAL: Keep this file under 300 lines. You are allowed to summarize, change t
 ## Error Handling
 
 <!-- Standard approaches to errors, validation, and recovery -->
+
+### Travel Planner settings and placement
+
+**Category:** File Structure
+**Status:** Active
+**Description:** The Travel Planner plugin is configured by `southdowns-pharmacy-theme/gildhart-travel-planner.json` (until its settings screen is saved in wp-admin) and placed by shortcode. A template renders it before `get_header()` so its stylesheet lands in the head, and prints the result where it belongs.
+**Implementation:**
+`$planner = shortcode_exists( 'travel_planner' ) ? do_shortcode( '[travel_planner book="#book"]' ) : '';` before `get_header()`, then `echo $planner;` in place. A price in the JSON is always one dose's.
+**Rationale:** The page is unchanged when the plugin is off or in preview, and prices stay in git.

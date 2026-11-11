@@ -4,6 +4,12 @@
  *
  * Select this template on the Travel Health page via Page → Template in the editor.
  */
+// The Travel Planner (the "Travel Planner by Gildhart" plugin): "Where are you
+// going?", drawn above the destinations. Rendered here, before the header, so
+// its stylesheet is in the page's head. It is '' when the plugin is off, and
+// while the plugin is in preview for anyone not signed in to edit the site, so
+// the page is then exactly as it was.
+$th_planner = shortcode_exists( 'travel_planner' ) ? do_shortcode( '[travel_planner book="#book"]' ) : '';
 get_header();
 // CTAs on this page scroll to the on-page travel calendar (#book section) so
 // paid/ad traffic converts here rather than on the all-branches /book-appointment/ page.
@@ -274,7 +280,8 @@ $th_service_icons = [
           Book Travel Consultation
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
-        <a href="#vaccines" class="inline-flex items-center gap-2 border-2 border-white text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-blue-700 transition-colors font-jost">
+        <?php /* With the planner on the page this button leads to it; without it, to the vaccine list as before. */ ?>
+        <a href="<?php echo '' !== $th_planner ? '#trip-planner' : '#vaccines'; ?>" class="inline-flex items-center gap-2 border-2 border-white text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-blue-700 transition-colors font-jost">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
           Check What Vaccines You Need
         </a>
@@ -368,6 +375,14 @@ $th_service_icons = [
     </div>
   </div>
 </section>
+
+
+<?php
+/* The Travel Planner: any country, what the guidance lists for it, what each
+   vaccine costs a dose here, and the way to book. It rests directly above the
+   destinations, in their colours, so at rest the two read as one band. */
+echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin's own escaped markup
+?>
 
 
 <!-- ============================================================

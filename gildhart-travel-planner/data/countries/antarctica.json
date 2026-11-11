@@ -1,0 +1,21 @@
+{
+ "slug": "antarctica",
+ "name": "Antarctica",
+ "checked": "2026-10-08",
+ "source": "https://travelhealthpro.org.uk/countries/antarctica",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": []
+ },
+ "also_listed": [],
+ "certificates": [],
+ "malaria": {
+  "line": "No malaria risk in Antarctica.",
+  "tablets": false
+ }
+}

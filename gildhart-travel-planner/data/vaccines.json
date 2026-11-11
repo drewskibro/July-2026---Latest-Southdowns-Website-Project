@@ -1,0 +1,125 @@
+{
+ "chikungunya": {
+  "name": "Chikungunya",
+  "doses": 1,
+  "timing": "The live chikungunya vaccine must be given at least 30 days before travel. The non-live vaccine has no fixed minimum, but earlier is better.",
+  "lead": {
+   "days": 30,
+   "text": "at least 30 days before"
+  },
+  "included_in": null
+ },
+ "cholera": {
+  "name": "Cholera",
+  "doses": 2,
+  "timing": "Course should be completed at least a week before travel.",
+  "lead": {
+   "days": 7,
+   "text": "at least a week before"
+  },
+  "included_in": null
+ },
+ "dengue": {
+  "name": "Dengue",
+  "doses": 2,
+  "timing": "Two doses three months apart, so it needs planning well ahead.",
+  "lead": null,
+  "included_in": null
+ },
+ "hepatitis-a": {
+  "name": "Hepatitis A",
+  "doses": 2,
+  "timing": "No minimum notice. Protection develops within about two weeks, and a dose on the day you fly is still worth having.",
+  "lead": null,
+  "included_in": null
+ },
+ "hepatitis-b": {
+  "name": "Hepatitis B",
+  "doses": 3,
+  "timing": "The very rapid schedule gives protection within about three weeks for adults. Other schedules take one to two months to protect.",
+  "lead": null,
+  "included_in": null
+ },
+ "japanese-encephalitis": {
+  "name": "Japanese encephalitis",
+  "doses": 2,
+  "timing": "The course must finish at least a week before possible exposure: about five weeks on the standard schedule, two weeks on the accelerated one.",
+  "lead": {
+   "days": 7,
+   "text": "at least a week before"
+  },
+  "included_in": null
+ },
+ "measles-mmr": {
+  "name": "Measles (MMR)",
+  "doses": 2,
+  "timing": "Two doses at least a month apart; the second can be brought forward for travel.",
+  "lead": null,
+  "included_in": null
+ },
+ "menacwy": {
+  "name": "Meningitis ACWY",
+  "doses": 1,
+  "timing": "For Hajj and Umrah, the vaccine must be given at least 10 days before arrival in Saudi Arabia.",
+  "lead": {
+   "days": 10,
+   "text": "at least 10 days before"
+  },
+  "included_in": null
+ },
+ "polio": {
+  "name": "Polio (IPV booster)",
+  "doses": 1,
+  "timing": "For the exit certificate, the dose must be given between 4 weeks and 12 months before you leave the country.",
+  "lead": null,
+  "included_in": "tetanus-dtp"
+ },
+ "rabies": {
+  "name": "Rabies (pre-exposure)",
+  "doses": 3,
+  "timing": "Standard course 21 to 28 days; accelerated course 7 days.",
+  "lead": null,
+  "included_in": null
+ },
+ "tetanus-dtp": {
+  "name": "Tetanus, diphtheria and polio",
+  "doses": 1,
+  "timing": "One injection, effective quickly in anyone previously vaccinated.",
+  "lead": null,
+  "included_in": null
+ },
+ "tick-borne-encephalitis": {
+  "name": "Tick-borne encephalitis (TBE)",
+  "doses": 3,
+  "timing": "Two doses at least two weeks apart before you travel, so allow a month, or two weeks on the accelerated schedule.",
+  "lead": null,
+  "included_in": null
+ },
+ "tuberculosis-bcg": {
+  "name": "Tuberculosis (BCG)",
+  "doses": 1,
+  "timing": "A tuberculin skin test is needed first from 6 years of age.",
+  "lead": null,
+  "included_in": null
+ },
+ "typhoid": {
+  "name": "Typhoid",
+  "doses": 1,
+  "timing": "At least 2 weeks before travel. A dose closer to departure can still be considered, and we'll explain the limits.",
+  "lead": {
+   "days": 14,
+   "text": "At least 2 weeks before"
+  },
+  "included_in": null
+ },
+ "yellow-fever": {
+  "name": "Yellow fever",
+  "doses": 1,
+  "timing": "Allow at least 10 days before arrival for the certificate to be valid.",
+  "lead": {
+   "days": 10,
+   "text": "at least 10 days before"
+  },
+  "included_in": null
+ }
+}

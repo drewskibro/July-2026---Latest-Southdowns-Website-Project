@@ -1,0 +1,52 @@
+=== Travel Planner by Gildhart ===
+Requires at least: 6.0
+Requires PHP: 7.4
+Stable tag: 1.0.0
+License: GPLv2 or later
+
+"Where are you going?" for a pharmacy's travel clinic.
+
+== What it does ==
+
+A visitor types any country. The planner shows the vaccines the guidance
+lists for it, what each costs a dose at this pharmacy, how far ahead to
+book, the certificate and malaria facts, and the outbreak notices for that
+country. Every answer ends at a booking.
+
+* [travel_planner] puts the planner on a page.
+* [travel_notices] lists the latest outbreak notices (count="6", diseases="ours" or "all").
+
+== Setting it up on a site ==
+
+1. Upload the plugin folder to wp-content/plugins and switch it on in Plugins.
+2. Open Travel Planner > Settings. Fill in the booking link, the pharmacy's
+   point on the map, each vaccine's price a dose, and the colours.
+   Or paste settings copied from another site into "Import settings".
+3. Put [travel_planner] on the travel page.
+4. Until "Show the planner to everyone" is ticked, only people signed in to
+   edit the site can see it. Tick it once the prices and wording are approved.
+
+A site built in git can carry its settings as a file in its theme,
+gildhart-travel-planner.json beside style.css. The plugin reads that file
+until someone saves the settings screen.
+
+== What updates, and how ==
+
+* Outbreak notices are read once a day from NaTHNaC's TravelHealthPro: the
+  date, the disease and the country, never their words or figures. If their
+  page cannot be read, one email says so, the last reading stays with its
+  date, and after 30 days it is no longer shown. Travel Planner > Notices
+  lets a person read now, add a notice by hand, or take one off.
+* What the guidance says about each country ships with the plugin and is
+  dated on every card. It changes only with a new version of the plugin, so
+  a recommendation never moves on a site without a person having looked.
+
+== The rules it keeps ==
+
+* A price is one dose's. A card never shows a course's total or a trip's sum.
+* A vaccine is named by its type, never a brand.
+* Nobody is told they do not need a vaccine. Every card ends at a booking.
+* Yellow fever is priced only for a registered yellow fever centre.
+* Country guidance: contains public sector information licensed under the
+  Open Government Licence v3.0 (NaTHNaC TravelHealthPro), written in our own
+  words. The map is drawn from Natural Earth (public domain).

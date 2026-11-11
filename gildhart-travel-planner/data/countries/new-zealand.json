@@ -1,0 +1,23 @@
+{
+ "slug": "new-zealand",
+ "name": "New Zealand",
+ "checked": "2026-10-08",
+ "source": "https://travelhealthpro.org.uk/countries/new-zealand",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": []
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in New Zealand.",
+  "tablets": false
+ }
+}

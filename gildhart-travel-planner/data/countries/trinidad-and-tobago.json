@@ -1,0 +1,40 @@
+{
+ "slug": "trinidad-and-tobago",
+ "name": "Trinidad and Tobago",
+ "checked": "2026-10-08",
+ "source": "https://travelhealthpro.org.uk/countries/trinidad-and-tobago",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "dengue",
+    "note": "Spread by daytime-biting mosquitoes, and bite avoidance is the main protection. Ask about the vaccine if you've had dengue before."
+   },
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Trinidad and Tobago who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   },
+   {
+    "id": "yellow-fever",
+    "note": "There's yellow fever in parts of Trinidad and Tobago. The vaccine protects you, and the certificate is required for entry in some cases."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed to enter Trinidad and Tobago, but there's yellow fever in parts of it, so the vaccine may be recommended."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Trinidad and Tobago.",
+  "tablets": false
+ }
+}

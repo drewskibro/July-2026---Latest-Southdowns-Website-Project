@@ -1,0 +1,40 @@
+{
+ "slug": "ascension-st-helena-tristan-da-cunha",
+ "name": "Ascension, St Helena, Tristan da Cunha",
+ "checked": "2026-10-08",
+ "source": "https://travelhealthpro.org.uk/countries/ascension-st-helena-tristan-da-cunha",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to Ascension, St Helena, Tristan da Cunha, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ],
+  "some": [
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Ascension, St Helena, Tristan da Cunha who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "hepatitis-b",
+    "note": "Worth considering for longer stays, for anyone who might need medical or dental treatment there, and for work with blood or needles."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Ascension, St Helena, Tristan da Cunha.",
+  "tablets": false
+ }
+}
