@@ -218,15 +218,47 @@
     else if (e.key === 'Tab') { close(); }
   });
 
-  /* The guides' quick links choose in place; without the script they are links. */
-  Array.prototype.forEach.call(root.querySelectorAll('[data-gtp-pick]'), function (a) {
-    a.addEventListener('click', function (e) {
-      var c = bySlug[a.getAttribute('data-gtp-pick')];
-      if (!c) { return; }
-      e.preventDefault();
-      choose(c, { scroll: true });
-    });
+  /* Anything on the page marked data-gtp-pick="<slug>" chooses that country in
+     place and goes to its answer: the guides' quick links here, and whatever the
+     page around the planner offers (a theme's destination cards). Without the
+     script, or for a slug the planner does not know, they are ordinary links. */
+  document.addEventListener('click', function (e) {
+    if (e.defaultPrevented || e.button > 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) { return; }
+    var a = e.target && e.target.closest ? e.target.closest('[data-gtp-pick]') : null;
+    var c = a && bySlug[a.getAttribute('data-gtp-pick')];
+    if (!c) { return; }
+    e.preventDefault();
+    choose(c, { scroll: true });
   });
+
+  /* On a phone the card's way out is pinned to the foot of the window, and
+     anything else fixed there (a chat button) would sit on it. While it is,
+     the page is told: <html data-gtp-pinned> and --gtp-pinned-height, the
+     distance from the window's bottom edge to the bar's top, so a theme can
+     lift its own things clear. Nothing is said while the bar is in its place
+     in the card, or on a desktop, where it is not pinned at all. */
+  var html = document.documentElement;
+  var pinnedAt = -1, pinQueued = false;
+  function pinned() {
+    pinQueued = false;
+    var bar = result.hidden ? null : result.querySelector('[data-gtp-actions]');
+    var h = 0;
+    if (bar) {
+      var cs = window.getComputedStyle(bar);
+      if (cs.position === 'sticky' || cs.position === 'fixed') {
+        var r = bar.getBoundingClientRect(), vh = window.innerHeight, gap = parseFloat(cs.bottom) || 0;
+        /* At the foot of the window, or within a bar's height of it as it comes and goes. */
+        if (r.height && r.top < vh && r.bottom > vh - gap - r.height) { h = Math.ceil(vh - r.top); }
+      }
+    }
+    if (h === pinnedAt) { return; }
+    pinnedAt = h;
+    if (h > 0) { html.setAttribute('data-gtp-pinned', ''); html.style.setProperty('--gtp-pinned-height', h + 'px'); }
+    else { html.removeAttribute('data-gtp-pinned'); html.style.removeProperty('--gtp-pinned-height'); }
+  }
+  function queuePinned() { if (!pinQueued) { pinQueued = true; requestAnimationFrame(pinned); } }
+  window.addEventListener('scroll', queuePinned, { passive: true });
+  window.addEventListener('resize', queuePinned);
 
   /* ---- the map: the pin and the route from the pharmacy -------------------- */
 
@@ -281,7 +313,7 @@
       if (chosen !== c) { return; }
       result.innerHTML = '';
       result.appendChild(card);
-      requestAnimationFrame(function () { requestAnimationFrame(function () { card.setAttribute('data-gtp-in', ''); }); });
+      requestAnimationFrame(function () { requestAnimationFrame(function () { card.setAttribute('data-gtp-in', ''); queuePinned(); }); });
       if (opts.scroll && typeof result.scrollIntoView === 'function') { result.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'start' }); }
     };
     if (!c.planner) { result.setAttribute('data-gtp-state', 'consult'); done(consultCard(c)); return; }

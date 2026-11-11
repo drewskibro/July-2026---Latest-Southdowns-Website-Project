@@ -10,6 +10,23 @@
 // while the plugin is in preview for anyone not signed in to edit the site, so
 // the page is then exactly as it was.
 $th_planner = shortcode_exists( 'travel_planner' ) ? do_shortcode( '[travel_planner book="#book"]' ) : '';
+// A destination card's country in the planner, by its name or another name the
+// planner answers to ("Bali", "Dubai"), or '' when the planner does not know it.
+$th_planner_slug = function ( $name ) {
+	static $index = null;
+	if ( null === $index ) {
+		$index = [];
+		foreach ( function_exists( 'gtp_countries' ) ? gtp_countries() : [] as $c ) {
+			if ( empty( $c['slug'] ) || empty( $c['name'] ) ) { continue; }
+			foreach ( array_merge( [ $c['name'] ], (array) ( $c['aka'] ?? [] ) ) as $n ) { $index[ strtolower( trim( (string) $n ) ) ] = (string) $c['slug']; }
+		}
+	}
+	foreach ( explode( '/', wp_strip_all_tags( html_entity_decode( (string) $name, ENT_QUOTES, 'UTF-8' ) ) ) as $part ) {
+		$k = strtolower( trim( $part ) );
+		if ( isset( $index[ $k ] ) ) { return $index[ $k ]; }
+	}
+	return '';
+};
 get_header();
 // CTAs on this page scroll to the on-page travel calendar (#book section) so
 // paid/ad traffic converts here rather than on the all-branches /book-appointment/ page.
@@ -261,6 +278,11 @@ $th_service_icons = [
         Book Travel Consultation
         <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
+      <?php /* As on a desktop: to the planner when it is on the page, else to the vaccine list. */ ?>
+      <a href="<?php echo '' !== $th_planner ? '#trip-planner' : '#vaccines'; ?>" class="inline-flex items-center gap-2 border-2 border-white text-white text-sm font-semibold px-5 py-2.5 rounded-full font-jost" data-th-check>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
+        Check What Vaccines You Need
+      </a>
     </div>
     <p class="text-white/90 text-sm font-jost">Same-day appointments typically available &middot; No referral needed</p>
   </div>
@@ -281,7 +303,7 @@ $th_service_icons = [
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
         <?php /* With the planner on the page this button leads to it; without it, to the vaccine list as before. */ ?>
-        <a href="<?php echo '' !== $th_planner ? '#trip-planner' : '#vaccines'; ?>" class="inline-flex items-center gap-2 border-2 border-white text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-blue-700 transition-colors font-jost">
+        <a href="<?php echo '' !== $th_planner ? '#trip-planner' : '#vaccines'; ?>" class="inline-flex items-center gap-2 border-2 border-white text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-blue-700 transition-colors font-jost" data-th-check>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/></svg>
           Check What Vaccines You Need
         </a>
@@ -311,6 +333,13 @@ $th_service_icons = [
 </section>
 
 
+<?php
+/* With the planner on the page it comes straight after the hero, so a phone
+   reaches it within its first screen, and S2 and S3 follow the destinations
+   (white, then blue) to keep the page alternating. Without it, the page is in
+   its old order. S2 and S3 are held here and printed where they fall. */
+ob_start();
+?>
 <!-- ============================================================
      S2: STATS BAR — Blue gradient, 4 glassmorphism stat cards
      ============================================================ -->
@@ -333,7 +362,7 @@ $th_service_icons = [
     </div>
   </div>
 </section>
-
+<?php $th_s2_html = (string) ob_get_clean(); ob_start(); ?>
 
 <!-- ============================================================
      S3: WHY CHOOSE US — White bg, 3 photo cards with numbered badges
@@ -375,25 +404,36 @@ $th_service_icons = [
     </div>
   </div>
 </section>
-
-
 <?php
-/* The Travel Planner: any country, what the guidance lists for it, what each
-   vaccine costs a dose here, and the way to book. It rests directly above the
-   destinations, in their colours, so at rest the two read as one band. */
-echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin's own escaped markup
+$th_s3_html = (string) ob_get_clean();
+if ( '' === $th_planner ) {
+	echo $th_s2_html . $th_s3_html; // phpcs:ignore WordPress.Security.EscapeOutput -- this template's own markup, escaped above
+} else {
+	/* The Travel Planner: any country, what the guidance lists for it, what each
+	   vaccine costs a dose here, and the way to book. It rests directly above the
+	   destinations, in their colours, so the two read as one band: the planner
+	   asks, and the destinations are its popular answers. */
+	echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin's own escaped markup
+}
 ?>
 
 
 <!-- ============================================================
      S4: POPULAR DESTINATIONS — Blue gradient, 8 destination photo cards
      ============================================================ -->
-<section class="relative py-16 md:py-24 overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);" id="destinations">
+<section class="relative <?php echo '' !== $th_planner ? 'pt-10 pb-14 md:pt-16 md:pb-20' : 'py-16 md:py-24'; ?> overflow-hidden" style="background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #3b82f6 100%);" id="destinations">
   <div class="absolute inset-0 opacity-10">
     <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
     <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full translate-x-1/4 translate-y-1/4"></div>
   </div>
   <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <?php if ( '' !== $th_planner ) : ?>
+    <?php /* Under the planner these are its popular answers, not a second "where are you going?". */ ?>
+    <div class="text-center mb-10" data-th-dest-intro>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-jost">Popular destinations</h2>
+      <p class="text-lg text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">Choose one to see its vaccines and prices in the planner.</p>
+    </div>
+    <?php else : ?>
     <div class="text-center mb-14">
       <div class="premium-badge flex items-center justify-center gap-4 mb-6">
         <div class="badge-rule w-10 h-px bg-white/15"></div>
@@ -402,6 +442,7 @@ echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin'
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 font-jost">Where Are You Headed?</h2>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed font-jost">From tropical Asia to safari Africa, we have the vaccinations and expert advice to keep you safe wherever your adventure takes you.</p>
     </div>
+    <?php endif; ?>
     <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
       <?php
       // Destination cards — client-editable (Travel Health → Destinations / FAQ / CTA).
@@ -418,8 +459,11 @@ echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin'
       ];
       foreach ( $destinations as $di => $dest ) :
           $d_img = ! empty( $dest['image'] ) ? $dest['image'] : 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=450&fit=crop';
+          /* With the planner on the page, a card opens its country there ("Indonesia / Bali" is Indonesia, "Dubai / UAE" the United Arab Emirates). */
+          $d_slug = '' !== $th_planner ? $th_planner_slug( $dest['name'] ?? '' ) : '';
+          $d_tag  = '' !== $d_slug ? 'a' : 'div';
       ?>
-      <div class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]" data-delay="<?php echo (int) ( ( $di % 4 ) + 1 ); ?>">
+      <<?php echo $d_tag; ?> class="tv-reveal tv-card-lift relative group overflow-hidden rounded-2xl aspect-[4/3]<?php echo '' !== $d_slug ? ' block' : ''; ?>" data-delay="<?php echo (int) ( ( $di % 4 ) + 1 ); ?>"<?php if ( '' !== $d_slug ) : ?> href="<?php echo esc_attr( '?going=' . rawurlencode( $d_slug ) . '#trip-planner' ); ?>" data-gtp-pick="<?php echo esc_attr( $d_slug ); ?>"<?php endif; ?>>
         <img src="<?php echo esc_url( $d_img ); ?>" alt="<?php echo esc_attr( ( $dest['name'] ?? '' ) . ' travel vaccinations' ); ?>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy"/>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent"></div>
         <div class="absolute inset-0 flex flex-col justify-end p-4">
@@ -427,7 +471,7 @@ echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin'
           <h3 class="text-white font-bold text-lg leading-tight mb-1 font-jost"><?php echo esc_html( $dest['name'] ?? '' ); ?></h3>
           <p class="text-blue-100/80 text-xs font-jost"><?php echo $dest['vaccines'] ?? ''; ?></p>
         </div>
-      </div>
+      </<?php echo $d_tag; ?>>
       <?php endforeach; ?>
     </div>
     <!-- CTA strip -->
@@ -464,6 +508,12 @@ echo $th_planner; // phpcs:ignore WordPress.Security.EscapeOutput -- the plugin'
   </div>
 </section>
 
+
+<?php
+if ( '' !== $th_planner ) {
+	echo $th_s3_html . $th_s2_html; // phpcs:ignore WordPress.Security.EscapeOutput -- this template's own markup, escaped above
+}
+?>
 
 <!-- ============================================================
      S5: COMPREHENSIVE SERVICES — White bg, 6 service cards

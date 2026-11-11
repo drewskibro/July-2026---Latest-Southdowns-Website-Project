@@ -41,8 +41,23 @@ function register_deactivation_hook( $f, $fn ) {}
 
 /* options */
 function get_option( $k, $default = false ) { $o = h_get( 'options', array() ); return array_key_exists( $k, $o ) ? $o[ $k ] : ( 'admin_email' === $k ? 'owner@example.test' : $default ); }
-function update_option( $k, $v, $autoload = null ) { $o = h_get( 'options', array() ); $o[ $k ] = $v; h_set( 'options', $o ); return true; }
-function delete_option( $k ) { $o = h_get( 'options', array() ); unset( $o[ $k ] ); h_set( 'options', $o ); return true; }
+/* As WordPress does: a save that changes nothing says nothing; a first save is an add; each says so to its hooks. */
+function update_option( $k, $v, $autoload = null ) {
+	$o = h_get( 'options', array() );
+	$had = array_key_exists( $k, $o );
+	if ( $had && json_encode( $o[ $k ] ) === json_encode( $v ) ) { return false; }
+	$old = $had ? $o[ $k ] : null;
+	$o[ $k ] = $v; h_set( 'options', $o );
+	if ( $had ) { do_action( 'update_option_' . $k, $old, $v, $k ); } else { do_action( 'add_option_' . $k, $k, $v ); }
+	return true;
+}
+function delete_option( $k ) {
+	$o = h_get( 'options', array() );
+	if ( ! array_key_exists( $k, $o ) ) { return false; }
+	unset( $o[ $k ] ); h_set( 'options', $o );
+	do_action( 'delete_option_' . $k, $k );
+	return true;
+}
 
 /* shortcodes */
 function add_shortcode( $tag, $fn ) { $GLOBALS['gtp_h']['shortcodes'][ $tag ] = $fn; }
@@ -108,8 +123,20 @@ function checked( $a, $b = true ) { if ( (string) $a === (string) $b || ( true =
 function selected( $a, $b = true ) { if ( (string) $a === (string) $b ) { echo ' selected'; } }
 function submit_button( $text = 'Save', $type = 'primary', $name = 'submit', $wrap = true ) { echo ( $wrap ? '<p class="submit">' : '' ) . '<button type="submit" class="button button-' . esc_attr( $type ) . '">' . esc_html( $text ) . '</button>' . ( $wrap ? '</p>' : '' ); }
 
+/* A stand-in for Kinsta's must-use plugin, when the world says it is on Kinsta
+   (__kinsta): the same global and the same call, kinsta-mu-plugins 3.7.0. */
+class H_Kinsta_Cache_Purge {
+	public function purge_complete_caches( $force = false ) { $c = h_get( '__kinsta', array() ); $c[] = (bool) $force; h_set( '__kinsta', $c ); }
+}
+if ( is_array( h_get( '__kinsta' ) ) ) {
+	$GLOBALS['kinsta_cache'] = (object) array( 'kinsta_cache_purge' => new H_Kinsta_Cache_Purge() );
+}
+
 /* The plugin, then the harness's stand-ins for the world outside it. */
 require dirname( __DIR__, 4 ) . '/gildhart-travel-planner/gildhart-travel-planner.php';
+
+/* Every clearing of the page cache, with the reason given. */
+add_action( 'gtp_purge_pages', function ( $why ) { $p = h_get( '__purged', array() ); $p[] = $why; h_set( '__purged', $p ); } );
 
 add_filter( 'gtp_notices_now', function ( $now ) { $n = h_get( '__now' ); return $n ? (int) strtotime( $n . ' UTC' ) : $now; } );
 add_filter( 'gtp_notices_fetcher', function () {

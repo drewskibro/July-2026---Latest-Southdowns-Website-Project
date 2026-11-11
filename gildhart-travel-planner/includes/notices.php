@@ -63,6 +63,8 @@ function gtp_notices_state() {
 
 function gtp_notices_save( $state ) {
 	update_option( GTP_NOTICES_OPTION, $state, false );
+	/* What is on show may have changed: includes/cache.php clears the page cache if it has. */
+	do_action( 'gtp_notices_saved' );
 }
 
 /** Their page, or '' when it could not be had. One polite request, named for what it is. */

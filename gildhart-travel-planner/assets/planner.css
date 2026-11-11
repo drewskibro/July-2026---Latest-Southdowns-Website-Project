@@ -217,6 +217,9 @@
   .gtp .gtp__quick { order: 3; margin-top: 22px; }
   .gtp .gtp__noscript { order: 4; }
   .gtp .gtp__notice-date { flex-basis: 100%; }
+  /* Behind the words the map is only texture: a pin and a route on it read as a stray mark under the box. */
+  .gtp .gtp__pin,
+  .gtp [data-gtp-route] { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .gtp .gtp__card { opacity: 1; transform: none; transition: none; }
