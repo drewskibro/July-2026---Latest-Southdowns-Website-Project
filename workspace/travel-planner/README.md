@@ -1,89 +1,31 @@
-# The Travel Planner plugin: how it is built, tested and refreshed
+# The Travel Planner on this site
 
-The plugin is `gildhart-travel-planner/` at the repository's root. The deploy
-copies it to the site's plugins folder beside the theme
-(`.github/workflows/deploy.yml`); it does nothing until it is switched on in
-wp-admin, and shows nothing to the public until its own setting says so.
+The planner is Gildhart's product, built, tested and released from its own
+private repository: **Gildhart-pharmodigital/gildhart-travel-planner**. Its
+source, tests, guidance pipeline and the Claude skill that runs it live there.
 
-Southdowns' settings (prices a dose, the booking link, the map point, the
-colours) are `southdowns-pharmacy-theme/gildhart-travel-planner.json`. The
-plugin reads that file until someone saves its settings screen in wp-admin.
-The planner is placed by `page-templates/page-travel-health.php`, above the
-destinations.
+What this repository carries:
+
+- `gildhart-travel-planner/` at the root: **a released copy** of the plugin
+  (1.1.0), which the deploy puts in `wp-content/plugins/`. **Do not edit it
+  here.** A fix is made in the product repository, released, and copied in
+  with its `tools/sync-client.py`, which refuses to overwrite a copy that was
+  changed here.
+- `southdowns-pharmacy-theme/gildhart-travel-planner.json`: Southdowns'
+  settings as onboarded. Since the planner was switched on (11 November 2026)
+  the live settings are in wp-admin, Travel Planner > Settings, and this file
+  is not read. Change prices there.
+- The theme's part: `page-templates/page-travel-health.php` places the planner
+  straight after the hero, the phone's hero leads to it, the destinations
+  under it open their country in it, and `assets/css/global.css` lifts the
+  chat button clear of its booking bar on a phone.
 
 ## Checks
 
 ```
-cd workspace/travel-planner/tests
-./serve.sh                 # the harness: the plugin without WordPress, port 8911
-node checks/planner.js     # 161 checks; exits 1 on any failure
-node checks/tamper.js      # breaks 21 rules on purpose; each must be caught
-node checks/shots.js out/  # screenshots, for a person to look at (a phone's screens and the two wp-admin screens too)
+node workspace/travel-planner/theme-check.js
 ```
 
-The harness (`tests/harness/`) stands in for WordPress, and
-`tests/fixtures/outbreaks.html` for TravelHealthPro's outbreak search: a saved
-copy with every notice's words taken out. Nothing in the checks asks
-TravelHealthPro for anything. Run both checks before any change is pushed.
-
-## Refreshing what the guidance says (the data pack)
-
-`gildhart-travel-planner/data/` is built, never edited. It needs the content
-system that holds `thp.py` (the Miles Pharmacy repository's `content-system/`).
-
-```
-python3 refresh_snapshots.py --pipeline <content-system> --out <a directory outside this repository>
-python3 build_pack.py --pipeline <content-system> --snapshots <that directory>
-git diff --stat gildhart-travel-planner/data/countries   # what changed in the guidance
-```
-
-The snapshots hold TravelHealthPro's own text, and this repository is public,
-so they stay outside it: only the pack, which is facts in our own words, is
-committed. Read the diff before committing: a country whose recommended
-vaccines changed is a clinical change, and a person should see it. Then bump
-the plugin's version and deploy. A page that drops its connection is asked for
-once more; a page their server refuses is not.
-
-Between the reading of 8 October 2026 and that of 11 November, four things
-changed in 262 countries: Zimbabwe's page could be read (it had no card);
-polio joined "some travellers" for Kenya, Libya and Uganda; and Uganda stopped
-asking for a yellow fever certificate. That last one is why the yellow fever
-line on a card is now written from each country's own certificate fact
-(`yellow_fever_note()` in `build_pack.py`), and the checks hold every card to
-it.
-
-`AKA` in `build_pack.py` is the other names the box answers to. TravelHealthPro
-files a place under one name ("DRC", "USA", "Korea, South") and some places
-under their country (Bali is their Indonesia page); a traveller types the name
-they know. Add a name there, never in `data/countries.json`.
-
-`data/map.json` and `data/outlines/` are drawn from Natural Earth by the same
-content system (`planner_map.py`) and change only when a country does.
-
-## The page cache
-
-The prices and the day's notices are in the page's HTML, so a host's page
-cache would serve yesterday's. `includes/cache.php` clears it when the
-settings change, when the notices on show change (a fingerprint, so a reading
-that changes nothing clears nothing; the daily run also catches a reading
-going stale), and once for a new version. It fires `gtp_purge_pages` for any
-host or caching plugin, and on Kinsta calls the must-use plugin's own
-`$kinsta_cache->kinsta_cache_purge->purge_complete_caches( true )` (read in
-kinsta-mu-plugins 3.7.0). The harness stands in for both (`__kinsta`).
-
-## The theme's side
-
-On a phone the card's booking bar is pinned to the foot of the window; while
-it is, `<html data-gtp-pinned>` and `--gtp-pinned-height` say so, and
-Southdowns' `assets/css/global.css` lifts the chat button by that much. Any
-element with `data-gtp-pick="<slug>"` opens that country in the planner, which
-is how the travel page's destination cards work. Both are generic; nothing
-Southdowns-specific is in the plugin.
-
-## Another pharmacy
-
-Install the plugin on its site, then either fill in Travel Planner > Settings
-or paste the settings exported from this site and change the prices, the
-booking link, the map point and the colours. No rebuild: the pack holds no
-price and no pharmacy. If its theme lives in git, give it its own
-`gildhart-travel-planner.json`.
+The theme's part, from the files, with each rule broken on purpose to prove
+it is caught. The plugin's own checks run in the product repository, and so
+does its live check, which reads this site's travel page as a visitor sees it.

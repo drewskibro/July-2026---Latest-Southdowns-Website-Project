@@ -18,6 +18,12 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-11] — Travel Planner moves to its own repository
+- The plugin's source, tests and guidance pipeline now live in `Gildhart-pharmodigital/gildhart-travel-planner` (private); removed from `workspace/travel-planner/` here.
+- `gildhart-travel-planner/` stays as a released copy (1.1.0), identical to the product's; never edit it here (`tools/sync-client.py` there refuses to overwrite a changed copy).
+- `workspace/travel-planner/theme-check.js`: the theme's part (planner placement, the phone hero's link, destination cards, the chat button's lift), 5 checks and 5 planted faults.
+- Live settings are in wp-admin since switch-on; `southdowns-pharmacy-theme/gildhart-travel-planner.json` is the onboarding record only.
+
 ### [2026-11-11] — Travel Planner 1.1.0: phone fixes and the page cache (theme 1.0.3)
 - Phone: the pinned booking bar sets `<html data-gtp-pinned>` + `--gtp-pinned-height` (`assets/planner.js`); `southdowns-pharmacy-theme/assets/css/global.css` lifts `#ai-chat-launcher` (an inline Voiceflow script, not in this repo) above it. Pin and route hidden on a phone (`planner.css`).
 - `page-templates/page-travel-health.php`: phone hero gets "Check What Vaccines You Need"; with the planner on, order is hero, planner, destinations, why-us, stats (alternation kept); S4 is "Popular destinations" and its cards open the country via `data-gtp-pick` (now page-wide).
