@@ -1,0 +1,44 @@
+{
+ "slug": "united-arab-emirates",
+ "name": "United Arab Emirates",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/united-arab-emirates",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to United Arab Emirates who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "hepatitis-b",
+    "note": "Worth considering for longer stays, for anyone who might need medical or dental treatment there, and for work with blood or needles."
+   },
+   {
+    "id": "measles-mmr",
+    "note": "Make sure you've had two doses of MMR. Measles is common in United Arab Emirates, and a UK adult who missed a dose can catch it."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to United Arab Emirates, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "A yellow fever certificate is asked for from travellers aged 9 months and over arriving from a country with yellow fever risk, or after more than 12 hours in transit through one. Flying straight from the UK, you won't need one."
+ ],
+ "malaria": {
+  "line": "No malaria risk in United Arab Emirates.",
+  "tablets": false
+ }
+}

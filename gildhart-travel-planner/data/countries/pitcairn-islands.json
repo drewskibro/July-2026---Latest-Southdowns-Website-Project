@@ -1,0 +1,36 @@
+{
+ "slug": "pitcairn-islands",
+ "name": "Pitcairn Islands",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/pitcairn-islands",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Pitcairn Islands who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "hepatitis-b",
+    "note": "Worth considering for longer stays, for anyone who might need medical or dental treatment there, and for work with blood or needles."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "A yellow fever certificate is asked for from travellers aged 1 year and over arriving from a country with yellow fever risk. Flying straight from the UK, you won't need one."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Pitcairn Islands.",
+  "tablets": false
+ }
+}

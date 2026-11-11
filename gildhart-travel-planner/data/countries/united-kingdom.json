@@ -1,0 +1,32 @@
+{
+ "slug": "united-kingdom",
+ "name": "United Kingdom",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/united-kingdom",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "polio",
+    "note": "Proof of polio vaccination can be asked for on arrival or departure. Check your booster is within ten years."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in United Kingdom.",
+  "tablets": false
+ }
+}

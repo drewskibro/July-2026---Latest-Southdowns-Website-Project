@@ -1,0 +1,36 @@
+{
+ "slug": "turks-and-caicos-islands",
+ "name": "Turks and Caicos Islands",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/turks-and-caicos-islands",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "dengue",
+    "note": "Spread by daytime-biting mosquitoes, and bite avoidance is the main protection. Ask about the vaccine if you've had dengue before."
+   },
+   {
+    "id": "hepatitis-b",
+    "note": "Worth considering for longer stays, for anyone who might need medical or dental treatment there, and for work with blood or needles."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Turks and Caicos Islands.",
+  "tablets": false
+ }
+}

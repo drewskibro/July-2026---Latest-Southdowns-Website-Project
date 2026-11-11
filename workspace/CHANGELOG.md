@@ -18,6 +18,18 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-11] — Travel Planner: fresh guidance, several-country notices, other names
+- Data pack rebuilt from TravelHealthPro as read on 11 Nov (262 cards; was 8 Oct). Changes: Zimbabwe gains a card, polio joins "some travellers" for Kenya, Libya and Uganda, Uganda asks for no yellow fever certificate.
+- `workspace/travel-planner/build_pack.py`: the yellow fever line on a card is written from that country's certificate fact (`yellow_fever_note()`), and `AKA` gives the box other names ("Bali", "United States", "Democratic Republic of the Congo").
+- `includes/notices.php`: a notice NaTHNaC files under several countries ("View Countries +") is kept once per country and listed as one row; it was kept as a country called "View Countries".
+- Checks now 137 (`checks/planner.js`) and 11 planted faults (`checks/tamper.js`); `checks/shots.js` also takes a phone's screens and the two wp-admin screens.
+
+### [2026-11-11] — Travel Planner plugin (gildhart-travel-planner/)
+- New self-contained plugin at the repo root: `[travel_planner]` ("Where are you going?", 262 countries, a dose's price per vaccine, booking) and `[travel_notices]`. Deployed beside the theme by a second step in `.github/workflows/deploy.yml`; inert until activated, and in preview (editors only) until its "Show the planner to everyone" setting is ticked.
+- Southdowns' settings live in `southdowns-pharmacy-theme/gildhart-travel-planner.json` (prices a dose, `#book`, Havant map point, blues). Placed above the destinations in `page-templates/page-travel-health.php`; the hero's "Check What Vaccines You Need" leads to it when it is drawn.
+- Outbreak notices are read daily from TravelHealthPro (date, disease, country only); manual add/hide/read-now in wp-admin. Country guidance is a dated pack in `gildhart-travel-planner/data/`, rebuilt by hand (`workspace/travel-planner/README.md`).
+- Tests: `workspace/travel-planner/tests` (harness + `checks/planner.js`, 128 checks; `checks/tamper.js`, 8 planted faults caught). Never put a course total or a brand name on a card.
+
 ### [2026-03-10] — Mobile hero redesigned with full-width overlay
 - Mobile now uses full-width background images with dark blue gradient overlay (from-blue-900/95 via-blue-900/70)
 - Text overlaid at bottom of image, vertically stacked, much more readable

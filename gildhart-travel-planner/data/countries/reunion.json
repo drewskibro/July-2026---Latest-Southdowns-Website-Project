@@ -1,0 +1,48 @@
+{
+ "slug": "reunion",
+ "name": "Réunion",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/reunion",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "chikungunya",
+    "note": "Spread by daytime-biting mosquitoes. The vaccine is worth discussing for longer stays and for anyone at higher risk; bite avoidance matters for everyone."
+   },
+   {
+    "id": "dengue",
+    "note": "Spread by daytime-biting mosquitoes, and bite avoidance is the main protection. Ask about the vaccine if you've had dengue before."
+   },
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Réunion who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "hepatitis-b",
+    "note": "Worth considering for longer stays, for anyone who might need medical or dental treatment there, and for work with blood or needles."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to Réunion, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Réunion.",
+  "tablets": false
+ }
+}

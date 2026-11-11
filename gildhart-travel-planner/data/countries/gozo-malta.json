@@ -1,0 +1,28 @@
+{
+ "slug": "gozo-malta",
+ "name": "Malta",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/gozo-malta",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "A yellow fever certificate is asked for from travellers aged 9 months and over arriving from a country with yellow fever risk, or after more than 12 hours in transit through one. Flying straight from the UK, you won't need one."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Malta.",
+  "tablets": false
+ }
+}

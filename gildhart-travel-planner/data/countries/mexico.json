@@ -1,0 +1,48 @@
+{
+ "slug": "mexico",
+ "name": "Mexico",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/mexico",
+ "vaccines": {
+  "most": [
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Mexico who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to Mexico, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ],
+  "some": [
+   {
+    "id": "chikungunya",
+    "note": "Spread by daytime-biting mosquitoes. The vaccine is worth discussing for longer stays and for anyone at higher risk; bite avoidance matters for everyone."
+   },
+   {
+    "id": "dengue",
+    "note": "Spread by daytime-biting mosquitoes, and bite avoidance is the main protection. Ask about the vaccine if you've had dengue before."
+   },
+   {
+    "id": "measles-mmr",
+    "note": "Make sure you've had two doses of MMR. Measles is common in Mexico, and a UK adult who missed a dose can catch it."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "There's a low malaria risk in parts of Mexico. Bite avoidance is the usual advice rather than tablets.",
+  "tablets": false
+ }
+}

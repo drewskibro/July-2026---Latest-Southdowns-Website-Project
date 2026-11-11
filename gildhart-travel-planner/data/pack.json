@@ -1,0 +1,12 @@
+{
+ "built": "2026-11-11",
+ "read": {
+  "oldest": "2026-11-11",
+  "newest": "2026-11-11"
+ },
+ "countries": 262,
+ "cards": 262,
+ "vaccines": 15,
+ "source": "NaTHNaC TravelHealthPro country pages (travelhealthpro.org.uk/countries), read into facts and written in our own words",
+ "licence": "Contains public sector information licensed under the Open Government Licence v3.0."
+}

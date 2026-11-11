@@ -1,0 +1,48 @@
+{
+ "slug": "dominican-republic",
+ "name": "Dominican Republic",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/dominican-republic",
+ "vaccines": {
+  "most": [
+   {
+    "id": "hepatitis-a",
+    "note": "Recommended for most people going to Dominican Republic who haven't had it before. It spreads through food and water, and a good hotel doesn't remove the risk."
+   },
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to Dominican Republic, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ],
+  "some": [
+   {
+    "id": "cholera",
+    "note": "Only for a few people: aid and health workers, and anyone going to an outbreak area with limited access to clean water."
+   },
+   {
+    "id": "dengue",
+    "note": "Spread by daytime-biting mosquitoes, and bite avoidance is the main protection. Ask about the vaccine if you've had dengue before."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   },
+   {
+    "id": "tuberculosis-bcg",
+    "note": "Only for a few people: under-16s staying three months or more with local people, and healthcare workers."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "A yellow fever certificate is asked for from travellers aged 1 year and over arriving from a country with yellow fever risk, or after more than 12 hours in transit through one. Flying straight from the UK, you won't need one."
+ ],
+ "malaria": {
+  "line": "There's a low malaria risk in parts of Dominican Republic. Bite avoidance is the usual advice rather than tablets.",
+  "tablets": false
+ }
+}

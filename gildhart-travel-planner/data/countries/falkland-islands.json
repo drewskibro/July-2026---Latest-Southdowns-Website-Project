@@ -1,0 +1,23 @@
+{
+ "slug": "falkland-islands",
+ "name": "Falkland Islands",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/falkland-islands",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": []
+ },
+ "also_listed": [],
+ "certificates": [
+  "No yellow fever certificate is needed."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Falkland Islands.",
+  "tablets": false
+ }
+}

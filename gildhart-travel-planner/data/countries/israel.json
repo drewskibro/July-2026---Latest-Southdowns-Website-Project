@@ -1,0 +1,40 @@
+{
+ "slug": "israel",
+ "name": "Israel",
+ "checked": "2026-11-11",
+ "source": "https://travelhealthpro.org.uk/countries/israel",
+ "vaccines": {
+  "most": [
+   {
+    "id": "tetanus-dtp",
+    "note": "Check when you last had a tetanus, diphtheria and polio booster. If it was more than ten years ago and you'll be anywhere medical care is limited, a booster is recommended."
+   }
+  ],
+  "some": [
+   {
+    "id": "measles-mmr",
+    "note": "Make sure you've had two doses of MMR. Measles is common in Israel, and a UK adult who missed a dose can catch it."
+   },
+   {
+    "id": "polio",
+    "note": "Proof of polio vaccination can be asked for on arrival or departure. Check your booster is within ten years."
+   },
+   {
+    "id": "rabies",
+    "note": "Worth considering if you'll be around animals, in rural areas or far from medical care, and for children, who are bitten more often. The course takes three or four weeks, so book early."
+   },
+   {
+    "id": "typhoid",
+    "note": "Spread through food and water. Recommended for most trips to Israel, and especially if you're staying with family or eating away from the tourist trail."
+   }
+  ]
+ },
+ "also_listed": [],
+ "certificates": [
+  "A yellow fever certificate can be asked for on arrival."
+ ],
+ "malaria": {
+  "line": "No malaria risk in Israel.",
+  "tablets": false
+ }
+}

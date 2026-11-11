@@ -1,0 +1,41 @@
+{
+  "_about": "Southdowns Pharmacy Group's settings for the Travel Planner plugin (gildhart-travel-planner). The plugin reads this file until someone saves its settings screen in wp-admin; after that the saved settings are in force. Prices are per dose, from the pharmacy's booking list, 11 November 2026.",
+  "enabled": false,
+  "pharmacy": "Southdowns Pharmacy Group",
+  "booking_url": "/travel-vaccinations/#book",
+  "phone": "",
+  "lat": "50.85023",
+  "lng": "-0.99308",
+  "consultation_line": "The travel consultation is £20.",
+  "yf_centre": true,
+  "yf_line": "Bosmere Pharmacy in Havant is our registered yellow fever vaccination centre.",
+  "color_dark": "#1e3a8a",
+  "color_dark2": "#1d4ed8",
+  "color_accent": "#2563eb",
+  "color_pin": "#fbbf24",
+  "color_tint": "#eff6ff",
+  "alerts": "ours",
+  "vaccines": {
+    "hepatitis-a":             { "status": "given", "price": 56 },
+    "tetanus-dtp":             { "status": "given", "price": 35 },
+    "typhoid":                 { "status": "given", "price": 40 },
+    "hepatitis-b":             { "status": "given", "price": 36, "child_price": 30 },
+    "rabies":                  { "status": "given", "price": 98.5 },
+    "japanese-encephalitis":   { "status": "given", "price": 119 },
+    "tick-borne-encephalitis": { "status": "given", "price": 65, "child_price": 56 },
+    "cholera":                 { "status": "given", "price": 100 },
+    "dengue":                  { "status": "given", "price": 96 },
+    "chikungunya":             { "status": "given", "price": 180 },
+    "measles-mmr":             { "status": "given", "price": 35 },
+    "menacwy":                 { "status": "given", "price": 57 },
+    "yellow-fever":            { "status": "given", "price": 95, "note": "With the certificate. At Bosmere Pharmacy, Havant only." },
+    "polio":                   { "status": "given" },
+    "tuberculosis-bcg":        { "status": "ask" }
+  },
+  "guides": {
+    "thailand": "/thailand-travel-vaccinations/",
+    "india": "/india-travel-vaccinations/",
+    "kenya": "/kenya-travel-vaccinations/",
+    "cape-verde": "/cape-verde-travel-vaccinations/"
+  }
+}
