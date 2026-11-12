@@ -1,7 +1,7 @@
 === Travel Planner by Gildhart ===
 Requires at least: 6.0
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 
 "Where are you going?" for a pharmacy's travel clinic.
@@ -18,7 +18,9 @@ country. Every answer ends at a booking.
 
 == Setting it up on a site ==
 
-1. Upload the plugin folder to wp-content/plugins and switch it on in Plugins.
+1. Plugins > Add New Plugin > Upload Plugin, with the zip from Gildhart's
+   updates repository (github.com/Gildhart-pharmodigital/travel-planner-updates),
+   then Activate. It updates itself from then on.
 2. Open Travel Planner > Settings. Fill in the booking link, the pharmacy's
    point on the map, each vaccine's price a dose, and the colours.
    Or paste settings copied from another site into "Import settings".
@@ -53,6 +55,12 @@ until someone saves the settings screen.
 * What the guidance says about each country ships with the plugin and is
   dated on every card. It changes only with a new version of the plugin, so
   a recommendation never moves on a site without a person having looked.
+* The plugin itself: WordPress finds each new version (with each month's
+  guidance) in Gildhart's updates repository, shows it in Plugins like any
+  other, and installs it by itself. Travel Planner > Settings > Updates turns
+  that off. Only Gildhart's own zip, for exactly the version named, is ever
+  offered. Settings, prices and notices are kept: they are in the site's
+  database (or its theme), never in the plugin's folder.
 
 == For a theme ==
 

@@ -8,6 +8,11 @@ on:
       - 'southdowns-pharmacy-theme/**'
       - 'gildhart-travel-planner/**'
   workflow_dispatch:
+    inputs:
+      plugin:
+        description: Also copy the Travel Planner plugin folder (it updates itself from 1.3.0, so this would put the repository's copy back over a newer one)
+        type: boolean
+        default: false
 
 jobs:
   deploy:
@@ -15,6 +20,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      # From 1.3.0 the Travel Planner updates itself in wp-admin, so the live
+      # plugin can be newer than this repository's copy. The copy is deployed
+      # only when a push changes the gildhart-travel-planner/ folder (a person
+      # syncing a release on purpose), never on a theme push.
+      - name: Did this push change the plugin folder?
+        id: plugin
+        env:
+          BEFORE: ${{ github.event.before }}
+          EVENT: ${{ github.event_name }}
+          ASKED: ${{ inputs.plugin }}
+        run: |
+          if [ "$EVENT" = "workflow_dispatch" ]; then echo "changed=${ASKED:-false}" >> "$GITHUB_OUTPUT"; exit 0; fi
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ] || ! git fetch -q --depth=1 origin "$BEFORE"; then
+            echo "No earlier commit to compare with: the plugin folder is left as it is on the server."; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          if git diff --quiet "$BEFORE" "$GITHUB_SHA" -- gildhart-travel-planner/; then
+            echo "The plugin folder did not change: the live plugin (which updates itself) is left alone."; echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Deploy theme via SCP
         uses: appleboy/scp-action@v0.1.7
@@ -29,10 +55,10 @@ jobs:
           use_insecure_cipher: true
           timeout: 120s
 
-      # The Travel Planner plugin (gildhart-travel-planner/), beside the theme.
-      # Copying it does nothing by itself: it is switched on once in wp-admin
-      # (Plugins), and shows nothing to the public until its own setting says so.
+      # The Travel Planner plugin (gildhart-travel-planner/), beside the theme,
+      # only when this push changed that folder (above).
       - name: Deploy Travel Planner plugin via SCP
+        if: steps.plugin.outputs.changed == 'true'
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.KINSTA_HOST }}

@@ -18,6 +18,11 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-12] — Travel Planner 1.3.0 (it updates itself)
+- `gildhart-travel-planner/` is release 1.3.0, copied with the product's `tools/sync-client.py` (1 added, 5 changed); from 1.3.0 WordPress installs each new version itself from Gildhart-pharmodigital/travel-planner-updates (Travel Planner > Settings > Updates can turn that off).
+- `.github/workflows/deploy.yml`: the plugin folder is copied only when a push changes it (or a manual run asks), never on a theme push, so it cannot put an older version over a newer self-updated one.
+- `workspace/travel-planner/README.md` says so. `node workspace/travel-planner/theme-check.js`: all pass, 5 of 5 planted faults caught.
+
 ### [2026-11-11] — Travel Planner 1.2.0 (the live notices line)
 - `gildhart-travel-planner/` is release 1.2.0 of Gildhart-pharmodigital/gildhart-travel-planner, copied with its `tools/sync-client.py` (5 files changed; not edited here).
 - New on the travel page: under the planner's box, "LIVE · Outbreak notices from NaTHNaC, checked today at …" with a gentle pulse while the daily reading is fresh, the three latest notices (each opens its country), dots on the desktop map, and a live notice leading a country's card. Still for reduced motion; not drawn when the reading is over 30 days old.

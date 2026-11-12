@@ -31,7 +31,7 @@ add_action( 'admin_post_gtp_save_settings', function () {
 	gtp_admin_guard( 'gtp_save_settings' );
 	$in = isset( $_POST['gtp'] ) && is_array( $_POST['gtp'] ) ? wp_unslash( $_POST['gtp'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- sanitised by gtp_sanitize_settings
 	/* A box left unticked is not sent at all: say so, or the old value would stand. */
-	foreach ( array( 'enabled', 'yf_centre', 'reader_paused' ) as $k ) { $in[ $k ] = ! empty( $in[ $k ] ); }
+	foreach ( array( 'enabled', 'yf_centre', 'reader_paused', 'auto_update' ) as $k ) { $in[ $k ] = ! empty( $in[ $k ] ); }
 	if ( ! isset( $in['vaccines'] ) ) { $in['vaccines'] = array(); }
 	if ( ! isset( $in['guides'] ) ) { $in['guides'] = ''; }
 	update_option( GTP_OPTION, gtp_sanitize_settings( $in, gtp_defaults() ), false );
@@ -206,6 +206,26 @@ function gtp_admin_settings_page() {
 					<label><input type="radio" name="gtp[alerts]" value="none" <?php checked( $s['alerts'], 'none' ); ?>> nothing</label>
 				</td></tr>
 				<tr><th scope="row">The daily reading</th><td><label><input type="checkbox" name="gtp[reader_paused]" value="1" <?php checked( $s['reader_paused'] ); ?>> Pause it (notices added by hand are still shown)</label></td></tr>
+			</table>
+
+			<h2>Updates</h2>
+			<?php $gtp_newer = gtp_update_known(); ?>
+			<table class="form-table" role="presentation" data-gtp-updates>
+				<tr><th scope="row">This version</th><td data-gtp-version><?php echo esc_html( GTP_VERSION ); ?>
+					<?php if ( $gtp_newer ) : ?> &middot; <strong><?php echo esc_html( $gtp_newer ); ?> is ready:</strong> <a href="<?php echo esc_url( admin_url( 'update-core.php' ) ); ?>">Dashboard &rsaquo; Updates</a>
+					<?php elseif ( gtp_updates_enabled() ) : ?> &middot; <a href="<?php echo esc_url( admin_url( 'update-core.php?force-check=1' ) ); ?>">Check for a newer one</a><?php endif; ?></td></tr>
+				<tr><th scope="row">Automatic updates</th><td>
+					<label><input type="checkbox" name="gtp[auto_update]" value="1" <?php checked( $s['auto_update'] ); ?>> Install each new version by itself</label>
+					<p class="description" data-gtp-updates-note><?php
+					if ( ! gtp_updates_enabled() ) {
+						echo 'This site takes no updates from Gildhart: the plugin is deployed here another way.';
+					} elseif ( ! gtp_wp_installs_updates() ) {
+						echo 'WordPress on this site installs nothing by itself (the host has turned that off), so a new version waits in Dashboard &rsaquo; Updates to be installed by hand.';
+					} else {
+						echo 'Each month\'s guidance comes as a new version. With this on, WordPress installs it within a day of its release; with it off, it waits in Dashboard &rsaquo; Updates. Your settings and prices are kept either way.';
+					}
+					?></p>
+				</td></tr>
 			</table>
 
 			<?php submit_button( 'Save settings' ); ?>
