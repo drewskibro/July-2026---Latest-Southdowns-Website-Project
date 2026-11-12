@@ -38,6 +38,7 @@ function gtp_base_defaults() {
 		'alert_email'       => '',             // empty: the site's admin address
 		'alerts'            => 'ours',         // ours: diseases we vaccinate against; all; none
 		'reader_paused'     => false,
+		'auto_update'       => true,           // install each new version (and each month's guidance) by itself
 		'vaccines'          => array(),        // id => status, price, child_price, note
 		'guides'            => array(),        // country slug => this site's page about it
 	);
@@ -103,7 +104,7 @@ function gtp_sanitize_settings( $in, $base = null ) {
 	$out  = $base;
 	$text = function ( $v ) { return trim( wp_strip_all_tags( (string) $v ) ); };
 
-	foreach ( array( 'enabled', 'yf_centre', 'reader_paused' ) as $k ) {
+	foreach ( array( 'enabled', 'yf_centre', 'reader_paused', 'auto_update' ) as $k ) {
 		if ( array_key_exists( $k, $in ) ) { $out[ $k ] = ! empty( $in[ $k ] ) && 'false' !== $in[ $k ] && '0' !== $in[ $k ]; }
 	}
 	foreach ( array( 'pharmacy', 'phone', 'consultation_line', 'yf_line' ) as $k ) {

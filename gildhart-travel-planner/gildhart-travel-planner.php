@@ -2,13 +2,14 @@
 /**
  * Plugin Name:       Travel Planner by Gildhart
  * Description:       "Where are you going?" for a pharmacy's travel clinic: any country, the vaccines the guidance lists for it, what each costs a dose here, how far ahead to book, and the day's outbreak notices. Every answer ends at a booking.
- * Version:           1.2.0
+ * Version:           1.3.0
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Gildhart
  * Author URI:        https://gildhart.com
  * License:           GPL-2.0-or-later
  * Text Domain:       gildhart-travel-planner
+ * Update URI:        https://raw.githubusercontent.com/Gildhart-pharmodigital/travel-planner-updates/main/travel-planner/info.json
  *
  * One pharmacy's travel desk, on any WordPress site, with nothing borrowed
  * from the theme around it.
@@ -31,6 +32,10 @@
  *                disease and the country, never their words or figures. A
  *                person can add, hide or correct one, and read again by hand.
  *
+ * It updates itself (includes/updates.php): WordPress finds each new version,
+ * with each month's guidance, in Gildhart's public updates repository, and
+ * installs it while automatic updates are on.
+ *
  * The rules a card keeps, each learned on the first site this ran on:
  * a price is one dose's, never a course's total; a vaccine is named by its
  * type, never a brand; nobody is told they don't need one; every card ends
@@ -38,7 +43,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'GTP_VERSION', '1.2.0' );
+define( 'GTP_VERSION', '1.3.0' );
 define( 'GTP_FILE', __FILE__ );
 define( 'GTP_DIR', __DIR__ );
 
@@ -48,6 +53,7 @@ require_once GTP_DIR . '/includes/notices.php';
 require_once GTP_DIR . '/includes/cache.php';
 require_once GTP_DIR . '/includes/planner.php';
 require_once GTP_DIR . '/includes/admin.php';
+require_once GTP_DIR . '/includes/updates.php';
 
 /** The plugin's address, for its own script, stylesheet and data. */
 function gtp_url( $path = '' ) {
