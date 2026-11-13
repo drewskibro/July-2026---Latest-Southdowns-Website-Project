@@ -18,6 +18,11 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-13] — Travel Planner licence key
+- `southdowns-pharmacy-theme/gildhart-travel-planner.json` carries `"licence"`: this site's Travel Planner key (id eb96eb25, no end date), issued by Gildhart-pharmodigital/gildhart-travel-planner's "Licence keys" workflow.
+- Travel Planner 1.5.0 and later need it to show the planner to everyone and to update; the plugin reads it from this file even though the settings are saved in wp-admin. 1.4.0 ignores it.
+- It works only on southdownspharmacygroup.co.uk, so it is not a secret. A theme push deploys the theme only; the live plugin is left alone (`.github/workflows/deploy.yml`).
+
 ### [2026-11-12] — Travel Planner 1.3.0 (it updates itself)
 - `gildhart-travel-planner/` is release 1.3.0, copied with the product's `tools/sync-client.py` (1 added, 5 changed); from 1.3.0 WordPress installs each new version itself from Gildhart-pharmodigital/travel-planner-updates (Travel Planner > Settings > Updates can turn that off).
 - `.github/workflows/deploy.yml`: the plugin folder is copied only when a push changes it (or a manual run asks), never on a theme push, so it cannot put an older version over a newer self-updated one.
