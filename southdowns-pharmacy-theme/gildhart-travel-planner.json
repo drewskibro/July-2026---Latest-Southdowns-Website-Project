@@ -1,5 +1,6 @@
 {
-  "_about": "Southdowns Pharmacy Group's settings for the Travel Planner plugin (gildhart-travel-planner). The plugin reads this file until someone saves its settings screen in wp-admin; after that the saved settings are in force. Prices are per dose, from the pharmacy's booking list, 11 November 2026.",
+  "_about": "Southdowns Pharmacy Group's settings for the Travel Planner plugin (gildhart-travel-planner). The plugin reads this file until someone saves its settings screen in wp-admin; after that the saved settings are in force. Prices are per dose, from the pharmacy's booking list, 11 November 2026. `licence` is this site's licence key (Travel Planner 1.5.0 and later), read from here even after the settings are saved; it works only on southdownspharmacygroup.co.uk, so it is not a secret.",
+  "licence": "GTP1-eyJ2IjoxLCJpZCI6ImViOTZlYjI1Iiwid2hvIjoiU291dGhkb3ducyBQaGFybWFjeSBHcm91cCIsInBsYW4iOiJjbGllbnQiLCJzaXRlcyI6WyJzb3V0aGRvd25zcGhhcm1hY3lncm91cC5jby51ayJdLCJleHAiOm51bGwsImlhdCI6IjIwMjYtMTEtMTMifQ.pXzob6jiBlS1cZac2c9wW7rkenqHoANcp2xAq8IlzDHgaEB2CyNTaM4hP2tdz5EGSpQiWMJCmR6BOwsgQQmQDA",
   "enabled": false,
   "pharmacy": "Southdowns Pharmacy Group",
   "booking_url": "/travel-vaccinations/#book",
