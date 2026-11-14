@@ -50,7 +50,7 @@ function legal_defaults(): array {
 			'legal_eyebrow' => 'Legal &amp; Policies',
 			'legal_heading' => 'Privacy Policy',
 			'legal_intro'   => 'How we collect, use and protect your personal data.',
-			'legal_updated' => 'June 2026',
+			'legal_updated' => 'November 2026',
 		],
 		'cookie' => [
 			'legal_eyebrow' => 'Legal &amp; Policies',

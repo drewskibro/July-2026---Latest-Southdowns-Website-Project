@@ -8,7 +8,7 @@
  */
 get_header();
 $email        = sp_email();
-$last_updated = sp_field( 'legal_updated', 'June 2026' );
+$last_updated = sp_field( 'legal_updated', 'November 2026' );
 ?>
 
 <style>
@@ -73,6 +73,8 @@ $last_updated = sp_field( 'legal_updated', 'June 2026' );
         <li>Website usage data</li>
       </ul>
       <p>This information helps us improve the performance, security and usability of our website.</p>
+      <?php /* The Travel Planner's look-up counter: the line Travel Planner > Look-ups gives. Keep it while counting is on. */ ?>
+      <p><strong>Travel Planner</strong> — Our travel planner counts how many times each country is looked up each month. It keeps only the country and the month: nothing about you, no cookie and no IP address.</p>
 
       <h3>How We Use Your Information</h3>
       <p>We may use your personal information to:</p>
