@@ -18,6 +18,11 @@ You MUST maintain this file to track your work across messages. This is NON-NEGO
 </instructions>
 
 <changelog>
+### [2026-11-14] — Privacy policy: the Travel Planner's look-up counter
+- `southdowns-pharmacy-theme/page-templates/page-privacy-policy.php`: one line under "Information We Collect" saying the travel planner counts country look-ups by month and keeps nothing about the visitor (the line Travel Planner > Look-ups gives). Counting has been on since 12 November 2026.
+- "Last updated" default is now November 2026 (the template and `inc/acf-legal-fields.php`). If the page still shows June 2026, the value is saved in wp-admin: change "Last Updated" on the page there.
+- The policy body is the template's unless "Policy Body (override)" is filled in wp-admin, which replaces all of it: a line added to the template shows only while that box is empty (the live page showed the template's own text on 14 November 2026).
+
 ### [2026-11-13] — Travel Planner licence key
 - `southdowns-pharmacy-theme/gildhart-travel-planner.json` carries `"licence"`: this site's Travel Planner key (id eb96eb25, no end date), issued by Gildhart-pharmodigital/gildhart-travel-planner's "Licence keys" workflow.
 - Travel Planner 1.5.0 and later need it to show the planner to everyone and to update; the plugin reads it from this file even though the settings are saved in wp-admin. 1.4.0 ignores it.
