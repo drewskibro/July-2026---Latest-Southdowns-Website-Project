@@ -400,13 +400,12 @@ if ( empty( $bt_faqs ) ) {
       </div>
       <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">How It Works</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 yf-reveal">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 yf-reveal">
       <?php
       $bt_steps = [
           [ 'n' => '1', 'title' => 'Book Online', 'desc' => 'Choose your test and a convenient time at Davies Pharmacy, Havant. No GP referral needed.' ],
           [ 'n' => '2', 'title' => 'Quick Appointment', 'desc' => 'Visit Davies Pharmacy in Havant. Your sample is taken by trained staff in a discreet, professional setting.' ],
           [ 'n' => '3', 'title' => 'Lab Analysis', 'desc' => 'Your sample is analysed and results are typically ready within 24&ndash;48 hours.' ],
-          [ 'n' => '4', 'title' => 'Results &amp; Advice', 'desc' => 'Your pharmacist explains your results and any recommended next steps.' ],
       ];
       foreach ( $bt_steps as $st ) : ?>
       <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
