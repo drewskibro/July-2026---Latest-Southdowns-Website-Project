@@ -47,6 +47,8 @@ add_action( 'acf/init', function () {
 						'default_value' => 0,
 					],
 					[ 'key' => 'field_sp_award_logo', 'label' => 'Logo', 'name' => 'logo', 'type' => 'image', 'return_format' => 'url', 'preview_size' => 'thumbnail' ],
+					[ 'key' => 'field_sp_award_alt', 'label' => 'Logo alt text', 'name' => 'alt', 'type' => 'text', 'instructions' => 'Optional. Describes the logo for screen readers, e.g. "Independent Pharmacies Association Awards 2026 logo". Left empty, it is "<Awarding Body> logo".' ],
+					[ 'key' => 'field_sp_award_link', 'label' => 'Link', 'name' => 'link', 'type' => 'text', 'instructions' => 'Optional. Makes the whole card a link: a page on this site such as /excellence-in-public-trust-award/, or a full https:// address. Leave empty for a card that is not a link.' ],
 				],
 			],
 		],
@@ -63,6 +65,7 @@ add_filter( 'acf/load_value/name=sp_awards', function ( $value, $post_id, $field
 		return $value;
 	}
 	return [
+		[ 'year' => '2026', 'title' => 'Excellence in Public Trust Award',        'organisation' => 'Independent Pharmacies Association', 'finalist' => 0, 'logo' => false, 'alt' => 'Independent Pharmacies Association Awards 2026 logo', 'link' => '/excellence-in-public-trust-award/' ],
 		[ 'year' => '2026', 'title' => 'UK Pharmacy Group of the Year',           'organisation' => 'Pharmacy Business Awards',    'finalist' => 1, 'logo' => false ],
 		[ 'year' => '2024', 'title' => 'Pharmacy Services Provider of the Year', 'organisation' => 'Independent Pharmacy Awards', 'finalist' => 0, 'logo' => false ],
 		[ 'year' => '2023', 'title' => 'UK Community Pharmacist of the Year',     'organisation' => 'Pharmacy Business Awards',    'finalist' => 0, 'logo' => false ],

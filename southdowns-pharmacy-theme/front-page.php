@@ -218,75 +218,8 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       </h2>
     </div>
 
-    <div id="awards-track" class="flex sm:grid overflow-x-auto sm:overflow-visible snap-x snap-mandatory awards-no-scrollbar sm:grid-cols-2 lg:grid-cols-5 gap-5 md:gap-6 -mx-4 px-4 sm:mx-0 sm:px-0">
-      <?php
-      // Awards are edited globally under Pharmacy Settings → Awards (sp_awards()).
-      $awards = sp_awards();
-      $awards_total = count( $awards );
-      foreach ( $awards as $i => $aw ) :
-        // When the row count is odd, the final card is orphaned on the 2-col (tablet) layout — centre it.
-        $orphan = ( $i === $awards_total - 1 && $awards_total % 2 === 1 )
-          ? 'sm:col-span-2 sm:max-w-[calc(50%-0.75rem)] sm:mx-auto lg:col-span-1 lg:max-w-none'
-          : '';
-      ?>
-      <div class="shrink-0 basis-[82%] snap-center sm:basis-auto sm:shrink flex flex-col items-center text-center bg-[#fdf9f6] border border-[#e8e0d8] rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 <?php echo $orphan; ?>">
-        <div class="h-16 md:h-20 flex items-center justify-center mb-4">
-          <img src="<?php echo esc_url( $aw['logo'] ); ?>" alt="<?php echo esc_attr( $aw['org'] . ' logo' ); ?>" class="max-h-full max-w-[150px] w-auto object-contain" loading="lazy" />
-        </div>
-        <div class="text-3xl font-bold text-blue-700 font-jost mb-1.5"><?php echo esc_html( $aw['year'] ); ?></div>
-        <?php
-        // Fixed-height slot so cards stay aligned whether or not a badge is set.
-        $badge = $aw['badge'] ?? '';
-        ?>
-        <div class="h-7 flex items-center justify-center mb-2">
-          <?php if ( $badge === 'finalist' ) : ?>
-          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full border border-amber-200 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wide font-jost">Runner Up</span>
-          <?php elseif ( $badge === 'winner' ) : ?>
-          <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-bold uppercase tracking-wide font-jost">Winner</span>
-          <?php endif; ?>
-        </div>
-        <h3 class="text-base font-semibold text-slate-800 font-jost leading-snug mb-2"><?php echo esc_html( $aw['title'] ); ?></h3>
-        <p class="mt-auto text-sm text-slate-500 font-jost"><?php echo esc_html( $aw['org'] ); ?></p>
-      </div>
-      <?php endforeach; ?>
-    </div>
+    <?php get_template_part( 'template-parts/awards-carousel' ); ?>
   </div>
-
-  <style>
-    .awards-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    .awards-no-scrollbar::-webkit-scrollbar { display: none; }
-  </style>
-  <script>
-    (function () {
-      var track = document.getElementById('awards-track');
-      if (!track) return;
-      var mobile = window.matchMedia('(max-width: 639px)');
-      var idx = 0, timer = null, resumeTimer = null;
-
-      function step() {
-        var cards = track.children;
-        if (!cards.length) return;
-        idx = (idx + 1) % cards.length;
-        track.scrollTo({ left: cards[idx].offsetLeft - cards[0].offsetLeft, behavior: 'smooth' });
-      }
-      function start() {
-        stop();
-        if (!mobile.matches) return;
-        timer = setInterval(step, 3500);
-      }
-      function stop() { if (timer) { clearInterval(timer); timer = null; } }
-      function pauseThenResume() {
-        stop();
-        clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(start, 5000);
-      }
-
-      start();
-      (mobile.addEventListener ? mobile.addEventListener('change', start) : mobile.addListener(start));
-      track.addEventListener('touchstart', stop, { passive: true });
-      track.addEventListener('touchend', pauseThenResume, { passive: true });
-    })();
-  </script>
 </section>
 
 <!-- ============================================================
