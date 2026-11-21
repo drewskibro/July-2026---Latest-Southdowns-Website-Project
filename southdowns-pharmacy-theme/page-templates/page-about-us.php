@@ -107,7 +107,7 @@ $ab_inside_img    = $ab_uploads . 'ACE75A44-0B10-4C2F-9FF5-501A17F21482_1_105_c-
       </h2>
     </div>
 
-    <?php get_template_part( 'template-parts/awards-carousel' ); ?>
+    <?php get_template_part( 'template-parts/awards' ); ?>
   </div>
 </section>
 

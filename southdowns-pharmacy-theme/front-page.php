@@ -218,7 +218,7 @@ $s3_img = sp_field( 'home_s3_image', get_template_directory_uri() . '/assets/img
       </h2>
     </div>
 
-    <?php get_template_part( 'template-parts/awards-carousel' ); ?>
+    <?php get_template_part( 'template-parts/awards' ); ?>
   </div>
 </section>
 
