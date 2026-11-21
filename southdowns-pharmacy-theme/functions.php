@@ -470,6 +470,31 @@ function sp_awards(): array {
     return $rows ?: sp_awards_linked( $defaults );
 }
 
+/**
+ * The featured post for the homepage: the most recent published sticky post
+ * (Posts → Quick Edit → "Make this post sticky"), or the newest post when none
+ * is sticky. The blog page's "Featured This Week" picks the same post.
+ */
+function sp_featured_post_query(): WP_Query {
+    $sticky = array_values( array_filter( array_map( 'intval', (array) get_option( 'sticky_posts', [] ) ) ) );
+    $args   = [
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'posts_per_page'      => 1,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+    ];
+    if ( $sticky ) {
+        $q = new WP_Query( $args + [ 'post__in' => $sticky ] );
+        if ( $q->have_posts() ) {
+            return $q;
+        }
+    }
+    return new WP_Query( $args );
+}
+
 /** The defaults with each link made a full address. */
 function sp_awards_linked( array $awards ): array {
     return array_map( function ( $d ) {
