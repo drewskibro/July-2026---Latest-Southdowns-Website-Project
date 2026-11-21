@@ -404,6 +404,9 @@ function sp_award_badge(): string {
 function sp_awards(): array {
     $logo_base = wp_upload_dir()['baseurl'] . '/2026/05/';
     $defaults = [
+        // Newest first. 'link' (optional) makes the whole card a link; 'alt' (optional) is the logo's alt text.
+        // IPA logo: a trimmed, transparent copy shipped with the theme (assets/img/awards/).
+        [ 'year' => '2026', 'title' => 'Excellence in Public Trust Award',       'org' => 'Independent Pharmacies Association', 'logo' => get_template_directory_uri() . '/assets/img/awards/ipa-awards-2026.png', 'badge' => 'winner', 'link' => '/excellence-in-public-trust-award/', 'alt' => 'Independent Pharmacies Association Awards 2026 logo' ],
         // 'badge' drives the label on the card: 'winner' (blue) or 'finalist' (amber, shown as "Runner Up").
         // 2026 was runner up, not a win. 2017 kept at the client's request: all awards stay on the wall.
         // Logo: reuses the existing Pharmacy Business Awards file. Upload the 2026-branded
@@ -416,7 +419,7 @@ function sp_awards(): array {
     ];
 
     if ( ! function_exists( 'have_rows' ) || ! have_rows( 'sp_awards', 'option' ) ) {
-        return $defaults;
+        return sp_awards_linked( $defaults );
     }
 
     $rows = [];
@@ -427,17 +430,26 @@ function sp_awards(): array {
         $title = get_sub_field( 'title' );
         $org   = get_sub_field( 'organisation' );
         $logo  = get_sub_field( 'logo' ); // image field, return_format = url
+        $link  = trim( (string) get_sub_field( 'link' ) );
+        $alt   = trim( (string) get_sub_field( 'alt' ) );
 
-        // Fall back to the default row for the SAME YEAR rather than the same
+        // Fall back to the default row for the SAME AWARD rather than the same
         // position: the defaults get reordered when awards are added, and a
-        // positional match would hand a saved row another award's logo.
+        // positional match would hand a saved row another award's logo. Year and
+        // title first (2026 has two awards); the year alone only when it is unique.
         $base = null;
         if ( $year !== '' && $year !== null ) {
-            foreach ( $defaults as $d ) {
-                if ( (string) $d['year'] === (string) $year ) {
+            $same_year = array_values( array_filter( $defaults, function ( $d ) use ( $year ) {
+                return (string) $d['year'] === (string) $year;
+            } ) );
+            foreach ( $same_year as $d ) {
+                if ( $title !== '' && $title !== null && strcasecmp( trim( (string) $d['title'] ), trim( (string) $title ) ) === 0 ) {
                     $base = $d;
                     break;
                 }
+            }
+            if ( $base === null && count( $same_year ) === 1 ) {
+                $base = $same_year[0];
             }
         }
         if ( $base === null ) {
@@ -450,10 +462,29 @@ function sp_awards(): array {
             'org'   => ( $org !== '' && $org !== null )     ? $org   : ( $base['org']   ?? '' ),
             'logo'  => $logo ?: ( $base['logo'] ?? '' ),
             'badge' => sp_award_badge(),
+            'link'  => sp_award_link( $link !== '' ? $link : ( $base['link'] ?? '' ) ),
+            'alt'   => $alt !== '' ? $alt : ( $base['alt'] ?? '' ),
         ];
         $i++;
     }
-    return $rows ?: $defaults;
+    return $rows ?: sp_awards_linked( $defaults );
+}
+
+/** The defaults with each link made a full address. */
+function sp_awards_linked( array $awards ): array {
+    return array_map( function ( $d ) {
+        $d['link'] = sp_award_link( $d['link'] ?? '' );
+        return $d;
+    }, $awards );
+}
+
+/** An award card's link: a path on this site ("/excellence-in-public-trust-award/") or an https address, else ''. */
+function sp_award_link( $link ): string {
+    $link = trim( (string) $link );
+    if ( preg_match( '~^/(?!/)~', $link ) ) {
+        return home_url( $link );
+    }
+    return preg_match( '~^https://~i', $link ) ? $link : '';
 }
 
 
