@@ -61,6 +61,49 @@ while ( have_posts() ) : the_post();
 	.sp-article h2:first-child, .sp-article h3:first-child, .sp-article p:first-child { margin-top: 0; }
 	.sp-article figure { margin-top: 2rem; }
 	.sp-article figcaption { font-size: 0.875rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; }
+	/* A jump from "In this guide" lands below the sticky header. */
+	.sp-article h2[id] { scroll-margin-top: 96px; }
+	@media (min-width: 1024px) { .sp-article h2[id] { scroll-margin-top: 168px; } }
+
+	/* "In this guide": the post's H2s, generated below. */
+	.sp-article .sp-toc { margin: 2.5rem 0 0; padding: 1.25rem 1.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 1rem; font-family: 'Jost', sans-serif; }
+	.sp-article .sp-toc summary { cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #475569; }
+	.sp-article .sp-toc summary::-webkit-details-marker { display: none; }
+	.sp-article .sp-toc summary::after { content: ""; width: 9px; height: 9px; border-right: 2px solid #64748b; border-bottom: 2px solid #64748b; transform: rotate(45deg); transition: transform .2s ease; margin-top: -4px; }
+	.sp-article .sp-toc[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
+	.sp-article .sp-toc ol { margin: 0.875rem 0 0; padding: 0; list-style: none; counter-reset: sp-toc; display: grid; gap: 0.5rem 2rem; }
+	.sp-article .sp-toc li { counter-increment: sp-toc; display: flex; gap: 0.625rem; margin: 0; padding: 0; font-size: 1rem; line-height: 1.45; }
+	.sp-article .sp-toc li::before { content: counter(sp-toc, decimal-leading-zero); flex: none; color: #2563eb; font-weight: 600; font-size: 0.875rem; padding-top: 1px; font-variant-numeric: tabular-nums; }
+	.sp-article .sp-toc a { color: #1e293b; text-decoration: none; }
+	.sp-article .sp-toc a:hover { color: #1d4ed8; text-decoration: underline; text-underline-offset: 2px; }
+	@media (min-width: 768px) { .sp-article .sp-toc ol { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	@media (prefers-reduced-motion: reduce) { .sp-article .sp-toc summary::after { transition: none; } }
+
+	/* A post's table scrolls sideways by itself when it is wider than a phone. */
+	.sp-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+	.sp-table-wrap > table { margin-top: 0 !important; margin-bottom: 0 !important; }
+	.sp-article > .sp-table-wrap { margin-top: 1.25rem; }
+
+	/* Wide content on a desktop: the text stays at reading width, while the travel
+	   planner, tables and anything marked .sd-wide break out of the column,
+	   centred on it. Content in the posts carries inline widths and margins,
+	   hence !important. Below 1024px nothing changes. */
+	@media (min-width: 1024px) {
+		.sp-article > .gtp:not(.gtp-notices),
+		.sp-article > .sd-wide { --sp-wide: min(1140px, calc(100vw - 48px)); }
+		.sp-article > .sp-table-wrap { --sp-wide: min(1000px, calc(100vw - 48px)); }
+		.sp-article > .gtp:not(.gtp-notices),
+		.sp-article > .sd-wide,
+		.sp-article > .sp-table-wrap {
+			width: var(--sp-wide) !important;
+			max-width: none !important;
+			margin-left: calc((100% - var(--sp-wide)) / 2) !important;
+			margin-right: 0 !important;
+		}
+		.sp-article > .gtp:not(.gtp-notices) { margin-top: 2.5rem; margin-bottom: 2.5rem; border-radius: 1.25rem; overflow: clip; }
+		/* The featured image at the same width as the planner. */
+		.sp-post-feature { max-width: calc(1140px + 4rem); }
+	}
 </style>
 
 <article>
@@ -110,7 +153,7 @@ while ( have_posts() ) : the_post();
 	     ============================================================ -->
 	<?php if ( $sp_thumb ) : ?>
 	<div class="bg-[#fdf9f6]">
-		<div class="max-w-4xl mx-auto px-4 md:px-8 -mb-16 md:-mb-24">
+		<div class="sp-post-feature max-w-4xl mx-auto px-4 md:px-8 -mb-16 md:-mb-24">
 			<div class="rounded-2xl overflow-hidden shadow-xl aspect-[16/9]">
 				<img src="<?php echo esc_url( $sp_thumb ); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-cover" />
 			</div>
@@ -124,8 +167,58 @@ while ( have_posts() ) : the_post();
 	<div class="bg-white <?php echo $sp_thumb ? 'pt-24 md:pt-32' : 'pt-14 md:pt-16'; ?> pb-14 md:pb-20">
 		<div class="max-w-3xl mx-auto px-4 md:px-8">
 
+			<?php
+			/* The content, with an id on each of its own H2s, and "In this guide"
+			   listing them when there are three or more. H2s inside the travel
+			   planner (class gtp__...) are its own and are left alone. */
+			$sp_html  = apply_filters( 'the_content', get_the_content() );
+			$sp_html  = str_replace( ']]>', ']]&gt;', $sp_html );
+			$sp_toc   = [];
+			$sp_seen  = [];
+			$sp_html  = preg_replace_callback( '~<h2(\s[^>]*)?>(.*?)</h2>~is', function ( $m ) use ( &$sp_toc, &$sp_seen ) {
+				$attrs = $m[1] ?? '';
+				if ( false !== strpos( $attrs, 'gtp__' ) ) {
+					return $m[0];
+				}
+				$text = trim( wp_strip_all_tags( $m[2] ) );
+				if ( '' === $text ) {
+					return $m[0];
+				}
+				if ( preg_match( '~\sid=["\']([^"\']+)["\']~i', $attrs, $idm ) ) {
+					$id = $idm[1];
+				} else {
+					$base = sanitize_title( $text ) ?: 'section';
+					$id   = $base;
+					for ( $n = 2; isset( $sp_seen[ $id ] ); $n++ ) {
+						$id = $base . '-' . $n;
+					}
+					$attrs .= ' id="' . esc_attr( $id ) . '"';
+				}
+				$sp_seen[ $id ] = true;
+				$sp_toc[]       = [ 'id' => $id, 'text' => $text ];
+				/* "In this guide" goes just before the first section, after the intro. */
+				return ( 1 === count( $sp_toc ) ? '<!--sp-toc-->' : '' ) . '<h2' . $attrs . '>' . $m[2] . '</h2>';
+			}, $sp_html );
+			/* Each of the post's own tables in a wrapper that scrolls sideways by
+			   itself on a phone, rather than pushing the whole page sideways. The
+			   planner's price table (class gtp__...) is its own and is left alone. */
+			$sp_html = preg_replace( '~<table(?![^>]*gtp__)(\s[^>]*)?>.*?</table>~is', '<div class="sp-table-wrap">$0</div>', $sp_html );
+			?>
+			<?php ob_start(); if ( count( $sp_toc ) >= 3 ) : ?>
+			<details class="sp-toc" open>
+				<summary>In this guide</summary>
+				<ol>
+					<?php foreach ( $sp_toc as $sp_item ) : ?>
+					<li><a href="#<?php echo esc_attr( $sp_item['id'] ); ?>"><?php echo esc_html( html_entity_decode( $sp_item['text'], ENT_QUOTES, 'UTF-8' ) ); ?></a></li>
+					<?php endforeach; ?>
+				</ol>
+			</details>
+			<?php endif;
+			$sp_html = str_replace( '<!--sp-toc-->', (string) ob_get_clean(), $sp_html );
+			?>
+
 			<div class="sp-article">
-				<?php the_content(); ?>
+				<?php echo $sp_html; // phpcs:ignore WordPress.Security.EscapeOutput -- the_content output ?>
 			</div>
 
 			<?php
