@@ -4,9 +4,9 @@
  * "Read Full Article" on the right (stacked on a phone).
  *
  * Call inside the loop, after the_post(): used by "Featured This Week" on the
- * blog page (page-templates/page-health-hub.php) and on the homepage
- * (front-page.php). Both feature the most recent sticky post, or the newest
- * post when none is sticky.
+ * blog page (page-templates/page-health-hub.php), which features the most
+ * recent sticky post, or the newest post when none is sticky. (On the homepage
+ * the latest award's story is in the awards section: template-parts/awards.php.)
  */
 $hh_cats     = get_the_category();
 $hh_cat      = ! empty( $hh_cats ) ? $hh_cats[0]->name : 'Health';
