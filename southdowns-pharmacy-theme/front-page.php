@@ -402,28 +402,6 @@ $testimonials = sp_rows( 'home_testimonials', [
 </section>
 
 <!-- ============================================================
-     FEATURED POST — the sticky post (or the newest), as on the blog page
-     ============================================================ -->
-<?php
-$home_feat_q = sp_featured_post_query();
-if ( $home_feat_q->have_posts() ) :
-    $home_feat_q->the_post();
-?>
-<section class="py-14 md:py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-12">
-    <div class="premium-badge flex items-center gap-4 mb-8">
-      <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-      <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost"><?php echo sp_field( 'home_featured_eyebrow', 'Featured This Week' ); ?></span>
-    </div>
-    <?php get_template_part( 'template-parts/featured-post' ); ?>
-  </div>
-</section>
-<?php
-    wp_reset_postdata();
-endif;
-?>
-
-<!-- ============================================================
      HEALTH HUB
      ============================================================ -->
 <section class="relative py-16 md:py-24 overflow-hidden bg-[#fdf9f6] border-t border-[#e8e0d8]">

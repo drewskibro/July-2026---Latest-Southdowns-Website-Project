@@ -12,6 +12,11 @@
  *   Phone:   the featured award, then the others as a row you swipe (native
  *            scrolling and snap; nothing moves by itself).
  *
+ * When the featured award links to a published post on this site that has a
+ * featured image (its news story), the featured card becomes that story: the
+ * post's image across its top, one sentence from the post, and "Read the full
+ * story". Without one, the card shows the award's logo.
+ *
  * Each card leads with the award's title; the result and the year are a small
  * label above it, the awarding body a line below. The theme's Tailwind is
  * pre-built, so this section styles itself in the <style> block below.
@@ -41,19 +46,44 @@ $sp_aw_alt = function ( $aw ) {
 
 $f_link = (string) ( $featured['link'] ?? '' );
 $f_tag  = '' !== $f_link ? 'a' : 'div';
+
+/* The featured award's news story, when its link is a published post with an image. */
+$f_story = null;
+if ( '' !== $f_link && function_exists( 'url_to_postid' ) ) {
+	$f_post_id = (int) url_to_postid( $f_link );
+	if ( $f_post_id && 'publish' === get_post_status( $f_post_id ) && has_post_thumbnail( $f_post_id ) ) {
+		$f_excerpt = trim( wp_strip_all_tags( get_the_excerpt( $f_post_id ) ) );
+		// One sentence, at most about thirty words.
+		if ( preg_match( '/^(.+?[.!?])(\s|$)/u', $f_excerpt, $f_m ) ) {
+			$f_excerpt = $f_m[1];
+		}
+		$f_story = [
+			'image'   => get_the_post_thumbnail_url( $f_post_id, 'large' ),
+			'alt'     => get_the_title( $f_post_id ),
+			'excerpt' => wp_trim_words( $f_excerpt, 30 ),
+		];
+	}
+}
 ?>
 <div class="sp-aw">
-	<<?php echo $f_tag; ?> class="sp-aw-feature font-jost"<?php if ( 'a' === $f_tag ) : ?> href="<?php echo esc_url( $f_link ); ?>" aria-label="<?php echo esc_attr( 'Read about our ' . $featured['title'] . ' ' . $featured['year'] ); ?>"<?php endif; ?>>
+	<<?php echo $f_tag; ?> class="sp-aw-feature font-jost<?php echo $f_story ? ' sp-aw-feature--story' : ''; ?>"<?php if ( 'a' === $f_tag ) : ?> href="<?php echo esc_url( $f_link ); ?>" aria-label="<?php echo esc_attr( ( $f_story ? 'Read the full story: ' : 'Read about our ' ) . $featured['title'] . ' ' . $featured['year'] ); ?>"<?php endif; ?>>
+		<?php if ( $f_story ) : ?>
+		<img class="sp-aw-story__img" src="<?php echo esc_url( $f_story['image'] ); ?>" alt="<?php echo esc_attr( $f_story['alt'] ); ?>" loading="lazy" />
+		<?php else : ?>
 		<div class="sp-aw-feature__logo">
 			<img src="<?php echo esc_url( $featured['logo'] ); ?>" alt="<?php echo esc_attr( $sp_aw_alt( $featured ) ); ?>" loading="lazy" />
 		</div>
+		<?php endif; ?>
 		<div class="sp-aw-feature__body">
 			<p class="sp-aw-kicker">Latest award</p>
 			<?php echo $sp_aw_label( $featured ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the closure ?>
 			<h3 class="sp-aw-feature__title"><?php echo esc_html( $featured['title'] ); ?></h3>
 			<p class="sp-aw-org"><?php echo esc_html( $featured['org'] ); ?></p>
+			<?php if ( $f_story && '' !== $f_story['excerpt'] ) : ?>
+			<p class="sp-aw-story__excerpt"><?php echo esc_html( $f_story['excerpt'] ); ?></p>
+			<?php endif; ?>
 			<?php if ( 'a' === $f_tag ) : ?>
-			<span class="sp-aw-more" aria-hidden="true">Read about the award <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+			<span class="sp-aw-more" aria-hidden="true"><?php echo $f_story ? 'Read the full story' : 'Read about the award'; ?> <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
 			<?php endif; ?>
 		</div>
 	</<?php echo $f_tag; ?>>
@@ -97,6 +127,15 @@ $f_tag  = '' !== $f_link ? 'a' : 'div';
 	.sp-aw-more svg { transition: transform .3s ease; }
 	a.sp-aw-feature:hover .sp-aw-more svg { transform: translateX(3px); }
 
+	/* The featured award as its news story: the post's image across the top, the words below. */
+	.sp-aw-feature--story { padding: 0; gap: 0; overflow: hidden; align-items: stretch; text-align: left; background: #fff; }
+	.sp-aw-story__img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; }
+	.sp-aw-feature--story .sp-aw-feature__body { flex: 1; align-items: flex-start; justify-content: center; padding: 24px 24px 26px; }
+	.sp-aw-feature--story .sp-aw-kicker { margin-bottom: 8px; }
+	.sp-aw-feature--story .sp-aw-feature__title { margin-top: 10px; font-size: 24px; }
+	.sp-aw-story__excerpt { margin: 10px 0 0; color: #475569; font-size: 15px; line-height: 1.55; }
+	.sp-aw-feature--story .sp-aw-more { margin-top: 14px; }
+
 	/* The result and the year: a small label, never the loudest thing on the card */
 	.sp-aw-label { display: flex; align-items: center; gap: 8px; margin: 0; }
 	.sp-aw-badge { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; line-height: 1.4; }
@@ -129,6 +168,12 @@ $f_tag  = '' !== $f_link ? 'a' : 'div';
 		.sp-aw-card__logo img { max-width: 96px; }
 		.sp-aw-card__title { margin-top: 6px; font-size: 16px; }
 	}
+	@media (min-width: 640px) {
+		/* The story keeps its image on top at every width. */
+		.sp-aw-feature--story { flex-direction: column; gap: 0; padding: 0; }
+		.sp-aw-feature--story .sp-aw-feature__body { padding: 28px 32px 30px; }
+		.sp-aw-feature--story .sp-aw-feature__title { font-size: 26px; }
+	}
 	@media (min-width: 640px) and (max-width: 1023px) {
 		/* An odd one out at the end takes the whole row rather than sitting in half of it. */
 		.sp-aw-item:last-child:nth-child(odd) { grid-column: 1 / -1; }
@@ -141,6 +186,9 @@ $f_tag  = '' !== $f_link ? 'a' : 'div';
 		.sp-aw-feature__logo img { max-width: 280px; }
 		.sp-aw-feature__body { align-items: center; }
 		.sp-aw-feature__title { font-size: 32px; }
+		.sp-aw-feature--story { justify-content: flex-start; gap: 0; padding: 0; text-align: left; }
+		.sp-aw-feature--story .sp-aw-feature__body { align-items: flex-start; padding: 26px 32px 30px; }
+		.sp-aw-feature--story .sp-aw-feature__title { font-size: 28px; }
 		.sp-aw-list { grid-template-columns: minmax(0, 1fr); grid-auto-rows: 1fr; gap: 12px; }
 		.sp-aw-card { padding: 14px 22px; }
 		.sp-aw-card__logo { flex-basis: 110px; height: 60px; }
