@@ -62,6 +62,27 @@ foreach ( $hh_all_cats as $hh_c ) {
     }
 }
 
+// ── The featured article: the most recent published sticky post, when one is
+// marked sticky (Posts → Quick Edit → "Make this post sticky"). With none, it
+// is the newest post, taken from the top of the main query as before.
+$hh_sticky_ids = array_values( array_filter( array_map( 'intval', (array) get_option( 'sticky_posts', [] ) ) ) );
+$hh_sticky_q   = null;
+if ( 'all' === $hh_topic && $hh_sticky_ids ) {
+    $hh_sticky_q = new WP_Query( [
+        'post_type'           => 'post',
+        'post_status'         => 'publish',
+        'post__in'            => $hh_sticky_ids,
+        'posts_per_page'      => 1,
+        'orderby'             => 'date',
+        'order'               => 'DESC',
+        'ignore_sticky_posts' => true,
+        'no_found_rows'       => true,
+    ] );
+    if ( ! $hh_sticky_q->have_posts() ) {
+        $hh_sticky_q = null; // only drafts or deleted posts are marked sticky
+    }
+}
+
 // ── Build the query, filtered to the selected bucket's categories.
 $hh_args = [
     'post_type'           => 'post',
@@ -82,6 +103,10 @@ if ( 'all' !== $hh_topic && ! empty( $hh_buckets[ $hh_topic ] ) ) {
 } elseif ( 'all' !== $hh_topic ) {
     // A bucket with no matching categories → force an empty result set.
     $hh_args['post__in'] = [ 0 ];
+}
+if ( $hh_sticky_q ) {
+    // The featured sticky post is not repeated in the grid, on any page of it.
+    $hh_args['post__not_in'] = [ (int) $hh_sticky_q->posts[0]->ID ];
 }
 $hh_query = new WP_Query( $hh_args );
 
@@ -173,10 +198,12 @@ if ( ! function_exists( 'hh_topic_url' ) ) {
 
 <?php
 // ============================================================
-// FEATURED ARTICLE — first post, unfiltered page 1 only
+// FEATURED ARTICLE — the sticky post if there is one, else the newest
+// (taken off the top of the grid's query); unfiltered page 1 only
 // ============================================================
-if ( 1 === $hh_paged && 'all' === $hh_topic && $hh_query->have_posts() ) :
-    $hh_query->the_post();
+$hh_feat_q = $hh_sticky_q ? $hh_sticky_q : $hh_query;
+if ( 1 === $hh_paged && 'all' === $hh_topic && $hh_feat_q->have_posts() ) :
+    $hh_feat_q->the_post();
     $hh_cats     = get_the_category();
     $hh_cat      = ! empty( $hh_cats ) ? $hh_cats[0]->name : 'Health';
     $hh_thumb    = get_the_post_thumbnail_url( get_the_ID(), 'large' );
@@ -218,7 +245,11 @@ if ( 1 === $hh_paged && 'all' === $hh_topic && $hh_query->have_posts() ) :
     </a>
   </div>
 </section>
-<?php endif; ?>
+<?php endif;
+if ( $hh_sticky_q ) {
+    wp_reset_postdata();
+}
+?>
 
 <!-- ============================================================
      LATEST ARTICLES GRID
