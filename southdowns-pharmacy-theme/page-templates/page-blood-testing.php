@@ -45,7 +45,7 @@ $bt_tests = [
         'key'      => 'fbc',
         'name'     => 'Full Blood Count (FBC)',
         'price'    => '£79',
-        'avail'    => 'Davies only',
+        'avail'    => 'Bosmere only',
         'desc'     => 'A comprehensive check of key blood biomarkers — ideal if you feel tired or run down, are concerned about immunity, or simply want reassurance.',
         'learn_url'   => '/full-blood-count-test-hampshire/',
         'learn_label' => 'Full blood count: what it measures',
@@ -55,7 +55,7 @@ $bt_tests = [
         'key'      => 'diabetes',
         'name'     => 'Type 2 Diabetes Screening',
         'price'    => '£55',
-        'avail'    => 'Davies only',
+        'avail'    => 'Bosmere only',
         'desc'     => 'A simple screening check to assess your blood sugar and diabetes risk, with clear guidance from our pharmacist on any next steps.',
         'learn_url'   => '/diabetes-blood-test-hampshire/',
         'learn_label' => 'About type 2 diabetes screening',
@@ -65,7 +65,7 @@ $bt_tests = [
         'key'      => 'cholesterol',
         'name'     => 'Cholesterol Testing',
         'price'    => '£74',
-        'avail'    => 'Davies only',
+        'avail'    => 'Bosmere only',
         'desc'     => 'Measure your cholesterol and understand your cardiovascular risk, with professional advice on lifestyle and next steps.',
         'learn_url'   => '/cholesterol-test-hampshire/',
         'learn_label' => 'About cholesterol testing',
@@ -75,7 +75,7 @@ $bt_tests = [
         'key'      => 'thyroid',
         'name'     => 'Thyroid Function & Autoimmune',
         'price'    => '£79',
-        'avail'    => 'Davies only',
+        'avail'    => 'Bosmere only',
         'desc'     => 'An advanced thyroid profile to identify potential thyroid dysfunction and autoimmune thyroid conditions early — energy, metabolism, mood and more.',
         'learn_url'   => '/thyroid-test-hampshire/',
         'learn_label' => 'About thyroid testing',
@@ -84,13 +84,14 @@ $bt_tests = [
 ];
 
 /* Booking tabs — each renders an Amelia calendar filtered so patients can only
-   book at a branch that offers that test. Thyroid has no category ID (yet), so
+   book at a branch that offers that test. From 30 Nov 2026 every test is at
+   Bosmere (location 2); the rest of the page's Davies copy is still to change. Thyroid has no category ID (yet), so
    it is pinned by service + location. */
 $bt_book_tabs = [
-    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=2 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=11 location=2 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=19 location=2 show=category,service,employee,datetime,info]' ],
-    [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'avail' => 'Davies only',   'davies_only' => true,  'note' => 'This test is available at <strong>Davies Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 service=60 location=2 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£79', 'avail' => 'Bosmere only',   'davies_only' => true,  'note' => 'This test is available at <strong>Bosmere Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=2 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'diabetes',    'label' => 'Diabetes Screening', 'price' => '£55', 'avail' => 'Bosmere only',   'davies_only' => true,  'note' => 'This test is available at <strong>Bosmere Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=11 location=2 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'cholesterol', 'label' => 'Cholesterol',        'price' => '£74', 'avail' => 'Bosmere only',   'davies_only' => true,  'note' => 'This test is available at <strong>Bosmere Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=19 location=2 show=category,service,employee,datetime,info]' ],
+    [ 'key' => 'thyroid',     'label' => 'Thyroid',            'price' => '£79', 'avail' => 'Bosmere only',   'davies_only' => true,  'note' => 'This test is available at <strong>Bosmere Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 service=60 location=2 show=category,service,employee,datetime,info]' ],
 ];
 
 /* FAQ — ACF repeater override with hardcoded fallback. */
@@ -271,7 +272,7 @@ if ( empty( $bt_faqs ) ) {
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <?php foreach ( $bt_tests as $t ) :
-        $davies_only = ( $t['avail'] === 'Davies only' ); ?>
+        $davies_only = ( $t['avail'] === 'Bosmere only' ); ?>
       <div class="bt-card group bg-white border border-gray-200/80 rounded-2xl p-6 shadow-sm flex flex-col">
         <div class="flex items-start justify-between mb-4">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-50 text-blue-600">
@@ -429,7 +430,7 @@ if ( empty( $bt_faqs ) ) {
         <span class="badge-text text-slate-500 text-sm font-normal tracking-[0.15em] uppercase font-jost">Book Online</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-slate-800 mb-6 font-jost">Book Your Blood Test</h2>
-      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Select a test below, then choose your time. All blood tests are carried out at our Davies Pharmacy, Havant.</p>
+      <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-jost">Select a test below, then choose your time. All blood tests are carried out at our Bosmere Pharmacy, Havant.</p>
     </div>
 
     <!-- Test selector (Step 1) -->
