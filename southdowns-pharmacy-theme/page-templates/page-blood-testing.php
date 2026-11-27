@@ -7,15 +7,16 @@
  *   - Per-test Amelia calendars filtered by category/service, so a patient can
  *     only book a test at a branch that actually offers it.
  *   - An availability matrix instead of any "all four branches" claim.
- *   - Davies (the phlebotomy centre, location 3) featured as the flagship.
+ *   - Bosmere (the phlebotomy centre, location 2) featured as the flagship.
+ *     Blood tests moved from Davies (location 3) to Bosmere on 30 Nov 2026.
  *
  * URL slug: /blood-testing/  (fixes the existing footer "Blood Testing" link)
  *
  * Amelia mapping (confirmed from the client's Amelia install):
- *   Type 2 Diabetes Screening · category 11 · Davies(3) only  (all tests Davies-only per client)
- *   Full Blood Count          · category 18 · Davies(3) only
- *   Cholesterol Testing       · category 19 / service 59 · Davies(3) only
- *   Thyroid Function & Auto.   · service 60 · Davies(3) only
+ *   Type 2 Diabetes Screening · category 11 · Bosmere(2) only  (all tests at one branch per client)
+ *   Full Blood Count          · category 18 · Bosmere(2) only
+ *   Cholesterol Testing       · category 19 / service 59 · Bosmere(2) only
+ *   Thyroid Function & Auto.   · service 60 · Bosmere(2) only
  *   Locations: Emsworth=1, Bosmere=2, Davies=3, Rowlands=4 (no blood tests).
  */
 
@@ -30,7 +31,7 @@ $phone       = sp_phone();
 $bt_hero_img    = sp_field( 'bt_hero_image', 'https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200&q=80&auto=format&fit=crop' );
 $bt_hero_alt    = sp_field( 'bt_hero_image_alt', 'Private blood testing at Southdowns Pharmacy, Hampshire' );
 $bt_davies_img  = sp_field( 'bt_davies_image', 'https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=1000&q=80&auto=format&fit=crop' );
-$bt_davies_alt  = sp_field( 'bt_davies_image_alt', 'Davies Pharmacy phlebotomy centre, Havant' );
+$bt_davies_alt  = sp_field( 'bt_davies_image_alt', 'Bosmere Pharmacy phlebotomy centre, Havant' );
 
 // Roundel font stack (same pattern as the other service pages).
 $bt_font = "-apple-system,BlinkMacSystemFont,'Segoe UI','Inter','Helvetica Neue',Arial,sans-serif";
@@ -85,7 +86,7 @@ $bt_tests = [
 
 /* Booking tabs — each renders an Amelia calendar filtered so patients can only
    book at a branch that offers that test. From 30 Nov 2026 every test is at
-   Bosmere (location 2); the rest of the page's Davies copy is still to change. Thyroid has no category ID (yet), so
+   Bosmere (location 2). Thyroid has no category ID (yet), so
    it is pinned by service + location. */
 $bt_book_tabs = [
     [ 'key' => 'fbc',         'label' => 'Full Blood Count',   'price' => '£79', 'avail' => 'Bosmere only',   'davies_only' => true,  'note' => 'This test is available at <strong>Bosmere Pharmacy, Havant</strong> only.',                          'shortcode' => '[ameliastepbooking layout=2 category=18 location=2 show=category,service,employee,datetime,info]' ],
@@ -105,7 +106,7 @@ if ( function_exists( 'have_rows' ) && have_rows( 'bt_faq_items' ) ) {
 if ( empty( $bt_faqs ) ) {
     $bt_faqs = [
         [ 'q' => 'Where are your blood tests carried out?',
-          'a' => 'All of our blood tests — Full Blood Count, Type 2 Diabetes Screening, Cholesterol and Thyroid — are carried out at Davies Pharmacy, our dedicated phlebotomy centre at 12 West Street, Havant, PO9 1PF.' ],
+          'a' => 'All of our blood tests — Full Blood Count, Type 2 Diabetes Screening, Cholesterol and Thyroid — are carried out at Bosmere Pharmacy, our dedicated phlebotomy centre at Solent Road, Havant, Hampshire, PO9 1DQ.' ],
         [ 'q' => 'Do I need a GP referral?',
           'a' => 'No. All of our blood tests are private services you can book directly — no GP referral and no waiting list.' ],
         [ 'q' => 'How quickly will I get my results?',
@@ -183,7 +184,7 @@ if ( empty( $bt_faqs ) ) {
         PRIVATE BLOOD TESTING &bull; HAMPSHIRE
       </div>
       <h1 class="text-white text-4xl lg:text-[50px] font-semibold mb-6 font-jost" style="line-height:1.1;">Private Blood Testing in <span class="serif-accent">Hampshire</span></h1>
-      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Understand your health in minutes. Fast, professional blood health checks with rapid results and expert pharmacy support &mdash; carried out at our Davies Pharmacy phlebotomy centre in Havant, with no GP referral and no waiting list.</p>
+      <p class="text-white text-lg lg:text-xl leading-relaxed mb-6 font-jost">Understand your health in minutes. Fast, professional blood health checks with rapid results and expert pharmacy support &mdash; carried out at our Bosmere Pharmacy phlebotomy centre in Havant, with no GP referral and no waiting list.</p>
       <div class="flex flex-wrap gap-3 mb-6">
         <a href="<?php echo esc_url( $booking_url ); ?>" class="inline-flex items-center gap-2 bg-white text-blue-700 text-base font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors shadow-lg font-jost">
           Book a Blood Test
@@ -222,11 +223,11 @@ if ( empty( $bt_faqs ) ) {
         <span style="<?php echo $bt_txt; ?>font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);line-height:1.3;margin-top:3px;">No GP Referral</span>
       </div>
     </div>
-    <!-- Roundel 3 — DAVIES -->
+    <!-- Roundel 3 — BOSMERE -->
     <div class="absolute z-30 flex flex-col items-center" style="left:50%;bottom:12%;transform:translateX(-50%);">
       <div style="width:132px;height:132px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 0 0 3px #1e3a8a,0 0 0 6px rgba(255,255,255,0.7),0 8px 24px rgba(0,0,0,0.18);padding:0 10px;text-align:center;">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span style="<?php echo $bt_txt; ?>font-size:13px;font-weight:800;color:#1e3a8a;line-height:1.1;">DAVIES</span>
+        <span style="<?php echo $bt_txt; ?>font-size:13px;font-weight:800;color:#1e3a8a;line-height:1.1;">BOSMERE</span>
         <span style="<?php echo $bt_txt; ?>font-size:10px;font-weight:600;color:#64748b;line-height:1.3;margin-top:2px;">Phlebotomy Centre</span>
       </div>
     </div>
@@ -267,7 +268,7 @@ if ( empty( $bt_faqs ) ) {
         <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Our Blood Tests</span>
       </div>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 font-jost">Choose Your Test</h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Fast, professional testing from GPhC-registered pharmacists at Davies Pharmacy, our dedicated phlebotomy centre in Havant.</p>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Fast, professional testing from GPhC-registered pharmacists at Bosmere Pharmacy, our dedicated phlebotomy centre in Havant.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -302,7 +303,7 @@ if ( empty( $bt_faqs ) ) {
 </section>
 
 <!-- ============================================================
-     S4: DAVIES SPOTLIGHT — the flagship phlebotomy centre
+     S4: BOSMERE SPOTLIGHT — the flagship phlebotomy centre
      ============================================================ -->
 <section class="py-16 md:py-24 bg-[#fdf9f6] border-t border-[#e8e0d8] overflow-hidden">
   <div class="section-container">
@@ -314,10 +315,10 @@ if ( empty( $bt_faqs ) ) {
         </span>
         <div class="premium-badge flex items-center justify-start gap-4 mb-4">
           <div class="badge-rule w-10 h-px bg-slate-800/20"></div>
-          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Davies Pharmacy, Havant</span>
+          <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Bosmere Pharmacy, Havant</span>
         </div>
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-5 font-jost">All Our Blood Tests, <span class="serif-accent text-blue-700">Under One Roof</span></h2>
-        <p class="text-lg text-slate-600 mb-6 leading-relaxed font-jost">Davies Pharmacy in Havant is our dedicated phlebotomy centre &mdash; the only branch offering our full range, including our exclusive Full Blood Count, Cholesterol and advanced Thyroid Function &amp; Autoimmune screening. Whether you feel tired or run down, want reassurance about your immunity, or need early insight into thyroid health, our team provides fast, professional testing without the long GP wait.</p>
+        <p class="text-lg text-slate-600 mb-6 leading-relaxed font-jost">Bosmere Pharmacy in Havant is our dedicated phlebotomy centre &mdash; the only branch offering our full range, including our exclusive Full Blood Count, Cholesterol and advanced Thyroid Function &amp; Autoimmune screening. Whether you feel tired or run down, want reassurance about your immunity, or need early insight into thyroid health, our team provides fast, professional testing without the long GP wait.</p>
         <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3 mb-8">
           <?php foreach ( [ 'Full Blood Count (FBC)', 'Cholesterol Testing', 'Thyroid Function &amp; Autoimmune', 'Type 2 Diabetes Screening' ] as $point ) : ?>
           <div class="flex items-center gap-2.5 text-slate-700 font-jost">
@@ -327,7 +328,7 @@ if ( empty( $bt_faqs ) ) {
           <?php endforeach; ?>
         </div>
         <a href="#book" data-book-tab="fbc" class="bt-book-link inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-7 py-3.5 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
-          Book at Davies
+          Book at Bosmere
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </a>
       </div>
@@ -342,7 +343,7 @@ if ( empty( $bt_faqs ) ) {
 </section>
 
 <!-- ============================================================
-     S5: DAVIES LOCATION — all tests, one place
+     S5: BOSMERE LOCATION — all tests, one place
      ============================================================ -->
 <section class="py-16 md:py-24 bg-white">
   <div class="section-container">
@@ -353,15 +354,15 @@ if ( empty( $bt_faqs ) ) {
           <span class="badge-text text-slate-500 text-sm font-light tracking-[0.15em] uppercase font-jost">Where to Book</span>
         </div>
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-jost">One Location for All Your Tests</h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Every blood test is carried out at Davies Pharmacy, our dedicated phlebotomy centre in Havant.</p>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto font-jost">Every blood test is carried out at Bosmere Pharmacy, our dedicated phlebotomy centre in Havant.</p>
       </div>
       <div class="yf-reveal grid md:grid-cols-2 gap-8 lg:gap-10 items-center bg-white rounded-3xl border border-blue-100 shadow-sm p-6 md:p-8 lg:p-10">
         <div>
           <span class="inline-flex items-center gap-2 bg-blue-600 text-white text-xs font-bold uppercase tracking-wide px-3 py-1.5 rounded-full mb-4 font-jost">Phlebotomy Centre</span>
-          <h3 class="text-2xl font-bold text-gray-900 mb-2 font-jost">Davies Pharmacy, Havant</h3>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2 font-jost">Bosmere Pharmacy, Havant</h3>
           <div class="flex items-start gap-2 text-gray-600 mb-6 font-jost">
             <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>12 West Street, Havant, Hampshire, PO9 1PF</span>
+            <span>Solent Road, Havant, Hampshire, PO9 1DQ</span>
           </div>
           <ul class="space-y-2.5 mb-8">
             <?php foreach ( $bt_tests as $t ) : ?>
@@ -373,10 +374,10 @@ if ( empty( $bt_faqs ) ) {
           </ul>
           <div class="flex flex-wrap gap-3">
             <a href="#book" data-book-tab="fbc" class="bt-book-link inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full transition-colors shadow-lg shadow-blue-500/20 font-jost">
-              Book at Davies
+              Book at Bosmere
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Davies+Pharmacy+12+West+Street+Havant+PO9+1PF" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-700 font-semibold border-2 border-blue-200 px-6 py-3 rounded-full hover:bg-blue-50 transition-colors font-jost">
+            <a href="https://maps.app.goo.gl/NyyUqowZmsAhuN859" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-700 font-semibold border-2 border-blue-200 px-6 py-3 rounded-full hover:bg-blue-50 transition-colors font-jost">
               Get directions
             </a>
           </div>
@@ -404,8 +405,8 @@ if ( empty( $bt_faqs ) ) {
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 yf-reveal">
       <?php
       $bt_steps = [
-          [ 'n' => '1', 'title' => 'Book Online', 'desc' => 'Choose your test and a convenient time at Davies Pharmacy, Havant. No GP referral needed.' ],
-          [ 'n' => '2', 'title' => 'Quick Appointment', 'desc' => 'Visit Davies Pharmacy in Havant. Your sample is taken by trained staff in a discreet, professional setting.' ],
+          [ 'n' => '1', 'title' => 'Book Online', 'desc' => 'Choose your test and a convenient time at Bosmere Pharmacy, Havant. No GP referral needed.' ],
+          [ 'n' => '2', 'title' => 'Quick Appointment', 'desc' => 'Visit Bosmere Pharmacy in Havant. Your sample is taken by trained staff in a discreet, professional setting.' ],
           [ 'n' => '3', 'title' => 'Lab Analysis', 'desc' => 'Your sample is analysed and results are typically ready within 24&ndash;48 hours.' ],
       ];
       foreach ( $bt_steps as $st ) : ?>
@@ -491,8 +492,8 @@ if ( empty( $bt_faqs ) ) {
           [ 'title' => 'Rapid Results', 'desc' => 'Results typically within 24&ndash;48 hours, explained by your pharmacist.', 'icon' => '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>' ],
           [ 'title' => 'GPhC-Registered Team', 'desc' => 'Every test is handled by qualified, regulated professionals.', 'icon' => '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>' ],
           [ 'title' => 'Private &amp; Confidential', 'desc' => 'Discreet appointments and results handled in strict confidence.', 'icon' => '<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' ],
-          [ 'title' => 'Dedicated Phlebotomy Centre', 'desc' => 'Davies Pharmacy offers our full range under one roof.', 'icon' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
-          [ 'title' => 'One Trusted Location', 'desc' => 'All blood testing at our Davies Pharmacy phlebotomy centre in Havant.', 'icon' => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>' ],
+          [ 'title' => 'Dedicated Phlebotomy Centre', 'desc' => 'Bosmere Pharmacy offers our full range under one roof.', 'icon' => '<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>' ],
+          [ 'title' => 'One Trusted Location', 'desc' => 'All blood testing at our Bosmere Pharmacy phlebotomy centre in Havant.', 'icon' => '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>' ],
       ];
       foreach ( $bt_why as $why ) : ?>
       <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-colors">
