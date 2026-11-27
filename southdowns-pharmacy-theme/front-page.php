@@ -427,7 +427,7 @@ $testimonials = sp_rows( 'home_testimonials', [
       // to the blog index if empty). All five values are client-editable via
       // Home Page Content → Articles.
       $articles = sp_rows( 'home_articles', [
-        ['https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&h=400&fit=crop', 'Blood Tests', 'Thyroid Function Testing in Hampshire', 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Davies Pharmacy, Havant...', '/thyroid-test-hampshire/'],
+        ['https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&h=400&fit=crop', 'Blood Tests', 'Thyroid Function Testing in Hampshire', 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Bosmere Pharmacy, Havant...', '/thyroid-test-hampshire/'],
         ['https://images.unsplash.com/photo-1579154204601-01588f351e67?w=600&h=400&fit=crop', 'Blood Tests', 'Understanding Your Blood Test Results', 'What do all those numbers and abbreviations actually mean? A plain-English guide to reading your results and knowing what to do next...', '/understanding-blood-test-results/'],
         ['https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=600&h=400&fit=crop', 'Blood Tests', 'Type 2 Diabetes Screening: Should You Get Tested?', 'Type 2 diabetes often develops with no obvious symptoms. A simple screening check can tell you your risk — no GP referral needed...', '/diabetes-blood-test-hampshire/'],
       ], [ 0 => 'image', 1 => 'category', 2 => 'title', 3 => 'excerpt', 4 => 'url' ] );

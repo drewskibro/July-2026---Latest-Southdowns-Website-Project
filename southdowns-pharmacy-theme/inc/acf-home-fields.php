@@ -202,7 +202,7 @@ function home_repeater_defaults(): array {
 			[ 'value' => '10,000+', 'label' => 'Happy Patients' ],
 		],
 		'home_articles' => [
-			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Thyroid Function Testing in Hampshire', 'excerpt' => 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Davies Pharmacy, Havant...', 'url' => '/thyroid-test-hampshire/' ],
+			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Thyroid Function Testing in Hampshire', 'excerpt' => 'Tired, gaining weight or feeling low? An advanced thyroid profile can show whether your thyroid is behind it — available at Bosmere Pharmacy, Havant...', 'url' => '/thyroid-test-hampshire/' ],
 			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Understanding Your Blood Test Results', 'excerpt' => 'What do all those numbers and abbreviations actually mean? A plain-English guide to reading your results and knowing what to do next...', 'url' => '/understanding-blood-test-results/' ],
 			[ 'image' => false, 'category' => 'Blood Tests', 'title' => 'Type 2 Diabetes Screening: Should You Get Tested?', 'excerpt' => 'Type 2 diabetes often develops with no obvious symptoms. A simple screening check can tell you your risk — no GP referral needed...', 'url' => '/diabetes-blood-test-hampshire/' ],
 		],

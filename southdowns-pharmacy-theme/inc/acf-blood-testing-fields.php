@@ -52,22 +52,22 @@ add_action( 'acf/init', function () {
             ],
 
             // ── Tab 2 · Davies Spotlight ──────────────────────────
-            [ 'key' => 'field_bt_tab_davies', 'label' => 'Davies Spotlight', 'name' => '', 'type' => 'tab' ],
+            [ 'key' => 'field_bt_tab_davies', 'label' => 'Bosmere Spotlight', 'name' => '', 'type' => 'tab' ],
             [
                 'key'           => 'field_bt_davies_image',
-                'label'         => 'Davies Spotlight Image',
+                'label'         => 'Bosmere Spotlight Image',
                 'name'          => 'bt_davies_image',
                 'type'          => 'image',
                 'return_format' => 'url',
                 'preview_size'  => 'medium',
-                'instructions'  => 'Image for the Davies "phlebotomy centre" spotlight band. Minimum 1000 × 750 px.',
+                'instructions'  => 'Image for the Bosmere "phlebotomy centre" spotlight band. Minimum 1000 × 750 px.',
             ],
             [
                 'key'         => 'field_bt_davies_image_alt',
-                'label'       => 'Davies Image Alt Text',
+                'label'       => 'Bosmere Image Alt Text',
                 'name'        => 'bt_davies_image_alt',
                 'type'        => 'text',
-                'placeholder' => 'Davies Pharmacy phlebotomy centre, Havant',
+                'placeholder' => 'Bosmere Pharmacy phlebotomy centre, Havant',
             ],
 
             // ── Tab 3 · FAQ ───────────────────────────────────────
